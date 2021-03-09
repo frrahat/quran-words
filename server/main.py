@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import Dict, List, Optional
 
 from fastapi import Depends, FastAPI, Query
 from pydantic import BaseModel
@@ -60,14 +60,14 @@ def get_pagination_response(
                 current_offset: int,
                 current_pagesize: int,
                 additional_query_string: Optional[str] = None,
-                limit: int = 10) -> dict[str, Optional[str]]:
-    
+                limit: int = 10) -> Dict[str, Optional[str]]:
+
     prev_offset = max(0, current_offset - limit)
     prev_pagesize = min(limit, count, current_offset)
 
     next_offset = current_offset + current_pagesize
     next_pagesize = min(next_offset + limit, count - next_offset + 1)
-    
+
     additional_query_string = f'&{additional_query_string}' if additional_query_string else ''
 
     return {
@@ -89,6 +89,7 @@ def pagination_parameters(offset: Optional[int] = Query(0, ge=0),
         'offset': offset,
         'pagesize': pagesize,
     }
+
 
 @app.get('/levels', response_model=LevelListResponseModel)
 def list_level(pagination_parameters: dict = Depends(pagination_parameters)):
@@ -154,7 +155,7 @@ def list_verse(sura: Optional[int] = Query(None, gt=0, le=114),
 
     if sura:
         base_query = base_query.filter(Verse.sura_num == sura)
-    
+
     if ayah:
         base_query = base_query.filter(Verse.ayah_num == ayah)
 
