@@ -3,7 +3,7 @@ from typing import Dict, List, Optional, Union
 from fastapi import Depends, FastAPI, Path, Query, Response, status
 from pydantic import BaseModel
 
-from server.db import db, Level, Word, Verse
+from server.db_words_80_percent import db_words_80_percent, Level, Word, Verse
 from server.db_corpus import db_corpus, Corpus, VerbForms
 
 
@@ -134,12 +134,12 @@ def pagination_parameters(offset: Optional[int] = Query(0, ge=0),
     }
 
 
-@app.get('/levels', response_model=LevelListResponseModel)
+@app.get('/levels-words-80-percent', response_model=LevelListResponseModel)
 def list_level(pagination_parameters: dict = Depends(pagination_parameters)):
     offset = pagination_parameters['offset']
     pagesize = pagination_parameters['pagesize']
 
-    base_query = db.session.query(Level)
+    base_query = db_words_80_percent.session.query(Level)
     total = base_query.count()
 
     levels = base_query.offset(offset).limit(pagesize).all()
@@ -152,16 +152,16 @@ def list_level(pagination_parameters: dict = Depends(pagination_parameters)):
             } for level in levels
         ],
         'total': total,
-        'pagination': get_pagination_response(f'{BASE_URL}/labels', total, offset, pagesize)
+        'pagination': get_pagination_response(f'{BASE_URL}/levels-words-80-percent', total, offset, pagesize)
     }
 
 
-@app.get('/words', response_model=WordListResponseModel)
+@app.get('/words-80-percent', response_model=WordListResponseModel)
 def list_word(level: Optional[int] = Query(None, gt=0), pagination_parameters: dict = Depends(pagination_parameters)):
     offset = pagination_parameters['offset']
     pagesize = pagination_parameters['pagesize']
 
-    base_query = db.session.query(Word)
+    base_query = db_words_80_percent.session.query(Word)
 
     if level:
         base_query = base_query.filter(Word.level_num == level)
@@ -184,7 +184,7 @@ def list_word(level: Optional[int] = Query(None, gt=0), pagination_parameters: d
         ],
         'total': total,
         'pagination': get_pagination_response(
-            f'{BASE_URL}/words', total, offset, pagesize, additional_query_string)
+            f'{BASE_URL}/words-80-percent', total, offset, pagesize, additional_query_string)
     }
 
 
@@ -194,7 +194,8 @@ def list_sura_verses(sura_num: int = Path(..., gt=0, le=114),
     offset = pagination_parameters['offset']
     pagesize = pagination_parameters['pagesize']
 
-    base_query = db.session.query(Verse).filter(Verse.sura_num == sura_num)
+    base_query = db_words_80_percent.session.query(
+        Verse).filter(Verse.sura_num == sura_num)
     total = base_query.count()
 
     verses = base_query.order_by(Verse.ayah_num).offset(
@@ -223,7 +224,8 @@ def get_verse(response: Response,
               sura_num: int = Path(..., gt=0, le=114),
               ayah_num: int = Path(..., gt=0, le=286)):
 
-    base_query = db.session.query(Verse).filter(Verse.sura_num == sura_num)
+    base_query = db_words_80_percent.session.query(
+        Verse).filter(Verse.sura_num == sura_num)
 
     total_ayat = base_query.count()
 
