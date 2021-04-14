@@ -15,6 +15,7 @@ from server.response_models import (
     VerseResponseModelForSingleAyah,
     CorpusResponseModel,
 )
+from server.dependencies import pagination_parameters
 
 app = FastAPI()
 
@@ -51,14 +52,6 @@ def get_pagination_response(
 @app.get('/')
 def read_root():
     return 'hello world'
-
-
-def pagination_parameters(offset: Optional[int] = Query(0, ge=0),
-                          pagesize: Optional[int] = Query(10, gt=0)):
-    return {
-        'offset': offset,
-        'pagesize': pagesize,
-    }
 
 
 @app.get('/words-80-percent/levels', response_model=LevelListResponseModel)
