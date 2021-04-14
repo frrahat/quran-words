@@ -1,9 +1,10 @@
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Union
 
-from fastapi import Depends, FastAPI, Query
+from fastapi import Depends, FastAPI, Path, Query, Response, status
 from pydantic import BaseModel
 
-from .db import db, Level, Word, Verse
+from server.db import db, Level, Word, Verse
+from server.db_corpus import db_corpus, Corpus, VerbForms
 
 
 app = FastAPI()
@@ -41,11 +42,26 @@ class WordListResponseModel(BaseModel):
     pagination: PaginationResponseModel
 
 
+class VerseLinks(BaseModel):
+    self: str
+
+
+class VerseLinksResponseModelForSingleAyah(VerseLinks):
+    corpus: str
+    prev: Optional[str]
+    next: Optional[str]
+
+
 class VerseResponseModel(BaseModel):
     sura: int
     ayah: int
     arabic: str
     english: str
+    links: VerseLinks
+
+
+class VerseResponseModelForSingleAyah(VerseResponseModel):
+    links: VerseLinksResponseModelForSingleAyah
 
 
 class VerseListResponseModel(BaseModel):
@@ -54,13 +70,40 @@ class VerseListResponseModel(BaseModel):
     pagination: PaginationResponseModel
 
 
+class WordSegmentModel(BaseModel):
+    segment: str
+    pos: str
+
+
+class VerbFormsModel(BaseModel):
+    root: str
+    verb_type: str
+    perfect: str
+    imperative: str
+    active_participle: str
+    passive_participle: str
+    verbal_noun: str
+
+
+class CorpusResponseModel(BaseModel):
+    sura: int
+    ayah: int
+    word_num: int
+    segments: List[WordSegmentModel]
+    root: str
+    lemma: str
+    verb_type: Optional[str]
+    verb_form: Optional[int]
+    verb_forms: Optional[VerbFormsModel]
+
+
 def get_pagination_response(
-                url: str,
-                count: int,
-                current_offset: int,
-                current_pagesize: int,
-                additional_query_string: Optional[str] = None,
-                limit: int = 10) -> Dict[str, Optional[str]]:
+        url: str,
+        count: int,
+        current_offset: int,
+        current_pagesize: int,
+        additional_query_string: Optional[str] = None,
+        limit: int = 10) -> Dict[str, Optional[str]]:
 
     prev_offset = max(0, current_offset - limit)
     prev_pagesize = min(limit, count, current_offset)
@@ -71,10 +114,10 @@ def get_pagination_response(
     additional_query_string = f'&{additional_query_string}' if additional_query_string else ''
 
     return {
-        'previous': f'{url}?offset={prev_offset}&pagesize={prev_pagesize}{additional_query_string}' \
-            if current_offset > 0 else None,
-        'next': f'{url}?offset={next_offset}&pagesize={next_pagesize}{additional_query_string}' \
-            if next_offset < count else None,
+        'previous': f'{url}?offset={prev_offset}&pagesize={prev_pagesize}{additional_query_string}'
+        if current_offset > 0 else None,
+        'next': f'{url}?offset={next_offset}&pagesize={next_pagesize}{additional_query_string}'
+        if next_offset < count else None,
     }
 
 
@@ -125,7 +168,8 @@ def list_word(level: Optional[int] = Query(None, gt=0), pagination_parameters: d
 
     total = base_query.count()
 
-    words = base_query.order_by(Word.level_num, Word.serial_num).offset(offset).limit(pagesize).all()
+    words = base_query.order_by(Word.level_num, Word.serial_num).offset(
+        offset).limit(pagesize).all()
 
     additional_query_string = f'level={level}' if level else ''
 
@@ -144,26 +188,18 @@ def list_word(level: Optional[int] = Query(None, gt=0), pagination_parameters: d
     }
 
 
-@app.get('/verses', response_model=VerseListResponseModel)
-def list_verse(sura: Optional[int] = Query(None, gt=0, le=114),
-               ayah: Optional[int] = Query(None, gt=0, le=286),
-               pagination_parameters: dict = Depends(pagination_parameters)):
+@app.get('/verses/sura/{sura_num}', response_model=VerseListResponseModel)
+def list_sura_verses(sura_num: int = Path(..., gt=0, le=114),
+                     pagination_parameters: dict = Depends(pagination_parameters)):
     offset = pagination_parameters['offset']
     pagesize = pagination_parameters['pagesize']
 
-    base_query = db.session.query(Verse)
-
-    if sura:
-        base_query = base_query.filter(Verse.sura_num == sura)
-
-    if ayah:
-        base_query = base_query.filter(Verse.ayah_num == ayah)
-
+    base_query = db.session.query(Verse).filter(Verse.sura_num == sura_num)
     total = base_query.count()
 
-    verses = base_query.order_by(Verse.sura_num, Verse.ayah_num).offset(offset).limit(pagesize).all()
+    verses = base_query.order_by(Verse.ayah_num).offset(
+        offset).limit(pagesize).all()
 
-    additional_query_string = '&'.join(f'{k}={v}' for k, v in {'sura': sura, 'ayah': ayah}.items() if v)
     return {
         'data': [
             {
@@ -171,9 +207,79 @@ def list_verse(sura: Optional[int] = Query(None, gt=0, le=114),
                 'ayah': verse.ayah_num,
                 'arabic': verse.text,
                 'english': '<Not available>',
+                'links': {
+                    'self': f'{BASE_URL}/verses/sura/{sura_num}/ayah/{verse.ayah_num}',
+                }
             } for verse in verses
         ],
         'total': total,
         'pagination': get_pagination_response(
-            f'{BASE_URL}/verses', total, offset, pagesize, additional_query_string)
+            f'{BASE_URL}/verses/sura/{sura_num}', total, offset, pagesize)
     }
+
+
+@app.get('/verses/sura/{sura_num}/ayah/{ayah_num}', response_model=VerseResponseModelForSingleAyah)
+def get_verse(response: Response,
+              sura_num: int = Path(..., gt=0, le=114),
+              ayah_num: int = Path(..., gt=0, le=286)):
+
+    base_query = db.session.query(Verse).filter(Verse.sura_num == sura_num)
+
+    total_ayat = base_query.count()
+
+    verse = base_query.filter(Verse.ayah_num == ayah_num).first()
+
+    if not verse:
+        response.status_code = status.HTTP_404_NOT_FOUND
+        return None
+
+    return {
+        'sura': verse.sura_num,
+        'ayah': verse.ayah_num,
+        'arabic': verse.text,
+        'english': '<Not available>',
+        'links': {
+            'self': f'{BASE_URL}/verses/sura/{sura_num}/ayah/{verse.ayah_num}',
+            'corpus': f'{BASE_URL}/corpus/sura/{sura_num}/ayah/{verse.ayah_num}',
+            'prev': f'{BASE_URL}/verses/sura/{sura_num}/ayah/{verse.ayah_num - 1}' if verse.ayah_num > 1 else None,
+            'next': f'{BASE_URL}/verses/sura/{sura_num}/ayah/{verse.ayah_num + 1}' if verse.ayah_num < total_ayat else None,
+        }
+    }
+
+
+@app.get('/corpus/sura/{sura_num}/ayah/{ayah_num}', response_model=List[CorpusResponseModel])
+def get_corpus(response: Response,
+               sura_num: int = Path(..., gt=0, le=114),
+               ayah_num: int = Path(..., gt=0, le=286)):
+
+    base_query = db_corpus.session.query(Corpus).filter(
+        Corpus.sura_num == sura_num, Corpus.ayah_num == ayah_num)
+    ordered_corpus_list = base_query.order_by(Corpus.word_num).all()
+
+    words = []
+
+    for corpus in ordered_corpus_list:
+        verb_forms = corpus.verb_forms
+        word = {
+            'sura': corpus.sura_num,
+            'ayah': corpus.ayah_num,
+            'word_num': corpus.word_num,
+            'segments': corpus.get_segments(),
+            'root': corpus.root,
+            'lemma': corpus.lemma,
+            'verb_type': corpus.verb_type,
+            'verb_form': corpus.verb_form,
+            'verb_forms': {
+                'root': verb_forms.root,
+                'verb_type': verb_forms.verb_type,
+                'perfect': verb_forms.perfect,
+                'imperative': verb_forms.imperative,
+                'active_participle': verb_forms.active_participle,
+                'passive_participle': verb_forms.passive_participle,
+                'verbal_noun': verb_forms.verbal_noun,
+            } if verb_forms else None,
+        }
+
+        words.append(word)
+
+    return words
