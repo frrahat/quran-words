@@ -4,8 +4,11 @@ import urllib.parse
 from fastapi import Depends, FastAPI, Path, Query, Request, Response, status
 from pydantic import BaseModel
 
-from server.db_words_80_percent import db_words_80_percent, Level, Word, Verse
-from server.db_corpus import db_corpus, Corpus, VerbForms
+from server.db_words_80_percent import db_words_80_percent, Level, Word as Words80Percent
+from server.db_corpus import db_corpus, Corpus
+from server.db_quran_arabic import db_quran_arabic, QuranArabic
+from server.db_quran_english import db_quran_english, QuranEnglish
+from server.db_words import db_words, Word
 
 
 app = FastAPI()
@@ -92,7 +95,7 @@ class CorpusResponseModel(BaseModel):
     word_num: int
     segments: List[WordSegmentModel]
     root: str
-    lemma: str
+    lemma: Optional[str]
     verb_type: Optional[str]
     verb_form: Optional[int]
     verb_forms: Optional[VerbFormsModel]
@@ -164,14 +167,14 @@ def list_word_80_percent_words(request: Request, level: Optional[int] = Query(No
     offset = pagination_parameters['offset']
     pagesize = pagination_parameters['pagesize']
 
-    base_query = db_words_80_percent.session.query(Word)
+    base_query = db_words_80_percent.session.query(Words80Percent)
 
     if level:
-        base_query = base_query.filter(Word.level_num == level)
+        base_query = base_query.filter(Words80Percent.level_num == level)
 
     total = base_query.count()
 
-    words = base_query.order_by(Word.level_num, Word.serial_num).offset(
+    words = base_query.order_by(Words80Percent.level_num, Words80Percent.serial_num).offset(
         offset).limit(pagesize).all()
 
     additional_query_string = f'level={level}' if level else ''
@@ -198,11 +201,11 @@ def list_sura_verses(request: Request,
     offset = pagination_parameters['offset']
     pagesize = pagination_parameters['pagesize']
 
-    base_query = db_words_80_percent.session.query(
-        Verse).filter(Verse.sura_num == sura_num)
+    base_query = db_quran_arabic.session.query(
+        QuranArabic).filter(QuranArabic.sura_num == sura_num)
     total = base_query.count()
 
-    verses = base_query.order_by(Verse.ayah_num).offset(
+    verses = base_query.order_by(QuranArabic.ayah_num).offset(
         offset).limit(pagesize).all()
 
     return {
@@ -228,12 +231,12 @@ def get_verse(response: Response,
               sura_num: int = Path(..., gt=0, le=114),
               ayah_num: int = Path(..., gt=0, le=286)):
 
-    base_query = db_words_80_percent.session.query(
-        Verse).filter(Verse.sura_num == sura_num)
+    base_query = db_quran_arabic.session.query(
+        QuranArabic).filter(QuranArabic.sura_num == sura_num)
 
     total_ayat = base_query.count()
 
-    verse = base_query.filter(Verse.ayah_num == ayah_num).first()
+    verse = base_query.filter(QuranArabic.ayah_num == ayah_num).first()
 
     if not verse:
         response.status_code = status.HTTP_404_NOT_FOUND
