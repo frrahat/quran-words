@@ -1,6 +1,7 @@
 from sqlalchemy_wrapper import SQLAlchemy
 
-db_corpus = SQLAlchemy(uri='sqlite:///server/databases/corpus.db', echo=True)
+db_corpus = SQLAlchemy(
+    uri='sqlite:///server/databases/corpus.db?check_same_thread=False', echo=True)
 
 
 class VerbForms(db_corpus.Model):

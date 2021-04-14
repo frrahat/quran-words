@@ -1,7 +1,7 @@
 from sqlalchemy_wrapper import SQLAlchemy
 
 db_quran_arabic = SQLAlchemy(
-    uri='sqlite:///server/databases/quran_arabic.db', echo=True)
+    uri='sqlite:///server/databases/quran_arabic.db?check_same_thread=False', echo=True)
 
 
 class Quran(db_quran_arabic.Model):
