@@ -3,6 +3,11 @@ import urllib.parse
 
 from fastapi import Depends, FastAPI, Path, Query, Request, Response, status
 
+from server.db_words_80_percent import db_words_80_percent, Level, Word as Words80Percent
+from server.db_corpus import db_corpus, Corpus
+from server.db_quran_arabic import db_quran_arabic, QuranArabic
+from server.db_quran_english import db_quran_english, QuranEnglish
+from server.db_words import db_words, Word
 from server.response_models import (
     LevelListResponseModel,
     WordListResponseModel,
@@ -10,7 +15,6 @@ from server.response_models import (
     VerseResponseModelForSingleAyah,
     CorpusResponseModel,
 )
-from server import service
 from server.dependencies import pagination_parameters
 from server.utils import get_pagination_response
 from server.config import CONFIG
@@ -28,10 +32,18 @@ def list_word_80_percent_levels(request: Request, pagination_parameters: dict = 
     offset = pagination_parameters['offset']
     pagesize = pagination_parameters['pagesize']
 
-    levels_data, total = service.list_word_80_percent_levels(offset, pagesize)
+    base_query = db_words_80_percent.session.query(Level)
+    total = base_query.count()
+
+    levels = base_query.offset(offset).limit(pagesize).all()
 
     return {
-        'data': levels_data,
+        'data': [
+            {
+                'num': level.num,
+                'title': level.title,
+            } for level in levels
+        ],
         'total': total,
         'pagination': get_pagination_response(request, total)
     }
@@ -42,12 +54,27 @@ def list_word_80_percent_words(request: Request, level: Optional[int] = Query(No
     offset = pagination_parameters['offset']
     pagesize = pagination_parameters['pagesize']
 
-    words_data, total = service.list_word_80_percent_words(offset, pagesize, level)
+    base_query = db_words_80_percent.session.query(Words80Percent)
+
+    if level:
+        base_query = base_query.filter(Words80Percent.level_num == level)
+
+    total = base_query.count()
+
+    words = base_query.order_by(Words80Percent.level_num, Words80Percent.serial_num).offset(
+        offset).limit(pagesize).all()
 
     additional_query_string = f'level={level}' if level else ''
 
     return {
-        'data': words_data,
+        'data': [
+            {
+                'level': word.level_num,
+                'serial': word.serial_num,
+                'arabic': word.arabic,
+                'english': word.english,
+            } for word in words
+        ],
         'total': total,
         'pagination': get_pagination_response(request, total, additional_query_string)
     }
@@ -60,8 +87,20 @@ def list_sura_verses(request: Request,
     offset = pagination_parameters['offset']
     pagesize = pagination_parameters['pagesize']
 
-    verses, mapped_english_verse_text, total = service.list_sura_verses(
-        sura_num, offset, pagesize)
+    base_query = db_quran_arabic.session.query(
+        QuranArabic).filter(QuranArabic.sura_num == sura_num)
+    total = base_query.count()
+
+    verses = base_query.order_by(QuranArabic.ayah_num).offset(
+        offset).limit(pagesize).all()
+
+    verses_english = db_quran_english.session.query(
+        QuranEnglish).filter(QuranEnglish.sura_num == sura_num).offset(
+        offset).limit(pagesize).all()
+
+    mapped_english_verse_text = {
+        verse.ayah_num: verse.text for verse in verses_english
+    }
 
     return {
         'data': [
@@ -85,7 +124,14 @@ def get_verse(response: Response,
               sura_num: int = Path(..., gt=0, le=114),
               ayah_num: int = Path(..., gt=0, le=286)):
 
-    verse, verse_english, total_ayat = service.get_verse(sura_num, ayah_num)
+    base_query = db_quran_arabic.session.query(
+        QuranArabic).filter(QuranArabic.sura_num == sura_num)
+
+    total_ayat = base_query.count()
+
+    verse = base_query.filter(QuranArabic.ayah_num == ayah_num).first()
+    verse_english = db_quran_english.session.query(
+        QuranEnglish).filter(QuranEnglish.sura_num == sura_num, QuranEnglish.ayah_num == ayah_num).first()
 
     if not verse:
         response.status_code = status.HTTP_404_NOT_FOUND
@@ -109,5 +155,34 @@ def get_verse(response: Response,
 def list_corpus(sura_num: int = Path(..., gt=0, le=114),
                 ayah_num: int = Path(..., gt=0, le=286)):
 
-    words = service.list_corpus(sura_num, ayah_num)
+    base_query = db_corpus.session.query(Corpus).filter(
+        Corpus.sura_num == sura_num, Corpus.ayah_num == ayah_num)
+    ordered_corpus_list = base_query.order_by(Corpus.word_num).all()
+
+    words = []
+
+    for corpus in ordered_corpus_list:
+        verb_forms = corpus.verb_forms
+        word = {
+            'sura': corpus.sura_num,
+            'ayah': corpus.ayah_num,
+            'word_num': corpus.word_num,
+            'segments': corpus.get_segments(),
+            'root': corpus.root,
+            'lemma': corpus.lemma,
+            'verb_type': corpus.verb_type,
+            'verb_form': corpus.verb_form,
+            'verb_forms': {
+                'root': verb_forms.root,
+                'verb_type': verb_forms.verb_type,
+                'perfect': verb_forms.perfect,
+                'imperative': verb_forms.imperative,
+                'active_participle': verb_forms.active_participle,
+                'passive_participle': verb_forms.passive_participle,
+                'verbal_noun': verb_forms.verbal_noun,
+            } if verb_forms else None,
+        }
+
+        words.append(word)
+
     return words
