@@ -207,6 +207,14 @@ def list_sura_verses(request: Request,
 
     verses = base_query.order_by(QuranArabic.ayah_num).offset(
         offset).limit(pagesize).all()
+    
+    verses_english = db_quran_english.session.query(
+        QuranEnglish).filter(QuranEnglish.sura_num == sura_num).offset(
+        offset).limit(pagesize).all()
+    
+    mapped_english_verse_text = {
+        verse.ayah_num: verse.text for verse in verses_english
+    }
 
     return {
         'data': [
@@ -214,7 +222,7 @@ def list_sura_verses(request: Request,
                 'sura': verse.sura_num,
                 'ayah': verse.ayah_num,
                 'arabic': verse.text,
-                'english': '<Not available>',
+                'english': mapped_english_verse_text[verse.ayah_num],
                 'links': {
                     'self': f'{BASE_URL}/verses/sura/{sura_num}/ayah/{verse.ayah_num}',
                 }
@@ -237,6 +245,8 @@ def get_verse(response: Response,
     total_ayat = base_query.count()
 
     verse = base_query.filter(QuranArabic.ayah_num == ayah_num).first()
+    verse_english = db_quran_english.session.query(
+        QuranEnglish).filter(QuranEnglish.sura_num == sura_num, QuranEnglish.ayah_num == ayah_num).first()
 
     if not verse:
         response.status_code = status.HTTP_404_NOT_FOUND
@@ -246,7 +256,7 @@ def get_verse(response: Response,
         'sura': verse.sura_num,
         'ayah': verse.ayah_num,
         'arabic': verse.text,
-        'english': '<Not available>',
+        'english': verse_english.text,
         'links': {
             'self': f'{BASE_URL}/verses/sura/{sura_num}/ayah/{verse.ayah_num}',
             'corpus': f'{BASE_URL}/corpus/sura/{sura_num}/ayah/{verse.ayah_num}',
