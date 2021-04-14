@@ -1,6 +1,7 @@
 from typing import Dict, List, Optional, Union
+import urllib.parse
 
-from fastapi import Depends, FastAPI, Path, Query, Response, status
+from fastapi import Depends, FastAPI, Path, Query, Request, Response, status
 from pydantic import BaseModel
 
 from server.db_words_80_percent import db_words_80_percent, Level, Word, Verse
@@ -98,7 +99,7 @@ class CorpusResponseModel(BaseModel):
 
 
 def get_pagination_response(
-        url: str,
+        request: Request,
         count: int,
         current_offset: int,
         current_pagesize: int,
@@ -112,6 +113,8 @@ def get_pagination_response(
     next_pagesize = min(next_offset + limit, count - next_offset + 1)
 
     additional_query_string = f'&{additional_query_string}' if additional_query_string else ''
+
+    url = urllib.parse.urljoin(str(request.base_url), request.url.path)
 
     return {
         'previous': f'{url}?offset={prev_offset}&pagesize={prev_pagesize}{additional_query_string}'
@@ -135,7 +138,7 @@ def pagination_parameters(offset: Optional[int] = Query(0, ge=0),
 
 
 @app.get('/levels-words-80-percent', response_model=LevelListResponseModel)
-def list_level(pagination_parameters: dict = Depends(pagination_parameters)):
+def list_levels(request: Request, pagination_parameters: dict = Depends(pagination_parameters)):
     offset = pagination_parameters['offset']
     pagesize = pagination_parameters['pagesize']
 
@@ -152,12 +155,12 @@ def list_level(pagination_parameters: dict = Depends(pagination_parameters)):
             } for level in levels
         ],
         'total': total,
-        'pagination': get_pagination_response(f'{BASE_URL}/levels-words-80-percent', total, offset, pagesize)
+        'pagination': get_pagination_response(request, total, offset, pagesize)
     }
 
 
 @app.get('/words-80-percent', response_model=WordListResponseModel)
-def list_word(level: Optional[int] = Query(None, gt=0), pagination_parameters: dict = Depends(pagination_parameters)):
+def list_words(request: Request, level: Optional[int] = Query(None, gt=0), pagination_parameters: dict = Depends(pagination_parameters)):
     offset = pagination_parameters['offset']
     pagesize = pagination_parameters['pagesize']
 
@@ -184,12 +187,13 @@ def list_word(level: Optional[int] = Query(None, gt=0), pagination_parameters: d
         ],
         'total': total,
         'pagination': get_pagination_response(
-            f'{BASE_URL}/words-80-percent', total, offset, pagesize, additional_query_string)
+            request, total, offset, pagesize, additional_query_string)
     }
 
 
 @app.get('/verses/sura/{sura_num}', response_model=VerseListResponseModel)
-def list_sura_verses(sura_num: int = Path(..., gt=0, le=114),
+def list_sura_verses(request: Request,
+                     sura_num: int = Path(..., gt=0, le=114),
                      pagination_parameters: dict = Depends(pagination_parameters)):
     offset = pagination_parameters['offset']
     pagesize = pagination_parameters['pagesize']
@@ -215,7 +219,7 @@ def list_sura_verses(sura_num: int = Path(..., gt=0, le=114),
         ],
         'total': total,
         'pagination': get_pagination_response(
-            f'{BASE_URL}/verses/sura/{sura_num}', total, offset, pagesize)
+            request, total, offset, pagesize)
     }
 
 
