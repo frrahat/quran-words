@@ -137,8 +137,8 @@ def pagination_parameters(offset: Optional[int] = Query(0, ge=0),
     }
 
 
-@app.get('/levels-words-80-percent', response_model=LevelListResponseModel)
-def list_levels(request: Request, pagination_parameters: dict = Depends(pagination_parameters)):
+@app.get('/words-80-percent/levels', response_model=LevelListResponseModel)
+def list_word_80_percent_levels(request: Request, pagination_parameters: dict = Depends(pagination_parameters)):
     offset = pagination_parameters['offset']
     pagesize = pagination_parameters['pagesize']
 
@@ -159,8 +159,8 @@ def list_levels(request: Request, pagination_parameters: dict = Depends(paginati
     }
 
 
-@app.get('/words-80-percent', response_model=WordListResponseModel)
-def list_words(request: Request, level: Optional[int] = Query(None, gt=0), pagination_parameters: dict = Depends(pagination_parameters)):
+@app.get('/words-80-percent/words', response_model=WordListResponseModel)
+def list_word_80_percent_words(request: Request, level: Optional[int] = Query(None, gt=0), pagination_parameters: dict = Depends(pagination_parameters)):
     offset = pagination_parameters['offset']
     pagesize = pagination_parameters['pagesize']
 
