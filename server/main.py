@@ -254,9 +254,8 @@ def get_verse(response: Response,
 
 
 @app.get('/corpus/sura/{sura_num}/ayah/{ayah_num}', response_model=List[CorpusResponseModel])
-def get_corpus(response: Response,
-               sura_num: int = Path(..., gt=0, le=114),
-               ayah_num: int = Path(..., gt=0, le=286)):
+def list_corpus(sura_num: int = Path(..., gt=0, le=114),
+                ayah_num: int = Path(..., gt=0, le=286)):
 
     base_query = db_corpus.session.query(Corpus).filter(
         Corpus.sura_num == sura_num, Corpus.ayah_num == ayah_num)
