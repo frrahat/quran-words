@@ -82,6 +82,8 @@ class CorpusResponseModel(BaseModel):
     segments: List[WordSegmentModel]
     root: str
     lemma: Optional[str]
+    arabic: Optional[str]
+    english: Optional[str]
     verb_type: Optional[str]
     verb_form: Optional[int]
     verb_forms: Optional[VerbFormsModel]

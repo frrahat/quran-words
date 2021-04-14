@@ -152,8 +152,25 @@ def get_verse(response: Response,
 
 
 @app.get('/corpus/sura/{sura_num}/ayah/{ayah_num}', response_model=List[CorpusResponseModel])
-def list_corpus(sura_num: int = Path(..., gt=0, le=114),
+def list_corpus(response: Response,
+                sura_num: int = Path(..., gt=0, le=114),
                 ayah_num: int = Path(..., gt=0, le=286)):
+
+    verse = db_quran_arabic.session.query(QuranArabic).filter(
+        QuranArabic.sura_num == sura_num, QuranArabic.ayah_num == ayah_num).first()
+
+    if not verse:
+        response.status_code = status.HTTP_404_NOT_FOUND
+        return None
+
+    words_arabic = verse.text.split(' ')
+    mapped_arabic_words = {word_num: word for word_num,
+                           word in enumerate(words_arabic, 1)}
+
+    words_english = db_words.session.query(Word).filter(
+        Word.sura_num == sura_num, Word.ayah_num == ayah_num).all()
+    mapped_english_words = {
+        word.word_num: word.english for word in words_english}
 
     base_query = db_corpus.session.query(Corpus).filter(
         Corpus.sura_num == sura_num, Corpus.ayah_num == ayah_num)
@@ -170,6 +187,8 @@ def list_corpus(sura_num: int = Path(..., gt=0, le=114),
             'segments': corpus.get_segments(),
             'root': corpus.root,
             'lemma': corpus.lemma,
+            'arabic': mapped_arabic_words.get(corpus.word_num),
+            'english': mapped_english_words.get(corpus.word_num),
             'verb_type': corpus.verb_type,
             'verb_form': corpus.verb_form,
             'verb_forms': {
