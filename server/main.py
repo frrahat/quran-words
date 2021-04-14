@@ -16,37 +16,10 @@ from server.response_models import (
     CorpusResponseModel,
 )
 from server.dependencies import pagination_parameters
+from server.utils import get_pagination_response
+from server.config import CONFIG
 
 app = FastAPI()
-
-
-BASE_URL = 'http://localhost:8000'
-
-
-def get_pagination_response(
-        request: Request,
-        count: int,
-        current_offset: int,
-        current_pagesize: int,
-        additional_query_string: Optional[str] = None,
-        limit: int = 10) -> Dict[str, Optional[str]]:
-
-    prev_offset = max(0, current_offset - limit)
-    prev_pagesize = min(limit, count, current_offset)
-
-    next_offset = current_offset + current_pagesize
-    next_pagesize = min(next_offset + limit, count - next_offset + 1)
-
-    additional_query_string = f'&{additional_query_string}' if additional_query_string else ''
-
-    url = urllib.parse.urljoin(str(request.base_url), request.url.path)
-
-    return {
-        'previous': f'{url}?offset={prev_offset}&pagesize={prev_pagesize}{additional_query_string}'
-        if current_offset > 0 else None,
-        'next': f'{url}?offset={next_offset}&pagesize={next_pagesize}{additional_query_string}'
-        if next_offset < count else None,
-    }
 
 
 @app.get('/')
@@ -72,7 +45,7 @@ def list_word_80_percent_levels(request: Request, pagination_parameters: dict = 
             } for level in levels
         ],
         'total': total,
-        'pagination': get_pagination_response(request, total, offset, pagesize)
+        'pagination': get_pagination_response(request, total)
     }
 
 
@@ -103,8 +76,7 @@ def list_word_80_percent_words(request: Request, level: Optional[int] = Query(No
             } for word in words
         ],
         'total': total,
-        'pagination': get_pagination_response(
-            request, total, offset, pagesize, additional_query_string)
+        'pagination': get_pagination_response(request, total, additional_query_string)
     }
 
 
@@ -138,13 +110,12 @@ def list_sura_verses(request: Request,
                 'arabic': verse.text,
                 'english': mapped_english_verse_text[verse.ayah_num],
                 'links': {
-                    'self': f'{BASE_URL}/verses/sura/{sura_num}/ayah/{verse.ayah_num}',
+                    'self': f'{CONFIG.BASE_URL}/verses/sura/{sura_num}/ayah/{verse.ayah_num}',
                 }
             } for verse in verses
         ],
         'total': total,
-        'pagination': get_pagination_response(
-            request, total, offset, pagesize)
+        'pagination': get_pagination_response(request, total)
     }
 
 
@@ -172,10 +143,10 @@ def get_verse(response: Response,
         'arabic': verse.text,
         'english': verse_english.text,
         'links': {
-            'self': f'{BASE_URL}/verses/sura/{sura_num}/ayah/{verse.ayah_num}',
-            'corpus': f'{BASE_URL}/corpus/sura/{sura_num}/ayah/{verse.ayah_num}',
-            'prev': f'{BASE_URL}/verses/sura/{sura_num}/ayah/{verse.ayah_num - 1}' if verse.ayah_num > 1 else None,
-            'next': f'{BASE_URL}/verses/sura/{sura_num}/ayah/{verse.ayah_num + 1}' if verse.ayah_num < total_ayat else None,
+            'self': f'{CONFIG.BASE_URL}/verses/sura/{sura_num}/ayah/{verse.ayah_num}',
+            'corpus': f'{CONFIG.BASE_URL}/corpus/sura/{sura_num}/ayah/{verse.ayah_num}',
+            'prev': f'{CONFIG.BASE_URL}/verses/sura/{sura_num}/ayah/{verse.ayah_num - 1}' if verse.ayah_num > 1 else None,
+            'next': f'{CONFIG.BASE_URL}/verses/sura/{sura_num}/ayah/{verse.ayah_num + 1}' if verse.ayah_num < total_ayat else None,
         }
     }
 
