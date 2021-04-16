@@ -151,19 +151,22 @@ def get_verse(response: Response,
     }
 
 
-@app.get('/corpus/sura/{sura_num}/ayah/{ayah_num}', response_model=List[CorpusResponseModel])
-def list_corpus(response: Response,
+@app.get('/corpus/sura/{sura_num}/ayah/{ayah_num}', response_model=CorpusResponseModel)
+def get_corpus(response: Response,
                 sura_num: int = Path(..., gt=0, le=114),
                 ayah_num: int = Path(..., gt=0, le=286)):
 
-    verse = db_quran_arabic.session.query(QuranArabic).filter(
+    verse_arabic = db_quran_arabic.session.query(QuranArabic).filter(
         QuranArabic.sura_num == sura_num, QuranArabic.ayah_num == ayah_num).first()
 
-    if not verse:
+    if not verse_arabic:
         response.status_code = status.HTTP_404_NOT_FOUND
         return None
 
-    words_arabic = verse.text.split(' ')
+    verse_english = db_quran_english.session.query(QuranEnglish).filter(
+        QuranEnglish.sura_num == sura_num, QuranEnglish.ayah_num == ayah_num).first()
+
+    words_arabic = verse_arabic.text.split(' ')
     mapped_arabic_words = {word_num: word for word_num,
                            word in enumerate(words_arabic, 1)}
 
@@ -181,8 +184,6 @@ def list_corpus(response: Response,
     for corpus in ordered_corpus_list:
         verb_forms = corpus.verb_forms
         word = {
-            'sura': corpus.sura_num,
-            'ayah': corpus.ayah_num,
             'word_num': corpus.word_num,
             'segments': corpus.get_segments(),
             'root': corpus.root,
@@ -204,4 +205,10 @@ def list_corpus(response: Response,
 
         words.append(word)
 
-    return words
+    return {
+        'sura': sura_num,
+        'ayah': ayah_num,
+        'arabic': verse_arabic.text,
+        'english': verse_english.text,
+        'words': words,
+    }

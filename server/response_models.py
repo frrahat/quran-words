@@ -75,9 +75,7 @@ class VerbFormsModel(BaseModel):
     verbal_noun: str
 
 
-class CorpusResponseModel(BaseModel):
-    sura: int
-    ayah: int
+class CorpusWord(BaseModel):
     word_num: int
     segments: List[WordSegmentModel]
     root: str
@@ -87,3 +85,11 @@ class CorpusResponseModel(BaseModel):
     verb_type: Optional[str]
     verb_form: Optional[int]
     verb_forms: Optional[VerbFormsModel]
+
+
+class CorpusResponseModel(BaseModel):
+    sura: int
+    ayah: int
+    arabic: str
+    english: str
+    words: List[CorpusWord]

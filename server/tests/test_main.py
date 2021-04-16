@@ -91,6 +91,6 @@ def test_get_verse():
     assert response.status_code == 200
 
 
-def test_list_corpus():
+def test_get_corpus():
     response = client.get("/corpus/sura/2/ayah/282")
     assert response.status_code == 200
