@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import axios from 'axios';
 
@@ -35,16 +35,18 @@ function Verse({ suraNum, ayahNum }) {
 
   return (
     <div>
-      <p className="Verse-words">{getWordsData(data.arabic, data.words).map((wordData, index) => <Word word_id={index} arabic={wordData.arabic} translation={wordData.translation} />)}</p>
-      <p className="Verse-translation">{data.english}</p>
+      <div className="Verse-words">{getWordsData(data.arabic, data.words).map((wordData, index) => <Word word_id={index} arabic={wordData.arabic} translation={wordData.translation} />)}</div>
+      <div className="Verse-translation">{data.english}</div>
     </div>
   )
 }
 
 function Word({word_id, arabic, translation}) {
+  const wordRef = useRef(null);
+
   return (
-    <Tooltip text={translation}>
-      <div className="Word">
+    <Tooltip text={translation} childRef={wordRef}>
+      <div className="Word" ref={wordRef}>
         <div className="Word-arabic" id={`word-ar-${word_id}`}>
           {arabic}
         </div>
