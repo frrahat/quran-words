@@ -2,37 +2,54 @@ import { useEffect, useState } from 'react';
 
 import axios from 'axios';
 
+import Tooltip from './Tooltip';
+
 import './Verse.css';
 
+
+const getWordsData = (verseArabic, corpusWords) => {
+  const words = verseArabic.split(' ');
+
+  return words.map((word, index) =>({
+    arabic: word,
+    translation: corpusWords[index]?.english,
+  }));
+}
+
 function Verse({ suraNum, ayahNum }) {
-  const [arabicText, setArabicText] = useState('');
-  const [englishtText, setEnglishText] = useState('');
+  const [data, setData] = useState({
+    arabic: '',
+    english: '',
+    words: [],
+  });
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(`/verses/sura/${suraNum}/ayah/${ayahNum}`);
+      const response = await axios.get(`/corpus/sura/${suraNum}/ayah/${ayahNum}`);
 
-      const { arabic, english } = response.data;
-      setArabicText(arabic);
-      setEnglishText(english);
+      setData(response.data);
     };
 
     fetchData();
-  }, [suraNum, ayahNum])
+  }, [suraNum, ayahNum]);
 
   return (
     <div>
-      <p className="Verse-arabic">{arabicText.split(' ').map((word, index) => <Word word_id={index} text={word} />)}</p>
-      <p className="Verse-english">{englishtText}</p>
+      <p className="Verse-words">{getWordsData(data.arabic, data.words).map((wordData, index) => <Word word_id={index} arabic={wordData.arabic} translation={wordData.translation} />)}</p>
+      <p className="Verse-translation">{data.english}</p>
     </div>
   )
 }
 
-function Word({word_id, text}) {
+function Word({word_id, arabic, translation}) {
   return (
-    <span className="Word-arabic" id={`word-${word_id}`}>
-      {text}
-    </span>
+    <Tooltip text={translation}>
+      <div className="Word">
+        <div className="Word-arabic" id={`word-ar-${word_id}`}>
+          {arabic}
+        </div>
+      </div>
+    </Tooltip>
   )
 }
 
