@@ -4,6 +4,186 @@ db_corpus = SQLAlchemy(
     uri='sqlite:///server/databases/corpus.db?check_same_thread=False', echo=True)
 
 
+POS_FULL_FORMS_AND_COLORS = {
+    "N": {
+        "full": "Noun",
+        "color": "#fff",
+    },
+    "PN": {
+        "full": "Proper Noun",
+        "color": "#fff",
+    },
+    "ADJ": {
+        "full": "Adjective",
+        "color": "#fff",
+    },
+    "IMPN": {
+        "full": "Imperative verbal noun",
+        "color": "#fff",
+    },
+    "PRON": {
+        "full": "Personal pronoun",
+        "color": "#fff",
+    },
+    "DEM": {
+        "full": "Demonstrative pronoun",
+        "color": "#fff",
+    },
+    "REL": {
+        "full": "Relative pronoun",
+        "color": "#fff",
+    },
+    "T": {
+        "full": "Time adverb",
+        "color": "#fff",
+    },
+    "LOC": {
+        "full": "Location adverb",
+        "color": "#fff",
+    },
+    "V": {
+        "full": "Verb",
+        "color": "#fff",
+    },
+    "P": {
+        "full": "Preposition",
+        "color": "#fff",
+    },
+    "EMPH": {
+        "full": "Emphatic lām prefix",
+        "color": "#fff",
+    },
+    "IMPV": {
+        "full": "Imperative lām prefix",
+        "color": "#fff",
+    },
+    "PRP": {
+        "full": "Purpose lām prefix",
+        "color": "#fff",
+    },
+    "CONJ": {
+        "full": "Coordinating conjunction",
+        "color": "#fff",
+    },
+    "SUB": {
+        "full": "Subordinating conjunction",
+        "color": "#fff",
+    },
+    "ACC": {
+        "full": "Accusative particle",
+        "color": "#fff",
+    },
+    "AMD": {
+        "full": "Amendment particle",
+        "color": "#fff",
+    },
+    "ANS": {
+        "full": "Answer particle",
+        "color": "#fff",
+    },
+    "AVR": {
+        "full": "Aversion particle",
+        "color": "#fff",
+    },
+    "CAUS": {
+        "full": "Particle of cause",
+        "color": "#fff",
+    },
+    "CERT": {
+        "full": "Particle of certainty",
+        "color": "#fff",
+    },
+    "CIRC": {
+        "full": "Circumstantial particle",
+        "color": "#fff",
+    },
+    "COM": {
+        "full": "Comitative particle",
+        "color": "#fff",
+    },
+    "COND": {
+        "full": "Conditional particle",
+        "color": "#fff",
+    },
+    "EQ": {
+        "full": "Equalization particle",
+        "color": "#fff",
+    },
+    "EXH": {
+        "full": "Exhortation particle",
+        "color": "#fff",
+    },
+    "EXL": {
+        "full": "Explanation particle",
+        "color": "#fff",
+    },
+    "EXP": {
+        "full": "Exceptive particle",
+        "color": "#fff",
+    },
+    "FUT": {
+        "full": "Future particle",
+        "color": "#fff",
+    },
+    "INC": {
+        "full": "Inceptive particle",
+        "color": "#fff",
+    },
+    "INT": {
+        "full": "Particle of interpretation",
+        "color": "#fff",
+    },
+    "INTG": {
+        "full": "Interogative particle",
+        "color": "#fff",
+    },
+    "NEG": {
+        "full": "Negative particle",
+        "color": "#fff",
+    },
+    "PREV": {
+        "full": "Preventive particle",
+        "color": "#fff",
+    },
+    "PRO": {
+        "full": "Prohibition particle",
+        "color": "#fff",
+    },
+    "REM": {
+        "full": "Resumption particle",
+        "color": "#fff",
+    },
+    "RES": {
+        "full": "Restriction particle",
+        "color": "#fff",
+    },
+    "RET": {
+        "full": "Retraction particle",
+        "color": "#fff",
+    },
+    "RSLT": {
+        "full": "Result particle",
+        "color": "#fff",
+    },
+    "SUP": {
+        "full": "Supplemental particle",
+        "color": "#fff",
+    },
+    "SUR": {
+        "full": "Surprise particle",
+        "color": "#fff",
+    },
+    "VOC": {
+        "full": "Vocative particle",
+        "color": "#fff",
+    },
+    "INL": {
+        "full": "Quranic initials",
+        "color": "#fff",
+    },
+}
+
+
 class VerbForms(db_corpus.Model):
     __tablename__ = 'verbs_with_six_forms'
     root = db_corpus.Column('root', db_corpus.Unicode, primary_key=True)
@@ -57,12 +237,22 @@ class Corpus(db_corpus.Model):
                                    [VerbForms.root, VerbForms.verb_type])
 
     def get_segments(self):
-        return [
-            {
-                'segment': getattr(self, 'ar' + str(position)),
-                'pos': getattr(self, 'pos'+str(position)),
-            } for position in range(1, self.count + 1)
-        ]
+        segments = []
+
+        for position in range(1, self.count + 1):
+            arabic = getattr(self, 'ar' + str(position))
+            pos = getattr(self, 'pos'+str(position))
+
+            pos_full_form_and_color = POS_FULL_FORMS_AND_COLORS.get(pos, {'full': None, 'color': None})
+
+            segments.append({
+                'arabic': arabic,
+                'pos': pos,
+                'pos_full': pos_full_form_and_color['full'],
+                'pos_color': pos_full_form_and_color['color'],
+            })
+
+        return segments
 
         # return {
         #     'sura_num': self.sura_num,

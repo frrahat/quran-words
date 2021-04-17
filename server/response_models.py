@@ -61,8 +61,10 @@ class VerseListResponseModel(BaseModel):
 
 
 class WordSegmentModel(BaseModel):
-    segment: str
+    arabic: str
     pos: str
+    pos_full: Optional[str]
+    pos_color: Optional[str]
 
 
 class VerbFormsModel(BaseModel):
