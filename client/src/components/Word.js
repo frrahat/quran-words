@@ -3,15 +3,13 @@ import Tooltip from "./Tooltip";
 
 import './Word.css';
 
-function Word({word_id, arabic, translation}) {
+function Word({arabic, translation, onClickHandler}) {
   const wordRef = useRef(null);
 
   return (
     <Tooltip text={translation} childRef={wordRef}>
-      <div className="Word" ref={wordRef}>
-        <div className="Word-arabic" id={`word-ar-${word_id}`}>
-          {arabic}
-        </div>
+      <div className="Word" ref={wordRef} onClick={onClickHandler}>
+        {arabic}
       </div>
     </Tooltip>
   )

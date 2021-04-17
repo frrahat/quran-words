@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import Verse from "./components/Verse";
 import VerseTranslation from "./components/VerseTranslation";
+import WordParts from "./components/WordParts";
 
 function Page() {
   let { suraNum, ayahNum } = useParams();
@@ -13,6 +14,12 @@ function Page() {
     english: '',
     words: [],
   });
+
+  const [selectedWordNum, setSelectedWordNum] = useState();
+
+  const onSelectWordHandler = (wordNum) => {
+    setSelectedWordNum(wordNum);
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -28,8 +35,11 @@ function Page() {
     <div>
       <h3>suraNum: {suraNum}</h3>
       <h3>ayahNum: {ayahNum}</h3>
-      <Verse verseArabic={data.arabic} corpusWords={data.words} />
+      <Verse verseArabic={data.arabic} corpusWords={data.words} onSelectWordHandler={onSelectWordHandler}/>
       <VerseTranslation translation={data.english} />
+      { selectedWordNum &&
+        <WordParts wordData={data.words[selectedWordNum - 1]}/>
+      }
     </div>
   );
 }

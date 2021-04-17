@@ -1,0 +1,14 @@
+.WordParts {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.WordParts td {
+  border: 1px solid #fff;
+}
+
+.WordParts-VerbForm-arabic {
+  font-family: 'Amiri';
+  font-size: 20px;
+  direction: rtl;
+}
