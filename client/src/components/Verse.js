@@ -35,7 +35,7 @@ function Verse({ suraNum, ayahNum }) {
 
   return (
     <div>
-      <div className="Verse-words">{getWordsData(data.arabic, data.words).map((wordData, index) => <Word word_id={index} arabic={wordData.arabic} translation={wordData.translation} />)}</div>
+      <div className="Verse-words">{getWordsData(data.arabic, data.words).map((wordData, index) => <Word key={index} arabic={wordData.arabic} translation={wordData.translation} />)}</div>
       <div className="Verse-translation">{data.english}</div>
     </div>
   )
