@@ -1,0 +1,12 @@
+.Word {
+  padding: 0 4px;
+}
+
+.Word-arabic {
+  font-size: 30px;
+  font-family: 'Amiri';
+}
+
+.Word-arabic:hover {
+  background-color: #000;
+}
