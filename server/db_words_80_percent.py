@@ -5,14 +5,14 @@ db_words_80_percent = SQLAlchemy(
     uri='sqlite:///server/databases/words80percent.db?check_same_thread=False', echo=True)
 
 
-class Level(db_words_80_percent.Model):
+class Level(db_words_80_percent.Model):  # type: ignore
     num = db_words_80_percent.Column(
         'level_num', db_words_80_percent.Integer, primary_key=True)
     title = db_words_80_percent.Column(
         'level_title', db_words_80_percent.Unicode)
 
 
-class Verse(db_words_80_percent.Model):
+class Verse(db_words_80_percent.Model):  # type: ignore
     sura_num = db_words_80_percent.Column(
         'sura_num', db_words_80_percent.Integer, primary_key=True)
     ayah_num = db_words_80_percent.Column(
@@ -20,7 +20,7 @@ class Verse(db_words_80_percent.Model):
     text = db_words_80_percent.Column('text', db_words_80_percent.Unicode)
 
 
-class Word(db_words_80_percent.Model):
+class Word(db_words_80_percent.Model):  # type: ignore
     level_num = db_words_80_percent.Column('level_num', db_words_80_percent.Integer,
                                            db_words_80_percent.ForeignKey(
                                                'levels.level_num'),
@@ -33,7 +33,7 @@ class Word(db_words_80_percent.Model):
     examples = db_words_80_percent.relationship('Verse', secondary='examples')
 
 
-class Example(db_words_80_percent.Model):
+class Example(db_words_80_percent.Model):  # type: ignore
     word_level_num = db_words_80_percent.Column(
         'word_level_num', db_words_80_percent.Integer, primary_key=True)
     word_serial_num = db_words_80_percent.Column(

@@ -184,7 +184,7 @@ POS_FULL_FORMS_AND_COLORS = {
 }
 
 
-class VerbForms(db_corpus.Model):
+class VerbForms(db_corpus.Model):  # type: ignore
     __tablename__ = 'verbs_with_six_forms'
     root = db_corpus.Column('root', db_corpus.Unicode, primary_key=True)
     verb_type = db_corpus.Column(
@@ -210,7 +210,7 @@ class VerbForms(db_corpus.Model):
         }
 
 
-class Corpus(db_corpus.Model):
+class Corpus(db_corpus.Model):  # type: ignore
     __tablename__ = 'corpus'
     sura_num = db_corpus.Column('surah', db_corpus.Integer, primary_key=True)
     ayah_num = db_corpus.Column('ayah', db_corpus.Integer, primary_key=True)

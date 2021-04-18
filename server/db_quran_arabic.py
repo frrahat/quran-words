@@ -4,7 +4,7 @@ db_quran_arabic = SQLAlchemy(
     uri='sqlite:///server/databases/quran_arabic.db?check_same_thread=False', echo=True)
 
 
-class QuranArabic(db_quran_arabic.Model):
+class QuranArabic(db_quran_arabic.Model):  # type: ignore
     __tablename__ = 'verses'
     sura_num = db_quran_arabic.Column(
         'sura', db_quran_arabic.Integer, primary_key=True)

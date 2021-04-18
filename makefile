@@ -1,7 +1,10 @@
-default: test
+default: typecheck test
 
 test:
 	pytest -vvv server/tests
+
+typecheck:
+	mypy --config-file=server/mypy.ini server/
 
 setup:
 	echo "setting up server"

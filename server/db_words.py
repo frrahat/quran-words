@@ -4,7 +4,7 @@ db_words = SQLAlchemy(
     uri='sqlite:///server/databases/words.db?check_same_thread=False', echo=True)
 
 
-class Word(db_words.Model):
+class Word(db_words.Model):  # type: ignore
     __tablename__ = 'allwords'
     sura_num = db_words.Column('sura', db_words.Integer, primary_key=True)
     ayah_num = db_words.Column('ayah', db_words.Integer, primary_key=True)
