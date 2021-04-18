@@ -19,8 +19,8 @@ setup:
 # command: make start-all -j2
 start-all: start-server start-client
 
-start-server:
+server-start:
 	uvicorn server.main:app --reload --reload-dir=server/
 
-start-client:
+client-start:
 	yarn --cwd client/ start
