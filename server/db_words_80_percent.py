@@ -2,7 +2,8 @@ from sqlalchemy_wrapper import SQLAlchemy
 
 
 db_words_80_percent = SQLAlchemy(
-    uri='sqlite:///server/databases/words80percent.db?check_same_thread=False', echo=True)
+    uri='sqlite:///server/databases/words80percent.db?check_same_thread=False',
+    echo=True)
 
 
 class Level(db_words_80_percent.Model):  # type: ignore
@@ -21,10 +22,10 @@ class Verse(db_words_80_percent.Model):  # type: ignore
 
 
 class Word(db_words_80_percent.Model):  # type: ignore
-    level_num = db_words_80_percent.Column('level_num', db_words_80_percent.Integer,
-                                           db_words_80_percent.ForeignKey(
-                                               'levels.level_num'),
-                                           primary_key=True)
+    level_num = db_words_80_percent.Column(
+        'level_num', db_words_80_percent.Integer,
+        db_words_80_percent.ForeignKey('levels.level_num'),
+        primary_key=True)
     serial_num = db_words_80_percent.Column(
         'serial_num', db_words_80_percent.Integer, primary_key=True)
     arabic = db_words_80_percent.Column('arabic', db_words_80_percent.Unicode)

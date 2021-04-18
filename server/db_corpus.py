@@ -1,7 +1,8 @@
 from sqlalchemy_wrapper import SQLAlchemy
 
 db_corpus = SQLAlchemy(
-    uri='sqlite:///server/databases/corpus.db?check_same_thread=False', echo=True)
+    uri='sqlite:///server/databases/corpus.db?check_same_thread=False',
+    echo=True)
 
 
 POS_FULL_FORMS_AND_COLORS = {
@@ -243,7 +244,8 @@ class Corpus(db_corpus.Model):  # type: ignore
             arabic = getattr(self, 'ar' + str(position))
             pos = getattr(self, 'pos'+str(position))
 
-            pos_full_form_and_color = POS_FULL_FORMS_AND_COLORS.get(pos, {'full': None, 'color': None})
+            pos_full_form_and_color = POS_FULL_FORMS_AND_COLORS.get(
+                pos, {'full': None, 'color': None})
 
             segments.append({
                 'arabic': arabic,
@@ -270,8 +272,11 @@ if __name__ == '__main__':
     print(db_corpus.session.query(Corpus).count())
     print(db_corpus.session.query(VerbForms).count())
 
-    base_query = db_corpus.session.query(Corpus).filter(
-        Corpus.sura_num == 1, Corpus.ayah_num == 1, Corpus.word_num == 3).first()
+    base_query = db_corpus.session.query(Corpus)\
+        .filter(
+            Corpus.sura_num == 1,
+            Corpus.ayah_num == 1,
+            Corpus.word_num == 3).first()
 
     print(base_query.to_dict())
     print(base_query.verb_forms.to_dict())

@@ -1,7 +1,8 @@
 from sqlalchemy_wrapper import SQLAlchemy
 
 db_words = SQLAlchemy(
-    uri='sqlite:///server/databases/words.db?check_same_thread=False', echo=True)
+    uri='sqlite:///server/databases/words.db?check_same_thread=False',
+    echo=True)
 
 
 class Word(db_words.Model):  # type: ignore

@@ -18,7 +18,8 @@ def test_list_word_80_percent_levels():
     response_json = response.json()
     assert response_json['pagination'] == {
         'previous': None,
-        'next': f"{CONFIG.BASE_URL}/words-80-percent/levels?offset=10&pagesize=10",
+        'next': f"{CONFIG.BASE_URL}/words-80-percent/levels"
+        f"?offset=10&pagesize=10",
     }
 
 
@@ -31,8 +32,10 @@ def test_list_word_80_percent_levels_with_pagesize_param():
     assert response_json['data'][0]['num'] == 5
 
     assert response_json['pagination'] == {
-        'previous': f"{CONFIG.BASE_URL}/words-80-percent/levels?offset=0&pagesize=4",
-        'next': f"{CONFIG.BASE_URL}/words-80-percent/levels?offset=10&pagesize=6",
+        'previous': f"{CONFIG.BASE_URL}/words-80-percent/levels"
+        f"?offset=0&pagesize=4",
+        'next': f"{CONFIG.BASE_URL}/words-80-percent/levels"
+        f"?offset=10&pagesize=6",
     }
 
 
@@ -43,7 +46,8 @@ def test_list_word_80_percent_words():
     response_json = response.json()
     assert response_json['pagination'] == {
         'previous': None,
-        'next': f"{CONFIG.BASE_URL}/words-80-percent/words?offset=10&pagesize=10",
+        'next': f"{CONFIG.BASE_URL}/words-80-percent/words"
+        f"?offset=10&pagesize=10",
     }
 
 
@@ -56,8 +60,10 @@ def test_list_word_80_percent_words_with_pagesize_param():
     assert response_json['data'][0]['serial'] == 8
 
     assert response_json['pagination'] == {
-        'previous': f"{CONFIG.BASE_URL}/words-80-percent/words?offset=0&pagesize=7",
-        'next': f"{CONFIG.BASE_URL}/words-80-percent/words?offset=19&pagesize=12",
+        'previous': f"{CONFIG.BASE_URL}/words-80-percent/words"
+        f"?offset=0&pagesize=7",
+        'next': f"{CONFIG.BASE_URL}/words-80-percent/words"
+        f"?offset=19&pagesize=12",
     }
 
 

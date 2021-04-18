@@ -1,10 +1,14 @@
-default: typecheck test
+default: typecheck lint test
 
 test:
 	pytest -vvv server/tests
 
 typecheck:
 	mypy --config-file=server/mypy.ini server/
+
+lint:
+	flake8 server/
+	yarn --cwd client/ eslint
 
 setup:
 	echo "setting up server"

@@ -1,9 +1,9 @@
-from typing import Dict, List, Optional
-import urllib.parse
+from typing import Optional
 
 from fastapi import Depends, FastAPI, Path, Query, Request, Response, status
 
-from server.db_words_80_percent import db_words_80_percent, Level, Word as Words80Percent
+from server.db_words_80_percent import (
+    db_words_80_percent, Level, Word as Words80Percent)
 from server.db_corpus import db_corpus, Corpus
 from server.db_quran_arabic import db_quran_arabic, QuranArabic
 from server.db_quran_english import db_quran_english, QuranEnglish
@@ -28,7 +28,9 @@ def read_root():
 
 
 @app.get('/words-80-percent/levels', response_model=LevelListResponseModel)
-def list_word_80_percent_levels(request: Request, pagination_parameters: dict = Depends(pagination_parameters)):
+def list_word_80_percent_levels(
+        request: Request,
+        pagination_parameters: dict = Depends(pagination_parameters)):
     offset = pagination_parameters['offset']
     pagesize = pagination_parameters['pagesize']
 
@@ -50,7 +52,10 @@ def list_word_80_percent_levels(request: Request, pagination_parameters: dict = 
 
 
 @app.get('/words-80-percent/words', response_model=WordListResponseModel)
-def list_word_80_percent_words(request: Request, level: Optional[int] = Query(None, gt=0), pagination_parameters: dict = Depends(pagination_parameters)):
+def list_word_80_percent_words(
+        request: Request,
+        level: Optional[int] = Query(None, gt=0),
+        pagination_parameters: dict = Depends(pagination_parameters)):
     offset = pagination_parameters['offset']
     pagesize = pagination_parameters['pagesize']
 
@@ -61,8 +66,10 @@ def list_word_80_percent_words(request: Request, level: Optional[int] = Query(No
 
     total = base_query.count()
 
-    words = base_query.order_by(Words80Percent.level_num, Words80Percent.serial_num).offset(
-        offset).limit(pagesize).all()
+    words = base_query\
+        .order_by(Words80Percent.level_num, Words80Percent.serial_num)\
+        .offset(offset)\
+        .limit(pagesize).all()
 
     additional_query_string = f'level={level}' if level else ''
 
@@ -76,14 +83,16 @@ def list_word_80_percent_words(request: Request, level: Optional[int] = Query(No
             } for word in words
         ],
         'total': total,
-        'pagination': get_pagination_response(request, total, additional_query_string)
+        'pagination': get_pagination_response(
+            request, total, additional_query_string)
     }
 
 
 @app.get('/verses/sura/{sura_num}', response_model=VerseListResponseModel)
 def list_sura_verses(request: Request,
                      sura_num: int = Path(..., gt=0, le=114),
-                     pagination_parameters: dict = Depends(pagination_parameters)):
+                     pagination_parameters: dict = Depends(
+                         pagination_parameters)):
     offset = pagination_parameters['offset']
     pagesize = pagination_parameters['pagesize']
 
@@ -110,7 +119,8 @@ def list_sura_verses(request: Request,
                 'arabic': verse.text,
                 'english': mapped_english_verse_text[verse.ayah_num],
                 'links': {
-                    'self': f'{CONFIG.BASE_URL}/verses/sura/{sura_num}/ayah/{verse.ayah_num}',
+                    'self': f'{CONFIG.BASE_URL}'
+                    f'/verses/sura/{sura_num}/ayah/{verse.ayah_num}',
                 }
             } for verse in verses
         ],
@@ -119,7 +129,8 @@ def list_sura_verses(request: Request,
     }
 
 
-@app.get('/verses/sura/{sura_num}/ayah/{ayah_num}', response_model=VerseResponseModelForSingleAyah)
+@app.get('/verses/sura/{sura_num}/ayah/{ayah_num}',
+         response_model=VerseResponseModelForSingleAyah)
 def get_verse(response: Response,
               sura_num: int = Path(..., gt=0, le=114),
               ayah_num: int = Path(..., gt=0, le=286)):
@@ -131,11 +142,15 @@ def get_verse(response: Response,
 
     verse = base_query.filter(QuranArabic.ayah_num == ayah_num).first()
     verse_english = db_quran_english.session.query(
-        QuranEnglish).filter(QuranEnglish.sura_num == sura_num, QuranEnglish.ayah_num == ayah_num).first()
+        QuranEnglish).filter(
+            QuranEnglish.sura_num == sura_num,
+            QuranEnglish.ayah_num == ayah_num).first()
 
     if not verse:
         response.status_code = status.HTTP_404_NOT_FOUND
         return None
+
+    sura_url = f'{CONFIG.BASE_URL}/verses/sura/{sura_num}'
 
     return {
         'sura': verse.sura_num,
@@ -143,28 +158,36 @@ def get_verse(response: Response,
         'arabic': verse.text,
         'english': verse_english.text,
         'links': {
-            'self': f'{CONFIG.BASE_URL}/verses/sura/{sura_num}/ayah/{verse.ayah_num}',
-            'corpus': f'{CONFIG.BASE_URL}/corpus/sura/{sura_num}/ayah/{verse.ayah_num}',
-            'prev': f'{CONFIG.BASE_URL}/verses/sura/{sura_num}/ayah/{verse.ayah_num - 1}' if verse.ayah_num > 1 else None,
-            'next': f'{CONFIG.BASE_URL}/verses/sura/{sura_num}/ayah/{verse.ayah_num + 1}' if verse.ayah_num < total_ayat else None,
+            'self': f'{sura_url}/ayah/{verse.ayah_num}',
+            'corpus': f'{CONFIG.BASE_URL}/corpus'
+            f'/sura/{sura_num}/ayah/{verse.ayah_num}',
+            'prev': f'{sura_url}/ayah/{verse.ayah_num - 1}'
+            if verse.ayah_num > 1 else None,
+            'next': f'{sura_url}/ayah/{verse.ayah_num + 1}'
+            if verse.ayah_num < total_ayat else None,
         }
     }
 
 
-@app.get('/corpus/sura/{sura_num}/ayah/{ayah_num}', response_model=CorpusResponseModel)
+@app.get('/corpus/sura/{sura_num}/ayah/{ayah_num}',
+         response_model=CorpusResponseModel)
 def get_corpus(response: Response,
-                sura_num: int = Path(..., gt=0, le=114),
-                ayah_num: int = Path(..., gt=0, le=286)):
+               sura_num: int = Path(..., gt=0, le=114),
+               ayah_num: int = Path(..., gt=0, le=286)):
 
-    verse_arabic = db_quran_arabic.session.query(QuranArabic).filter(
-        QuranArabic.sura_num == sura_num, QuranArabic.ayah_num == ayah_num).first()
+    verse_arabic = db_quran_arabic.session.query(QuranArabic)\
+        .filter(
+            QuranArabic.sura_num == sura_num,
+            QuranArabic.ayah_num == ayah_num).first()
 
     if not verse_arabic:
         response.status_code = status.HTTP_404_NOT_FOUND
         return None
 
-    verse_english = db_quran_english.session.query(QuranEnglish).filter(
-        QuranEnglish.sura_num == sura_num, QuranEnglish.ayah_num == ayah_num).first()
+    verse_english = db_quran_english.session.query(QuranEnglish)\
+        .filter(
+            QuranEnglish.sura_num == sura_num,
+            QuranEnglish.ayah_num == ayah_num).first()
 
     words_arabic = verse_arabic.text.split(' ')
     mapped_arabic_words = {word_num: word for word_num,

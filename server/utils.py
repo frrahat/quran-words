@@ -38,13 +38,16 @@ def get_pagination_response(
     prev_pagination, next_pagination = get_next_prev_paginations(
         current_offset, current_pagesize, count)
 
-    additional_query_string = f'&{additional_query_string}' if additional_query_string else ''
+    additional_query_string = f'&{additional_query_string}' \
+        if additional_query_string else ''
 
     url = urllib.parse.urljoin(str(request.base_url), request.url.path)
 
     return {
-        'previous': f"{url}?offset={prev_pagination['offset']}&pagesize={prev_pagination['pagesize']}{additional_query_string}"
+        'previous': f"{url}?offset={prev_pagination['offset']}"
+        f"&pagesize={prev_pagination['pagesize']}{additional_query_string}"
         if prev_pagination else None,
-        'next': f"{url}?offset={next_pagination['offset']}&pagesize={next_pagination['pagesize']}{additional_query_string}"
+        'next': f"{url}?offset={next_pagination['offset']}"
+        f"&pagesize={next_pagination['pagesize']}{additional_query_string}"
         if next_pagination else None,
     }
