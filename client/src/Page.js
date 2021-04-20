@@ -18,7 +18,7 @@ function Page() {
     words: [],
   });
 
-  const [selectedWordIndex, setSelectedWordIndex] = useState(-1);
+  const [selectedWordIndex, setSelectedWordIndex] = useState(0);
 
   const onSelectWordHandler = (index) => {
     setSelectedWordIndex(index);
@@ -31,7 +31,7 @@ function Page() {
       setData(response.data);
     }
 
-    setSelectedWordIndex(-1);
+    setSelectedWordIndex(0);
     fetchData();
   }, [suraNum, ayahNum]);
 
@@ -59,7 +59,7 @@ function Page() {
         onSelectWordHandler={onSelectWordHandler}
         selectedWordIndex={selectedWordIndex} />
       <VerseTranslation translation={data.english} />
-      { selectedWordIndex >= 0 &&
+      { data.words.length &&
         <WordParts wordData={data.words[selectedWordIndex]}/>
       }
     </div>
