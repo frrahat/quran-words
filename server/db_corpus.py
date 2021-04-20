@@ -182,6 +182,10 @@ POS_FULL_FORMS_AND_COLORS = {
         "full": "Quranic initials",
         "color": "#fff",
     },
+    "ATT": {
+        "full": "Attention",
+        "color": "#fff",
+    },
 }
 
 
