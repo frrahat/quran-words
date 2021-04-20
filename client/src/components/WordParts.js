@@ -3,7 +3,7 @@ import Segment from './Segment';
 import './WordParts.css';
 
 const getVerbFormListItem = (verbFormName, verbFormValue) =>
-  <li><b>{verbFormName}</b>: <span className="WordParts-VerbForm-arabic">{verbFormValue}</span></li>
+  <li><b>{verbFormName}</b>: <span className="WordParts-arabic">{verbFormValue}</span></li>
 
 const getVerbFormsList = (verbForms) => {
   if (!verbForms) {
@@ -26,7 +26,7 @@ const getVerbFormsList = (verbForms) => {
 };
 
 function WordParts({ wordData }) {
-  const { word_num, segments, verb_type, verb_form, verb_forms } = wordData;
+  const { word_num, segments, root, lemma, verb_type, verb_form, verb_forms } = wordData;
 
   return (
     <table className="WordParts">
@@ -34,6 +34,8 @@ function WordParts({ wordData }) {
         <tr>
           <td>Word Num</td>
           <td>Segments</td>
+          <td>Root</td>
+          <td>Lemma</td>
           <td>Verb Type</td>
           <td>Verb Form</td>
           <td>Verb Forms</td>
@@ -47,6 +49,8 @@ function WordParts({ wordData }) {
             segments.map((segment, index) => <Segment key={`seg-${index}`} segment={segment} />)
           }
           </td>
+          <td><span className="WordParts-arabic">{root}</span></td>
+          <td><span className="WordParts-arabic">{lemma}</span></td>
           <td>{verb_type}</td>
           <td>{verb_form}</td>
           <td>{ getVerbFormsList(verb_forms) }</td>
