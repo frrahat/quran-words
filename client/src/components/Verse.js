@@ -12,7 +12,7 @@ const getWordsData = (verseArabic, corpusWords) => {
   }));
 }
 
-function Verse({ verseArabic, corpusWords, onSelectWordHandler }) {
+function Verse({ verseArabic, corpusWords, onSelectWordHandler, selectedWordIndex }) {
   return (
     <div className="Verse">
       {getWordsData(verseArabic, corpusWords).map((wordData, index) =>
@@ -20,7 +20,8 @@ function Verse({ verseArabic, corpusWords, onSelectWordHandler }) {
           key={index}
           arabic={wordData.arabic}
           translation={wordData.translation}
-          onClickHandler={() => onSelectWordHandler(index + 1)}
+          onClickHandler={() => onSelectWordHandler(index)}
+          isSelected={selectedWordIndex === index}
         />
       )}
     </div>

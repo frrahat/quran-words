@@ -15,10 +15,10 @@ function Page() {
     words: [],
   });
 
-  const [selectedWordNum, setSelectedWordNum] = useState();
+  const [selectedWordIndex, setSelectedWordIndex] = useState();
 
-  const onSelectWordHandler = (wordNum) => {
-    setSelectedWordNum(wordNum);
+  const onSelectWordHandler = (index) => {
+    setSelectedWordIndex(index);
   }
 
   useEffect(() => {
@@ -35,10 +35,14 @@ function Page() {
     <div>
       <h3>suraNum: {suraNum}</h3>
       <h3>ayahNum: {ayahNum}</h3>
-      <Verse verseArabic={data.arabic} corpusWords={data.words} onSelectWordHandler={onSelectWordHandler}/>
+      <Verse
+        verseArabic={data.arabic}
+        corpusWords={data.words}
+        onSelectWordHandler={onSelectWordHandler}
+        selectedWordIndex={selectedWordIndex} />
       <VerseTranslation translation={data.english} />
-      { selectedWordNum &&
-        <WordParts wordData={data.words[selectedWordNum - 1]}/>
+      { selectedWordIndex &&
+        <WordParts wordData={data.words[selectedWordIndex]}/>
       }
     </div>
   );
