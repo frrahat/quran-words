@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useHistory, useLocation, useParams } from "react-router";
 
 import axios from 'axios';
 
@@ -10,18 +10,25 @@ import Paginator from "./components/Paginator";
 
 import './Page.css';
 
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
 function Page() {
-  let { suraNum, ayahNum } = useParams();
+  const { suraNum, ayahNum } = useParams();
+  const history = useHistory();
+  const query = useQuery();
+
+  const selectedWordIndex = parseInt(query.get('word_index')) || 0;
+
   const [data, setData] = useState({
     arabic: '',
     english: '',
     words: [],
   });
 
-  const [selectedWordIndex, setSelectedWordIndex] = useState(0);
-
   const onSelectWordHandler = (index) => {
-    setSelectedWordIndex(index);
+    history.replace({ search: `word_index=${index}`});
   }
 
   useEffect(() => {
@@ -31,7 +38,6 @@ function Page() {
       setData(response.data);
     }
 
-    setSelectedWordIndex(0);
     fetchData();
   }, [suraNum, ayahNum]);
 
@@ -43,14 +49,14 @@ function Page() {
           <Paginator
             currentPage={parseInt(suraNum)}
             max={114}
-            getPageLink={(currentPage) => `/verses/${currentPage}/1`} />
+            getPageLink={(currentPage) => `/verses/${currentPage}/1?word_index=0`} />
         </div>
         <div>
           Ayah: {ayahNum}
           <Paginator
             currentPage={parseInt(ayahNum)}
             max={286}
-            getPageLink={(currentPage) => `/verses/${suraNum}/${currentPage}`} />
+            getPageLink={(currentPage) => `/verses/${suraNum}/${currentPage}?word_index=0`} />
         </div>
       </div>
       <Verse
@@ -59,7 +65,7 @@ function Page() {
         onSelectWordHandler={onSelectWordHandler}
         selectedWordIndex={selectedWordIndex} />
       <VerseTranslation translation={data.english} />
-      { data.words.length &&
+      { data.words[selectedWordIndex] &&
         <WordParts wordData={data.words[selectedWordIndex]}/>
       }
     </div>
