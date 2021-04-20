@@ -6,4 +6,11 @@
   font-family: 'Amiri';
   font-size: 20px;
   direction: rtl;
+  padding: 5px;
+  align-self: center;
+}
+
+.Segment-pos {
+  padding: 5px;
+  align-self: center;
 }
