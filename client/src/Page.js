@@ -6,6 +6,9 @@ import axios from 'axios';
 import Verse from "./components/Verse";
 import VerseTranslation from "./components/VerseTranslation";
 import WordParts from "./components/WordParts";
+import Paginator from "./components/Paginator";
+
+import './Page.css';
 
 function Page() {
   let { suraNum, ayahNum } = useParams();
@@ -15,7 +18,7 @@ function Page() {
     words: [],
   });
 
-  const [selectedWordIndex, setSelectedWordIndex] = useState();
+  const [selectedWordIndex, setSelectedWordIndex] = useState(-1);
 
   const onSelectWordHandler = (index) => {
     setSelectedWordIndex(index);
@@ -28,20 +31,35 @@ function Page() {
       setData(response.data);
     }
 
+    setSelectedWordIndex(-1);
     fetchData();
   }, [suraNum, ayahNum]);
 
   return (
     <div>
-      <h3>suraNum: {suraNum}</h3>
-      <h3>ayahNum: {ayahNum}</h3>
+      <div className="Page-Paginators">
+        <div>
+          Sura: {suraNum}
+          <Paginator
+            currentPage={parseInt(suraNum)}
+            max={114}
+            getPageLink={(currentPage) => `/verses/${currentPage}/1`} />
+        </div>
+        <div>
+          Ayah: {ayahNum}
+          <Paginator
+            currentPage={parseInt(ayahNum)}
+            max={286}
+            getPageLink={(currentPage) => `/verses/${suraNum}/${currentPage}`} />
+        </div>
+      </div>
       <Verse
         verseArabic={data.arabic}
         corpusWords={data.words}
         onSelectWordHandler={onSelectWordHandler}
         selectedWordIndex={selectedWordIndex} />
       <VerseTranslation translation={data.english} />
-      { selectedWordIndex &&
+      { selectedWordIndex >= 0 &&
         <WordParts wordData={data.words[selectedWordIndex]}/>
       }
     </div>
