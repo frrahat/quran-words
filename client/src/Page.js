@@ -10,6 +10,7 @@ import Paginator from "./components/Paginator";
 
 import './Page.css';
 
+
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
@@ -27,8 +28,10 @@ function Page() {
     words: [],
   });
 
-  const onSelectWordHandler = (index) => {
-    history.replace({ search: `word_index=${index}`});
+  const updateSelectedWordIndex = (index) => {
+    if (data.words[index]) {
+      history.replace({ search: `word_index=${index}`});
+    }
   }
 
   useEffect(() => {
@@ -40,6 +43,20 @@ function Page() {
 
     fetchData();
   }, [suraNum, ayahNum]);
+
+  useEffect(() => {
+    const actionMap = {
+      'ArrowRight': () => updateSelectedWordIndex(selectedWordIndex - 1),
+      'ArrowLeft': () => updateSelectedWordIndex(selectedWordIndex + 1),
+    }
+
+    const keyDownEventListener = (event) => actionMap[event.code] ? actionMap[event.code]() : null;
+    document.addEventListener('keydown', keyDownEventListener);
+
+    return () => {
+      document.removeEventListener('keydown', keyDownEventListener);
+    }
+  });
 
   return (
     <div>
@@ -62,7 +79,7 @@ function Page() {
       <Verse
         verseArabic={data.arabic}
         corpusWords={data.words}
-        onSelectWordHandler={onSelectWordHandler}
+        onSelectWordHandler={updateSelectedWordIndex}
         selectedWordIndex={selectedWordIndex} />
       <VerseTranslation translation={data.english} />
       { data.words[selectedWordIndex] &&
