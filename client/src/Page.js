@@ -140,6 +140,7 @@ function Page() {
             selectedWordIndex={selectedWordIndex} />
           <div className="Page-VerseExternalLinks">
             {
+              data.arabic.length > 0 &&
               [
                 {
                   link: `https://quran.com/${suraNum}/${ayahNum}`,
