@@ -1,3 +1,9 @@
+.Page {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+
 .Page-Paginators {
   padding: 5px;
   display: flex;
@@ -11,4 +17,15 @@
   border: 1px greenyellow dashed;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.Page-Loader {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.Page-Loader > img {
+  padding: 20px;
+  margin: auto;
 }

@@ -29,6 +29,7 @@ function Page() {
   const selectedWordIndex = parseInt(query.get('word_index')) || 0;
 
   const [data, setData] = useState(initialData);
+  const [isLoading, setIsLoading] = useState(true);
 
   const updateSelectedWordIndex = (index) => {
     if (data.words[index]) {
@@ -58,8 +59,10 @@ function Page() {
       };
 
       setData(response.data);
+      setIsLoading(false);
     }
 
+    setIsLoading(true);
     fetchData();
   }, [suraNum, ayahNum]);
 
@@ -80,7 +83,7 @@ function Page() {
   });
 
   return (
-    <div>
+    <div className="Page">
       <div className="Page-Paginators">
         <div>
           Sura: <div className="Page-VerseNum">{suraNum}</div>
@@ -97,14 +100,22 @@ function Page() {
             getPageLink={(currentPage) => `/verses/${suraNum}/${currentPage}?word_index=0`} />
         </div>
       </div>
-      <Verse
-        verseArabic={data.arabic}
-        corpusWords={data.words}
-        onSelectWordHandler={updateSelectedWordIndex}
-        selectedWordIndex={selectedWordIndex} />
-      <VerseTranslation translation={data.english} />
-      { data.words[selectedWordIndex] &&
-        <WordParts wordData={data.words[selectedWordIndex]}/>
+      {
+        isLoading ?
+        <div className="Page-Loader">
+          <img src="/static/images/loader.gif" alt="loader" />
+        </div>
+        : <div>
+          <Verse
+            verseArabic={data.arabic}
+            corpusWords={data.words}
+            onSelectWordHandler={updateSelectedWordIndex}
+            selectedWordIndex={selectedWordIndex} />
+          <VerseTranslation translation={data.english} />
+          { data.words[selectedWordIndex] &&
+            <WordParts wordData={data.words[selectedWordIndex]}/>
+          }
+        </div>
       }
     </div>
   );
