@@ -83,14 +83,14 @@ function Page() {
     <div>
       <div className="Page-Paginators">
         <div>
-          Sura: {suraNum}
+          Sura: <div className="Page-VerseNum">{suraNum}</div>
           <Paginator
             currentPage={parseInt(suraNum)}
             max={114}
             getPageLink={(currentPage) => `/verses/${currentPage}/1?word_index=0`} />
         </div>
         <div>
-          Ayah: {ayahNum}
+          Ayah: <div className="Page-VerseNum">{ayahNum}</div>
           <Paginator
             currentPage={parseInt(ayahNum)}
             max={286}

@@ -3,3 +3,12 @@
   display: flex;
   justify-content: center;
 }
+
+.Page-VerseNum {
+  display: inline-block;
+  width: 30px;
+  padding: 5px;
+  border: 1px greenyellow dashed;
+  border-radius: 5px;
+  cursor: pointer;
+}
