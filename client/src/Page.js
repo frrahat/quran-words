@@ -21,6 +21,16 @@ const initialData = {
   words: [],
 };
 
+const getExternalLink = (link, text) => (
+  <a
+    key={text}
+    href={link}
+    target="_blank"
+    rel="noreferrer">
+    {text}
+  </a>
+);
+
 function Page() {
   const { suraNum, ayahNum } = useParams();
   const history = useHistory();
@@ -111,6 +121,24 @@ function Page() {
             corpusWords={data.words}
             onSelectWordHandler={updateSelectedWordIndex}
             selectedWordIndex={selectedWordIndex} />
+          <div className="Page-VerseExternalLinks">
+            {
+              [
+                {
+                  link: `https://quran.com/${suraNum}/${ayahNum}`,
+                  text: "quran.com",
+                },
+                {
+                  link: `https://corpus.quran.com/wordbyword.jsp?chapter=${suraNum}&verse=${ayahNum}`,
+                  text: "corpus.quran.com wordbyword",
+                },
+                {
+                  link: `https://corpus.quran.com/treebank.jsp?chapter=${suraNum}&verse=${ayahNum}`,
+                  text: "corpus.quran.com treebank",
+                }
+              ].map(({ link, text}) => getExternalLink(link, text))
+            }
+          </div>
           <VerseTranslation translation={data.english} />
           { data.words[selectedWordIndex] &&
             <WordParts wordData={data.words[selectedWordIndex]}/>

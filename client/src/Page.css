@@ -29,3 +29,16 @@
   padding: 20px;
   margin: auto;
 }
+
+.Page-VerseExternalLinks {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Page-VerseExternalLinks > a {
+  padding: 5px;
+  border-radius: 5px;
+  background-color: greenyellow;
+  color: darkblue;
+  margin: 5px;
+}
