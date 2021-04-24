@@ -23,6 +23,10 @@ setup:
 	echo "setting up client"
 	yarn --cwd client/
 
+	if [ ! -d "client/build" ]; then \
+		yarn --cwd client/ build; \
+	fi
+
 # command: make start-all -j2
 start-all: server-start client-start
 
@@ -31,3 +35,6 @@ server-start:
 
 client-start:
 	yarn --cwd client/ start
+
+client-package:
+	yarn --cwd client/ build
