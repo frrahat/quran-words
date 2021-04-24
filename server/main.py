@@ -26,7 +26,7 @@ app = FastAPI()
 app.mount('/public', StaticFiles(directory='client/build'), name='public')
 
 
-@app.get('/')
+@app.get('/app/{rest_of_path:path}')
 def read_root():
     return FileResponse('client/build/index.html')
 

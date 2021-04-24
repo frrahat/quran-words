@@ -15,8 +15,8 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" render={() =>
-          <Redirect to={getVersePageLink(1, 1)} />
+        <Route exact path="/app/" render={() =>
+          <Redirect to={getVersePageLink(1, 1, 0)} />
         }/>
         <Route path={getVersePageLink(":suraNum", ":ayahNum")} children={<Page />} />
       </Switch>

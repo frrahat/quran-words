@@ -1,5 +1,5 @@
-const getVersePageLink = (suraNum, ayahNum, wordIndex=null) =>
- `verses/${suraNum}/${ayahNum}${wordIndex ? `?word_index=${wordIndex}`: ''}`;
+const getVersePageLink = (suraNum, ayahNum, wordIndex = null) =>
+  `/app/verses/${suraNum}/${ayahNum}${wordIndex !== null ? `?word_index=${wordIndex}` : ''}`;
 
 export {
   getVersePageLink,

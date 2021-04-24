@@ -36,5 +36,5 @@ server-start:
 client-start:
 	yarn --cwd client/ start
 
-client-package:
+build:
 	yarn --cwd client/ build

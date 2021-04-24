@@ -9,7 +9,7 @@ Navigate to a specific verse and see the words, their meanings and parts of spee
 ## Navigations
 
 ### Using URL
-`/verses/<suraNum>/<ayahNum>?word_index=<wordIndex>` Navigates to the \<ayahNum\> of sura: \<suraNum\> and shows word analysis for word at \<wordIndex\>
+`/app/verses/<suraNum>/<ayahNum>?word_index=<wordIndex>` Navigates to the \<ayahNum\> of sura: \<suraNum\> and shows word analysis for word at \<wordIndex\>
 
 ### Sura Select Dropdown
 Can be used to Select a sura from list of sura. Selection will navigate to the ayah 1 of that sura.
