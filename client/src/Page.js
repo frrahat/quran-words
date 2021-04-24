@@ -22,21 +22,40 @@ function Page() {
 
   const selectedWordIndex = parseInt(query.get('word_index')) || 0;
 
-  const [data, setData] = useState({
+  const initialData = {
     arabic: '',
-    english: '',
+    english: 'Not Found',
     words: [],
-  });
+  };
+
+  const [data, setData] = useState(initialData);
 
   const updateSelectedWordIndex = (index) => {
     if (data.words[index]) {
       history.replace({ search: `word_index=${index}`});
     }
-  }
+  };
+
+  const moveToAyah = (ayahNumToMove) => {
+    if (ayahNumToMove > 0) {
+      history.replace({
+        pathname: `/verses/${suraNum}/${ayahNumToMove}`,
+        search: `word_index=0`,
+      });
+    }
+  };
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(`/corpus/sura/${suraNum}/ayah/${ayahNum}`);
+      let response = {
+        data: initialData,
+      };
+
+      try {
+        response = await axios.get(`/corpus/sura/${suraNum}/ayah/${ayahNum}`);
+      } catch (err) {
+        console.error(err);
+      };
 
       setData(response.data);
     }
@@ -48,6 +67,8 @@ function Page() {
     const actionMap = {
       'ArrowRight': () => updateSelectedWordIndex(selectedWordIndex - 1),
       'ArrowLeft': () => updateSelectedWordIndex(selectedWordIndex + 1),
+      'ArrowUp': () => moveToAyah(parseInt(ayahNum) - 1),
+      'ArrowDown': () => moveToAyah(parseInt(ayahNum) + 1),
     }
 
     const keyDownEventListener = (event) => actionMap[event.code] ? actionMap[event.code]() : null;
