@@ -1,6 +1,8 @@
 from typing import Optional
 
+import aiofiles
 from fastapi import Depends, FastAPI, Path, Query, Request, Response, status
+from fastapi.staticfiles import StaticFiles
 
 from server.db_words_80_percent import (
     db_words_80_percent, Level, Word as Words80Percent)
@@ -21,6 +23,7 @@ from server.config import CONFIG
 
 app = FastAPI()
 
+app.mount('/static', StaticFiles(directory="server/static"), name="static")
 
 @app.get('/')
 def read_root():
