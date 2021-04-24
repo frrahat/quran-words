@@ -1,8 +1,11 @@
 from sqlalchemy_wrapper import SQLAlchemy
 
+from .config import CONFIG
+
+
 db_words = SQLAlchemy(
     uri='sqlite:///server/databases/words.db?check_same_thread=False',
-    echo=True)
+    echo=CONFIG.ECHO_SQL)
 
 
 class Word(db_words.Model):  # type: ignore

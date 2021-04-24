@@ -1,8 +1,11 @@
 from sqlalchemy_wrapper import SQLAlchemy
 
+from .config import CONFIG
+
+
 db_quran_english = SQLAlchemy(
     uri='sqlite:///server/databases/quran_english.db?check_same_thread=False',
-    echo=True)
+    echo=CONFIG.ECHO_SQL)
 
 
 class QuranEnglish(db_quran_english.Model):  # type: ignore

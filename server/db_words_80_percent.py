@@ -1,9 +1,11 @@
 from sqlalchemy_wrapper import SQLAlchemy
 
+from .config import CONFIG
+
 
 db_words_80_percent = SQLAlchemy(
     uri='sqlite:///server/databases/words80percent.db?check_same_thread=False',
-    echo=True)
+    echo=CONFIG.ECHO_SQL)
 
 
 class Level(db_words_80_percent.Model):  # type: ignore

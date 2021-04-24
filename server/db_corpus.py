@@ -1,8 +1,11 @@
 from sqlalchemy_wrapper import SQLAlchemy
 
+from .config import CONFIG
+
+
 db_corpus = SQLAlchemy(
     uri='sqlite:///server/databases/corpus.db?check_same_thread=False',
-    echo=True)
+    echo=CONFIG.ECHO_SQL)
 
 
 POS_FULL_FORMS_AND_COLORS = {
