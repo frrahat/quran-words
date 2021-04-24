@@ -73,7 +73,7 @@ function Page() {
       };
 
       try {
-        response = await axios.get(`/corpus/sura/${suraNum}/ayah/${ayahNum}`);
+        response = await axios.get(`/api/corpus/sura/${suraNum}/ayah/${ayahNum}`);
       } catch (err) {
         console.error(err);
       };

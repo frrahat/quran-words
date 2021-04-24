@@ -30,7 +30,7 @@ def read_root():
     return 'hello world'
 
 
-@app.get('/words-80-percent/levels', response_model=LevelListResponseModel)
+@app.get('/api/words-80-percent/levels', response_model=LevelListResponseModel)
 def list_word_80_percent_levels(
         request: Request,
         pagination_parameters: dict = Depends(pagination_parameters)):
@@ -54,7 +54,7 @@ def list_word_80_percent_levels(
     }
 
 
-@app.get('/words-80-percent/words', response_model=WordListResponseModel)
+@app.get('/api/words-80-percent/words', response_model=WordListResponseModel)
 def list_word_80_percent_words(
         request: Request,
         level: Optional[int] = Query(None, gt=0),
@@ -91,7 +91,7 @@ def list_word_80_percent_words(
     }
 
 
-@app.get('/verses/sura/{sura_num}', response_model=VerseListResponseModel)
+@app.get('/api/verses/sura/{sura_num}', response_model=VerseListResponseModel)
 def list_sura_verses(request: Request,
                      sura_num: int = Path(..., gt=0, le=114),
                      pagination_parameters: dict = Depends(
@@ -132,7 +132,7 @@ def list_sura_verses(request: Request,
     }
 
 
-@app.get('/verses/sura/{sura_num}/ayah/{ayah_num}',
+@app.get('/api/verses/sura/{sura_num}/ayah/{ayah_num}',
          response_model=VerseResponseModelForSingleAyah)
 def get_verse(response: Response,
               sura_num: int = Path(..., gt=0, le=114),
@@ -172,7 +172,7 @@ def get_verse(response: Response,
     }
 
 
-@app.get('/corpus/sura/{sura_num}/ayah/{ayah_num}',
+@app.get('/api/corpus/sura/{sura_num}/ayah/{ayah_num}',
          response_model=CorpusResponseModel)
 def get_corpus(response: Response,
                sura_num: int = Path(..., gt=0, le=114),
