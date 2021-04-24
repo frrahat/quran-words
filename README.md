@@ -66,3 +66,4 @@ make test
 ## Credits
 - https://gtaf.org/apps/quran for the databases
 - quran.com for cool css styles and sura name list
+- https://app.memrise.com/course/199902/80-of-quranic-words-nouns-and-verbs/ for the collection of 80% quranic words
