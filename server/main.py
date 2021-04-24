@@ -1,6 +1,5 @@
 from typing import Optional
 
-import aiofiles
 from fastapi import Depends, FastAPI, Path, Query, Request, Response, status
 from fastapi.staticfiles import StaticFiles
 
@@ -24,6 +23,7 @@ from server.config import CONFIG
 app = FastAPI()
 
 app.mount('/static', StaticFiles(directory="server/static"), name="static")
+
 
 @app.get('/')
 def read_root():
