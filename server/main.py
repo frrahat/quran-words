@@ -2,6 +2,7 @@ from typing import Optional
 
 from fastapi import Depends, FastAPI, Path, Query, Request, Response, status
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import HTMLResponse
 
 from server.db_words_80_percent import (
     db_words_80_percent, Level, Word as Words80Percent)
@@ -22,10 +23,13 @@ from server.config import CONFIG
 
 app = FastAPI()
 
+app.mount('/public', StaticFiles(directory='client/build'), name='public')
+
 
 @app.get('/')
 def read_root():
-    return 'hello world'
+    with open('client/build/index.html') as f:
+        return HTMLResponse(f.read())
 
 
 @app.get('/api/words-80-percent/levels', response_model=LevelListResponseModel)
