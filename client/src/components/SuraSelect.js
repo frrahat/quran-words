@@ -16,7 +16,7 @@ function SuraSelect({ valueClassName, selectedSuraNum, onSelectSura }) {
         {
           // event propagation has been allowed intentionally to hide the dropdown on select
           suraList.map(({ id, name, meaning }) =>
-          <div className="SuraSelect-Option" onClick={() => onSelectSura(id)}>
+          <div key={id} className="SuraSelect-Option" onClick={() => onSelectSura(id)}>
             <span className="SuraSelect-Option-Num">{id}</span>
             <span className="SuraSelect-Option-Name">{name}</span>
             <span className="SuraSelect-Option-Meaning">{meaning}</span>
