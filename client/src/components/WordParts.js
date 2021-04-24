@@ -26,13 +26,14 @@ const getVerbFormsList = (verbForms) => {
 };
 
 function WordParts({ wordData }) {
-  const { word_num, segments, root, lemma, verb_type, verb_form, verb_forms } = wordData;
+  const { word_num, arabic, english, segments, root, lemma, verb_type, verb_form, verb_forms } = wordData;
 
   return (
     <table className="WordParts">
       <thead>
         <tr>
           <td>Word Num</td>
+          <td>Word</td>
           <td>Segments</td>
           <td>Root</td>
           <td>Lemma</td>
@@ -44,6 +45,10 @@ function WordParts({ wordData }) {
       <tbody>
         <tr>
           <td>{word_num}</td>
+          <td>
+            <span className="WordParts-word-arabic">{arabic}</span>
+            <span className="WordParts-word-english">{english}</span>
+          </td>
           <td>
           {
             segments.map((segment, index) => <Segment key={`seg-${index}`} segment={segment} />)

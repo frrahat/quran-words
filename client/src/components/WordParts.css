@@ -12,3 +12,16 @@
   font-size: 20px;
   direction: rtl;
 }
+
+.WordParts-word-arabic {
+  font-family: 'Amiri';
+  font-size: 20px;
+  direction: rtl;
+  padding: 5px;
+  align-self: center;
+}
+
+.WordParts-word-english {
+  padding: 5px;
+  align-self: center;
+}
