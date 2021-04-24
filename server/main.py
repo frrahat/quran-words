@@ -22,8 +22,6 @@ from server.config import CONFIG
 
 app = FastAPI()
 
-app.mount('/static', StaticFiles(directory="server/static"), name="static")
-
 
 @app.get('/')
 def read_root():

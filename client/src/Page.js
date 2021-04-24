@@ -8,6 +8,7 @@ import VerseTranslation from "./components/VerseTranslation";
 import WordParts from "./components/WordParts";
 import Paginator from "./components/Paginator";
 import SuraSelect from "./components/SuraSelect";
+import loaderGif from "./images/loader.gif";
 
 import './Page.css';
 
@@ -128,7 +129,7 @@ function Page() {
       {
         isLoading ?
         <div className="Page-Loader">
-          <img src="/static/images/loader.gif" alt="loader" />
+          <img src={loaderGif} alt="loader" />
         </div>
         : <div>
           <Verse
