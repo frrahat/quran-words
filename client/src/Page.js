@@ -9,6 +9,7 @@ import WordParts from "./components/WordParts";
 import Paginator from "./components/Paginator";
 import SuraSelect from "./components/SuraSelect";
 import loaderGif from "./images/loader.gif";
+import { getVersePageLink } from "./utils";
 
 import './Page.css';
 
@@ -52,7 +53,7 @@ function Page() {
   const moveToAyah = (ayahNumToMove) => {
     if (ayahNumToMove > 0) {
       history.replace({
-        pathname: `/verses/${suraNum}/${ayahNumToMove}`,
+        pathname: getVersePageLink(suraNum, ayahNumToMove),
         search: `word_index=0`,
       });
     }
@@ -61,7 +62,7 @@ function Page() {
   const suraSelectionHandler = (selectedSuraNum) => {
     if (selectedSuraNum !== parseInt(suraNum)) {
       history.replace({
-        pathname: `/verses/${selectedSuraNum}/1`,
+        pathname: getVersePageLink(selectedSuraNum, 1),
         search: `word_index=0`,
       });
     }
@@ -116,14 +117,14 @@ function Page() {
           <Paginator
             currentPage={parseInt(suraNum)}
             max={114}
-            getPageLink={(currentPage) => `/verses/${currentPage}/1?word_index=0`} />
+            getPageLink={(currentPage) => getVersePageLink(currentPage, 1, 0)} />
         </div>
         <div>
           Ayah: <div className="Page-VerseNum">{ayahNum}</div>
           <Paginator
             currentPage={parseInt(ayahNum)}
             max={286}
-            getPageLink={(currentPage) => `/verses/${suraNum}/${currentPage}?word_index=0`} />
+            getPageLink={(currentPage) => getVersePageLink(suraNum, currentPage, 0)} />
         </div>
       </div>
       {
