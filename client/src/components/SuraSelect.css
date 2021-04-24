@@ -1,0 +1,50 @@
+.SuraSelect {
+  display: inline-block;
+}
+
+.SuraSelect-Options-hidden {
+  display: none;
+}
+
+.SuraSelect-Options {
+  display: flex;
+  flex-flow: column;
+  position: absolute;
+  background-color: #31333d;
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.SuraSelect-Option {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.SuraSelect-Option:hover {
+  background-color: #1f1f1f;
+}
+
+.SuraSelect-Option-Num {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 3px;
+  background-color: black;
+  border-radius: 50%;
+}
+
+.SuraSelect-Option-Name {
+  margin-left: 5px;
+  font-weight: 600  ;
+}
+
+.SuraSelect-Option-Meaning {
+  margin-left: 5px;
+  color: #999aa2;
+}

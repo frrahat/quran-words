@@ -7,6 +7,7 @@ import Verse from "./components/Verse";
 import VerseTranslation from "./components/VerseTranslation";
 import WordParts from "./components/WordParts";
 import Paginator from "./components/Paginator";
+import SuraSelect from "./components/SuraSelect";
 
 import './Page.css';
 
@@ -56,6 +57,15 @@ function Page() {
     }
   };
 
+  const suraSelectionHandler = (selectedSuraNum) => {
+    if (selectedSuraNum !== parseInt(suraNum)) {
+      history.replace({
+        pathname: `/verses/${selectedSuraNum}/1`,
+        search: `word_index=0`,
+      });
+    }
+  };
+
   useEffect(() => {
     async function fetchData() {
       let response = {
@@ -96,7 +106,12 @@ function Page() {
     <div className="Page">
       <div className="Page-Paginators">
         <div>
-          Sura: <div className="Page-VerseNum">{suraNum}</div>
+          Sura:
+          <SuraSelect
+            valueClassName="Page-VerseNum"
+            selectedSuraNum={suraNum}
+            onSelectSura={suraSelectionHandler}
+          />
           <Paginator
             currentPage={parseInt(suraNum)}
             max={114}
