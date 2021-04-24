@@ -15,18 +15,18 @@ function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
+const initialData = {
+  arabic: '',
+  english: 'Not Found',
+  words: [],
+};
+
 function Page() {
   const { suraNum, ayahNum } = useParams();
   const history = useHistory();
   const query = useQuery();
 
   const selectedWordIndex = parseInt(query.get('word_index')) || 0;
-
-  const initialData = {
-    arabic: '',
-    english: 'Not Found',
-    words: [],
-  };
 
   const [data, setData] = useState(initialData);
 
