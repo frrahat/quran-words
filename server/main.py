@@ -3,6 +3,7 @@ from typing import Optional
 from fastapi import Depends, FastAPI, Path, Query, Request, Response, status
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+from starlette.responses import RedirectResponse
 
 from server.db_words_80_percent import (
     db_words_80_percent, Level, Word as Words80Percent)
@@ -24,6 +25,16 @@ from server.config import CONFIG
 app = FastAPI()
 
 app.mount('/public', StaticFiles(directory='client/build'), name='public')
+
+
+@app.get('/')
+def read_root():
+    return RedirectResponse('/app')
+
+
+@app.get('/app/{rest_of_path:path}')
+def read_app():
+    return FileResponse('client/build/index.html')
 
 
 @app.get('/app/{rest_of_path:path}')

@@ -6,8 +6,18 @@ from server.config import CONFIG
 client = TestClient(app)
 
 
-def test_read_root():
+def test_root():
     response = client.get("/")
+    assert response.status_code == 200
+
+
+def test_read_app():
+    response = client.get("/app")
+    assert response.status_code == 200
+
+
+def test_read_app_path():
+    response = client.get("/app/something")
     assert response.status_code == 200
 
 
