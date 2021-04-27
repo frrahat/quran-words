@@ -1,4 +1,5 @@
 .VerseTranslation {
+  margin: 10px 0;
   font-size: 18px;
   max-height: 100px;
   overflow-y: scroll;
