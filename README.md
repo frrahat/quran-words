@@ -2,6 +2,8 @@
 
 Simple Web app to learn words used in the Quran.
 
+Check it out here: https://quran-words.herokuapp.com
+
 ## Features
 
 Navigate to a specific verse and see the words, their meanings and parts of speech.
