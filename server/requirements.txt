@@ -9,6 +9,7 @@ fastapi==0.63.0
 flake8==3.9.1
 Flask==1.1.2
 Flask-SQLAlchemy==2.5.1
+gunicorn==20.1.0
 h11==0.12.0
 httptools==0.1.1
 idna==2.10
