@@ -37,11 +37,6 @@ def read_app():
     return FileResponse('client/build/index.html')
 
 
-@app.get('/app/{rest_of_path:path}')
-def read_root():
-    return FileResponse('client/build/index.html')
-
-
 @app.get('/api/words-80-percent/levels', response_model=LevelListResponseModel)
 def list_word_80_percent_levels(
         request: Request,
