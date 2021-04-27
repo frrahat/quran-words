@@ -40,7 +40,4 @@ jobs:
           pip install -r server/requirements.txt
 
       - name: Run lint, typecheck and test
-        run: |
-          make lint
-          make typecheck
-          make test
+        run: make lint typecheck test
