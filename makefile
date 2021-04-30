@@ -60,11 +60,9 @@ heroku-deploy:
 	rsync -a .gitignore heroku-build/
 	echo "tests/" >> heroku-build/.gitignore
 
-	@echo "---> setting git config"
-	git config user.email "fr.rahat@gmail.com"
-	git config user.name "Fazle Rahat"
-
 	@echo "---> git commiting and pushing changes to heroku"
+	cd heroku-build/ && git config user.email "fr.rahat@gmail.com"
+	cd heroku-build/ && git config user.name "Fazle Rahat"
 	cd heroku-build/ && git init
 	cd heroku-build/ && git add .
 	cd heroku-build/ && git commit -m "foo" ; true
