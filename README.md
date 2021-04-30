@@ -13,8 +13,8 @@ Navigate to a specific verse and see the words, their meanings and parts of spee
 ### Using URL
 `/app/verses/<suraNum>/<ayahNum>?word_index=<wordIndex>` Navigates to the \<ayahNum\> of sura: \<suraNum\> and shows word analysis for word at \<wordIndex\>
 
-### Sura Select Dropdown
-Can be used to Select a sura from list of sura. Selection will navigate to the ayah 1 of that sura.
+### Sura / Ayah Select Dropdown
+Can be used to Select a sura from list of sura. Selection will navigate to the ayah 1 of that sura. Ayah can be selected from dropdown as well.
 
 ### Key Bindings
 <kbd>&uarr;</kbd> <kbd>&darr;</kbd> To navigate between the prev / next ayah of a selected sura
@@ -28,7 +28,7 @@ the words in a verse
 - Sqlite for databases
 
 ## Setup and Run
-Need to a create a virtual env first for python
+Need to create a virtual env first for python and activate that
 
 To setup dependencies for both frontend and backend
 ```sh
