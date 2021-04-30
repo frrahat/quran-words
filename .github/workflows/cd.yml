@@ -7,6 +7,7 @@ on:
     paths:
       - 'client/**'
       - 'server/**'
+      - '.github/workflows/cd.yml'
 
   workflow_dispatch:
 
