@@ -24,7 +24,7 @@ jobs:
           mkdir -p $HOME/.ssh
           echo "$SSH_HEROKU" > $HOME/.ssh/id_heroku
           chmod -w $HOME/.ssh/id_heroku
-          echo "StrictHostKeyChecking no\nHOST heroku.com\n HostName heroku.com\n IdentityFile ~/.ssh/id_heroku\n IdentitiesOnly yes" > $HOME/.ssh/config
+          echo -e "StrictHostKeyChecking no\nHOST heroku.com\n HostName heroku.com\n IdentityFile ~/.ssh/id_heroku\n IdentitiesOnly yes" > $HOME/.ssh/config
 
       - name: Set up Python 3.x
         uses: actions/setup-python@v2
