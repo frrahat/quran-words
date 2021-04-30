@@ -33,12 +33,14 @@
 .Page-VerseExternalLinks {
   display: flex;
   justify-content: flex-end;
+  flex-wrap: wrap-reverse;
+  font-size: 12px;
 }
 
 .Page-VerseExternalLinks > a {
-  padding: 5px;
+  padding: 3px;
   border-radius: 5px;
   background-color: greenyellow;
-  color: darkblue;
+  color: blue;
   margin: 5px;
 }
