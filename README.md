@@ -39,6 +39,7 @@ To run frontend and backend parallelly
 ```sh
 make start-all -j2
 ```
+browse http://localhost:3000/app
 
 To Run server only
 ```sh
@@ -49,6 +50,7 @@ To Run client only
 ```sh
 make client-start
 ```
+browse http://localhost:3000/app
 
 To Run lint
 ```sh
@@ -67,5 +69,5 @@ make test
 
 ## Credits
 - https://gtaf.org/apps/quran for the databases
-- quran.com for cool css styles and sura name list
+- https://quran.com for cool css styles and sura name list
 - https://app.memrise.com/course/199902/80-of-quranic-words-nouns-and-verbs/ for the collection of 80% quranic words
