@@ -1,7 +1,5 @@
 .Verse {
   margin: 10px 0;
-  max-height: 200px;
-  overflow-y: scroll;
   display: flex;
   flex-flow: row wrap;
   direction: rtl;
