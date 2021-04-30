@@ -26,7 +26,7 @@ const getVerbFormsList = (verbForms) => {
 };
 
 function WordParts({ wordData }) {
-  const { word_num, arabic, english, segments, root, lemma, verb_type, verb_form, verb_forms } = wordData;
+  const { word_num, arabic, english, segments, root, lemma, verb_forms } = wordData;
 
   return (
     <table className="WordParts">
@@ -37,8 +37,6 @@ function WordParts({ wordData }) {
           <td>Segments</td>
           <td>Root</td>
           <td>Lemma</td>
-          <td>Verb Type</td>
-          <td>Verb Form</td>
           <td>Verb Forms</td>
         </tr>
       </thead>
@@ -56,8 +54,6 @@ function WordParts({ wordData }) {
           </td>
           <td><span className="WordParts-arabic">{root}</span></td>
           <td><span className="WordParts-arabic">{lemma}</span></td>
-          <td>{verb_type}</td>
-          <td>{verb_form}</td>
           <td>{ getVerbFormsList(verb_forms) }</td>
         </tr>
       </tbody>
