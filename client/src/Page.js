@@ -106,7 +106,15 @@ function Page() {
       'ArrowDown': () => moveToAyah(parseInt(ayahNum) + 1),
     }
 
-    const keyDownEventListener = (event) => actionMap[event.code] ? actionMap[event.code]() : null;
+    const keyDownEventListener = (event) => {
+      if (actionMap[event.code]) {
+        actionMap[event.code]();
+      }
+
+      event.stopPropagation();
+      event.preventDefault();
+    };
+
     document.addEventListener('keydown', keyDownEventListener);
 
     return () => {
