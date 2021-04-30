@@ -32,7 +32,7 @@ function WordParts({ wordData }) {
     <table className="WordParts">
       <thead>
         <tr>
-          <td>Word Num</td>
+          <td>#</td>
           <td>Word</td>
           <td>Segments</td>
           <td>Root</td>
