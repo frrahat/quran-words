@@ -6,9 +6,17 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches:
+      - master
+    paths-ignore:
+      - ".github/**"
+      - "*.md"
   pull_request:
-    branches: [ master ]
+    branches:
+      - master
+    paths-ignore:
+      - ".github/**"
+      - "*.md"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
