@@ -8,6 +8,7 @@ import VerseTranslation from "./components/VerseTranslation";
 import WordParts from "./components/WordParts";
 import Paginator from "./components/Paginator";
 import SuraSelect from "./components/SuraSelect";
+import AyahSelect from "./components/AyahSelect";
 import loaderGif from "./images/loader.gif";
 import { getVersePageLink } from "./utils";
 
@@ -68,6 +69,15 @@ function Page() {
     }
   };
 
+  const ayahSelectionHandler = (selectedAyahNum) => {
+    if (selectedAyahNum !== parseInt(ayahNum)) {
+      history.replace({
+        pathname: getVersePageLink(suraNum, selectedAyahNum),
+        search: `word_index=0`,
+      });
+    }
+  };
+
   useEffect(() => {
     async function fetchData() {
       let response = {
@@ -120,7 +130,13 @@ function Page() {
             getPageLink={(currentPage) => getVersePageLink(currentPage, 1, 0)} />
         </div>
         <div>
-          Ayah: <div className="Page-VerseNum">{ayahNum}</div>
+          Ayah:
+          <AyahSelect
+            valueClassName="Page-VerseNum"
+            selectedSuraNum={suraNum}
+            selectedAyahNum={ayahNum}
+            onSelectAyah={ayahSelectionHandler}
+          />
           <Paginator
             currentPage={parseInt(ayahNum)}
             max={286}
