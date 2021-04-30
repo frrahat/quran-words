@@ -64,7 +64,7 @@ heroku-deploy:
 	cd heroku-build/ && git init
 	cd heroku-build/ && git config user.email "fr.rahat@gmail.com"
 	cd heroku-build/ && git config user.name "Fazle Rahat"
-	cd heroku-build/ && git config init.defaultBranch master
+	cd heroku-build/ && git branch -m master
 	cd heroku-build/ && git add .
 	cd heroku-build/ && git commit -m "foo" ; true
 	cd heroku-build/ && git remote add heroku git@heroku.com:quran-words.git ; true
