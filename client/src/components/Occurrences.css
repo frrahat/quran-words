@@ -2,6 +2,24 @@
   background-color: rebeccapurple;
 }
 
-.Occurrences {
+.Occurrences-Item {
   border: 1px dashed gold;
+}
+
+.Occurrences-VerseLabel {
+  padding: 5px;
+  border-radius: 3px;
+  background-color: burlywood;
+}
+
+.Occurrences-VerseWord {
+  padding: 2px;
+}
+
+.Occurrences-VerseWord-highlighted {
+  background-color: aqua;
+}
+
+.Occurrences-Verse {
+  font-family: 'me_quran';
 }

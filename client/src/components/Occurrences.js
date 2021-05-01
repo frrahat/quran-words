@@ -1,10 +1,61 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import axios from "axios";
 
+import { gerneratePageLink } from "../utils";
 import loaderGif from "../images/loader.gif";
 
 import './Occurrences.css';
+
+function VerseLabel({ suraNum, ayahNum, wordIndex }) {
+  return (
+    <Link
+      className="Occurrences-VerseLabel"
+      to={gerneratePageLink(suraNum, ayahNum, wordIndex, true)}
+      >
+      {suraNum}:{ayahNum}
+    </Link>
+  )
+}
+
+function VerseWord({ word, isHighlighted }) {
+  return (
+    <span className={`Occurrences-VerseWord${isHighlighted ? '-highlighted': ''}`}>
+      {word}
+    </span>
+  )
+}
+
+function Verse({ verse, wordIndex }) {
+  return (
+    <div className="Occurrences-Verse">
+      {verse.split(' ').map((word, index) =>
+        <VerseWord
+          key={`VerseWord-${index}`}
+          word={word}
+          isHighlighted={wordIndex === index}
+        />
+      )}
+    </div>
+  )
+}
+
+function OccurrencesItem({ suraNum, ayahNum, wordIndex, verse}) {
+  return (
+    <div className="Occurrences-Item">
+      <VerseLabel
+        suraNum={suraNum}
+        ayahNum={ayahNum}
+        wordIndex={wordIndex}
+      />
+      <Verse
+        verse={verse}
+        wordIndex={wordIndex}
+      />
+    </div>
+  )
+}
 
 function Occurrences({ word_root }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -36,10 +87,14 @@ function Occurrences({ word_root }) {
       {
         isLoading ?
           <img src={loaderGif} alt="loader" />
-          : data.map(({verse, word_num}, index) => (
-          <div key={`Occurrences-${index}`} className="Occurrences-Item">
-            {verse}
-          </div>
+          : data.map(({sura, ayah, word_num, verse}, index) => (
+          <OccurrencesItem
+            key={`Occurrences-${index}`}
+            suraNum={sura}
+            ayahNum={ayah}
+            wordIndex={word_num - 1}
+            verse={verse}
+          />
         ))
       }
     </div>
