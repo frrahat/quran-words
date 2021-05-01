@@ -2,6 +2,7 @@ from fastapi.testclient import TestClient
 
 from server.main import app
 from server.config import CONFIG
+from server.db_quran_arabic import db_quran_arabic, QuranArabic
 
 client = TestClient(app)
 
@@ -127,6 +128,11 @@ def test_list_occurrences():
     assert response_json['data'][0] == {
         'sura': 1,
         'ayah': 2,
+        'verse': (db_quran_arabic.session.query(QuranArabic)
+                  .filter(
+                      QuranArabic.sura_num == 1,
+                      QuranArabic.ayah_num == 2)
+                  .first().text),
         'word_num': 4,
     }
 
@@ -150,6 +156,11 @@ def test_list_occurrences_with_pagesize_param():
     assert response_json['data'][0] == {
         'sura': 2,
         'ayah': 13,
+        'verse': (db_quran_arabic.session.query(QuranArabic)
+                  .filter(
+                      QuranArabic.sura_num == 2,
+                      QuranArabic.ayah_num == 13)
+                  .first().text),
         'word_num': 19,
     }
 
