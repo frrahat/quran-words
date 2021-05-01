@@ -189,6 +189,22 @@ POS_FULL_FORMS_AND_COLORS = {
         "full": "Attention",
         "color": "#fff",
     },
+    "DET": {
+        "full": "Determiner",
+        "color": "#fff",
+    },
+    "DIST": {
+        "full": "Distance",
+        "color": "#fff",
+    },
+    "ADDR": {
+        "full": "Address",
+        "color": "#fff",
+    },
+    "NV": {
+        "full": "Nounal Verb",
+        "color": "#fff",
+    },
 }
 
 
@@ -248,8 +264,8 @@ class Corpus(db_corpus.Model):  # type: ignore
         segments = []
 
         for position in range(1, self.count + 1):
-            arabic = getattr(self, 'ar' + str(position))
-            pos = getattr(self, 'pos'+str(position))
+            arabic = getattr(self, f'ar{position}')
+            pos = getattr(self, f'pos{position}')
 
             pos_full_form_and_color = POS_FULL_FORMS_AND_COLORS.get(
                 pos, {'full': None, 'color': None})
