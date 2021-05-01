@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import Page from "./Page";
-import { getVersePageLink } from "./utils";
+import { generateVersePagePath } from "./utils";
 
 import './App.css';
 
@@ -16,9 +16,9 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/app/" render={() =>
-          <Redirect to={getVersePageLink(1, 1, 0)} />
+          <Redirect to={generateVersePagePath(1, 1)} />
         }/>
-        <Route path={getVersePageLink(":suraNum", ":ayahNum")} children={<Page />} />
+        <Route path={generateVersePagePath(":suraNum", ":ayahNum")} children={<Page />} />
       </Switch>
     </Router>
   );
