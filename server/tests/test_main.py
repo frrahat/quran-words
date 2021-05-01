@@ -112,3 +112,50 @@ def test_get_verse():
 def test_get_corpus():
     response = client.get("/api/corpus/sura/2/ayah/282")
     assert response.status_code == 200
+
+
+def test_list_occurrences():
+    root = 'علم'
+    response = client.get(f"/api/occurrences?root={root}")
+
+    assert response.status_code == 200
+
+    response_json = response.json()
+
+    assert len(response_json['data']) == 10
+    assert response_json['total'] == 854
+    assert response_json['data'][0] == {
+        'sura': 1,
+        'ayah': 2,
+        'word_num': 4,
+    }
+
+    assert response_json['pagination'] == {
+        'previous': None,
+        'next': f"{CONFIG.BASE_URL}/api/occurrences"
+        f"?offset=10&pagesize=10&root={root}",
+    }
+
+
+def test_list_occurrences_with_pagesize_param():
+    root = 'علم'
+    response = client.get(f"/api/occurrences?root={root}&offset=1&pagesize=5")
+
+    assert response.status_code == 200
+
+    response_json = response.json()
+
+    assert len(response_json['data']) == 5
+    assert response_json['total'] == 854
+    assert response_json['data'][0] == {
+        'sura': 2,
+        'ayah': 13,
+        'word_num': 19,
+    }
+
+    assert response_json['pagination'] == {
+        'previous': f"{CONFIG.BASE_URL}/api/occurrences"
+        f"?offset=0&pagesize=1&root={root}",
+        'next': f"{CONFIG.BASE_URL}/api/occurrences"
+        f"?offset=6&pagesize=5&root={root}",
+    }

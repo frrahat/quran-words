@@ -17,6 +17,7 @@ from server.response_models import (
     VerseListResponseModel,
     VerseResponseModelForSingleAyah,
     CorpusResponseModel,
+    WordRootOccurrencesResponseModel,
 )
 from server.dependencies import pagination_parameters
 from server.utils import get_pagination_response
@@ -244,4 +245,41 @@ def get_corpus(response: Response,
         'arabic': verse_arabic.text,
         'english': verse_english.text,
         'words': words,
+    }
+
+
+@app.get('/api/occurrences',
+         response_model=WordRootOccurrencesResponseModel)
+def list_occurrences(request: Request,
+                     root: str,
+                     pagination_parameters: dict = Depends(
+                         pagination_parameters
+                     )):
+    offset = pagination_parameters['offset']
+    pagesize = pagination_parameters['pagesize']
+
+    base_query = db_corpus.session.query(Corpus).filter(Corpus.root == root)
+
+    occurrences = (base_query
+                   .order_by(Corpus.sura_num, Corpus.ayah_num, Corpus.word_num)
+                   .offset(offset)
+                   .limit(pagesize)
+                   .all())
+
+    total = base_query.count()
+
+    data = [
+        {
+            'sura': occurrence.sura_num,
+            'ayah': occurrence.ayah_num,
+            'word_num': occurrence.word_num,
+        } for occurrence in occurrences
+    ]
+
+    return {
+        'root': root,
+        'data': data,
+        'total': total,
+        'pagination': get_pagination_response(
+            request, total, additional_query_string=f'root={root}')
     }
