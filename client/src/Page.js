@@ -53,7 +53,7 @@ function Page() {
   };
 
   const moveToAyah = (ayahNumToMove) => {
-    if (ayahNumToMove > 0) {
+    if (ayahNumToMove > 0 && ayahNumToMove <= (suraList[suraNum - 1]?.ayah_count || 0)) {
       history.replace({
         pathname: getVersePageLink(suraNum, ayahNumToMove),
         search: `word_index=0`,
