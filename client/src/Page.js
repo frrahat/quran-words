@@ -52,28 +52,13 @@ function Page() {
     }
   };
 
-  const moveToAyah = (direction) => {
-    let nextAyahNum = direction == 'prev' ? ayahNum - 1 : parseInt(ayahNum) + 1;
-    let nextSuraNum = suraNum;
-
-    if (nextAyahNum < 1) {
-      nextSuraNum = suraNum - 1;
-      if (nextSuraNum == 0) {
-        nextSuraNum = 114;
-      }
-
-      nextAyahNum = suraList[nextSuraNum - 1].ayah_count;
+  const moveToAyah = (ayahNumToMove) => {
+    if (ayahNumToMove > 0) {
+      history.replace({
+        pathname: getVersePageLink(suraNum, ayahNumToMove),
+        search: `word_index=0`,
+      });
     }
-
-    else if (nextAyahNum > suraList[suraNum -1]?.ayah_count || 0) {
-      nextSuraNum = (suraNum % 114) + 1;
-      nextAyahNum = 1;
-    }
-
-    history.replace({
-      pathname: getVersePageLink(nextSuraNum, nextAyahNum),
-      search: `word_index=0`,
-    });
   };
 
   const suraSelectionHandler = (selectedSuraNum) => {
@@ -118,8 +103,8 @@ function Page() {
     const actionMap = {
       'ArrowRight': () => updateSelectedWordIndex(selectedWordIndex - 1),
       'ArrowLeft': () => updateSelectedWordIndex(selectedWordIndex + 1),
-      'ArrowUp': () => moveToAyah('prev'),
-      'ArrowDown': () => moveToAyah('next'),
+      'ArrowUp': () => moveToAyah(parseInt(ayahNum) - 1),
+      'ArrowDown': () => moveToAyah(parseInt(ayahNum) + 1),
     }
 
     const keyDownEventListener = (event) => {
