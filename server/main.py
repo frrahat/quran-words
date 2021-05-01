@@ -1,4 +1,5 @@
-from typing import Optional
+import asyncio
+from typing import Optional, List, Tuple, Dict
 
 from fastapi import Depends, FastAPI, Path, Query, Request, Response, status
 from fastapi.staticfiles import StaticFiles
@@ -180,16 +181,20 @@ def get_verse(response: Response,
     }
 
 
+async def _get_verse_arabic(sura_num: int, ayah_num: int) -> QuranArabic:
+    return (db_quran_arabic.session.query(QuranArabic)
+            .filter(
+            QuranArabic.sura_num == sura_num,
+            QuranArabic.ayah_num == ayah_num).first())
+
+
 @app.get('/api/corpus/sura/{sura_num}/ayah/{ayah_num}',
          response_model=CorpusResponseModel)
-def get_corpus(response: Response,
-               sura_num: int = Path(..., gt=0, le=114),
-               ayah_num: int = Path(..., gt=0, le=286)):
+async def get_corpus(response: Response,
+                     sura_num: int = Path(..., gt=0, le=114),
+                     ayah_num: int = Path(..., gt=0, le=286)):
 
-    verse_arabic = db_quran_arabic.session.query(QuranArabic)\
-        .filter(
-            QuranArabic.sura_num == sura_num,
-            QuranArabic.ayah_num == ayah_num).first()
+    verse_arabic = await _get_verse_arabic(sura_num, ayah_num)
 
     if not verse_arabic:
         response.status_code = status.HTTP_404_NOT_FOUND
@@ -248,13 +253,29 @@ def get_corpus(response: Response,
     }
 
 
+async def _get_verse_arabic_texts(
+        verse_args: List[Tuple[int, int]]) -> Dict[str, str]:
+
+    verses = await asyncio.gather(
+        *(_get_verse_arabic(*arg) for arg in verse_args),
+        return_exceptions=True)
+
+    verse_arg_to_arabic_text_map = dict()
+
+    for i in range(len(verse_args)):
+        arg = verse_args[i]
+        verse_arg_to_arabic_text_map[f'{arg[0]}:{arg[1]}'] = verses[i].text
+
+    return verse_arg_to_arabic_text_map
+
+
 @app.get('/api/occurrences',
          response_model=WordRootOccurrencesResponseModel)
-def list_occurrences(request: Request,
-                     root: str,
-                     pagination_parameters: dict = Depends(
-                         pagination_parameters
-                     )):
+async def list_occurrences(request: Request,
+                           root: str,
+                           pagination_parameters: dict = Depends(
+                               pagination_parameters
+                           )):
     offset = pagination_parameters['offset']
     pagesize = pagination_parameters['pagesize']
 
@@ -268,10 +289,20 @@ def list_occurrences(request: Request,
 
     total = base_query.count()
 
+    verse_args = list({
+        (occurrence.sura_num, occurrence.ayah_num)
+        for occurrence in occurrences
+    })
+
+    verse_arg_to_arabic_text_map = await _get_verse_arabic_texts(verse_args)
+
     data = [
         {
             'sura': occurrence.sura_num,
             'ayah': occurrence.ayah_num,
+            'verse': verse_arg_to_arabic_text_map[
+                f'{occurrence.sura_num}:{occurrence.ayah_num}'
+            ],
             'word_num': occurrence.word_num,
         } for occurrence in occurrences
     ]

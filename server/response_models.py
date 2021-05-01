@@ -100,6 +100,7 @@ class CorpusResponseModel(BaseModel):
 class WordRootUsage(BaseModel):
     sura: int
     ayah: int
+    verse: str
     word_num: int
 
 
