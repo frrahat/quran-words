@@ -11,6 +11,7 @@ import SuraSelect from "./components/SuraSelect";
 import AyahSelect from "./components/AyahSelect";
 import loaderGif from "./images/loader.gif";
 import { getVersePageLink } from "./utils";
+import { suraList } from "./config";
 
 import './Page.css';
 
@@ -147,7 +148,7 @@ function Page() {
           />
           <Paginator
             currentPage={parseInt(ayahNum)}
-            max={286}
+            max={suraList[suraNum - 1]?.ayah_count || 0}
             getPageLink={(currentPage) => getVersePageLink(suraNum, currentPage, 0)} />
         </div>
       </div>
