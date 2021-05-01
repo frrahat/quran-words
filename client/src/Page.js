@@ -9,8 +9,9 @@ import WordParts from "./components/WordParts";
 import Paginator from "./components/Paginator";
 import SuraSelect from "./components/SuraSelect";
 import AyahSelect from "./components/AyahSelect";
+import Occurrences from "./components/Occurrences";
 import loaderGif from "./images/loader.gif";
-import { getVersePageLink } from "./utils";
+import { generateVersePagePath, generateQueryString, gerneratePageLink } from "./utils";
 import { suraList } from "./config";
 
 import './Page.css';
@@ -42,21 +43,24 @@ function Page() {
   const query = useQuery();
 
   const selectedWordIndex = parseInt(query.get('word_index')) || 0;
+  const shouldShowOccurrences = query.get('show_occurrences') === 'true';
 
   const [data, setData] = useState(initialData);
   const [isLoading, setIsLoading] = useState(true);
 
   const updateSelectedWordIndex = (index) => {
     if (data.words[index]) {
-      history.replace({ search: `word_index=${index}`});
+      history.replace({
+        search: generateQueryString(index, shouldShowOccurrences),
+      });
     }
   };
 
   const moveToAyah = (ayahNumToMove) => {
     if (ayahNumToMove > 0 && ayahNumToMove <= (suraList[suraNum - 1]?.ayah_count || 0)) {
       history.replace({
-        pathname: getVersePageLink(suraNum, ayahNumToMove),
-        search: `word_index=0`,
+        pathname: generateVersePagePath(suraNum, ayahNumToMove),
+        search: generateQueryString(0, shouldShowOccurrences),
       });
     }
   };
@@ -64,8 +68,8 @@ function Page() {
   const suraSelectionHandler = (selectedSuraNum) => {
     if (selectedSuraNum !== parseInt(suraNum)) {
       history.replace({
-        pathname: getVersePageLink(selectedSuraNum, 1),
-        search: `word_index=0`,
+        pathname: generateVersePagePath(selectedSuraNum, 1),
+        search: generateQueryString(0, shouldShowOccurrences),
       });
     }
   };
@@ -73,14 +77,14 @@ function Page() {
   const ayahSelectionHandler = (selectedAyahNum) => {
     if (selectedAyahNum !== parseInt(ayahNum)) {
       history.replace({
-        pathname: getVersePageLink(suraNum, selectedAyahNum),
-        search: `word_index=0`,
+        pathname: generateVersePagePath(suraNum, selectedAyahNum),
+        search: generateQueryString(0, shouldShowOccurrences),
       });
     }
   };
 
   useEffect(() => {
-    async function fetchData() {
+    async function _loadData() {
       let response = {
         data: initialData,
       };
@@ -96,7 +100,7 @@ function Page() {
     }
 
     setIsLoading(true);
-    fetchData();
+    _loadData();
   }, [suraNum, ayahNum]);
 
   useEffect(() => {
@@ -136,7 +140,9 @@ function Page() {
           <Paginator
             currentPage={parseInt(suraNum)}
             max={114}
-            getPageLink={(currentPage) => getVersePageLink(currentPage, 1, 0)} />
+            getPageLink={
+              (currentPage) => gerneratePageLink(currentPage, 1, 0, shouldShowOccurrences)
+            } />
         </div>
         <div>
           Ayah:
@@ -149,7 +155,9 @@ function Page() {
           <Paginator
             currentPage={parseInt(ayahNum)}
             max={suraList[suraNum - 1]?.ayah_count || 0}
-            getPageLink={(currentPage) => getVersePageLink(suraNum, currentPage, 0)} />
+            getPageLink={
+              (currentPage) => gerneratePageLink(suraNum, currentPage, 0, shouldShowOccurrences)
+            } />
         </div>
       </div>
       {
@@ -185,6 +193,11 @@ function Page() {
           <VerseTranslation translation={data.english} />
           { data.words[selectedWordIndex] &&
             <WordParts wordData={data.words[selectedWordIndex]}/>
+          }
+          {
+            shouldShowOccurrences &&
+            Boolean(data.words[selectedWordIndex]?.root) &&
+            <Occurrences word_root={data.words[selectedWordIndex]?.root} />
           }
         </div>
       }

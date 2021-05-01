@@ -1,6 +1,21 @@
-const getVersePageLink = (suraNum, ayahNum, wordIndex = null) =>
-  `/app/verses/${suraNum}/${ayahNum}${wordIndex !== null ? `?word_index=${wordIndex}` : ''}`;
+const generateQueryString = (wordIndex, shouldShowOccurrences) => {
+  let queryString = `word_index=${wordIndex}`;
+
+  if (shouldShowOccurrences) {
+    queryString += `&show_occurrences=${shouldShowOccurrences}`;
+  }
+
+  return queryString;
+};
+
+const generateVersePagePath = (suraNum, ayahNum) =>
+  `/app/verses/${suraNum}/${ayahNum}`;
+
+const gerneratePageLink = (suraNum, ayahNum, wordIndex, shouldShowOccurrences) =>
+  `${generateVersePagePath(suraNum, ayahNum)}?${generateQueryString(wordIndex, shouldShowOccurrences)}`;
 
 export {
-  getVersePageLink,
+  generateVersePagePath,
+  generateQueryString,
+  gerneratePageLink,
 }
