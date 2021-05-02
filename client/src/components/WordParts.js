@@ -1,6 +1,6 @@
 import Segment from './Segment';
 
-import './WordParts.css';
+import './WordParts.scss';
 
 const getVerbFormListItem = (verbFormName, verbFormValue) =>
   <li><b>{verbFormName}</b>: <span className="WordParts-arabic">{verbFormValue}</span></li>
