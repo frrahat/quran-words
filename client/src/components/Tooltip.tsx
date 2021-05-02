@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import './Tooltip.css';
+import './Tooltip.scss';
 
 function Tooltip({ text, childRef, children }: {
   text: string,
@@ -9,14 +9,13 @@ function Tooltip({ text, childRef, children }: {
 }) {
   const [isTooltipTextVisible, setTooltipTextVisible] = useState(false);
   const [tooltipPositionStyle, setTooltipPositionStyle] = useState({
-    top: 'unset'
+    bottom: 'unset'
   });
 
   const onMouseEnterHandler = () => {
-    const { top } = childRef.current.getBoundingClientRect();
-
+    const { height } = childRef.current.getBoundingClientRect();
     setTooltipPositionStyle({
-      top: `${top - 32}px`,
+      bottom: `${height + 5}px`,
     });
 
     setTooltipTextVisible(true);
@@ -25,8 +24,13 @@ function Tooltip({ text, childRef, children }: {
   const onMouseLeaveHandler = () => setTooltipTextVisible(false);
 
   return (
-    <div onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler}>
-      { isTooltipTextVisible && <div className="Tooltip-text" style={tooltipPositionStyle}>{text}</div>}
+    <div className="Tooltip" onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler}>
+      {
+        isTooltipTextVisible &&
+        <div className="Tooltip-text" style={tooltipPositionStyle}>
+          {text}
+        </div>
+      }
       {children}
     </div>
   )
