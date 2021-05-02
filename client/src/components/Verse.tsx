@@ -3,24 +3,24 @@ import Word from './Word';
 import './Verse.css';
 
 
-const getWordsData = (verseArabic: string, corpusWords: {
+const getWordsData = (verseArabic: string, verseWords: {
   english: string,
 }[]) => {
   const words = verseArabic.split(' ');
 
   return words.map((word, index) => ({
     arabic: word,
-    translation: corpusWords[index]?.english,
+    translation: verseWords[index]?.english,
   }));
 }
 
 function Verse({
   verseArabic,
-  corpusWords,
+  verseWords,
   onSelectWordHandler,
   selectedWordIndex }: {
     verseArabic: string,
-    corpusWords: {
+    verseWords: {
       english: string,
     }[],
     onSelectWordHandler: Function,
@@ -28,7 +28,7 @@ function Verse({
   }) {
   return (
     <div className="Verse">
-      {getWordsData(verseArabic, corpusWords).map((wordData, index) =>
+      {getWordsData(verseArabic, verseWords).map((wordData, index) =>
         <Word
           key={index}
           arabic={wordData.arabic}
