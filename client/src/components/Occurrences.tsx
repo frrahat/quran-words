@@ -8,6 +8,7 @@ import { gerneratePageLink } from "../utils";
 import loaderGif from "../images/loader.gif";
 
 import './Occurrences.scss';
+import VerseTranslation from "./VerseTranslation";
 
 type OccurrenceResponseDataItem = {
   sura: number,
@@ -78,6 +79,7 @@ function OccurrencesItem({
         onSelectWordHandler={() => { }}
         highlightedWordIndices={occurredWordIndices}
       />
+      <VerseTranslation translation={verseEnglish}/>
     </div>
   )
 }
