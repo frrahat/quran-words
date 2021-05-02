@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { RefObject, useState } from 'react';
 
 import './Tooltip.scss';
 
 function Tooltip({ text, childRef, children }: {
   text: string,
-  childRef: any,
-  children: any,
+  childRef: RefObject<HTMLElement>,
+  children: JSX.Element,
 }) {
   const [isTooltipTextVisible, setTooltipTextVisible] = useState(false);
   const [tooltipPositionStyle, setTooltipPositionStyle] = useState({
@@ -13,7 +13,7 @@ function Tooltip({ text, childRef, children }: {
   });
 
   const onMouseEnterHandler = () => {
-    const { height } = childRef.current.getBoundingClientRect();
+    const { height } = childRef.current!.getBoundingClientRect();
     setTooltipPositionStyle({
       bottom: `${height + 5}px`,
     });
