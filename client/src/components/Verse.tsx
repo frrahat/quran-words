@@ -18,13 +18,15 @@ function Verse({
   verseArabic,
   verseWords,
   onSelectWordHandler,
-  selectedWordIndex }: {
+  selectedWordIndex = -1,
+  highlightedWordIndices = [], }: {
     verseArabic: string,
     verseWords: {
       english: string,
     }[],
     onSelectWordHandler: Function,
-    selectedWordIndex: number,
+    selectedWordIndex?: number,
+    highlightedWordIndices?: number[],
   }) {
   return (
     <div className="Verse">
@@ -35,6 +37,7 @@ function Verse({
           translation={wordData.translation}
           onClickHandler={() => onSelectWordHandler(index)}
           isSelected={selectedWordIndex === index}
+          isHighlighted={highlightedWordIndices.includes(index)}
         />
       )}
     </div>
