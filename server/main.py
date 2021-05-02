@@ -1,5 +1,6 @@
 import asyncio
-from typing import Optional, List, Tuple, Dict
+from enum import Enum
+from typing import Optional, List, Tuple, Dict, Union, Type
 
 from fastapi import Depends, FastAPI, Path, Query, Request, Response, status
 from fastapi.staticfiles import StaticFiles
@@ -42,9 +43,9 @@ def read_app():
 @app.get('/api/words-80-percent/levels', response_model=LevelListResponseModel)
 def list_word_80_percent_levels(
         request: Request,
-        pagination_parameters: dict = Depends(pagination_parameters)):
-    offset = pagination_parameters['offset']
-    pagesize = pagination_parameters['pagesize']
+        pagination_params: dict = Depends(pagination_parameters)):
+    offset = pagination_params['offset']
+    pagesize = pagination_params['pagesize']
 
     base_query = db_words_80_percent.session.query(Level)
     total = base_query.count()
@@ -67,9 +68,9 @@ def list_word_80_percent_levels(
 def list_word_80_percent_words(
         request: Request,
         level: Optional[int] = Query(None, gt=0),
-        pagination_parameters: dict = Depends(pagination_parameters)):
-    offset = pagination_parameters['offset']
-    pagesize = pagination_parameters['pagesize']
+        pagination_params: dict = Depends(pagination_parameters)):
+    offset = pagination_params['offset']
+    pagesize = pagination_params['pagesize']
 
     base_query = db_words_80_percent.session.query(Words80Percent)
 
@@ -103,10 +104,10 @@ def list_word_80_percent_words(
 @app.get('/api/verses/sura/{sura_num}', response_model=VerseListResponseModel)
 def list_sura_verses(request: Request,
                      sura_num: int = Path(..., gt=0, le=114),
-                     pagination_parameters: dict = Depends(
+                     pagination_params: dict = Depends(
                          pagination_parameters)):
-    offset = pagination_parameters['offset']
-    pagesize = pagination_parameters['pagesize']
+    offset = pagination_params['offset']
+    pagesize = pagination_params['pagesize']
 
     base_query = db_quran_arabic.session.query(
         QuranArabic).filter(QuranArabic.sura_num == sura_num)
@@ -181,11 +182,28 @@ def get_verse(response: Response,
     }
 
 
-async def _get_verse_arabic(sura_num: int, ayah_num: int) -> QuranArabic:
-    return (db_quran_arabic.session.query(QuranArabic)
-            .filter(
-            QuranArabic.sura_num == sura_num,
-            QuranArabic.ayah_num == ayah_num).first())
+class VERSE_LANG(Enum):
+    ARABIC = 'arabic'
+    ENGLISH = 'english'
+
+
+async def _get_verse(sura_num: int,
+                     ayah_num: int,
+                     type_: VERSE_LANG = VERSE_LANG.ARABIC
+                     ) -> Union[QuranArabic, QuranEnglish]:
+    db = db_quran_arabic if type_ == VERSE_LANG.ARABIC else db_quran_english
+    model_cls: Union[Type[QuranArabic], Type[QuranEnglish]] = \
+        QuranArabic if type_ == VERSE_LANG.ARABIC else QuranEnglish
+    return db.session.query(model_cls).filter(
+        model_cls.sura_num == sura_num,
+        model_cls.ayah_num == ayah_num).first()
+
+
+async def _get_words(sura_num: int, ayah_num: int) -> List[Word]:
+    return db_words.session.query(Word).filter(
+        Word.sura_num == sura_num,
+        Word.ayah_num == ayah_num
+    ).order_by(Word.word_num).all()
 
 
 @app.get('/api/corpus/sura/{sura_num}/ayah/{ayah_num}',
@@ -194,23 +212,19 @@ async def get_corpus(response: Response,
                      sura_num: int = Path(..., gt=0, le=114),
                      ayah_num: int = Path(..., gt=0, le=286)):
 
-    verse_arabic = await _get_verse_arabic(sura_num, ayah_num)
+    verse_arabic, verse_english, words_english = await asyncio.gather(
+        _get_verse(sura_num, ayah_num, type_=VERSE_LANG.ARABIC),
+        _get_verse(sura_num, ayah_num, type_=VERSE_LANG.ENGLISH),
+        _get_words(sura_num, ayah_num))
 
     if not verse_arabic:
         response.status_code = status.HTTP_404_NOT_FOUND
         return None
 
-    verse_english = db_quran_english.session.query(QuranEnglish)\
-        .filter(
-            QuranEnglish.sura_num == sura_num,
-            QuranEnglish.ayah_num == ayah_num).first()
-
     words_arabic = verse_arabic.text.split(' ')
     mapped_arabic_words = {word_num: word for word_num,
                            word in enumerate(words_arabic, 1)}
 
-    words_english = db_words.session.query(Word).filter(
-        Word.sura_num == sura_num, Word.ayah_num == ayah_num).all()
     mapped_english_words = {
         word.word_num: word.english for word in words_english}
 
@@ -253,58 +267,88 @@ async def get_corpus(response: Response,
     }
 
 
-async def _get_verse_arabic_texts(
-        verse_args: List[Tuple[int, int]]) -> Dict[str, str]:
+async def _get_occurrence_verses(
+        verse_args: List[Tuple[int, int]]) -> List[Dict]:
 
-    verses = await asyncio.gather(
-        *(_get_verse_arabic(*arg) for arg in verse_args),
-        return_exceptions=True)
+    verses_arabic_future = asyncio.gather(
+        *(_get_verse(*arg, type_=VERSE_LANG.ARABIC) for arg in verse_args))
 
-    verse_arg_to_arabic_text_map = dict()
+    verses_english_future = asyncio.gather(
+        *(_get_verse(*arg, type_=VERSE_LANG.ENGLISH) for arg in verse_args))
 
-    for i in range(len(verse_args)):
-        arg = verse_args[i]
-        verse_arg_to_arabic_text_map[f'{arg[0]}:{arg[1]}'] = verses[i].text
+    words_english_future = asyncio.gather(
+        *(_get_words(*arg) for arg in verse_args))
 
-    return verse_arg_to_arabic_text_map
+    verses_arabic, verses_english, words_english = await asyncio.gather(
+        verses_arabic_future,
+        verses_english_future,
+        words_english_future,
+    )
+
+    occurrence_verses = [
+        {
+            'arabic': verses_arabic[i].text,
+            'english': verses_english[i].text,
+            'words': [{
+                'word_num': word.word_num,
+                'english': word.english,
+            } for word in words_english[i]]
+        } for i in range(len(verse_args))
+    ]
+
+    return occurrence_verses
 
 
-@app.get('/api/occurrences',
-         response_model=WordRootOccurrencesResponseModel)
+async def _get_occrrences_in_verse(sura_num: int,
+                                   ayah_num: int,
+                                   root: str) -> List[int]:
+    word_nums_result = db_corpus.session.query(Corpus.word_num).filter(
+        Corpus.sura_num == sura_num,
+        Corpus.ayah_num == ayah_num,
+        Corpus.root == root
+    ).order_by(Corpus.word_num).all()
+
+    return [row[0] for row in word_nums_result]
+
+
+@ app.get('/api/occurrences',
+          response_model=WordRootOccurrencesResponseModel)
 async def list_occurrences(request: Request,
                            root: str,
-                           pagination_parameters: dict = Depends(
+                           pagination_params: dict = Depends(
                                pagination_parameters
                            )):
-    offset = pagination_parameters['offset']
-    pagesize = pagination_parameters['pagesize']
+    offset = pagination_params['offset']
+    pagesize = pagination_params['pagesize']
 
-    base_query = db_corpus.session.query(Corpus).filter(Corpus.root == root)
+    base_query = (db_corpus.session.query(Corpus.sura_num, Corpus.ayah_num)
+                  .filter(Corpus.root == root))
 
-    occurrences = (base_query
-                   .order_by(Corpus.sura_num, Corpus.ayah_num, Corpus.word_num)
-                   .offset(offset)
-                   .limit(pagesize)
-                   .all())
+    occurrence_verse_args: List[Tuple[int, int]] = (
+        base_query.order_by(Corpus.sura_num, Corpus.ayah_num)
+        .distinct()
+        .offset(offset)
+        .limit(pagesize)
+        .all())
 
     total = base_query.count()
 
-    verse_args = list({
-        (occurrence.sura_num, occurrence.ayah_num)
-        for occurrence in occurrences
-    })
+    word_nums_future = asyncio.gather(
+        *(_get_occrrences_in_verse(*arg, root)
+          for arg in occurrence_verse_args))
 
-    verse_arg_to_arabic_text_map = await _get_verse_arabic_texts(verse_args)
+    occurrence_verses, occurrence_word_nums = await asyncio.gather(
+        _get_occurrence_verses(occurrence_verse_args),
+        word_nums_future,
+    )
 
     data = [
         {
-            'sura': occurrence.sura_num,
-            'ayah': occurrence.ayah_num,
-            'verse': verse_arg_to_arabic_text_map[
-                f'{occurrence.sura_num}:{occurrence.ayah_num}'
-            ],
-            'word_num': occurrence.word_num,
-        } for occurrence in occurrences
+            'sura': occurrence_verse_args[i][0],
+            'ayah': occurrence_verse_args[i][1],
+            'verse': occurrence_verses[i],
+            'word_nums': occurrence_word_nums[i],
+        } for i in range(len(occurrence_verse_args))
     ]
 
     return {

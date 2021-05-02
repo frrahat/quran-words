@@ -3,6 +3,7 @@ from fastapi.testclient import TestClient
 from server.main import app
 from server.config import CONFIG
 from server.db_quran_arabic import db_quran_arabic, QuranArabic
+from server.db_quran_english import db_quran_english, QuranEnglish
 
 client = TestClient(app)
 
@@ -128,12 +129,28 @@ def test_list_occurrences():
     assert response_json['data'][0] == {
         'sura': 1,
         'ayah': 2,
-        'verse': (db_quran_arabic.session.query(QuranArabic)
-                  .filter(
-                      QuranArabic.sura_num == 1,
-                      QuranArabic.ayah_num == 2)
-                  .first().text),
-        'word_num': 4,
+        'verse': {
+            'arabic': (
+                db_quran_arabic.session.query(QuranArabic)
+                .filter(
+                    QuranArabic.sura_num == 1,
+                    QuranArabic.ayah_num == 2
+                ).first().text),
+            'english': (
+                db_quran_english.session.query(QuranEnglish)
+                .filter(
+                    QuranEnglish.sura_num == 1,
+                    QuranEnglish.ayah_num == 2
+                )
+                .first().text),
+            'words': [
+                {'word_num': 1, 'english': 'All praises and thanks'},
+                {'word_num': 2, 'english': '(be) to Allah,'},
+                {'word_num': 3, 'english': 'the Lord'},
+                {'word_num': 4, 'english': 'of the universe'}
+            ],
+        },
+        'word_nums': [4],
     }
 
     assert response_json['pagination'] == {
@@ -145,28 +162,53 @@ def test_list_occurrences():
 
 def test_list_occurrences_with_pagesize_param():
     root = 'علم'
-    response = client.get(f"/api/occurrences?root={root}&offset=1&pagesize=5")
+    response = client.get(f"/api/occurrences?root={root}&offset=7&pagesize=8")
 
     assert response.status_code == 200
 
     response_json = response.json()
 
-    assert len(response_json['data']) == 5
+    assert len(response_json['data']) == 8
     assert response_json['total'] == 854
+    print('+++++', response_json['data'][0]['verse']['words'])
     assert response_json['data'][0] == {
         'sura': 2,
-        'ayah': 13,
-        'verse': (db_quran_arabic.session.query(QuranArabic)
-                  .filter(
-                      QuranArabic.sura_num == 2,
-                      QuranArabic.ayah_num == 13)
-                  .first().text),
-        'word_num': 19,
+        'ayah': 32,
+        'verse': {
+            'arabic': (
+                db_quran_arabic.session.query(QuranArabic)
+                .filter(
+                    QuranArabic.sura_num == 2,
+                    QuranArabic.ayah_num == 32
+                ).first().text),
+            'english': (
+                db_quran_english.session.query(QuranEnglish)
+                .filter(
+                    QuranEnglish.sura_num == 2,
+                    QuranEnglish.ayah_num == 32
+                )
+                .first().text),
+            'words': [
+                {'word_num': 1, 'english': 'They said,'},
+                {'word_num': 2, 'english': '"Glory be to You!'},
+                {'word_num': 3, 'english': 'No'},
+                {'word_num': 4, 'english': 'knowledge'},
+                {'word_num': 5, 'english': '(is) for us'},
+                {'word_num': 6, 'english': 'except'},
+                {'word_num': 7, 'english': 'what'},
+                {'word_num': 8, 'english': 'You have taught us.'},
+                {'word_num': 9, 'english': 'Indeed You!'},
+                {'word_num': 10, 'english': 'You'},
+                {'word_num': 11, 'english': '(are) the All-Knowing,'},
+                {'word_num': 12, 'english': 'the All-Wise.'}
+            ],
+        },
+        'word_nums': [4, 8, 11],
     }
 
     assert response_json['pagination'] == {
         'previous': f"{CONFIG.BASE_URL}/api/occurrences"
-        f"?offset=0&pagesize=1&root={root}",
+        f"?offset=0&pagesize=7&root={root}",
         'next': f"{CONFIG.BASE_URL}/api/occurrences"
-        f"?offset=6&pagesize=5&root={root}",
+        f"?offset=15&pagesize=8&root={root}",
     }
