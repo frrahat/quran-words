@@ -97,15 +97,26 @@ class CorpusResponseModel(BaseModel):
     words: List[CorpusWord]
 
 
-class WordRootUsage(BaseModel):
+class WordRootOccurrenceVerseWord(BaseModel):
+    word_num: int
+    english: str
+
+
+class WordRootOccurrenceVerse(BaseModel):
+    arabic: str
+    english: str
+    words: List[WordRootOccurrenceVerseWord]
+
+
+class WordRootOccurrence(BaseModel):
     sura: int
     ayah: int
-    verse: str
-    word_num: int
+    verse: WordRootOccurrenceVerse
+    word_nums: List[int]
 
 
 class WordRootOccurrencesResponseModel(BaseModel):
     root: str
-    data: List[WordRootUsage]
+    data: List[WordRootOccurrence]
     total: int
     pagination: PaginationResponseModel
