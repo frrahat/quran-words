@@ -1,0 +1,28 @@
+.WordParts {
+  width: 100%;
+  border-collapse: collapse;
+
+  td {
+    padding: 5px;
+    border: 1px solid #fff;
+  }
+
+  &-arabic {
+    font-family: 'me_quran';
+    font-size: 20px;
+    direction: rtl;
+  }
+
+  &-word-arabic {
+    font-family: 'me_quran';
+    font-size: 20px;
+    direction: rtl;
+    padding: 5px;
+    align-self: center;
+  }
+
+  &-word-english {
+    padding: 5px;
+    align-self: center;
+  }
+}
