@@ -114,10 +114,10 @@ function Page() {
     const keyDownEventListener = (event) => {
       if (actionMap[event.code]) {
         actionMap[event.code]();
-      }
 
-      event.stopPropagation();
-      event.preventDefault();
+        event.stopPropagation();
+        event.preventDefault();
+      }
     };
 
     document.addEventListener('keydown', keyDownEventListener);
