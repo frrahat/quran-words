@@ -1,4 +1,6 @@
+import { MouseEventHandler, useRef } from 'react';
 import Segment from './Segment';
+import Tooltip from './Tooltip';
 
 import './WordParts.scss';
 
@@ -35,7 +37,7 @@ const getVerbFormsList = (verbForms: VerbForms | undefined) => {
   )
 };
 
-function WordParts({ wordData }: {
+function WordParts({ wordData, isWordRootPressed, onWordRootClickHandler }: {
   wordData: {
     word_num: number,
     arabic: string,
@@ -50,8 +52,12 @@ function WordParts({ wordData }: {
     verb_type?: string,
     lemma?: string,
     verb_forms?: VerbForms,
-  }
+  },
+  isWordRootPressed: boolean,
+  onWordRootClickHandler: MouseEventHandler<HTMLDivElement>,
 }) {
+  const wordRootRef = useRef(null);
+
   const { word_num, arabic, english, segments, root, lemma, verb_forms } = wordData;
 
   return (
@@ -78,7 +84,26 @@ function WordParts({ wordData }: {
               segments.map((segment, index) => <Segment key={`seg-${index}`} segment={segment} />)
             }
           </td>
-          <td><span className="WordParts-arabic">{root}</span></td>
+          <td>
+            {
+              root &&
+              <Tooltip
+                text={`Click to ${isWordRootPressed ? 'hide' : 'show'} occurrences of this word root`}
+                childRef={wordRootRef}
+              >
+                <div
+                  className={
+                    `WordParts-root WordParts-root${isWordRootPressed ? ' WordParts-root-pressed' : ''
+                    }`
+                  }
+                  onClick={onWordRootClickHandler}
+                  ref={wordRootRef}
+                >
+                  {root}
+                </div>
+              </Tooltip>
+            }
+          </td>
           <td><span className="WordParts-arabic">{lemma}</span></td>
           <td>{getVerbFormsList(verb_forms)}</td>
         </tr>

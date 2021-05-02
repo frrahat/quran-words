@@ -83,6 +83,16 @@ function Page() {
     }
   };
 
+  const onWordRootClickHandler = (event) => {
+    history.replace({
+      pathname: generateVersePagePath(suraNum, ayahNum),
+      search: generateQueryString(selectedWordIndex, !shouldShowOccurrences),
+    });
+
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
   useEffect(() => {
     async function _loadData() {
       let response = {
@@ -192,7 +202,11 @@ function Page() {
           </div>
           <VerseTranslation translation={data.english} />
           { data.words[selectedWordIndex] &&
-            <WordParts wordData={data.words[selectedWordIndex]}/>
+            <WordParts
+              wordData={data.words[selectedWordIndex]}
+              isWordRootPressed={shouldShowOccurrences}
+              onWordRootClickHandler={onWordRootClickHandler}
+            />
           }
           {
             shouldShowOccurrences &&
