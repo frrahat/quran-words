@@ -2,19 +2,18 @@
   padding: 0 4px;
   font-size: 30px;
   font-family: 'me_quran';
+  border-radius: 5px;
 
   &-selected {
     background-color: #4665d8 !important;
-    border-radius: 5px;
   }
 
   &-highlighted {
-    background-color: #4665d8 !important;
-    border-radius: 5px;
+    color: black;
+    background-color: yellow;
   }
 
   &:hover {
     background-color: #00acc1;
-    border-radius: 5px;
   }
 }
