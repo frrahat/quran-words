@@ -1,0 +1,13 @@
+.Occurrences {
+  background-color: rebeccapurple;
+
+  &-Item {
+    border: 1px dashed gold;
+  }
+
+  &-VerseLabel {
+    padding: 5px;
+    border-radius: 3px;
+    background-color: burlywood;
+  }
+}

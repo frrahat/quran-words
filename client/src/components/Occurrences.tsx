@@ -3,70 +3,80 @@ import { Link } from "react-router-dom";
 
 import axios from "axios";
 
+import Verse from './Verse';
 import { gerneratePageLink } from "../utils";
 import loaderGif from "../images/loader.gif";
 
-import './Occurrences.css';
+import './Occurrences.scss';
 
-function VerseLabel({ suraNum, ayahNum, wordIndex }: {
+type OccurrenceResponseDataItem = {
+  sura: number,
+  ayah: number,
+  word_nums: number[],
+  verse: {
+    arabic: string,
+    english: string,
+    words: {
+      word_num: number,
+      english: string,
+    }[],
+  }
+}
+
+type OccurrenceResponseData = {
+  data: OccurrenceResponseDataItem[],
+  total: number,
+  pagination: {
+    prev: string | null,
+    next: string | null,
+  },
+}
+
+function VerseLabel({ suraNum, ayahNum, wordIndexToNavigate }: {
   suraNum: number,
   ayahNum: number,
-  wordIndex: number,
+  wordIndexToNavigate: number,
 }) {
   return (
     <Link
       className="Occurrences-VerseLabel"
-      to={gerneratePageLink(suraNum, ayahNum, wordIndex, true)}
+      to={gerneratePageLink(suraNum, ayahNum, wordIndexToNavigate, true)}
     >
       {suraNum}:{ayahNum}
     </Link>
   )
 }
 
-function VerseWord({ word, isHighlighted }: {
-  word: string,
-  isHighlighted: boolean,
-}) {
-  return (
-    <span className={`Occurrences-VerseWord${isHighlighted ? '-highlighted' : ''}`}>
-      {word}
-    </span>
-  )
-}
-
-function Verse({ verse, wordIndex }: {
-  verse: string,
-  wordIndex: number,
-}) {
-  return (
-    <div className="Occurrences-Verse">
-      {verse.split(' ').map((word, index) =>
-        <VerseWord
-          key={`VerseWord-${index}`}
-          word={word}
-          isHighlighted={wordIndex === index}
-        />
-      )}
-    </div>
-  )
-}
-
-function OccurrencesItem({ suraNum, ayahNum, wordNums, verse }: {
+function OccurrencesItem({
+  suraNum,
+  ayahNum,
+  verseArabic,
+  verseEnglish,
+  verseWords,
+  occurredWordIndices,
+}: {
   suraNum: number,
   ayahNum: number,
-  wordNums: number[],
-  verse: string,
+  verseArabic: string,
+  verseEnglish: string,
+  verseWords: {
+    word_num: number,
+    english: string,
+  }[],
+  occurredWordIndices: number[],
 }) {
   return (
     <div className="Occurrences-Item">
       <VerseLabel
         suraNum={suraNum}
         ayahNum={ayahNum}
-        wordIndex={wordNums[0]}
+        wordIndexToNavigate={occurredWordIndices[0]}
       />
       <Verse
-        verse={verse}
-        wordIndex={wordNums[0]}
+        verseArabic={verseArabic}
+        verseWords={verseWords}
+        onSelectWordHandler={() => { }}
+        highlightedWordIndices={occurredWordIndices}
       />
     </div>
   )
@@ -76,11 +86,13 @@ function Occurrences({ word_root }: {
   word_root: string,
 }) {
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<OccurrenceResponseDataItem[]>([]);
 
   useEffect(() => {
     async function _loadOccurrences() {
-      let response;
+      let response: {
+        data?: OccurrenceResponseData,
+      } | undefined;
 
       try {
         response = await axios.get(`/api/occurrences?root=${word_root}`);
@@ -102,22 +114,26 @@ function Occurrences({ word_root }: {
   return (
     <div className="Occurrences">
       {
-        isLoading ?
-          <img src={loaderGif} alt="loader" />
-          : data.map(({
-            sura,
-            ayah,
-            word_nums,
-            verse: { arabic, english, words }
-          }, index) => (
-            <OccurrencesItem
-              key={`Occurrences-${index}`}
-              suraNum={sura}
-              ayahNum={ayah}
-              wordNums={word_nums}
-              verse={arabic}
-            />
-          ))
+        isLoading && <img src={loaderGif} alt="loader" />
+      }
+      {
+        !isLoading && data.length > 0 &&
+        data.map(({
+          sura,
+          ayah,
+          word_nums,
+          verse: { arabic, english, words }
+        }, index) => (
+          <OccurrencesItem
+            key={`Occurrences-${index}`}
+            suraNum={sura}
+            ayahNum={ayah}
+            verseArabic={arabic}
+            verseEnglish={english}
+            verseWords={words}
+            occurredWordIndices={word_nums.map(word_num => word_num - 1)}
+          />
+        ))
       }
     </div>
   )
