@@ -168,7 +168,7 @@ function Page() {
         : <div>
           <Verse
             verseArabic={data.arabic}
-            corpusWords={data.words}
+            verseWords={data.words}
             onSelectWordHandler={updateSelectedWordIndex}
             selectedWordIndex={selectedWordIndex} />
           <div className="Page-VerseExternalLinks">
