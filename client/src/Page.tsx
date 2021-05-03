@@ -267,7 +267,8 @@ function Page() {
         <a
           className="Page-gitHubLink"
           href="https://github.com/frrahat/quran-words"
-          target="_blank">
+          target="_blank"
+          rel="noreferrer">
           <img src={githubIcon} alt="github" />
           GitHub
         </a>
