@@ -10,12 +10,15 @@ import Paginator from "./components/Paginator";
 import SuraSelect from "./components/SuraSelect";
 import AyahSelect from "./components/AyahSelect";
 import Occurrences from "./components/Occurrences";
-import loaderGif from "./images/loader.gif";
 import { generateVersePagePath, generateQueryString, gerneratePageLink } from "./utils";
 import { suraList } from "./config";
+import { CorpusWordData } from "./types";
+
+import loaderGif from "./images/loader.gif";
+import githubIcon from "./images/github_mark.png";
 
 import './Page.scss';
-import { CorpusWordData } from "./types";
+
 
 type CorpusResponseData = {
   sura: number,
@@ -261,6 +264,13 @@ function Page() {
           onClick={onGoToTopClickHandler}>
           {String.fromCharCode(8648)}
         </button>
+        <a
+          className="Page-gitHubLink"
+          href="https://github.com/frrahat/quran-words"
+          target="_blank">
+          <img src={githubIcon} alt="github" />
+          GitHub
+        </a>
       </div>
     </div>
   );
