@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 
-import './Paginator.css';
+import './Paginator.scss';
 
-function PaginatorButton({ link, text, isDisabled }) {
+function PaginatorButton({ link, text, isDisabled }: {
+  link: string,
+  text: string,
+  isDisabled: boolean,
+}) {
   return (
     <button
       className="Paginator-btn"
@@ -15,7 +19,11 @@ function PaginatorButton({ link, text, isDisabled }) {
   )
 }
 
-function Paginator({ currentPage, max, getPageLink }) {
+function Paginator({ currentPage, max, getPageLink }: {
+  currentPage: number,
+  max: number,
+  getPageLink: (pageNum: number) => string,
+}) {
   return (
     <div className="Paginator">
       <PaginatorButton
