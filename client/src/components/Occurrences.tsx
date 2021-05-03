@@ -79,7 +79,7 @@ function OccurrencesItem({
       <Verse
         verseArabic={verseArabic}
         verseWords={verseWords}
-        onSelectWordHandler={() => { }}
+        onSelectWordHandler={() => { /* TODO */ }}
         highlightedWordIndices={occurredWordIndices}
       />
       <VerseTranslation translation={verseEnglish} />
