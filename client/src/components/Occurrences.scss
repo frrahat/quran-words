@@ -1,7 +1,9 @@
 .Occurrences {
-  background-color: rebeccapurple;
+  margin-top: 20px;
+  background-color: #2a2a2a;
 
   &-header {
+    padding: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,6 +32,7 @@
   }
 
   &-Item {
+    padding: 5px;
     display: flex;
     flex-flow: column;
     border: 1px dashed gold;
