@@ -23,7 +23,11 @@
     }
   }
 
-  &-body {}
+  &-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   &-Item {
     border: 1px dashed gold;
