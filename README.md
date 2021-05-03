@@ -6,7 +6,8 @@ Check it out here: https://quran-words.herokuapp.com
 
 ## Features
 
-Navigate to a specific verse and see the words, their meanings and parts of speech.
+- Navigate to a specific verse and see the words, their meanings and parts of speech.
+- Get all occurrences of a word root
 
 ## Navigations
 
@@ -21,6 +22,9 @@ Can be used to Select a sura from list of sura. Selection will navigate to the a
 
 <kbd>&larr;</kbd> <kbd>&rarr;</kbd> To navigate between
 the words in a verse
+
+### Get Word Root Occurrences
+Click on the root from the Word information table to get all occurrences of that root in the Quran
 
 ## Stack
 - FastAPI for Backend
