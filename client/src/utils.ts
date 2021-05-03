@@ -1,8 +1,8 @@
-const generateQueryString = (wordIndex: number, shouldShowOccurrences: boolean) => {
+const generateQueryString = (wordIndex: number, occurrencePage: number) => {
   let queryString = `word_index=${wordIndex}`;
 
-  if (shouldShowOccurrences) {
-    queryString += `&show_occurrences=${shouldShowOccurrences}`;
+  if (occurrencePage > 0) {
+    queryString += `&occurrence_page=${occurrencePage}`;
   }
 
   return queryString;
@@ -15,8 +15,8 @@ const gerneratePageLink = (
   suraNum: string | number,
   ayahNum: string | number,
   wordIndex: number,
-  shouldShowOccurrences: boolean) =>
-  `${generateVersePagePath(suraNum, ayahNum)}?${generateQueryString(wordIndex, shouldShowOccurrences)}`;
+  occurrencePage: number) =>
+  `${generateVersePagePath(suraNum, ayahNum)}?${generateQueryString(wordIndex, occurrencePage)}`;
 
 export {
   generateVersePagePath,

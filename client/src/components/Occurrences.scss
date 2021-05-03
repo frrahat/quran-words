@@ -1,6 +1,30 @@
 .Occurrences {
   background-color: rebeccapurple;
 
+  &-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+
+    &-title {
+      font-size: larger;
+      font-weight: 700;
+    }
+
+    &-subtitle {
+      display: block;
+    }
+
+    &-root {
+      font-family: 'me_quran';
+      margin: 0 5px;
+      direction: rtl;
+    }
+  }
+
+  &-body {}
+
   &-Item {
     border: 1px dashed gold;
   }
@@ -9,5 +33,10 @@
     padding: 5px;
     border-radius: 3px;
     background-color: burlywood;
+  }
+
+  &-footer {
+    display: flex;
+    justify-content: center;
   }
 }
