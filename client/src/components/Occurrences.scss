@@ -30,13 +30,20 @@
   }
 
   &-Item {
+    display: flex;
+    flex-flow: column;
     border: 1px dashed gold;
   }
 
   &-VerseLabel {
+    align-self: flex-end;
     padding: 5px;
     border-radius: 3px;
     background-color: burlywood;
+
+    &:hover {
+      background-color: white;
+    }
   }
 
   &-footer {
