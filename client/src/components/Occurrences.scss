@@ -59,5 +59,12 @@
   &-footer {
     display: flex;
     justify-content: center;
+    align-items: center;
+  }
+
+  &-goToTop {
+    cursor: pointer;
+    height: 30px;
+    border-radius: 5px;
   }
 }
