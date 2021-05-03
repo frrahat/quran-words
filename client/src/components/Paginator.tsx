@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import './Paginator.scss';
 
@@ -7,14 +7,21 @@ function PaginatorButton({ link, text, isDisabled }: {
   text: string,
   isDisabled: boolean,
 }) {
+  const history = useHistory();
+
   return (
     <button
       className="Paginator-btn"
       disabled={isDisabled}
+      onClick={(event) => {
+
+        history.push(link);
+
+        event.preventDefault();
+        event.stopPropagation();
+      }}
     >
-      {
-        isDisabled ? text : <Link to={link}>{text}</Link>
-      }
+      {text}
     </button>
   )
 }
