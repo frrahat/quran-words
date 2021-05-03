@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import Verse from './Verse';
+import VerseTranslation from "./VerseTranslation";
+import Paginator from "./Paginator";
 import { gerneratePageLink } from "../utils";
 import loaderGif from "../images/loader.gif";
 
 import './Occurrences.scss';
-import VerseTranslation from "./VerseTranslation";
+
 
 type OccurrenceResponseDataItem = {
   sura: number,
@@ -27,10 +29,11 @@ type OccurrenceResponseDataItem = {
 type OccurrenceResponseData = {
   data: OccurrenceResponseDataItem[],
   total: number,
-  pagination: {
-    prev: string | null,
-    next: string | null,
-  },
+}
+
+const initialData = {
+  data: [],
+  total: 0,
 }
 
 function VerseLabel({ suraNum, ayahNum, wordIndexToNavigate }: {
@@ -41,7 +44,7 @@ function VerseLabel({ suraNum, ayahNum, wordIndexToNavigate }: {
   return (
     <Link
       className="Occurrences-VerseLabel"
-      to={gerneratePageLink(suraNum, ayahNum, wordIndexToNavigate, true)}
+      to={gerneratePageLink(suraNum, ayahNum, wordIndexToNavigate, 1)}
     >
       {suraNum}:{ayahNum}
     </Link>
@@ -79,16 +82,18 @@ function OccurrencesItem({
         onSelectWordHandler={() => { }}
         highlightedWordIndices={occurredWordIndices}
       />
-      <VerseTranslation translation={verseEnglish}/>
+      <VerseTranslation translation={verseEnglish} />
     </div>
   )
 }
 
-function Occurrences({ word_root }: {
-  word_root: string,
+function Occurrences({ wordRoot, occurrencePage, paginatorLinkGenerator }: {
+  wordRoot: string,
+  occurrencePage: number,
+  paginatorLinkGenerator: (pageNum: number) => string,
 }) {
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState<OccurrenceResponseDataItem[]>([]);
+  const [data, setData] = useState<OccurrenceResponseData>(initialData);
 
   useEffect(() => {
     async function _loadOccurrences() {
@@ -96,14 +101,18 @@ function Occurrences({ word_root }: {
         data?: OccurrenceResponseData,
       } | undefined;
 
+      const offset = (occurrencePage - 1) * 10;
+
       try {
-        response = await axios.get(`/api/occurrences?root=${word_root}`);
+        response = await axios.get(
+          `/api/occurrences?root=${wordRoot}&offset=${offset}&pagesize=10`
+        );
       } catch (err) {
         console.error(err);
       }
 
       if (response && response.data) {
-        setData(response.data.data);
+        setData(response.data);
       }
 
       setIsLoading(false);
@@ -111,32 +120,50 @@ function Occurrences({ word_root }: {
 
     setIsLoading(true);
     _loadOccurrences();
-  }, [word_root]);
+  }, [wordRoot, occurrencePage]);
+
+  const maxPage = Math.ceil(data.total / 10);
 
   return (
     <div className="Occurrences">
-      {
-        isLoading && <img src={loaderGif} alt="loader" />
-      }
-      {
-        !isLoading && data.length > 0 &&
-        data.map(({
-          sura,
-          ayah,
-          word_nums,
-          verse: { arabic, english, words }
-        }, index) => (
-          <OccurrencesItem
-            key={`Occurrences-${index}`}
-            suraNum={sura}
-            ayahNum={ayah}
-            verseArabic={arabic}
-            verseEnglish={english}
-            verseWords={words}
-            occurredWordIndices={word_nums.map(word_num => word_num - 1)}
-          />
-        ))
-      }
+      <div className="Occurrences-header">
+        <div className="Occurrences-header-title">
+          Occurrences of <span className="Occurrences-header-root">{wordRoot}</span> ({data.total} words)
+        </div>
+        <div className="Occurrences-header-subtitle">
+          Showing page {occurrencePage} of {maxPage}
+        </div>
+      </div>
+      <div className="Occurrences-body">
+        {
+          isLoading && <img src={loaderGif} alt="loader" />
+        }
+        {
+          !isLoading && data.data.length > 0 &&
+          data.data.map(({
+            sura,
+            ayah,
+            word_nums,
+            verse: { arabic, english, words }
+          }, index) => (
+            <OccurrencesItem
+              key={`Occurrences-${index}`}
+              suraNum={sura}
+              ayahNum={ayah}
+              verseArabic={arabic}
+              verseEnglish={english}
+              verseWords={words}
+              occurredWordIndices={word_nums.map(word_num => word_num - 1)}
+            />
+          ))
+        }
+      </div>
+      <div className="Occurrences-footer">
+        <Paginator
+          currentPage={occurrencePage}
+          max={maxPage}
+          getPageLink={paginatorLinkGenerator} />
+      </div>
     </div>
   )
 }

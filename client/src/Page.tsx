@@ -47,13 +47,16 @@ const getExternalLink = (link: string, text: string): JSX.Element => (
   </a>
 );
 
+const getResetOccurrencePage = (prevOccurrencePage: number) =>
+  prevOccurrencePage > 0 ? 1 : 0
+
 function Page() {
   const { suraNum, ayahNum } = useParams<{ suraNum: string, ayahNum: string }>();
   const history = useHistory();
   const query = useQuery();
 
   const selectedWordIndex = parseInt(query.get('word_index') || '0');
-  const shouldShowOccurrences = query.get('show_occurrences') === 'true';
+  const occurrencePage = parseInt(query.get('occurrence_page') || '0');
 
   const [data, setData] = useState<CorpusResponseData>(initialData);
   const [isLoading, setIsLoading] = useState(true);
@@ -61,7 +64,7 @@ function Page() {
   const updateSelectedWordIndex = (index: number) => {
     if (data.words[index]) {
       history.replace({
-        search: generateQueryString(index, shouldShowOccurrences),
+        search: generateQueryString(index, getResetOccurrencePage(occurrencePage)),
       });
     }
   };
@@ -70,7 +73,7 @@ function Page() {
     if (ayahNumToMove > 0 && ayahNumToMove <= (suraList[parseInt(suraNum) - 1]?.ayah_count || 0)) {
       history.replace({
         pathname: generateVersePagePath(suraNum, ayahNumToMove),
-        search: generateQueryString(0, shouldShowOccurrences),
+        search: generateQueryString(0, getResetOccurrencePage(occurrencePage)),
       });
     }
   };
@@ -79,7 +82,7 @@ function Page() {
     if (selectedSuraNum !== parseInt(suraNum)) {
       history.replace({
         pathname: generateVersePagePath(selectedSuraNum, 1),
-        search: generateQueryString(0, shouldShowOccurrences),
+        search: generateQueryString(0, getResetOccurrencePage(occurrencePage)),
       });
     }
   };
@@ -88,7 +91,7 @@ function Page() {
     if (selectedAyahNum !== parseInt(ayahNum)) {
       history.replace({
         pathname: generateVersePagePath(suraNum, selectedAyahNum),
-        search: generateQueryString(0, shouldShowOccurrences),
+        search: generateQueryString(0, getResetOccurrencePage(occurrencePage)),
       });
     }
   };
@@ -96,7 +99,7 @@ function Page() {
   const onWordRootClickHandler: MouseEventHandler<HTMLElement> = (event) => {
     history.replace({
       pathname: generateVersePagePath(suraNum, ayahNum),
-      search: generateQueryString(selectedWordIndex, !shouldShowOccurrences),
+      search: generateQueryString(selectedWordIndex, occurrencePage > 0 ? 0 : 1),
     });
 
     event.preventDefault();
@@ -161,7 +164,7 @@ function Page() {
             currentPage={parseInt(suraNum)}
             max={114}
             getPageLink={
-              (currentPage: number) => gerneratePageLink(currentPage, 1, 0, shouldShowOccurrences)
+              (currentPage: number) => gerneratePageLink(currentPage, 1, 0, getResetOccurrencePage(occurrencePage))
             } />
         </div>
         <div>
@@ -176,7 +179,7 @@ function Page() {
             currentPage={parseInt(ayahNum)}
             max={suraList[parseInt(suraNum) - 1]?.ayah_count || 0}
             getPageLink={
-              (currentPage: number) => gerneratePageLink(suraNum, currentPage, 0, shouldShowOccurrences)
+              (currentPage: number) => gerneratePageLink(suraNum, currentPage, 0, getResetOccurrencePage(occurrencePage))
             } />
         </div>
       </div>
@@ -214,14 +217,22 @@ function Page() {
             {data.words[selectedWordIndex] &&
               <WordParts
                 wordData={data.words[selectedWordIndex]}
-                isWordRootPressed={shouldShowOccurrences}
+                isWordRootPressed={occurrencePage > 0}
                 onWordRootClickHandler={onWordRootClickHandler}
               />
             }
             {
-              shouldShowOccurrences &&
+              occurrencePage > 0 &&
               Boolean(data.words[selectedWordIndex]?.root) &&
-              <Occurrences word_root={data.words[selectedWordIndex]!.root!} />
+              <Occurrences
+                wordRoot={data.words[selectedWordIndex]!.root!}
+                occurrencePage={occurrencePage}
+                paginatorLinkGenerator={
+                  (currentPage: number) => gerneratePageLink(
+                    suraNum, ayahNum, selectedWordIndex, currentPage
+                  )
+                }
+              />
             }
           </div>
       }
