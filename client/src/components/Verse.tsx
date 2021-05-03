@@ -24,7 +24,7 @@ function Verse({
     verseWords: {
       english: string,
     }[],
-    onSelectWordHandler: Function,
+    onSelectWordHandler: (selectedWordIndex: number) => void,
     selectedWordIndex?: number,
     highlightedWordIndices?: number[],
   }) {
