@@ -113,7 +113,9 @@ function Page() {
       };
 
       try {
-        response = await axios.get(`/api/corpus/sura/${suraNum}/ayah/${ayahNum}`);
+        response = await axios.get(`/api/corpus/sura/${suraNum}/ayah/${ayahNum}`, {
+          cancelToken: cancelTokenSource.token,
+        });
       } catch (err) {
         console.error(err);
       };
@@ -122,8 +124,15 @@ function Page() {
       setIsLoading(false);
     }
 
+    const cancelTokenSource = axios.CancelToken.source();
+
     setIsLoading(true);
     _loadData();
+
+    return () => {
+      cancelTokenSource.cancel();
+    }
+
   }, [suraNum, ayahNum]);
 
   useEffect(() => {
