@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { MouseEventHandler, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 import axios from "axios";
@@ -97,6 +97,15 @@ function Occurrences({ wordRoot, occurrencePage, paginatorLinkGenerator }: {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<OccurrenceResponseData>(initialData);
 
+  const occurrencesTopRef = useRef<HTMLDivElement>(null);
+
+  const onGoToTopClickHandler: MouseEventHandler<HTMLButtonElement> = (event) => {
+    occurrencesTopRef.current?.scrollIntoView();
+
+    event.preventDefault();
+    event.stopPropagation();
+  };
+
   useEffect(() => {
     async function _loadOccurrences() {
       let response: {
@@ -136,7 +145,7 @@ function Occurrences({ wordRoot, occurrencePage, paginatorLinkGenerator }: {
 
   return (
     <div className="Occurrences">
-      <div className="Occurrences-header">
+      <div className="Occurrences-header" ref={occurrencesTopRef}>
         <div className="Occurrences-header-title">
           Occurrences of <span className="Occurrences-header-root">{wordRoot}</span> {
             isLoading ? '' : `(${data.total} words)`
@@ -182,6 +191,11 @@ function Occurrences({ wordRoot, occurrencePage, paginatorLinkGenerator }: {
           currentPage={occurrencePage}
           max={maxPage}
           getPageLink={paginatorLinkGenerator} />
+        <button
+          className="Occurrences-goToTop"
+          onClick={onGoToTopClickHandler}>
+            {String.fromCharCode(8593)}
+        </button>
       </div>
     </div>
   )
