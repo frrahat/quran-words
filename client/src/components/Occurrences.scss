@@ -36,10 +36,17 @@
     display: flex;
     flex-flow: column;
     border: 1px dashed gold;
+
+    &-verse {
+      display: flex;
+      flex-flow: row;
+      justify-content: flex-end;
+    }
   }
 
   &-VerseLabel {
-    align-self: flex-end;
+    align-self: center;
+    margin-left: 5px;
     padding: 5px;
     border-radius: 3px;
     background-color: burlywood;

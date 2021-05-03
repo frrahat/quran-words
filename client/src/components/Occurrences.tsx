@@ -71,17 +71,19 @@ function OccurrencesItem({
 }) {
   return (
     <div className="Occurrences-Item">
-      <VerseLabel
-        suraNum={suraNum}
-        ayahNum={ayahNum}
-        wordIndexToNavigate={occurredWordIndices[0]}
-      />
-      <Verse
-        verseArabic={verseArabic}
-        verseWords={verseWords}
-        onSelectWordHandler={() => { /* TODO */ }}
-        highlightedWordIndices={occurredWordIndices}
-      />
+      <div className="Occurrences-Item-verse">
+        <Verse
+          verseArabic={verseArabic}
+          verseWords={verseWords}
+          onSelectWordHandler={() => { /* TODO */ }}
+          highlightedWordIndices={occurredWordIndices}
+        />
+        <VerseLabel
+          suraNum={suraNum}
+          ayahNum={ayahNum}
+          wordIndexToNavigate={occurredWordIndices[0]}
+        />
+      </div>
       <VerseTranslation translation={verseEnglish} />
     </div>
   )
