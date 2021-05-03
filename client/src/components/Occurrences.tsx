@@ -136,34 +136,43 @@ function Occurrences({ wordRoot, occurrencePage, paginatorLinkGenerator }: {
     <div className="Occurrences">
       <div className="Occurrences-header">
         <div className="Occurrences-header-title">
-          Occurrences of <span className="Occurrences-header-root">{wordRoot}</span> ({data.total} words)
+          Occurrences of <span className="Occurrences-header-root">{wordRoot}</span> {
+            isLoading ? '' : `(${data.total} words)`
+          }
         </div>
-        <div className="Occurrences-header-subtitle">
-          Showing page {occurrencePage} of {maxPage}
-        </div>
+        {
+          !isLoading &&
+          <div className="Occurrences-header-subtitle">
+            Showing page {occurrencePage} of {maxPage}
+          </div>
+        }
       </div>
       <div className="Occurrences-body">
         {
-          isLoading && <img src={loaderGif} alt="loader" />
-        }
-        {
-          !isLoading && data.data.length > 0 &&
-          data.data.map(({
-            sura,
-            ayah,
-            word_nums,
-            verse: { arabic, english, words }
-          }, index) => (
-            <OccurrencesItem
-              key={`Occurrences-${index}`}
-              suraNum={sura}
-              ayahNum={ayah}
-              verseArabic={arabic}
-              verseEnglish={english}
-              verseWords={words}
-              occurredWordIndices={word_nums.map(word_num => word_num - 1)}
-            />
-          ))
+          isLoading ?
+            <div className="Occurrences-loader">
+              <img src={loaderGif} alt="loader" />
+            </div>
+            : (
+              data.data.length > 0 ?
+                data.data.map(({
+                  sura,
+                  ayah,
+                  word_nums,
+                  verse: { arabic, english, words }
+                }, index) => (
+                  <OccurrencesItem
+                    key={`Occurrences-${index}`}
+                    suraNum={sura}
+                    ayahNum={ayah}
+                    verseArabic={arabic}
+                    verseEnglish={english}
+                    verseWords={words}
+                    occurredWordIndices={word_nums.map(word_num => word_num - 1)}
+                  />
+                ))
+                : null
+            )
         }
       </div>
       <div className="Occurrences-footer">
