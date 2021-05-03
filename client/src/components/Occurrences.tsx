@@ -105,7 +105,9 @@ function Occurrences({ wordRoot, occurrencePage, paginatorLinkGenerator }: {
 
       try {
         response = await axios.get(
-          `/api/occurrences?root=${wordRoot}&offset=${offset}&pagesize=10`
+          `/api/occurrences?root=${wordRoot}&offset=${offset}&pagesize=10`, {
+          cancelToken: cancelTokenSource.token,
+        }
         );
       } catch (err) {
         console.error(err);
@@ -118,8 +120,14 @@ function Occurrences({ wordRoot, occurrencePage, paginatorLinkGenerator }: {
       setIsLoading(false);
     }
 
+    const cancelTokenSource = axios.CancelToken.source();
+
     setIsLoading(true);
     _loadOccurrences();
+
+    return () => {
+      cancelTokenSource.cancel();
+    }
   }, [wordRoot, occurrencePage]);
 
   const maxPage = Math.ceil(data.total / 10);
