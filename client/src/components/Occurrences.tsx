@@ -193,6 +193,7 @@ function Occurrences({ wordRoot, occurrencePage, paginatorLinkGenerator }: {
           getPageLink={paginatorLinkGenerator} />
         <button
           className="Occurrences-goToTop"
+          title="Go to top of the list"
           onClick={onGoToTopClickHandler}>
             {String.fromCharCode(8593)}
         </button>
