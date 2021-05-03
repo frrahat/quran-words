@@ -1,18 +1,9 @@
 import { MouseEventHandler, useRef } from 'react';
 import Segment from './Segment';
 import Tooltip from './Tooltip';
+import { CorpusWordData, VerbForms } from '../types';
 
 import './WordParts.scss';
-
-type VerbForms = {
-  root: string,
-  verb_type: string,
-  perfect?: string,
-  imperative?: string,
-  active_participle?: string,
-  passive_participle?: string,
-  verbal_noun?: string,
-}
 
 const getVerbFormListItem = (verbFormName: string, verbFormValue: string | undefined) =>
   <li><b>{verbFormName}</b>: <span className="WordParts-arabic">{verbFormValue}</span></li>
@@ -38,21 +29,7 @@ const getVerbFormsList = (verbForms: VerbForms | undefined) => {
 };
 
 function WordParts({ wordData, isWordRootPressed, onWordRootClickHandler }: {
-  wordData: {
-    word_num: number,
-    arabic: string,
-    english: string,
-    segments: {
-      arabic?: string,
-      pos: string,
-      pos_full: string,
-      pos_color: string,
-    }[],
-    root?: string,
-    verb_type?: string,
-    lemma?: string,
-    verb_forms?: VerbForms,
-  },
+  wordData: CorpusWordData,
   isWordRootPressed: boolean,
   onWordRootClickHandler: MouseEventHandler<HTMLDivElement>,
 }) {

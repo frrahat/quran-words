@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import { useHistory, useLocation, useParams } from "react-router";
 
 import axios from 'axios';
@@ -14,20 +14,30 @@ import loaderGif from "./images/loader.gif";
 import { generateVersePagePath, generateQueryString, gerneratePageLink } from "./utils";
 import { suraList } from "./config";
 
-import './Page.css';
+import './Page.scss';
+import { CorpusWordData } from "./types";
 
+type CorpusResponseData = {
+  sura: number,
+  ayah: number,
+  arabic: string,
+  english: string,
+  words: CorpusWordData[],
+}
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
 const initialData = {
+  sura: 0,
+  ayah: 0,
   arabic: '',
   english: 'Not Found',
   words: [],
 };
 
-const getExternalLink = (link, text) => (
+const getExternalLink = (link: string, text: string): JSX.Element => (
   <a
     key={text}
     href={link}
@@ -38,17 +48,17 @@ const getExternalLink = (link, text) => (
 );
 
 function Page() {
-  const { suraNum, ayahNum } = useParams();
+  const { suraNum, ayahNum } = useParams<{ suraNum: string, ayahNum: string }>();
   const history = useHistory();
   const query = useQuery();
 
-  const selectedWordIndex = parseInt(query.get('word_index')) || 0;
+  const selectedWordIndex = parseInt(query.get('word_index') || '0');
   const shouldShowOccurrences = query.get('show_occurrences') === 'true';
 
-  const [data, setData] = useState(initialData);
+  const [data, setData] = useState<CorpusResponseData>(initialData);
   const [isLoading, setIsLoading] = useState(true);
 
-  const updateSelectedWordIndex = (index) => {
+  const updateSelectedWordIndex = (index: number) => {
     if (data.words[index]) {
       history.replace({
         search: generateQueryString(index, shouldShowOccurrences),
@@ -56,8 +66,8 @@ function Page() {
     }
   };
 
-  const moveToAyah = (ayahNumToMove) => {
-    if (ayahNumToMove > 0 && ayahNumToMove <= (suraList[suraNum - 1]?.ayah_count || 0)) {
+  const moveToAyah = (ayahNumToMove: number) => {
+    if (ayahNumToMove > 0 && ayahNumToMove <= (suraList[parseInt(suraNum) - 1]?.ayah_count || 0)) {
       history.replace({
         pathname: generateVersePagePath(suraNum, ayahNumToMove),
         search: generateQueryString(0, shouldShowOccurrences),
@@ -65,7 +75,7 @@ function Page() {
     }
   };
 
-  const suraSelectionHandler = (selectedSuraNum) => {
+  const suraSelectionHandler = (selectedSuraNum: number) => {
     if (selectedSuraNum !== parseInt(suraNum)) {
       history.replace({
         pathname: generateVersePagePath(selectedSuraNum, 1),
@@ -74,7 +84,7 @@ function Page() {
     }
   };
 
-  const ayahSelectionHandler = (selectedAyahNum) => {
+  const ayahSelectionHandler = (selectedAyahNum: number) => {
     if (selectedAyahNum !== parseInt(ayahNum)) {
       history.replace({
         pathname: generateVersePagePath(suraNum, selectedAyahNum),
@@ -83,7 +93,7 @@ function Page() {
     }
   };
 
-  const onWordRootClickHandler = (event) => {
+  const onWordRootClickHandler: MouseEventHandler<HTMLElement> = (event) => {
     history.replace({
       pathname: generateVersePagePath(suraNum, ayahNum),
       search: generateQueryString(selectedWordIndex, !shouldShowOccurrences),
@@ -95,7 +105,7 @@ function Page() {
 
   useEffect(() => {
     async function _loadData() {
-      let response = {
+      let response: { data: CorpusResponseData } = {
         data: initialData,
       };
 
@@ -114,14 +124,14 @@ function Page() {
   }, [suraNum, ayahNum]);
 
   useEffect(() => {
-    const actionMap = {
+    const actionMap: { [action: string]: Function } = {
       'ArrowRight': () => updateSelectedWordIndex(selectedWordIndex - 1),
       'ArrowLeft': () => updateSelectedWordIndex(selectedWordIndex + 1),
       'ArrowUp': () => moveToAyah(parseInt(ayahNum) - 1),
       'ArrowDown': () => moveToAyah(parseInt(ayahNum) + 1),
     }
 
-    const keyDownEventListener = (event) => {
+    const keyDownEventListener = (event: KeyboardEvent) => {
       if (actionMap[event.code]) {
         actionMap[event.code]();
 
@@ -151,7 +161,7 @@ function Page() {
             currentPage={parseInt(suraNum)}
             max={114}
             getPageLink={
-              (currentPage) => gerneratePageLink(currentPage, 1, 0, shouldShowOccurrences)
+              (currentPage: number) => gerneratePageLink(currentPage, 1, 0, shouldShowOccurrences)
             } />
         </div>
         <div>
@@ -164,56 +174,56 @@ function Page() {
           />
           <Paginator
             currentPage={parseInt(ayahNum)}
-            max={suraList[suraNum - 1]?.ayah_count || 0}
+            max={suraList[parseInt(suraNum) - 1]?.ayah_count || 0}
             getPageLink={
-              (currentPage) => gerneratePageLink(suraNum, currentPage, 0, shouldShowOccurrences)
+              (currentPage: number) => gerneratePageLink(suraNum, currentPage, 0, shouldShowOccurrences)
             } />
         </div>
       </div>
       {
         isLoading ?
-        <div className="Page-Loader">
-          <img src={loaderGif} alt="loader" />
-        </div>
-        : <div>
-          <Verse
-            verseArabic={data.arabic}
-            verseWords={data.words}
-            onSelectWordHandler={updateSelectedWordIndex}
-            selectedWordIndex={selectedWordIndex} />
-          <div className="Page-VerseExternalLinks">
+          <div className="Page-Loader">
+            <img src={loaderGif} alt="loader" />
+          </div>
+          : <div>
+            <Verse
+              verseArabic={data.arabic}
+              verseWords={data.words}
+              onSelectWordHandler={updateSelectedWordIndex}
+              selectedWordIndex={selectedWordIndex} />
+            <div className="Page-VerseExternalLinks">
+              {
+                data.arabic.length > 0 &&
+                [
+                  {
+                    link: `https://quran.com/${suraNum}/${ayahNum}`,
+                    text: "quran.com",
+                  },
+                  {
+                    link: `https://corpus.quran.com/wordbyword.jsp?chapter=${suraNum}&verse=${ayahNum}`,
+                    text: "corpus.quran.com wordbyword",
+                  },
+                  {
+                    link: `https://corpus.quran.com/treebank.jsp?chapter=${suraNum}&verse=${ayahNum}`,
+                    text: "corpus.quran.com treebank",
+                  }
+                ].map(({ link, text }) => getExternalLink(link, text))
+              }
+            </div>
+            <VerseTranslation translation={data.english} />
+            {data.words[selectedWordIndex] &&
+              <WordParts
+                wordData={data.words[selectedWordIndex]}
+                isWordRootPressed={shouldShowOccurrences}
+                onWordRootClickHandler={onWordRootClickHandler}
+              />
+            }
             {
-              data.arabic.length > 0 &&
-              [
-                {
-                  link: `https://quran.com/${suraNum}/${ayahNum}`,
-                  text: "quran.com",
-                },
-                {
-                  link: `https://corpus.quran.com/wordbyword.jsp?chapter=${suraNum}&verse=${ayahNum}`,
-                  text: "corpus.quran.com wordbyword",
-                },
-                {
-                  link: `https://corpus.quran.com/treebank.jsp?chapter=${suraNum}&verse=${ayahNum}`,
-                  text: "corpus.quran.com treebank",
-                }
-              ].map(({ link, text}) => getExternalLink(link, text))
+              shouldShowOccurrences &&
+              Boolean(data.words[selectedWordIndex]?.root) &&
+              <Occurrences word_root={data.words[selectedWordIndex]!.root!} />
             }
           </div>
-          <VerseTranslation translation={data.english} />
-          { data.words[selectedWordIndex] &&
-            <WordParts
-              wordData={data.words[selectedWordIndex]}
-              isWordRootPressed={shouldShowOccurrences}
-              onWordRootClickHandler={onWordRootClickHandler}
-            />
-          }
-          {
-            shouldShowOccurrences &&
-            Boolean(data.words[selectedWordIndex]?.root) &&
-            <Occurrences word_root={data.words[selectedWordIndex]?.root} />
-          }
-        </div>
       }
     </div>
   );
