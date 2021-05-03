@@ -43,4 +43,19 @@
       margin: 5px;
     }
   }
+
+  &-footer {
+    margin-top: 20px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row;
+    border-top: 1px dashed yellowgreen;
+  }
+
+  &-goToTop {
+    cursor: pointer;
+    height: 30px;
+  }
 }
