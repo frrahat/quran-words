@@ -148,7 +148,7 @@ function Occurrences({ wordRoot, occurrencePage, paginatorLinkGenerator }: {
       <div className="Occurrences-header" ref={occurrencesTopRef}>
         <div className="Occurrences-header-title">
           Occurrences of <span className="Occurrences-header-root">{wordRoot}</span> {
-            isLoading ? '' : `(${data.total} words)`
+            isLoading ? '' : `(${data.total} verses)`
           }
         </div>
         {
@@ -195,7 +195,7 @@ function Occurrences({ wordRoot, occurrencePage, paginatorLinkGenerator }: {
           className="Occurrences-goToTop"
           title="Go to top of the list"
           onClick={onGoToTopClickHandler}>
-            {String.fromCharCode(8593)}
+          {String.fromCharCode(8593)}
         </button>
       </div>
     </div>
