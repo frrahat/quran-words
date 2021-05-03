@@ -1,4 +1,4 @@
-import { MouseEventHandler, useEffect, useState } from "react";
+import { MouseEventHandler, useEffect, useRef, useState } from "react";
 import { useHistory, useLocation, useParams } from "react-router";
 
 import axios from 'axios';
@@ -60,6 +60,15 @@ function Page() {
 
   const [data, setData] = useState<CorpusResponseData>(initialData);
   const [isLoading, setIsLoading] = useState(true);
+
+  const pageTopRef = useRef<HTMLDivElement>(null);
+
+  const onGoToTopClickHandler: MouseEventHandler = (event) => {
+    pageTopRef.current?.scrollIntoView();
+
+    event.preventDefault();
+    event.stopPropagation();
+  }
 
   const updateSelectedWordIndex = (index: number) => {
     if (data.words[index]) {
@@ -160,7 +169,7 @@ function Page() {
   });
 
   return (
-    <div className="Page">
+    <div className="Page" ref={pageTopRef}>
       <div className="Page-Paginators">
         <div>
           Sura:
@@ -245,6 +254,14 @@ function Page() {
             }
           </div>
       }
+      <div className="Page-footer">
+        <button
+          className="Page-goToTop"
+          title="Go to top of the page"
+          onClick={onGoToTopClickHandler}>
+          {String.fromCharCode(8648)}
+        </button>
+      </div>
     </div>
   );
 }
