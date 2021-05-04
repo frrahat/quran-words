@@ -10,6 +10,10 @@ lint:
 	flake8 server/
 	yarn --cwd client/ eslint
 
+generate-requirements:
+	pip install pip-tools
+	pip-compile --no-emit-index-url --output-file=server/requirements.txt server/requirements-explicit.txt
+
 setup:
 	echo "setting up server"
 	if [ -z "${VIRTUAL_ENV}" ] ; then \
