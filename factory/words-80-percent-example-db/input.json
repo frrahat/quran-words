@@ -1,0 +1,7506 @@
+[
+    {
+        "level_num": 1,
+        "serial_num": 1,
+        "arabic": "هَٰذَا",
+        "english": "this (male)",
+        "examples": []
+    },
+    {
+        "level_num": 1,
+        "serial_num": 2,
+        "arabic": "هَٰذِهِ",
+        "english": "this (female), these (for broken plural)",
+        "examples": []
+    },
+    {
+        "level_num": 1,
+        "serial_num": 3,
+        "arabic": "هَٰؤُلَاءِ",
+        "english": "these",
+        "examples": []
+    },
+    {
+        "level_num": 1,
+        "serial_num": 4,
+        "arabic": "ذالِكَ",
+        "english": "that (male)",
+        "examples": []
+    },
+    {
+        "level_num": 1,
+        "serial_num": 5,
+        "arabic": "تِلْكَ",
+        "english": "that (female), those (for broken plural)",
+        "examples": []
+    },
+    {
+        "level_num": 1,
+        "serial_num": 6,
+        "arabic": "أُوْلَآئِكَ",
+        "english": "those",
+        "examples": []
+    },
+    {
+        "level_num": 1,
+        "serial_num": 7,
+        "arabic": "الَّذِي",
+        "english": "he who",
+        "examples": []
+    },
+    {
+        "level_num": 1,
+        "serial_num": 8,
+        "arabic": "الَّتِي",
+        "english": "she who, those who (for broken plural)",
+        "examples": []
+    },
+    {
+        "level_num": 1,
+        "serial_num": 9,
+        "arabic": "الَّذِينَ",
+        "english": "those who",
+        "examples": []
+    },
+    {
+        "level_num": 2,
+        "serial_num": 1,
+        "arabic": "هَٰذَا",
+        "english": "this (male)",
+        "examples": []
+    },
+    {
+        "level_num": 2,
+        "serial_num": 2,
+        "arabic": "ذالِكَ",
+        "english": "that (male)",
+        "examples": []
+    },
+    {
+        "level_num": 2,
+        "serial_num": 3,
+        "arabic": "هَٰذِهِ",
+        "english": "this (female), these (for broken plural)",
+        "examples": []
+    },
+    {
+        "level_num": 2,
+        "serial_num": 4,
+        "arabic": "تِلْكَ",
+        "english": "that (female), those (for broken plural)",
+        "examples": []
+    },
+    {
+        "level_num": 2,
+        "serial_num": 5,
+        "arabic": "هَٰؤُلَاءِ",
+        "english": "these",
+        "examples": []
+    },
+    {
+        "level_num": 2,
+        "serial_num": 6,
+        "arabic": "أُوْلَآئِكَ",
+        "english": "those",
+        "examples": []
+    },
+    {
+        "level_num": 2,
+        "serial_num": 7,
+        "arabic": "الَّذِي",
+        "english": "he who",
+        "examples": []
+    },
+    {
+        "level_num": 2,
+        "serial_num": 8,
+        "arabic": "الَّتِي",
+        "english": "she who, those who (for broken plural)",
+        "examples": []
+    },
+    {
+        "level_num": 2,
+        "serial_num": 9,
+        "arabic": "الَّذِينَ",
+        "english": "those who",
+        "examples": []
+    },
+    {
+        "level_num": 3,
+        "serial_num": 1,
+        "arabic": "لَا إِلهَ",
+        "english": "(There is) no god",
+        "examples": []
+    },
+    {
+        "level_num": 3,
+        "serial_num": 2,
+        "arabic": "إِلَّا الله",
+        "english": "except Allah",
+        "examples": []
+    },
+    {
+        "level_num": 3,
+        "serial_num": 3,
+        "arabic": "كَلّا",
+        "english": "never, certainly not",
+        "examples": []
+    },
+    {
+        "level_num": 3,
+        "serial_num": 4,
+        "arabic": "لَنْ",
+        "english": "not (for future)",
+        "examples": []
+    },
+    {
+        "level_num": 3,
+        "serial_num": 5,
+        "arabic": "لَمْ",
+        "english": "not (for past)",
+        "examples": []
+    },
+    {
+        "level_num": 3,
+        "serial_num": 6,
+        "arabic": "مَا",
+        "english": "not",
+        "examples": []
+    },
+    {
+        "level_num": 3,
+        "serial_num": 7,
+        "arabic": "لَيْسَ ",
+        "english": "not, it is not (male)",
+        "examples": []
+    },
+    {
+        "level_num": 3,
+        "serial_num": 8,
+        "arabic": "لَيْسَتْ ",
+        "english": "not, it is not (female)",
+        "examples": []
+    },
+    {
+        "level_num": 3,
+        "serial_num": 9,
+        "arabic": "بَلَى ",
+        "english": "yes indeed",
+        "examples": []
+    },
+    {
+        "level_num": 3,
+        "serial_num": 10,
+        "arabic": "غَيْر",
+        "english": "not, other than",
+        "examples": []
+    },
+    {
+        "level_num": 3,
+        "serial_num": 11,
+        "arabic": "دُونَ",
+        "english": "besides",
+        "examples": []
+    },
+    {
+        "level_num": 3,
+        "serial_num": 12,
+        "arabic": "إِلَّا",
+        "english": "except, unless, if not",
+        "examples": []
+    },
+    {
+        "level_num": 3,
+        "serial_num": 13,
+        "arabic": "نَعَمْ",
+        "english": "yes",
+        "examples": []
+    },
+    {
+        "level_num": 4,
+        "serial_num": 1,
+        "arabic": "لَا إِلهَ",
+        "english": "(There is) no god",
+        "examples": []
+    },
+    {
+        "level_num": 4,
+        "serial_num": 2,
+        "arabic": "إِلَّا الله",
+        "english": "except Allah",
+        "examples": []
+    },
+    {
+        "level_num": 4,
+        "serial_num": 3,
+        "arabic": "كَلّا",
+        "english": "never, certainly not",
+        "examples": []
+    },
+    {
+        "level_num": 4,
+        "serial_num": 4,
+        "arabic": "لَنْ",
+        "english": "not (for future)",
+        "examples": []
+    },
+    {
+        "level_num": 4,
+        "serial_num": 5,
+        "arabic": "لَمْ",
+        "english": "not (for past)",
+        "examples": []
+    },
+    {
+        "level_num": 4,
+        "serial_num": 6,
+        "arabic": "مَا",
+        "english": "not",
+        "examples": []
+    },
+    {
+        "level_num": 4,
+        "serial_num": 7,
+        "arabic": "لَيْسَ ",
+        "english": "not, it is not (male)",
+        "examples": []
+    },
+    {
+        "level_num": 4,
+        "serial_num": 8,
+        "arabic": "لَيْسَتْ ",
+        "english": "not, it is not (female)",
+        "examples": []
+    },
+    {
+        "level_num": 4,
+        "serial_num": 9,
+        "arabic": "بَلَى ",
+        "english": "yes indeed",
+        "examples": []
+    },
+    {
+        "level_num": 4,
+        "serial_num": 10,
+        "arabic": "غَيْر",
+        "english": "not, other than",
+        "examples": []
+    },
+    {
+        "level_num": 4,
+        "serial_num": 11,
+        "arabic": "دُونَ",
+        "english": "besides",
+        "examples": []
+    },
+    {
+        "level_num": 4,
+        "serial_num": 12,
+        "arabic": "إِلَّا",
+        "english": "except, unless, if not",
+        "examples": []
+    },
+    {
+        "level_num": 4,
+        "serial_num": 13,
+        "arabic": "نَعَمْ",
+        "english": "yes",
+        "examples": []
+    },
+    {
+        "level_num": 5,
+        "serial_num": 1,
+        "arabic": "هُ...",
+        "english": "his",
+        "examples": []
+    },
+    {
+        "level_num": 5,
+        "serial_num": 2,
+        "arabic": "هَا... ",
+        "english": "her, their (for broken plural)",
+        "examples": []
+    },
+    {
+        "level_num": 5,
+        "serial_num": 3,
+        "arabic": "كَ... ",
+        "english": "your (male)",
+        "examples": []
+    },
+    {
+        "level_num": 5,
+        "serial_num": 4,
+        "arabic": "كِ...",
+        "english": "your (female)",
+        "examples": []
+    },
+    {
+        "level_num": 5,
+        "serial_num": 5,
+        "arabic": "(يْ (نِي...",
+        "english": "my, me",
+        "examples": []
+    },
+    {
+        "level_num": 5,
+        "serial_num": 6,
+        "arabic": "هُمْ...",
+        "english": "their (male)",
+        "examples": []
+    },
+    {
+        "level_num": 5,
+        "serial_num": 7,
+        "arabic": "هُنَّ...",
+        "english": "their (female)",
+        "examples": []
+    },
+    {
+        "level_num": 5,
+        "serial_num": 8,
+        "arabic": "كُمْ... ",
+        "english": "your (male plural)",
+        "examples": []
+    },
+    {
+        "level_num": 5,
+        "serial_num": 9,
+        "arabic": "كُنَّ...",
+        "english": "your (female plural)",
+        "examples": []
+    },
+    {
+        "level_num": 5,
+        "serial_num": 10,
+        "arabic": "نَا...",
+        "english": "our",
+        "examples": []
+    },
+    {
+        "level_num": 5,
+        "serial_num": 11,
+        "arabic": "هُمَا... ",
+        "english": "their (dual)",
+        "examples": []
+    },
+    {
+        "level_num": 5,
+        "serial_num": 12,
+        "arabic": "كُمَا...",
+        "english": "your (dual)",
+        "examples": []
+    },
+    {
+        "level_num": 6,
+        "serial_num": 1,
+        "arabic": "هُ...",
+        "english": "his",
+        "examples": []
+    },
+    {
+        "level_num": 6,
+        "serial_num": 2,
+        "arabic": "هُمْ...",
+        "english": "their (male)",
+        "examples": []
+    },
+    {
+        "level_num": 6,
+        "serial_num": 3,
+        "arabic": "كَ... ",
+        "english": "your (male)",
+        "examples": []
+    },
+    {
+        "level_num": 6,
+        "serial_num": 4,
+        "arabic": "كُمْ... ",
+        "english": "your (male plural)",
+        "examples": []
+    },
+    {
+        "level_num": 6,
+        "serial_num": 5,
+        "arabic": "(يْ (نِي...",
+        "english": "my, me",
+        "examples": []
+    },
+    {
+        "level_num": 6,
+        "serial_num": 6,
+        "arabic": "نَا...",
+        "english": "our",
+        "examples": []
+    },
+    {
+        "level_num": 6,
+        "serial_num": 7,
+        "arabic": "هَا... ",
+        "english": "her, their (for broken plural)",
+        "examples": []
+    },
+    {
+        "level_num": 6,
+        "serial_num": 8,
+        "arabic": "هُنَّ...",
+        "english": "their (female)",
+        "examples": []
+    },
+    {
+        "level_num": 6,
+        "serial_num": 9,
+        "arabic": "كِ...",
+        "english": "your (female)",
+        "examples": []
+    },
+    {
+        "level_num": 6,
+        "serial_num": 10,
+        "arabic": "كُنَّ...",
+        "english": "your (female plural)",
+        "examples": []
+    },
+    {
+        "level_num": 6,
+        "serial_num": 11,
+        "arabic": "هُمَا... ",
+        "english": "their (dual)",
+        "examples": []
+    },
+    {
+        "level_num": 6,
+        "serial_num": 12,
+        "arabic": "كُمَا...",
+        "english": "your (dual)",
+        "examples": []
+    },
+    {
+        "level_num": 7,
+        "serial_num": 1,
+        "arabic": "هُوَ",
+        "english": "he",
+        "examples": []
+    },
+    {
+        "level_num": 7,
+        "serial_num": 2,
+        "arabic": "هِيَ",
+        "english": "she, they (for broken plural)",
+        "examples": []
+    },
+    {
+        "level_num": 7,
+        "serial_num": 3,
+        "arabic": "أَنْتَ ",
+        "english": "you (male)",
+        "examples": []
+    },
+    {
+        "level_num": 7,
+        "serial_num": 4,
+        "arabic": "أَنْتِ ",
+        "english": "you (female)",
+        "examples": []
+    },
+    {
+        "level_num": 7,
+        "serial_num": 5,
+        "arabic": "أَنَا ",
+        "english": "I ",
+        "examples": []
+    },
+    {
+        "level_num": 7,
+        "serial_num": 6,
+        "arabic": "هُمْ",
+        "english": "they (male)",
+        "examples": []
+    },
+    {
+        "level_num": 7,
+        "serial_num": 7,
+        "arabic": "هُنَّ ",
+        "english": "they (female)",
+        "examples": []
+    },
+    {
+        "level_num": 7,
+        "serial_num": 8,
+        "arabic": "أَنْتُم",
+        "english": "you (male plural)",
+        "examples": []
+    },
+    {
+        "level_num": 7,
+        "serial_num": 9,
+        "arabic": "أَنْتُنَّ",
+        "english": "you (female plural)",
+        "examples": []
+    },
+    {
+        "level_num": 7,
+        "serial_num": 10,
+        "arabic": "نَحْنُ",
+        "english": "we",
+        "examples": []
+    },
+    {
+        "level_num": 7,
+        "serial_num": 11,
+        "arabic": "هُمَا",
+        "english": "they (dual)",
+        "examples": []
+    },
+    {
+        "level_num": 7,
+        "serial_num": 12,
+        "arabic": "أَنْتُمَا",
+        "english": "you (dual)",
+        "examples": []
+    },
+    {
+        "level_num": 8,
+        "serial_num": 1,
+        "arabic": "هُوَ",
+        "english": "he",
+        "examples": []
+    },
+    {
+        "level_num": 8,
+        "serial_num": 2,
+        "arabic": "هُمْ",
+        "english": "they (male)",
+        "examples": []
+    },
+    {
+        "level_num": 8,
+        "serial_num": 3,
+        "arabic": "أَنْتَ ",
+        "english": "you (male)",
+        "examples": []
+    },
+    {
+        "level_num": 8,
+        "serial_num": 4,
+        "arabic": "أَنْتُم",
+        "english": "you (male plural)",
+        "examples": []
+    },
+    {
+        "level_num": 8,
+        "serial_num": 5,
+        "arabic": "أَنَا ",
+        "english": "I ",
+        "examples": []
+    },
+    {
+        "level_num": 8,
+        "serial_num": 6,
+        "arabic": "نَحْنُ",
+        "english": "we",
+        "examples": []
+    },
+    {
+        "level_num": 8,
+        "serial_num": 7,
+        "arabic": "هِيَ",
+        "english": "she, they (for broken plural)",
+        "examples": []
+    },
+    {
+        "level_num": 8,
+        "serial_num": 8,
+        "arabic": "هُنَّ ",
+        "english": "they (female)",
+        "examples": []
+    },
+    {
+        "level_num": 8,
+        "serial_num": 9,
+        "arabic": "أَنْتِ ",
+        "english": "you (female)",
+        "examples": []
+    },
+    {
+        "level_num": 8,
+        "serial_num": 10,
+        "arabic": "أَنْتُنَّ",
+        "english": "you (female plural)",
+        "examples": []
+    },
+    {
+        "level_num": 8,
+        "serial_num": 11,
+        "arabic": "هُمَا",
+        "english": "they (dual)",
+        "examples": []
+    },
+    {
+        "level_num": 8,
+        "serial_num": 12,
+        "arabic": "أَنْتُمَا",
+        "english": "you (dual)",
+        "examples": []
+    },
+    {
+        "level_num": 9,
+        "serial_num": 1,
+        "arabic": "فَوْقَ",
+        "english": "above, up",
+        "examples": []
+    },
+    {
+        "level_num": 9,
+        "serial_num": 2,
+        "arabic": "تَحْتَ",
+        "english": "under",
+        "examples": []
+    },
+    {
+        "level_num": 9,
+        "serial_num": 3,
+        "arabic": "بَيْنَ أَيْدَي، بَيْنَ يَدَيْ",
+        "english": "in front of",
+        "examples": []
+    },
+    {
+        "level_num": 9,
+        "serial_num": 4,
+        "arabic": "خَلْفَ",
+        "english": "back, after",
+        "examples": []
+    },
+    {
+        "level_num": 9,
+        "serial_num": 5,
+        "arabic": "أَمَامَ",
+        "english": "in front of",
+        "examples": []
+    },
+    {
+        "level_num": 9,
+        "serial_num": 6,
+        "arabic": "وَرَاء",
+        "english": "behind",
+        "examples": []
+    },
+    {
+        "level_num": 9,
+        "serial_num": 7,
+        "arabic": "pl (يَمِيْن (أَيْمَان",
+        "english": "right, oath",
+        "examples": []
+    },
+    {
+        "level_num": 9,
+        "serial_num": 8,
+        "arabic": "pl (شِمَال (شَمَائِل",
+        "english": "left",
+        "examples": []
+    },
+    {
+        "level_num": 9,
+        "serial_num": 9,
+        "arabic": "بَيْنَ",
+        "english": "between",
+        "examples": []
+    },
+    {
+        "level_num": 9,
+        "serial_num": 10,
+        "arabic": "حَوْل",
+        "english": "around, approximately",
+        "examples": []
+    },
+    {
+        "level_num": 9,
+        "serial_num": 11,
+        "arabic": "حَيْثُ",
+        "english": "wherever",
+        "examples": []
+    },
+    {
+        "level_num": 9,
+        "serial_num": 12,
+        "arabic": "أيْنَمَا",
+        "english": "wherever",
+        "examples": []
+    },
+    {
+        "level_num": 10,
+        "serial_num": 1,
+        "arabic": "فَوْقَ",
+        "english": "above, up",
+        "examples": []
+    },
+    {
+        "level_num": 10,
+        "serial_num": 2,
+        "arabic": "تَحْتَ",
+        "english": "under",
+        "examples": []
+    },
+    {
+        "level_num": 10,
+        "serial_num": 3,
+        "arabic": "بَيْنَ أَيْدَي، بَيْنَ يَدَيْ",
+        "english": "in front of",
+        "examples": []
+    },
+    {
+        "level_num": 10,
+        "serial_num": 4,
+        "arabic": "خَلْفَ",
+        "english": "back, after",
+        "examples": []
+    },
+    {
+        "level_num": 10,
+        "serial_num": 5,
+        "arabic": "أَمَامَ",
+        "english": "in front of",
+        "examples": []
+    },
+    {
+        "level_num": 10,
+        "serial_num": 6,
+        "arabic": "وَرَاء",
+        "english": "behind",
+        "examples": []
+    },
+    {
+        "level_num": 10,
+        "serial_num": 7,
+        "arabic": "pl (يَمِيْن (أَيْمَان",
+        "english": "right, oath",
+        "examples": []
+    },
+    {
+        "level_num": 10,
+        "serial_num": 8,
+        "arabic": "pl (شِمَال (شَمَائِل",
+        "english": "left",
+        "examples": []
+    },
+    {
+        "level_num": 10,
+        "serial_num": 9,
+        "arabic": "بَيْنَ",
+        "english": "between",
+        "examples": []
+    },
+    {
+        "level_num": 10,
+        "serial_num": 10,
+        "arabic": "حَوْل",
+        "english": "around, approximately",
+        "examples": []
+    },
+    {
+        "level_num": 10,
+        "serial_num": 11,
+        "arabic": "حَيْثُ",
+        "english": "wherever",
+        "examples": []
+    },
+    {
+        "level_num": 10,
+        "serial_num": 12,
+        "arabic": "أيْنَمَا",
+        "english": "wherever",
+        "examples": []
+    },
+    {
+        "level_num": 11,
+        "serial_num": 1,
+        "arabic": "مَا ",
+        "english": "what, that which",
+        "examples": []
+    },
+    {
+        "level_num": 11,
+        "serial_num": 2,
+        "arabic": "مَنْ",
+        "english": "who, the one who",
+        "examples": []
+    },
+    {
+        "level_num": 11,
+        "serial_num": 3,
+        "arabic": "مَتى",
+        "english": "when, the time when",
+        "examples": []
+    },
+    {
+        "level_num": 11,
+        "serial_num": 4,
+        "arabic": "أَيْنَ ",
+        "english": "where ",
+        "examples": []
+    },
+    {
+        "level_num": 11,
+        "serial_num": 5,
+        "arabic": "كَيْفَ",
+        "english": "how",
+        "examples": []
+    },
+    {
+        "level_num": 11,
+        "serial_num": 6,
+        "arabic": "كَمْ",
+        "english": "how many",
+        "examples": []
+    },
+    {
+        "level_num": 11,
+        "serial_num": 7,
+        "arabic": "أَيُّ",
+        "english": "which",
+        "examples": []
+    },
+    {
+        "level_num": 11,
+        "serial_num": 8,
+        "arabic": "أَنّى",
+        "english": "wherefrom, why, how",
+        "examples": []
+    },
+    {
+        "level_num": 11,
+        "serial_num": 9,
+        "arabic": "أَ، هَل",
+        "english": "question particle",
+        "examples": []
+    },
+    {
+        "level_num": 11,
+        "serial_num": 10,
+        "arabic": "مَاذَا ",
+        "english": "what ",
+        "examples": []
+    },
+    {
+        "level_num": 11,
+        "serial_num": 11,
+        "arabic": "لِمَ، لِمَاذَا",
+        "english": "why",
+        "examples": []
+    },
+    {
+        "level_num": 11,
+        "serial_num": 12,
+        "arabic": "لَوْ لَا",
+        "english": "if not, even if",
+        "examples": []
+    },
+    {
+        "level_num": 12,
+        "serial_num": 1,
+        "arabic": "مَا ",
+        "english": "what, that which",
+        "examples": []
+    },
+    {
+        "level_num": 12,
+        "serial_num": 2,
+        "arabic": "مَنْ",
+        "english": "who, the one who",
+        "examples": []
+    },
+    {
+        "level_num": 12,
+        "serial_num": 3,
+        "arabic": "مَتى",
+        "english": "when, the time when",
+        "examples": []
+    },
+    {
+        "level_num": 12,
+        "serial_num": 4,
+        "arabic": "أَيْنَ ",
+        "english": "where ",
+        "examples": []
+    },
+    {
+        "level_num": 12,
+        "serial_num": 5,
+        "arabic": "كَيْفَ",
+        "english": "how",
+        "examples": []
+    },
+    {
+        "level_num": 12,
+        "serial_num": 6,
+        "arabic": "كَمْ",
+        "english": "how many",
+        "examples": []
+    },
+    {
+        "level_num": 12,
+        "serial_num": 7,
+        "arabic": "أَيُّ",
+        "english": "which",
+        "examples": []
+    },
+    {
+        "level_num": 12,
+        "serial_num": 8,
+        "arabic": "أَنّى",
+        "english": "wherefrom, why, how",
+        "examples": []
+    },
+    {
+        "level_num": 12,
+        "serial_num": 9,
+        "arabic": "أَ، هَل",
+        "english": "question particle",
+        "examples": []
+    },
+    {
+        "level_num": 12,
+        "serial_num": 10,
+        "arabic": "مَاذَا ",
+        "english": "what ",
+        "examples": []
+    },
+    {
+        "level_num": 12,
+        "serial_num": 11,
+        "arabic": "لِمَ، لِمَاذَا",
+        "english": "why",
+        "examples": []
+    },
+    {
+        "level_num": 12,
+        "serial_num": 12,
+        "arabic": "لَوْ لَا",
+        "english": "if not, even if",
+        "examples": []
+    },
+    {
+        "level_num": 13,
+        "serial_num": 1,
+        "arabic": "ذُو، ذَا، ذِي",
+        "english": "endowed with, owner of (male)",
+        "examples": []
+    },
+    {
+        "level_num": 13,
+        "serial_num": 2,
+        "arabic": "ذَات",
+        "english": "endowed with, owner of (female)",
+        "examples": []
+    },
+    {
+        "level_num": 13,
+        "serial_num": 3,
+        "arabic": "أُوْلُواْ، أُوْلِي",
+        "english": "people of, owners of",
+        "examples": []
+    },
+    {
+        "level_num": 13,
+        "serial_num": 4,
+        "arabic": "أهْل",
+        "english": "people of, relatives",
+        "examples": []
+    },
+    {
+        "level_num": 13,
+        "serial_num": 5,
+        "arabic": "آل",
+        "english": "family, relatives, people",
+        "examples": []
+    },
+    {
+        "level_num": 13,
+        "serial_num": 6,
+        "arabic": "أَلَا",
+        "english": "lo!, is it not?",
+        "examples": []
+    },
+    {
+        "level_num": 13,
+        "serial_num": 7,
+        "arabic": "نِعْمَ",
+        "english": "what an excellent",
+        "examples": []
+    },
+    {
+        "level_num": 13,
+        "serial_num": 8,
+        "arabic": "بِئْسَ",
+        "english": "what an evil",
+        "examples": []
+    },
+    {
+        "level_num": 13,
+        "serial_num": 9,
+        "arabic": "بِئْسَمَا",
+        "english": "evil is that which",
+        "examples": []
+    },
+    {
+        "level_num": 13,
+        "serial_num": 10,
+        "arabic": "مِثْل",
+        "english": "similar",
+        "examples": []
+    },
+    {
+        "level_num": 13,
+        "serial_num": 11,
+        "arabic": "pl(مَثَل (أَمْثَال",
+        "english": "similitude, example",
+        "examples": []
+    },
+    {
+        "level_num": 13,
+        "serial_num": 12,
+        "arabic": "(مِمَّنْ (مِنْ+مَنْ ",
+        "english": "than the one who, from those who",
+        "examples": []
+    },
+    {
+        "level_num": 14,
+        "serial_num": 1,
+        "arabic": "ذُو، ذَا، ذِي",
+        "english": "endowed with, owner of (male)",
+        "examples": []
+    },
+    {
+        "level_num": 14,
+        "serial_num": 2,
+        "arabic": "ذَات",
+        "english": "endowed with, owner of (female)",
+        "examples": []
+    },
+    {
+        "level_num": 14,
+        "serial_num": 3,
+        "arabic": "أُوْلُواْ، أُوْلِي",
+        "english": "people of, owners of",
+        "examples": []
+    },
+    {
+        "level_num": 14,
+        "serial_num": 4,
+        "arabic": "أهْل",
+        "english": "people of, relatives",
+        "examples": []
+    },
+    {
+        "level_num": 14,
+        "serial_num": 5,
+        "arabic": "آل",
+        "english": "family, relatives, people",
+        "examples": []
+    },
+    {
+        "level_num": 14,
+        "serial_num": 6,
+        "arabic": "أَلَا",
+        "english": "lo!, is it not?",
+        "examples": []
+    },
+    {
+        "level_num": 14,
+        "serial_num": 7,
+        "arabic": "نِعْمَ",
+        "english": "what an excellent",
+        "examples": []
+    },
+    {
+        "level_num": 14,
+        "serial_num": 8,
+        "arabic": "بِئْسَ",
+        "english": "what an evil",
+        "examples": []
+    },
+    {
+        "level_num": 14,
+        "serial_num": 9,
+        "arabic": "بِئْسَمَا",
+        "english": "evil is that which",
+        "examples": []
+    },
+    {
+        "level_num": 14,
+        "serial_num": 10,
+        "arabic": "مِثْل",
+        "english": "similar",
+        "examples": []
+    },
+    {
+        "level_num": 14,
+        "serial_num": 11,
+        "arabic": "pl(مَثَل (أَمْثَال",
+        "english": "similitude, example",
+        "examples": []
+    },
+    {
+        "level_num": 14,
+        "serial_num": 12,
+        "arabic": "(مِمَّنْ (مِنْ+مَنْ ",
+        "english": "than the one who, from those who",
+        "examples": []
+    },
+    {
+        "level_num": 15,
+        "serial_num": 1,
+        "arabic": "قَبْلَ",
+        "english": "before",
+        "examples": []
+    },
+    {
+        "level_num": 15,
+        "serial_num": 2,
+        "arabic": "بَعْد",
+        "english": "after",
+        "examples": []
+    },
+    {
+        "level_num": 15,
+        "serial_num": 3,
+        "arabic": "حِين",
+        "english": "time, period, at the time",
+        "examples": []
+    },
+    {
+        "level_num": 15,
+        "serial_num": 4,
+        "arabic": "إِذْ",
+        "english": "when (for past)",
+        "examples": []
+    },
+    {
+        "level_num": 15,
+        "serial_num": 5,
+        "arabic": "إِذَا",
+        "english": "when (for future)",
+        "examples": []
+    },
+    {
+        "level_num": 15,
+        "serial_num": 6,
+        "arabic": "ثُمَّ",
+        "english": "then",
+        "examples": []
+    },
+    {
+        "level_num": 15,
+        "serial_num": 7,
+        "arabic": "فَ",
+        "english": "then, thus, therefore",
+        "examples": []
+    },
+    {
+        "level_num": 15,
+        "serial_num": 8,
+        "arabic": "بَل",
+        "english": "nay, rather, but",
+        "examples": []
+    },
+    {
+        "level_num": 15,
+        "serial_num": 9,
+        "arabic": "عِنْدَ، لَدى، لَدُنْ",
+        "english": "near, with",
+        "examples": []
+    },
+    {
+        "level_num": 15,
+        "serial_num": 10,
+        "arabic": "إِنْ ... إِلَّا",
+        "english": "nothing...but",
+        "examples": []
+    },
+    {
+        "level_num": 15,
+        "serial_num": 11,
+        "arabic": "مَا... إِلَّا",
+        "english": "nothing...but",
+        "examples": []
+    },
+    {
+        "level_num": 15,
+        "serial_num": 12,
+        "arabic": "(أَلَّا (أَنْ+لَا",
+        "english": "that... not, so as not",
+        "examples": []
+    },
+    {
+        "level_num": 16,
+        "serial_num": 1,
+        "arabic": "قَبْلَ",
+        "english": "before",
+        "examples": []
+    },
+    {
+        "level_num": 16,
+        "serial_num": 2,
+        "arabic": "بَعْد",
+        "english": "after",
+        "examples": []
+    },
+    {
+        "level_num": 16,
+        "serial_num": 3,
+        "arabic": "حِين",
+        "english": "time, period, at the time",
+        "examples": []
+    },
+    {
+        "level_num": 16,
+        "serial_num": 4,
+        "arabic": "إِذْ",
+        "english": "when (for past)",
+        "examples": []
+    },
+    {
+        "level_num": 16,
+        "serial_num": 5,
+        "arabic": "إِذَا",
+        "english": "when (for future)",
+        "examples": []
+    },
+    {
+        "level_num": 16,
+        "serial_num": 6,
+        "arabic": "ثُمَّ",
+        "english": "then",
+        "examples": []
+    },
+    {
+        "level_num": 16,
+        "serial_num": 7,
+        "arabic": "فَ",
+        "english": "then, thus, therefore",
+        "examples": []
+    },
+    {
+        "level_num": 16,
+        "serial_num": 8,
+        "arabic": "بَل",
+        "english": "nay, rather, but",
+        "examples": []
+    },
+    {
+        "level_num": 16,
+        "serial_num": 9,
+        "arabic": "عِنْدَ، لَدى، لَدُنْ",
+        "english": "near, with",
+        "examples": []
+    },
+    {
+        "level_num": 16,
+        "serial_num": 10,
+        "arabic": "إِنْ ... إِلَّا",
+        "english": "nothing...but",
+        "examples": []
+    },
+    {
+        "level_num": 16,
+        "serial_num": 11,
+        "arabic": "مَا... إِلَّا",
+        "english": "nothing...but",
+        "examples": []
+    },
+    {
+        "level_num": 16,
+        "serial_num": 12,
+        "arabic": "(أَلَّا (أَنْ+لَا",
+        "english": "that... not, so as not",
+        "examples": []
+    },
+    {
+        "level_num": 17,
+        "serial_num": 1,
+        "arabic": "بِمَا",
+        "english": "with what, because",
+        "examples": []
+    },
+    {
+        "level_num": 17,
+        "serial_num": 2,
+        "arabic": "عَمَّا",
+        "english": "about what",
+        "examples": []
+    },
+    {
+        "level_num": 17,
+        "serial_num": 3,
+        "arabic": "فِيمَا",
+        "english": "in what",
+        "examples": []
+    },
+    {
+        "level_num": 17,
+        "serial_num": 4,
+        "arabic": "كَمَا",
+        "english": "as, just as",
+        "examples": []
+    },
+    {
+        "level_num": 17,
+        "serial_num": 5,
+        "arabic": "لِمَا",
+        "english": "for what, for that which",
+        "examples": []
+    },
+    {
+        "level_num": 17,
+        "serial_num": 6,
+        "arabic": "مِمَّا",
+        "english": "out of what",
+        "examples": []
+    },
+    {
+        "level_num": 17,
+        "serial_num": 7,
+        "arabic": "أَمَّا",
+        "english": "as to, as for",
+        "examples": []
+    },
+    {
+        "level_num": 17,
+        "serial_num": 8,
+        "arabic": "إِمَّا",
+        "english": "if, either, or",
+        "examples": []
+    },
+    {
+        "level_num": 17,
+        "serial_num": 9,
+        "arabic": "أَنَّمَا ",
+        "english": "that",
+        "examples": []
+    },
+    {
+        "level_num": 17,
+        "serial_num": 10,
+        "arabic": "إِنَّمَا",
+        "english": "verily, only",
+        "examples": []
+    },
+    {
+        "level_num": 17,
+        "serial_num": 11,
+        "arabic": "كَأَنَّمَا",
+        "english": "as if",
+        "examples": []
+    },
+    {
+        "level_num": 17,
+        "serial_num": 12,
+        "arabic": "كُلَّمَا",
+        "english": "whenever",
+        "examples": []
+    },
+    {
+        "level_num": 18,
+        "serial_num": 1,
+        "arabic": "بِمَا",
+        "english": "with what, because",
+        "examples": []
+    },
+    {
+        "level_num": 18,
+        "serial_num": 2,
+        "arabic": "عَمَّا",
+        "english": "about what",
+        "examples": []
+    },
+    {
+        "level_num": 18,
+        "serial_num": 3,
+        "arabic": "فِيمَا",
+        "english": "in what",
+        "examples": []
+    },
+    {
+        "level_num": 18,
+        "serial_num": 4,
+        "arabic": "كَمَا",
+        "english": "as, just as",
+        "examples": []
+    },
+    {
+        "level_num": 18,
+        "serial_num": 5,
+        "arabic": "لِمَا",
+        "english": "for what, for that which",
+        "examples": []
+    },
+    {
+        "level_num": 18,
+        "serial_num": 6,
+        "arabic": "مِمَّا",
+        "english": "out of what",
+        "examples": []
+    },
+    {
+        "level_num": 18,
+        "serial_num": 7,
+        "arabic": "أَمَّا",
+        "english": "as to, as for",
+        "examples": []
+    },
+    {
+        "level_num": 18,
+        "serial_num": 8,
+        "arabic": "إِمَّا",
+        "english": "if, either, or",
+        "examples": []
+    },
+    {
+        "level_num": 18,
+        "serial_num": 9,
+        "arabic": "أَنَّمَا ",
+        "english": "that",
+        "examples": []
+    },
+    {
+        "level_num": 18,
+        "serial_num": 10,
+        "arabic": "إِنَّمَا",
+        "english": "verily, only",
+        "examples": []
+    },
+    {
+        "level_num": 18,
+        "serial_num": 11,
+        "arabic": "كَأَنَّمَا",
+        "english": "as if",
+        "examples": []
+    },
+    {
+        "level_num": 18,
+        "serial_num": 12,
+        "arabic": "كُلَّمَا",
+        "english": "whenever",
+        "examples": []
+    },
+    {
+        "level_num": 19,
+        "serial_num": 1,
+        "arabic": "بِ ",
+        "english": "with, in, from",
+        "examples": []
+    },
+    {
+        "level_num": 19,
+        "serial_num": 2,
+        "arabic": "عَنْ",
+        "english": "about",
+        "examples": []
+    },
+    {
+        "level_num": 19,
+        "serial_num": 3,
+        "arabic": "فِي",
+        "english": "in",
+        "examples": []
+    },
+    {
+        "level_num": 19,
+        "serial_num": 4,
+        "arabic": "كَ",
+        "english": "as, like",
+        "examples": []
+    },
+    {
+        "level_num": 19,
+        "serial_num": 5,
+        "arabic": "لِ، لَ ",
+        "english": "for ",
+        "examples": []
+    },
+    {
+        "level_num": 19,
+        "serial_num": 6,
+        "arabic": "مِنْ ",
+        "english": "from ",
+        "examples": []
+    },
+    {
+        "level_num": 19,
+        "serial_num": 7,
+        "arabic": "إِلَى",
+        "english": "towards",
+        "examples": []
+    },
+    {
+        "level_num": 19,
+        "serial_num": 8,
+        "arabic": "تَ ",
+        "english": "by (of oath)",
+        "examples": []
+    },
+    {
+        "level_num": 19,
+        "serial_num": 9,
+        "arabic": "حَتَّى",
+        "english": "until",
+        "examples": []
+    },
+    {
+        "level_num": 19,
+        "serial_num": 10,
+        "arabic": "عَلَى ",
+        "english": "on ",
+        "examples": []
+    },
+    {
+        "level_num": 19,
+        "serial_num": 11,
+        "arabic": "مَعَ ",
+        "english": "with ",
+        "examples": []
+    },
+    {
+        "level_num": 19,
+        "serial_num": 12,
+        "arabic": "وَ",
+        "english": "and, by (of oath)",
+        "examples": []
+    },
+    {
+        "level_num": 20,
+        "serial_num": 1,
+        "arabic": "بِ ",
+        "english": "with, in, from",
+        "examples": []
+    },
+    {
+        "level_num": 20,
+        "serial_num": 2,
+        "arabic": "عَنْ",
+        "english": "about",
+        "examples": []
+    },
+    {
+        "level_num": 20,
+        "serial_num": 3,
+        "arabic": "فِي",
+        "english": "in",
+        "examples": []
+    },
+    {
+        "level_num": 20,
+        "serial_num": 4,
+        "arabic": "كَ",
+        "english": "as, like",
+        "examples": []
+    },
+    {
+        "level_num": 20,
+        "serial_num": 5,
+        "arabic": "لِ، لَ ",
+        "english": "for ",
+        "examples": []
+    },
+    {
+        "level_num": 20,
+        "serial_num": 6,
+        "arabic": "مِنْ ",
+        "english": "from ",
+        "examples": []
+    },
+    {
+        "level_num": 20,
+        "serial_num": 7,
+        "arabic": "إِلَى",
+        "english": "towards",
+        "examples": []
+    },
+    {
+        "level_num": 20,
+        "serial_num": 8,
+        "arabic": "تَ ",
+        "english": "by (of oath)",
+        "examples": []
+    },
+    {
+        "level_num": 20,
+        "serial_num": 9,
+        "arabic": "حَتَّى",
+        "english": "until",
+        "examples": []
+    },
+    {
+        "level_num": 20,
+        "serial_num": 10,
+        "arabic": "عَلَى ",
+        "english": "on ",
+        "examples": []
+    },
+    {
+        "level_num": 20,
+        "serial_num": 11,
+        "arabic": "مَعَ ",
+        "english": "with ",
+        "examples": []
+    },
+    {
+        "level_num": 20,
+        "serial_num": 12,
+        "arabic": "وَ",
+        "english": "and, by (of oath)",
+        "examples": []
+    },
+    {
+        "level_num": 21,
+        "serial_num": 1,
+        "arabic": "(قَدْ (+فعل",
+        "english": "has (with past tense); surely (with present tense)",
+        "examples": []
+    },
+    {
+        "level_num": 21,
+        "serial_num": 2,
+        "arabic": "(سَ (+فعل",
+        "english": "will (for near future)",
+        "examples": []
+    },
+    {
+        "level_num": 21,
+        "serial_num": 3,
+        "arabic": "(سَوْفَ (+فعل",
+        "english": "will (for future)",
+        "examples": []
+    },
+    {
+        "level_num": 21,
+        "serial_num": 4,
+        "arabic": "لَ+فعل+نَّ",
+        "english": "will surely",
+        "examples": []
+    },
+    {
+        "level_num": 21,
+        "serial_num": 5,
+        "arabic": "لَقَدْ",
+        "english": "indeed",
+        "examples": []
+    },
+    {
+        "level_num": 21,
+        "serial_num": 6,
+        "arabic": "لَ",
+        "english": "indeed, surely",
+        "examples": []
+    },
+    {
+        "level_num": 21,
+        "serial_num": 7,
+        "arabic": "(لِ، لْ (أَمْر",
+        "english": "let (somebody) do (imperative)",
+        "examples": []
+    },
+    {
+        "level_num": 21,
+        "serial_num": 8,
+        "arabic": "الْ ",
+        "english": "the ",
+        "examples": []
+    },
+    {
+        "level_num": 21,
+        "serial_num": 9,
+        "arabic": "أَمْ",
+        "english": "or?",
+        "examples": []
+    },
+    {
+        "level_num": 21,
+        "serial_num": 10,
+        "arabic": "أَوْ",
+        "english": "or",
+        "examples": []
+    },
+    {
+        "level_num": 21,
+        "serial_num": 11,
+        "arabic": "بَعْض",
+        "english": "some of",
+        "examples": []
+    },
+    {
+        "level_num": 21,
+        "serial_num": 12,
+        "arabic": "كُلَّ",
+        "english": "everyone, all",
+        "examples": []
+    },
+    {
+        "level_num": 22,
+        "serial_num": 1,
+        "arabic": "(قَدْ (+فعل",
+        "english": "has (with past tense); surely (with present tense)",
+        "examples": []
+    },
+    {
+        "level_num": 22,
+        "serial_num": 2,
+        "arabic": "(سَ (+فعل",
+        "english": "will (for near future)",
+        "examples": []
+    },
+    {
+        "level_num": 22,
+        "serial_num": 3,
+        "arabic": "(سَوْفَ (+فعل",
+        "english": "will (for future)",
+        "examples": []
+    },
+    {
+        "level_num": 22,
+        "serial_num": 4,
+        "arabic": "لَ+فعل+نَّ",
+        "english": "will surely",
+        "examples": []
+    },
+    {
+        "level_num": 22,
+        "serial_num": 5,
+        "arabic": "لَقَدْ",
+        "english": "indeed",
+        "examples": []
+    },
+    {
+        "level_num": 22,
+        "serial_num": 6,
+        "arabic": "لَ",
+        "english": "indeed, surely",
+        "examples": []
+    },
+    {
+        "level_num": 22,
+        "serial_num": 7,
+        "arabic": "(لِ، لْ (أَمْر",
+        "english": "let (somebody) do (imperative)",
+        "examples": []
+    },
+    {
+        "level_num": 22,
+        "serial_num": 8,
+        "arabic": "الْ ",
+        "english": "the ",
+        "examples": []
+    },
+    {
+        "level_num": 22,
+        "serial_num": 9,
+        "arabic": "أَمْ",
+        "english": "or?",
+        "examples": []
+    },
+    {
+        "level_num": 22,
+        "serial_num": 10,
+        "arabic": "أَوْ",
+        "english": "or",
+        "examples": []
+    },
+    {
+        "level_num": 22,
+        "serial_num": 11,
+        "arabic": "بَعْض",
+        "english": "some of",
+        "examples": []
+    },
+    {
+        "level_num": 22,
+        "serial_num": 12,
+        "arabic": "كُلَّ",
+        "english": "everyone, all",
+        "examples": []
+    },
+    {
+        "level_num": 23,
+        "serial_num": 1,
+        "arabic": "إِنَّ",
+        "english": "verily, truly",
+        "examples": []
+    },
+    {
+        "level_num": 23,
+        "serial_num": 2,
+        "arabic": "أَنَّ ",
+        "english": "that ",
+        "examples": []
+    },
+    {
+        "level_num": 23,
+        "serial_num": 3,
+        "arabic": "كَأَنَّ",
+        "english": "as if",
+        "examples": []
+    },
+    {
+        "level_num": 23,
+        "serial_num": 4,
+        "arabic": "(لكِنَّ (لكِنْ",
+        "english": "but, however",
+        "examples": []
+    },
+    {
+        "level_num": 23,
+        "serial_num": 5,
+        "arabic": "لَعَلَّ",
+        "english": "perhaps, maybe",
+        "examples": []
+    },
+    {
+        "level_num": 23,
+        "serial_num": 6,
+        "arabic": "أَنْ ",
+        "english": "that",
+        "examples": []
+    },
+    {
+        "level_num": 23,
+        "serial_num": 7,
+        "arabic": "إِنْ",
+        "english": "if",
+        "examples": []
+    },
+    {
+        "level_num": 23,
+        "serial_num": 8,
+        "arabic": "إِيَّا",
+        "english": "alone",
+        "examples": []
+    },
+    {
+        "level_num": 23,
+        "serial_num": 9,
+        "arabic": "عَسَى",
+        "english": "possibly",
+        "examples": []
+    },
+    {
+        "level_num": 23,
+        "serial_num": 10,
+        "arabic": "لَمَّا",
+        "english": "when ",
+        "examples": []
+    },
+    {
+        "level_num": 23,
+        "serial_num": 11,
+        "arabic": "لَوْ",
+        "english": "if",
+        "examples": []
+    },
+    {
+        "level_num": 23,
+        "serial_num": 12,
+        "arabic": "يَا، يَاأَيُّهَا",
+        "english": "O!",
+        "examples": []
+    },
+    {
+        "level_num": 24,
+        "serial_num": 1,
+        "arabic": "إِنَّ",
+        "english": "verily, truly",
+        "examples": []
+    },
+    {
+        "level_num": 24,
+        "serial_num": 2,
+        "arabic": "أَنَّ ",
+        "english": "that ",
+        "examples": []
+    },
+    {
+        "level_num": 24,
+        "serial_num": 3,
+        "arabic": "كَأَنَّ",
+        "english": "as if",
+        "examples": []
+    },
+    {
+        "level_num": 24,
+        "serial_num": 4,
+        "arabic": "(لكِنَّ (لكِنْ",
+        "english": "but, however",
+        "examples": []
+    },
+    {
+        "level_num": 24,
+        "serial_num": 5,
+        "arabic": "لَعَلَّ",
+        "english": "perhaps, maybe",
+        "examples": []
+    },
+    {
+        "level_num": 24,
+        "serial_num": 6,
+        "arabic": "أَنْ ",
+        "english": "that",
+        "examples": []
+    },
+    {
+        "level_num": 24,
+        "serial_num": 7,
+        "arabic": "إِنْ",
+        "english": "if",
+        "examples": []
+    },
+    {
+        "level_num": 24,
+        "serial_num": 8,
+        "arabic": "إِيَّا",
+        "english": "alone",
+        "examples": []
+    },
+    {
+        "level_num": 24,
+        "serial_num": 9,
+        "arabic": "عَسَى",
+        "english": "possibly",
+        "examples": []
+    },
+    {
+        "level_num": 24,
+        "serial_num": 10,
+        "arabic": "لَمَّا",
+        "english": "when ",
+        "examples": []
+    },
+    {
+        "level_num": 24,
+        "serial_num": 11,
+        "arabic": "لَوْ",
+        "english": "if",
+        "examples": []
+    },
+    {
+        "level_num": 24,
+        "serial_num": 12,
+        "arabic": "يَا، يَاأَيُّهَا",
+        "english": "O!",
+        "examples": []
+    },
+    {
+        "level_num": 25,
+        "serial_num": 1,
+        "arabic": "خَبِير",
+        "english": "knowing, ever aware",
+        "examples": []
+    },
+    {
+        "level_num": 25,
+        "serial_num": 2,
+        "arabic": "رَبّ",
+        "english": "Lord",
+        "examples": []
+    },
+    {
+        "level_num": 25,
+        "serial_num": 3,
+        "arabic": "رَحْمَٰن",
+        "english": "Compassionate, merciful",
+        "examples": []
+    },
+    {
+        "level_num": 25,
+        "serial_num": 4,
+        "arabic": "سَلَام",
+        "english": "peace",
+        "examples": []
+    },
+    {
+        "level_num": 25,
+        "serial_num": 5,
+        "arabic": "سَمِيع",
+        "english": "one who listens, all-hearing",
+        "examples": []
+    },
+    {
+        "level_num": 25,
+        "serial_num": 6,
+        "arabic": "شَكُور",
+        "english": "grateful",
+        "examples": []
+    },
+    {
+        "level_num": 25,
+        "serial_num": 7,
+        "arabic": "عَزِيز",
+        "english": "mighty",
+        "examples": []
+    },
+    {
+        "level_num": 25,
+        "serial_num": 8,
+        "arabic": "غَفُور",
+        "english": "most forgiving",
+        "examples": []
+    },
+    {
+        "level_num": 25,
+        "serial_num": 9,
+        "arabic": "قَدِير",
+        "english": "All-powerful",
+        "examples": []
+    },
+    {
+        "level_num": 25,
+        "serial_num": 10,
+        "arabic": "نَذِير",
+        "english": "warner",
+        "examples": []
+    },
+    {
+        "level_num": 25,
+        "serial_num": 11,
+        "arabic": "نَصِير",
+        "english": "helper",
+        "examples": []
+    },
+    {
+        "level_num": 25,
+        "serial_num": 12,
+        "arabic": "وَكِيل",
+        "english": "representative, trustee",
+        "examples": []
+    },
+    {
+        "level_num": 26,
+        "serial_num": 1,
+        "arabic": "خَبِير",
+        "english": "knowing, ever aware",
+        "examples": []
+    },
+    {
+        "level_num": 26,
+        "serial_num": 2,
+        "arabic": "رَبّ",
+        "english": "Lord",
+        "examples": []
+    },
+    {
+        "level_num": 26,
+        "serial_num": 3,
+        "arabic": "رَحْمَٰن",
+        "english": "Compassionate, merciful",
+        "examples": []
+    },
+    {
+        "level_num": 26,
+        "serial_num": 4,
+        "arabic": "سَلَام",
+        "english": "peace",
+        "examples": []
+    },
+    {
+        "level_num": 26,
+        "serial_num": 5,
+        "arabic": "سَمِيع",
+        "english": "one who listens, all-hearing",
+        "examples": []
+    },
+    {
+        "level_num": 26,
+        "serial_num": 6,
+        "arabic": "شَكُور",
+        "english": "grateful",
+        "examples": []
+    },
+    {
+        "level_num": 26,
+        "serial_num": 7,
+        "arabic": "عَزِيز",
+        "english": "mighty",
+        "examples": []
+    },
+    {
+        "level_num": 26,
+        "serial_num": 8,
+        "arabic": "غَفُور",
+        "english": "most forgiving",
+        "examples": []
+    },
+    {
+        "level_num": 26,
+        "serial_num": 9,
+        "arabic": "قَدِير",
+        "english": "All-powerful",
+        "examples": []
+    },
+    {
+        "level_num": 26,
+        "serial_num": 10,
+        "arabic": "نَذِير",
+        "english": "warner",
+        "examples": []
+    },
+    {
+        "level_num": 26,
+        "serial_num": 11,
+        "arabic": "نَصِير",
+        "english": "helper",
+        "examples": []
+    },
+    {
+        "level_num": 26,
+        "serial_num": 12,
+        "arabic": "وَكِيل",
+        "english": "representative, trustee",
+        "examples": []
+    },
+    {
+        "level_num": 27,
+        "serial_num": 1,
+        "arabic": "fg(أَوَّل (أُولَى",
+        "english": "first",
+        "examples": []
+    },
+    {
+        "level_num": 27,
+        "serial_num": 2,
+        "arabic": "fg (آخِر (آخِرَة",
+        "english": "last",
+        "examples": []
+    },
+    {
+        "level_num": 27,
+        "serial_num": 3,
+        "arabic": "fg(آخَر (أُخْرَى",
+        "english": "other",
+        "examples": []
+    },
+    {
+        "level_num": 27,
+        "serial_num": 4,
+        "arabic": "أَمِين",
+        "english": "trustworthy",
+        "examples": []
+    },
+    {
+        "level_num": 27,
+        "serial_num": 5,
+        "arabic": "بَصِير",
+        "english": "one who sees clearly, all-Seer",
+        "examples": []
+    },
+    {
+        "level_num": 27,
+        "serial_num": 6,
+        "arabic": "بَعِيد",
+        "english": "far",
+        "examples": []
+    },
+    {
+        "level_num": 27,
+        "serial_num": 7,
+        "arabic": "تَوَّاب",
+        "english": "most forgiving",
+        "examples": []
+    },
+    {
+        "level_num": 27,
+        "serial_num": 8,
+        "arabic": "حَفِيظ",
+        "english": "protector, guardian",
+        "examples": []
+    },
+    {
+        "level_num": 27,
+        "serial_num": 9,
+        "arabic": "حَكِيم",
+        "english": "wise",
+        "examples": []
+    },
+    {
+        "level_num": 27,
+        "serial_num": 10,
+        "arabic": "حَلِيم",
+        "english": "forbearing",
+        "examples": []
+    },
+    {
+        "level_num": 27,
+        "serial_num": 11,
+        "arabic": "حَمِيد",
+        "english": "praiseworthy",
+        "examples": []
+    },
+    {
+        "level_num": 27,
+        "serial_num": 12,
+        "arabic": "حَمِيم",
+        "english": "warm (friend), boiling water",
+        "examples": []
+    },
+    {
+        "level_num": 28,
+        "serial_num": 1,
+        "arabic": "fg(أَوَّل (أُولَى",
+        "english": "first",
+        "examples": []
+    },
+    {
+        "level_num": 28,
+        "serial_num": 2,
+        "arabic": "fg (آخِر (آخِرَة",
+        "english": "last",
+        "examples": []
+    },
+    {
+        "level_num": 28,
+        "serial_num": 3,
+        "arabic": "fg(آخَر (أُخْرَى",
+        "english": "other",
+        "examples": []
+    },
+    {
+        "level_num": 28,
+        "serial_num": 4,
+        "arabic": "أَمِين",
+        "english": "trustworthy",
+        "examples": []
+    },
+    {
+        "level_num": 28,
+        "serial_num": 5,
+        "arabic": "بَصِير",
+        "english": "one who sees clearly, all-Seer",
+        "examples": []
+    },
+    {
+        "level_num": 28,
+        "serial_num": 6,
+        "arabic": "بَعِيد",
+        "english": "far",
+        "examples": []
+    },
+    {
+        "level_num": 28,
+        "serial_num": 7,
+        "arabic": "تَوَّاب",
+        "english": "most forgiving",
+        "examples": []
+    },
+    {
+        "level_num": 28,
+        "serial_num": 8,
+        "arabic": "حَفِيظ",
+        "english": "protector, guardian",
+        "examples": []
+    },
+    {
+        "level_num": 28,
+        "serial_num": 9,
+        "arabic": "حَكِيم",
+        "english": "wise",
+        "examples": []
+    },
+    {
+        "level_num": 28,
+        "serial_num": 10,
+        "arabic": "حَلِيم",
+        "english": "forbearing",
+        "examples": []
+    },
+    {
+        "level_num": 28,
+        "serial_num": 11,
+        "arabic": "حَمِيد",
+        "english": "praiseworthy",
+        "examples": []
+    },
+    {
+        "level_num": 28,
+        "serial_num": 12,
+        "arabic": "حَمِيم",
+        "english": "warm (friend), boiling water",
+        "examples": []
+    },
+    {
+        "level_num": 29,
+        "serial_num": 1,
+        "arabic": "أَشَدّ",
+        "english": "most severe",
+        "examples": []
+    },
+    {
+        "level_num": 29,
+        "serial_num": 2,
+        "arabic": "أَعْلَى",
+        "english": "higher, superior",
+        "examples": []
+    },
+    {
+        "level_num": 29,
+        "serial_num": 3,
+        "arabic": "أَعْلَم",
+        "english": "better-knowing, more informed",
+        "examples": []
+    },
+    {
+        "level_num": 29,
+        "serial_num": 4,
+        "arabic": "أَقْرَب",
+        "english": "nearer, nearest, nearest relatives",
+        "examples": []
+    },
+    {
+        "level_num": 29,
+        "serial_num": 5,
+        "arabic": "أََكْبَر",
+        "english": "bigger",
+        "examples": []
+    },
+    {
+        "level_num": 29,
+        "serial_num": 6,
+        "arabic": "أَكْثَر",
+        "english": "more, most",
+        "examples": []
+    },
+    {
+        "level_num": 29,
+        "serial_num": 7,
+        "arabic": "أَحَقّ",
+        "english": "more entitled, more worthy",
+        "examples": []
+    },
+    {
+        "level_num": 29,
+        "serial_num": 8,
+        "arabic": "أَحْسَن",
+        "english": "better, best",
+        "examples": []
+    },
+    {
+        "level_num": 29,
+        "serial_num": 9,
+        "arabic": "أَدْنَى",
+        "english": "nearer, more likely, lower, less",
+        "examples": []
+    },
+    {
+        "level_num": 29,
+        "serial_num": 10,
+        "arabic": "أَظْلَم",
+        "english": "more unjust",
+        "examples": []
+    },
+    {
+        "level_num": 29,
+        "serial_num": 11,
+        "arabic": "أَهْدَى",
+        "english": "better guided",
+        "examples": []
+    },
+    {
+        "level_num": 29,
+        "serial_num": 12,
+        "arabic": "أَوْلَى",
+        "english": "nearer, more entitled, woe",
+        "examples": []
+    },
+    {
+        "level_num": 30,
+        "serial_num": 1,
+        "arabic": "أَشَدّ",
+        "english": "most severe",
+        "examples": []
+    },
+    {
+        "level_num": 30,
+        "serial_num": 2,
+        "arabic": "أَعْلَى",
+        "english": "higher, superior",
+        "examples": []
+    },
+    {
+        "level_num": 30,
+        "serial_num": 3,
+        "arabic": "أَعْلَم",
+        "english": "better-knowing, more informed",
+        "examples": []
+    },
+    {
+        "level_num": 30,
+        "serial_num": 4,
+        "arabic": "أَقْرَب",
+        "english": "nearer, nearest, nearest relatives",
+        "examples": []
+    },
+    {
+        "level_num": 30,
+        "serial_num": 5,
+        "arabic": "أََكْبَر",
+        "english": "bigger",
+        "examples": []
+    },
+    {
+        "level_num": 30,
+        "serial_num": 6,
+        "arabic": "أَكْثَر",
+        "english": "more, most",
+        "examples": []
+    },
+    {
+        "level_num": 30,
+        "serial_num": 7,
+        "arabic": "أَحَقّ",
+        "english": "more entitled, more worthy",
+        "examples": []
+    },
+    {
+        "level_num": 30,
+        "serial_num": 8,
+        "arabic": "أَحْسَن",
+        "english": "better, best",
+        "examples": []
+    },
+    {
+        "level_num": 30,
+        "serial_num": 9,
+        "arabic": "أَدْنَى",
+        "english": "nearer, more likely, lower, less",
+        "examples": []
+    },
+    {
+        "level_num": 30,
+        "serial_num": 10,
+        "arabic": "أَظْلَم",
+        "english": "more unjust",
+        "examples": []
+    },
+    {
+        "level_num": 30,
+        "serial_num": 11,
+        "arabic": "أَهْدَى",
+        "english": "better guided",
+        "examples": []
+    },
+    {
+        "level_num": 30,
+        "serial_num": 12,
+        "arabic": "أَوْلَى",
+        "english": "nearer, more entitled, woe",
+        "examples": []
+    },
+    {
+        "level_num": 31,
+        "serial_num": 1,
+        "arabic": "شَدِيد",
+        "english": "severe, strong",
+        "examples": []
+    },
+    {
+        "level_num": 31,
+        "serial_num": 2,
+        "arabic": "عَلِيّ",
+        "english": "high, exalted",
+        "examples": []
+    },
+    {
+        "level_num": 31,
+        "serial_num": 3,
+        "arabic": "عَلِيم",
+        "english": "knower",
+        "examples": []
+    },
+    {
+        "level_num": 31,
+        "serial_num": 4,
+        "arabic": "قَرِيب‌",
+        "english": "near ",
+        "examples": []
+    },
+    {
+        "level_num": 31,
+        "serial_num": 5,
+        "arabic": "كَبِير",
+        "english": "big",
+        "examples": []
+    },
+    {
+        "level_num": 31,
+        "serial_num": 6,
+        "arabic": "كَثِير",
+        "english": "plenty, much",
+        "examples": []
+    },
+    {
+        "level_num": 31,
+        "serial_num": 7,
+        "arabic": "سَرِيع",
+        "english": "quick, swift, fast",
+        "examples": []
+    },
+    {
+        "level_num": 31,
+        "serial_num": 8,
+        "arabic": "رَحِيم",
+        "english": "merciful",
+        "examples": []
+    },
+    {
+        "level_num": 31,
+        "serial_num": 9,
+        "arabic": "عَظِيم",
+        "english": "supreme",
+        "examples": []
+    },
+    {
+        "level_num": 31,
+        "serial_num": 10,
+        "arabic": "قَلِيل",
+        "english": "little",
+        "examples": []
+    },
+    {
+        "level_num": 31,
+        "serial_num": 11,
+        "arabic": "كَرِيم",
+        "english": "noble, honorable, generous",
+        "examples": []
+    },
+    {
+        "level_num": 31,
+        "serial_num": 12,
+        "arabic": "لَطِيف",
+        "english": "subtle, nice",
+        "examples": []
+    },
+    {
+        "level_num": 32,
+        "serial_num": 1,
+        "arabic": "شَدِيد",
+        "english": "severe, strong",
+        "examples": []
+    },
+    {
+        "level_num": 32,
+        "serial_num": 2,
+        "arabic": "عَلِيّ",
+        "english": "high, exalted",
+        "examples": []
+    },
+    {
+        "level_num": 32,
+        "serial_num": 3,
+        "arabic": "عَلِيم",
+        "english": "knower",
+        "examples": []
+    },
+    {
+        "level_num": 32,
+        "serial_num": 4,
+        "arabic": "قَرِيب‌",
+        "english": "near ",
+        "examples": []
+    },
+    {
+        "level_num": 32,
+        "serial_num": 5,
+        "arabic": "كَبِير",
+        "english": "big",
+        "examples": []
+    },
+    {
+        "level_num": 32,
+        "serial_num": 6,
+        "arabic": "كَثِير",
+        "english": "plenty, much",
+        "examples": []
+    },
+    {
+        "level_num": 32,
+        "serial_num": 7,
+        "arabic": "سَرِيع",
+        "english": "quick, swift, fast",
+        "examples": []
+    },
+    {
+        "level_num": 32,
+        "serial_num": 8,
+        "arabic": "رَحِيم",
+        "english": "merciful",
+        "examples": []
+    },
+    {
+        "level_num": 32,
+        "serial_num": 9,
+        "arabic": "عَظِيم",
+        "english": "supreme",
+        "examples": []
+    },
+    {
+        "level_num": 32,
+        "serial_num": 10,
+        "arabic": "قَلِيل",
+        "english": "little",
+        "examples": []
+    },
+    {
+        "level_num": 32,
+        "serial_num": 11,
+        "arabic": "كَرِيم",
+        "english": "noble, honorable, generous",
+        "examples": []
+    },
+    {
+        "level_num": 32,
+        "serial_num": 12,
+        "arabic": "لَطِيف",
+        "english": "subtle, nice",
+        "examples": []
+    },
+    {
+        "level_num": 33,
+        "serial_num": 1,
+        "arabic": "pl (رَسُول (رُسُل",
+        "english": "Messenger",
+        "examples": []
+    },
+    {
+        "level_num": 33,
+        "serial_num": 2,
+        "arabic": "نَبِيّ",
+        "english": "Prophet",
+        "examples": []
+    },
+    {
+        "level_num": 33,
+        "serial_num": 3,
+        "arabic": "أَنْبِيَاءَ , نَبِيِّيْن, نَبِيُّون",
+        "english": "prophets",
+        "examples": []
+    },
+    {
+        "level_num": 33,
+        "serial_num": 4,
+        "arabic": "آدم, نوح, إبراهيم,   لوط, إسماعيل,إسحاق, يعقوب, إسرائيل, يوسف, هود, شعيب,صالح,  موسى, عيسى بن مريم",
+        "english": "Adam, Nuh, Ibrahim, Lut, Isma'eel, Ishaq, Ya'qub, Isra'eel, Yusuf, Hud, Shu'ayb, Salih, Musa, 'Isa ibnu Maryam",
+        "examples": []
+    },
+    {
+        "level_num": 33,
+        "serial_num": 5,
+        "arabic": "pl (شَيْطَان (شَيَاطِين",
+        "english": "Satan",
+        "examples": []
+    },
+    {
+        "level_num": 33,
+        "serial_num": 6,
+        "arabic": "فِرْعَوْن",
+        "english": "Pharaoh",
+        "examples": []
+    },
+    {
+        "level_num": 33,
+        "serial_num": 7,
+        "arabic": "عَاد",
+        "english": "People of Hud",
+        "examples": []
+    },
+    {
+        "level_num": 33,
+        "serial_num": 8,
+        "arabic": "ثَمُود",
+        "english": "People of Salih",
+        "examples": []
+    },
+    {
+        "level_num": 34,
+        "serial_num": 1,
+        "arabic": "pl (رَسُول (رُسُل",
+        "english": "Messenger",
+        "examples": []
+    },
+    {
+        "level_num": 34,
+        "serial_num": 2,
+        "arabic": "نَبِيّ",
+        "english": "Prophet",
+        "examples": []
+    },
+    {
+        "level_num": 34,
+        "serial_num": 3,
+        "arabic": "أَنْبِيَاءَ , نَبِيِّيْن, نَبِيُّون",
+        "english": "prophets",
+        "examples": []
+    },
+    {
+        "level_num": 34,
+        "serial_num": 4,
+        "arabic": "pl (شَيْطَان (شَيَاطِين",
+        "english": "Satan",
+        "examples": []
+    },
+    {
+        "level_num": 34,
+        "serial_num": 5,
+        "arabic": "فِرْعَوْن",
+        "english": "Pharaoh",
+        "examples": []
+    },
+    {
+        "level_num": 34,
+        "serial_num": 6,
+        "arabic": "عَاد",
+        "english": "People of Hud",
+        "examples": []
+    },
+    {
+        "level_num": 34,
+        "serial_num": 7,
+        "arabic": "ثَمُود",
+        "english": "People of Salih",
+        "examples": []
+    },
+    {
+        "level_num": 35,
+        "serial_num": 1,
+        "arabic": "pl (آيَة (آيَات",
+        "english": "sign",
+        "examples": []
+    },
+    {
+        "level_num": 35,
+        "serial_num": 2,
+        "arabic": "pl (بَيِّنَة (بَيِّنَات",
+        "english": "evidence",
+        "examples": []
+    },
+    {
+        "level_num": 35,
+        "serial_num": 3,
+        "arabic": "قُرْآن",
+        "english": "Qur'an, reading, recitation",
+        "examples": []
+    },
+    {
+        "level_num": 35,
+        "serial_num": 4,
+        "arabic": "أنْعَام",
+        "english": "cattle",
+        "examples": []
+    },
+    {
+        "level_num": 35,
+        "serial_num": 5,
+        "arabic": "pl (جَبَل (جِبَال",
+        "english": "mountain",
+        "examples": []
+    },
+    {
+        "level_num": 35,
+        "serial_num": 6,
+        "arabic": "بَحْر",
+        "english": "sea, large river",
+        "examples": []
+    },
+    {
+        "level_num": 35,
+        "serial_num": 7,
+        "arabic": "شَمْس",
+        "english": "sun",
+        "examples": []
+    },
+    {
+        "level_num": 35,
+        "serial_num": 8,
+        "arabic": "قَمَر",
+        "english": "moon",
+        "examples": []
+    },
+    {
+        "level_num": 35,
+        "serial_num": 9,
+        "arabic": "pl (لَيْلَة (لَيَالِيْ",
+        "english": "night",
+        "examples": []
+    },
+    {
+        "level_num": 35,
+        "serial_num": 10,
+        "arabic": "نَهَار",
+        "english": "day",
+        "examples": []
+    },
+    {
+        "level_num": 35,
+        "serial_num": 11,
+        "arabic": "أَرْض",
+        "english": "earth",
+        "examples": []
+    },
+    {
+        "level_num": 35,
+        "serial_num": 12,
+        "arabic": "pl (سَمَاء (سَمَاوات",
+        "english": "sky",
+        "examples": []
+    },
+    {
+        "level_num": 36,
+        "serial_num": 1,
+        "arabic": "pl (آيَة (آيَات",
+        "english": "sign",
+        "examples": []
+    },
+    {
+        "level_num": 36,
+        "serial_num": 2,
+        "arabic": "pl (بَيِّنَة (بَيِّنَات",
+        "english": "evidence",
+        "examples": []
+    },
+    {
+        "level_num": 36,
+        "serial_num": 3,
+        "arabic": "قُرْآن",
+        "english": "Qur'an, reading, recitation",
+        "examples": []
+    },
+    {
+        "level_num": 36,
+        "serial_num": 4,
+        "arabic": "أنْعَام",
+        "english": "cattle",
+        "examples": []
+    },
+    {
+        "level_num": 36,
+        "serial_num": 5,
+        "arabic": "pl (جَبَل (جِبَال",
+        "english": "mountain",
+        "examples": []
+    },
+    {
+        "level_num": 36,
+        "serial_num": 6,
+        "arabic": "بَحْر",
+        "english": "sea, large river",
+        "examples": []
+    },
+    {
+        "level_num": 36,
+        "serial_num": 7,
+        "arabic": "شَمْس",
+        "english": "sun",
+        "examples": []
+    },
+    {
+        "level_num": 36,
+        "serial_num": 8,
+        "arabic": "قَمَر",
+        "english": "moon",
+        "examples": []
+    },
+    {
+        "level_num": 36,
+        "serial_num": 9,
+        "arabic": "pl (لَيْلَة (لَيَالِيْ",
+        "english": "night",
+        "examples": []
+    },
+    {
+        "level_num": 36,
+        "serial_num": 10,
+        "arabic": "نَهَار",
+        "english": "day",
+        "examples": []
+    },
+    {
+        "level_num": 36,
+        "serial_num": 11,
+        "arabic": "أَرْض",
+        "english": "earth",
+        "examples": []
+    },
+    {
+        "level_num": 36,
+        "serial_num": 12,
+        "arabic": "pl (سَمَاء (سَمَاوات",
+        "english": "sky",
+        "examples": []
+    },
+    {
+        "level_num": 37,
+        "serial_num": 1,
+        "arabic": "pl (صَاحِب (أَصْحَاب",
+        "english": "companion, fellow",
+        "examples": []
+    },
+    {
+        "level_num": 37,
+        "serial_num": 2,
+        "arabic": "عَاقِبَة",
+        "english": "end",
+        "examples": []
+    },
+    {
+        "level_num": 37,
+        "serial_num": 3,
+        "arabic": "عَذَاب",
+        "english": "torment, punishment",
+        "examples": []
+    },
+    {
+        "level_num": 37,
+        "serial_num": 4,
+        "arabic": "عِقَاب",
+        "english": "punishment, chastisement",
+        "examples": []
+    },
+    {
+        "level_num": 37,
+        "serial_num": 5,
+        "arabic": "قِيَامَة",
+        "english": "Resurrection",
+        "examples": []
+    },
+    {
+        "level_num": 37,
+        "serial_num": 6,
+        "arabic": "لِقَاء",
+        "english": "meeting",
+        "examples": []
+    },
+    {
+        "level_num": 37,
+        "serial_num": 7,
+        "arabic": "مُسَمَّى",
+        "english": "fixed",
+        "examples": []
+    },
+    {
+        "level_num": 37,
+        "serial_num": 8,
+        "arabic": "نَار",
+        "english": "fire",
+        "examples": []
+    },
+    {
+        "level_num": 37,
+        "serial_num": 9,
+        "arabic": "pl (نَهَر (أَنْهَار",
+        "english": "river",
+        "examples": []
+    },
+    {
+        "level_num": 37,
+        "serial_num": 10,
+        "arabic": "وَيْل",
+        "english": "woe unto",
+        "examples": []
+    },
+    {
+        "level_num": 37,
+        "serial_num": 11,
+        "arabic": "pl (يَوْم (أَيَّام",
+        "english": "day",
+        "examples": []
+    },
+    {
+        "level_num": 37,
+        "serial_num": 12,
+        "arabic": "يَوْمَئِذٍ",
+        "english": "that day",
+        "examples": []
+    },
+    {
+        "level_num": 38,
+        "serial_num": 1,
+        "arabic": "pl (صَاحِب (أَصْحَاب",
+        "english": "companion, fellow",
+        "examples": []
+    },
+    {
+        "level_num": 38,
+        "serial_num": 2,
+        "arabic": "عَاقِبَة",
+        "english": "end",
+        "examples": []
+    },
+    {
+        "level_num": 38,
+        "serial_num": 3,
+        "arabic": "عَذَاب",
+        "english": "torment, punishment",
+        "examples": []
+    },
+    {
+        "level_num": 38,
+        "serial_num": 4,
+        "arabic": "عِقَاب",
+        "english": "punishment, chastisement",
+        "examples": []
+    },
+    {
+        "level_num": 38,
+        "serial_num": 5,
+        "arabic": "قِيَامَة",
+        "english": "Resurrection",
+        "examples": []
+    },
+    {
+        "level_num": 38,
+        "serial_num": 6,
+        "arabic": "لِقَاء",
+        "english": "meeting",
+        "examples": []
+    },
+    {
+        "level_num": 38,
+        "serial_num": 7,
+        "arabic": "مُسَمَّى",
+        "english": "fixed",
+        "examples": []
+    },
+    {
+        "level_num": 38,
+        "serial_num": 8,
+        "arabic": "نَار",
+        "english": "fire",
+        "examples": []
+    },
+    {
+        "level_num": 38,
+        "serial_num": 9,
+        "arabic": "pl (نَهَر (أَنْهَار",
+        "english": "river",
+        "examples": []
+    },
+    {
+        "level_num": 38,
+        "serial_num": 10,
+        "arabic": "وَيْل",
+        "english": "woe unto",
+        "examples": []
+    },
+    {
+        "level_num": 38,
+        "serial_num": 11,
+        "arabic": "pl (يَوْم (أَيَّام",
+        "english": "day",
+        "examples": []
+    },
+    {
+        "level_num": 38,
+        "serial_num": 12,
+        "arabic": "يَوْمَئِذٍ",
+        "english": "that day",
+        "examples": []
+    },
+    {
+        "level_num": 39,
+        "serial_num": 1,
+        "arabic": "أَبَدًا",
+        "english": "forever, ever",
+        "examples": []
+    },
+    {
+        "level_num": 39,
+        "serial_num": 2,
+        "arabic": "pl (أَجْر (أُجُور",
+        "english": "reward",
+        "examples": []
+    },
+    {
+        "level_num": 39,
+        "serial_num": 3,
+        "arabic": "أَجَل",
+        "english": "term",
+        "examples": []
+    },
+    {
+        "level_num": 39,
+        "serial_num": 4,
+        "arabic": "الْآخِرَة",
+        "english": "the Hereafter",
+        "examples": []
+    },
+    {
+        "level_num": 39,
+        "serial_num": 5,
+        "arabic": "أَلِيم",
+        "english": "painful",
+        "examples": []
+    },
+    {
+        "level_num": 39,
+        "serial_num": 6,
+        "arabic": "ثَوَاب",
+        "english": "reward",
+        "examples": []
+    },
+    {
+        "level_num": 39,
+        "serial_num": 7,
+        "arabic": "جَحِيم",
+        "english": "hellfire",
+        "examples": []
+    },
+    {
+        "level_num": 39,
+        "serial_num": 8,
+        "arabic": "جَزَاء",
+        "english": "reward",
+        "examples": []
+    },
+    {
+        "level_num": 39,
+        "serial_num": 9,
+        "arabic": "pl (جَنَّة (جَنَّات",
+        "english": "garden, paradise",
+        "examples": []
+    },
+    {
+        "level_num": 39,
+        "serial_num": 10,
+        "arabic": "جَهَنَّم",
+        "english": "the hell",
+        "examples": []
+    },
+    {
+        "level_num": 39,
+        "serial_num": 11,
+        "arabic": "حِسَاب",
+        "english": "reckoning",
+        "examples": []
+    },
+    {
+        "level_num": 39,
+        "serial_num": 12,
+        "arabic": "سَاعَة",
+        "english": "hour (day of resurrection)",
+        "examples": []
+    },
+    {
+        "level_num": 40,
+        "serial_num": 1,
+        "arabic": "أَبَدًا",
+        "english": "forever, ever",
+        "examples": []
+    },
+    {
+        "level_num": 40,
+        "serial_num": 2,
+        "arabic": "pl (أَجْر (أُجُور",
+        "english": "reward",
+        "examples": []
+    },
+    {
+        "level_num": 40,
+        "serial_num": 3,
+        "arabic": "أَجَل",
+        "english": "term",
+        "examples": []
+    },
+    {
+        "level_num": 40,
+        "serial_num": 4,
+        "arabic": "الْآخِرَة",
+        "english": "the Hereafter",
+        "examples": []
+    },
+    {
+        "level_num": 40,
+        "serial_num": 5,
+        "arabic": "أَلِيم",
+        "english": "painful",
+        "examples": []
+    },
+    {
+        "level_num": 40,
+        "serial_num": 6,
+        "arabic": "ثَوَاب",
+        "english": "reward",
+        "examples": []
+    },
+    {
+        "level_num": 40,
+        "serial_num": 7,
+        "arabic": "جَحِيم",
+        "english": "hellfire",
+        "examples": []
+    },
+    {
+        "level_num": 40,
+        "serial_num": 8,
+        "arabic": "جَزَاء",
+        "english": "reward",
+        "examples": []
+    },
+    {
+        "level_num": 40,
+        "serial_num": 9,
+        "arabic": "pl (جَنَّة (جَنَّات",
+        "english": "garden, paradise",
+        "examples": []
+    },
+    {
+        "level_num": 40,
+        "serial_num": 10,
+        "arabic": "جَهَنَّم",
+        "english": "the hell",
+        "examples": []
+    },
+    {
+        "level_num": 40,
+        "serial_num": 11,
+        "arabic": "حِسَاب",
+        "english": "reckoning",
+        "examples": []
+    },
+    {
+        "level_num": 40,
+        "serial_num": 12,
+        "arabic": "سَاعَة",
+        "english": "hour (day of resurrection)",
+        "examples": []
+    },
+    {
+        "level_num": 41,
+        "serial_num": 1,
+        "arabic": "pl(أَمْر (أَمُور",
+        "english": "command, matter, affair",
+        "examples": []
+    },
+    {
+        "level_num": 41,
+        "serial_num": 2,
+        "arabic": "تَقْوَى",
+        "english": "piety, fear",
+        "examples": []
+    },
+    {
+        "level_num": 41,
+        "serial_num": 3,
+        "arabic": "حَقّ",
+        "english": "truth, true, right",
+        "examples": []
+    },
+    {
+        "level_num": 41,
+        "serial_num": 4,
+        "arabic": "بَاطِل",
+        "english": "falsehood",
+        "examples": []
+    },
+    {
+        "level_num": 41,
+        "serial_num": 5,
+        "arabic": "حِكْمَة",
+        "english": "wisdom",
+        "examples": []
+    },
+    {
+        "level_num": 41,
+        "serial_num": 6,
+        "arabic": "حَمْد",
+        "english": "praise",
+        "examples": []
+    },
+    {
+        "level_num": 41,
+        "serial_num": 7,
+        "arabic": "دِين",
+        "english": "religion, judgement",
+        "examples": []
+    },
+    {
+        "level_num": 41,
+        "serial_num": 8,
+        "arabic": "زَكَاة",
+        "english": "poor-due, purity",
+        "examples": []
+    },
+    {
+        "level_num": 41,
+        "serial_num": 9,
+        "arabic": "pl(شَهِيد (شُهَدَاء",
+        "english": "witness",
+        "examples": []
+    },
+    {
+        "level_num": 41,
+        "serial_num": 10,
+        "arabic": "صَلَاة",
+        "english": "prayer",
+        "examples": []
+    },
+    {
+        "level_num": 41,
+        "serial_num": 11,
+        "arabic": "مُبِين",
+        "english": "clear, self-expressive",
+        "examples": []
+    },
+    {
+        "level_num": 41,
+        "serial_num": 12,
+        "arabic": "نوُر",
+        "english": "light",
+        "examples": []
+    },
+    {
+        "level_num": 41,
+        "serial_num": 13,
+        "arabic": "هُدًى",
+        "english": "right guidance",
+        "examples": []
+    },
+    {
+        "level_num": 42,
+        "serial_num": 1,
+        "arabic": "pl(أَمْر (أَمُور",
+        "english": "command, matter, affair",
+        "examples": []
+    },
+    {
+        "level_num": 42,
+        "serial_num": 2,
+        "arabic": "تَقْوَى",
+        "english": "piety, fear",
+        "examples": []
+    },
+    {
+        "level_num": 42,
+        "serial_num": 3,
+        "arabic": "حَقّ",
+        "english": "truth, true, right",
+        "examples": []
+    },
+    {
+        "level_num": 42,
+        "serial_num": 4,
+        "arabic": "بَاطِل",
+        "english": "falsehood",
+        "examples": []
+    },
+    {
+        "level_num": 42,
+        "serial_num": 5,
+        "arabic": "حِكْمَة",
+        "english": "wisdom",
+        "examples": []
+    },
+    {
+        "level_num": 42,
+        "serial_num": 6,
+        "arabic": "حَمْد",
+        "english": "praise",
+        "examples": []
+    },
+    {
+        "level_num": 42,
+        "serial_num": 7,
+        "arabic": "دِين",
+        "english": "religion, judgement",
+        "examples": []
+    },
+    {
+        "level_num": 42,
+        "serial_num": 8,
+        "arabic": "زَكَاة",
+        "english": "poor-due, purity",
+        "examples": []
+    },
+    {
+        "level_num": 42,
+        "serial_num": 9,
+        "arabic": "pl(شَهِيد (شُهَدَاء",
+        "english": "witness",
+        "examples": []
+    },
+    {
+        "level_num": 42,
+        "serial_num": 10,
+        "arabic": "صَلَاة",
+        "english": "prayer",
+        "examples": []
+    },
+    {
+        "level_num": 42,
+        "serial_num": 11,
+        "arabic": "مُبِين",
+        "english": "clear, self-expressive",
+        "examples": []
+    },
+    {
+        "level_num": 42,
+        "serial_num": 12,
+        "arabic": "نوُر",
+        "english": "light",
+        "examples": []
+    },
+    {
+        "level_num": 43,
+        "serial_num": 1,
+        "arabic": "pl (أَحَد (إِحْدَى",
+        "english": "one, anyone",
+        "examples": []
+    },
+    {
+        "level_num": 43,
+        "serial_num": 2,
+        "arabic": "pl(إِله (آلِهَة",
+        "english": "god, deity",
+        "examples": []
+    },
+    {
+        "level_num": 43,
+        "serial_num": 3,
+        "arabic": "pl(شَرِيك (شُرَكَاء",
+        "english": "partner, associate",
+        "examples": []
+    },
+    {
+        "level_num": 43,
+        "serial_num": 4,
+        "arabic": "شَهَادَة",
+        "english": "witness, testemony",
+        "examples": []
+    },
+    {
+        "level_num": 43,
+        "serial_num": 5,
+        "arabic": "عَرْش",
+        "english": "throne",
+        "examples": []
+    },
+    {
+        "level_num": 43,
+        "serial_num": 6,
+        "arabic": "عَهْد",
+        "english": "covenant, promise",
+        "examples": []
+    },
+    {
+        "level_num": 43,
+        "serial_num": 7,
+        "arabic": "غَيْب",
+        "english": "unseen",
+        "examples": []
+    },
+    {
+        "level_num": 43,
+        "serial_num": 8,
+        "arabic": "pl(كِتَاب (كُتُب",
+        "english": "book",
+        "examples": []
+    },
+    {
+        "level_num": 43,
+        "serial_num": 9,
+        "arabic": "كَلِمَة",
+        "english": "word",
+        "examples": []
+    },
+    {
+        "level_num": 43,
+        "serial_num": 10,
+        "arabic": "pl(مَلَك (مَلَائِكَة",
+        "english": "angel",
+        "examples": []
+    },
+    {
+        "level_num": 43,
+        "serial_num": 11,
+        "arabic": "مِيثَاق",
+        "english": "covenant, treaty",
+        "examples": []
+    },
+    {
+        "level_num": 43,
+        "serial_num": 12,
+        "arabic": "وَاحِد",
+        "english": "one ",
+        "examples": []
+    },
+    {
+        "level_num": 44,
+        "serial_num": 1,
+        "arabic": "pl (أَحَد (إِحْدَى",
+        "english": "one, anyone",
+        "examples": []
+    },
+    {
+        "level_num": 44,
+        "serial_num": 2,
+        "arabic": "pl(إِله (آلِهَة",
+        "english": "god, deity",
+        "examples": []
+    },
+    {
+        "level_num": 44,
+        "serial_num": 3,
+        "arabic": "pl(شَرِيك (شُرَكَاء",
+        "english": "partner, associate",
+        "examples": []
+    },
+    {
+        "level_num": 44,
+        "serial_num": 4,
+        "arabic": "شَهَادَة",
+        "english": "witness, testemony",
+        "examples": []
+    },
+    {
+        "level_num": 44,
+        "serial_num": 5,
+        "arabic": "عَرْش",
+        "english": "throne",
+        "examples": []
+    },
+    {
+        "level_num": 44,
+        "serial_num": 6,
+        "arabic": "عَهْد",
+        "english": "covenant, promise",
+        "examples": []
+    },
+    {
+        "level_num": 44,
+        "serial_num": 7,
+        "arabic": "غَيْب",
+        "english": "unseen",
+        "examples": []
+    },
+    {
+        "level_num": 44,
+        "serial_num": 8,
+        "arabic": "pl(كِتَاب (كُتُب",
+        "english": "book",
+        "examples": []
+    },
+    {
+        "level_num": 44,
+        "serial_num": 9,
+        "arabic": "كَلِمَة",
+        "english": "word",
+        "examples": []
+    },
+    {
+        "level_num": 44,
+        "serial_num": 10,
+        "arabic": "pl(مَلَك (مَلَائِكَة",
+        "english": "angel",
+        "examples": []
+    },
+    {
+        "level_num": 44,
+        "serial_num": 11,
+        "arabic": "مِيثَاق",
+        "english": "covenant, treaty",
+        "examples": []
+    },
+    {
+        "level_num": 44,
+        "serial_num": 12,
+        "arabic": "وَاحِد",
+        "english": "one ",
+        "examples": []
+    },
+    {
+        "level_num": 45,
+        "serial_num": 1,
+        "arabic": "pl (عَمَل (أَعْمَال",
+        "english": "actions, deeds, works",
+        "examples": []
+    },
+    {
+        "level_num": 45,
+        "serial_num": 2,
+        "arabic": "حَسَنَة",
+        "english": "good (deed)",
+        "examples": []
+    },
+    {
+        "level_num": 45,
+        "serial_num": 3,
+        "arabic": "pl(سَيِّئَة (سَيِّئَات",
+        "english": "evil, bad",
+        "examples": []
+    },
+    {
+        "level_num": 45,
+        "serial_num": 4,
+        "arabic": "خَيْر",
+        "english": "good, better",
+        "examples": []
+    },
+    {
+        "level_num": 45,
+        "serial_num": 5,
+        "arabic": "شَرّ",
+        "english": "evil, bad, worse",
+        "examples": []
+    },
+    {
+        "level_num": 45,
+        "serial_num": 6,
+        "arabic": "إِثْم",
+        "english": "sin",
+        "examples": []
+    },
+    {
+        "level_num": 45,
+        "serial_num": 7,
+        "arabic": "pl(ذَنْب (ذُنُوب",
+        "english": "sin",
+        "examples": []
+    },
+    {
+        "level_num": 45,
+        "serial_num": 8,
+        "arabic": "جُنَاح",
+        "english": "sin",
+        "examples": []
+    },
+    {
+        "level_num": 45,
+        "serial_num": 9,
+        "arabic": "حَرَام",
+        "english": "sacred, unlawful",
+        "examples": []
+    },
+    {
+        "level_num": 45,
+        "serial_num": 10,
+        "arabic": "pl(اِسْم (أَسْمَاء",
+        "english": "name",
+        "examples": []
+    },
+    {
+        "level_num": 45,
+        "serial_num": 11,
+        "arabic": "pl(حَدِيث (أَحَادِيث",
+        "english": "discourse, speech",
+        "examples": []
+    },
+    {
+        "level_num": 45,
+        "serial_num": 12,
+        "arabic": "طَيِّبَة",
+        "english": "good",
+        "examples": []
+    },
+    {
+        "level_num": 46,
+        "serial_num": 1,
+        "arabic": "pl (عَمَل (أَعْمَال",
+        "english": "actions, deeds, works",
+        "examples": []
+    },
+    {
+        "level_num": 46,
+        "serial_num": 2,
+        "arabic": "حَسَنَة",
+        "english": "good (deed)",
+        "examples": []
+    },
+    {
+        "level_num": 46,
+        "serial_num": 3,
+        "arabic": "pl(سَيِّئَة (سَيِّئَات",
+        "english": "evil, bad",
+        "examples": []
+    },
+    {
+        "level_num": 46,
+        "serial_num": 4,
+        "arabic": "خَيْر",
+        "english": "good, better",
+        "examples": []
+    },
+    {
+        "level_num": 46,
+        "serial_num": 5,
+        "arabic": "شَرّ",
+        "english": "evil, bad, worse",
+        "examples": []
+    },
+    {
+        "level_num": 46,
+        "serial_num": 6,
+        "arabic": "إِثْم",
+        "english": "sin",
+        "examples": []
+    },
+    {
+        "level_num": 46,
+        "serial_num": 7,
+        "arabic": "pl(ذَنْب (ذُنُوب",
+        "english": "sin",
+        "examples": []
+    },
+    {
+        "level_num": 46,
+        "serial_num": 8,
+        "arabic": "جُنَاح",
+        "english": "sin",
+        "examples": []
+    },
+    {
+        "level_num": 46,
+        "serial_num": 9,
+        "arabic": "حَرَام",
+        "english": "sacred, unlawful",
+        "examples": []
+    },
+    {
+        "level_num": 46,
+        "serial_num": 10,
+        "arabic": "pl(اِسْم (أَسْمَاء",
+        "english": "name",
+        "examples": []
+    },
+    {
+        "level_num": 46,
+        "serial_num": 11,
+        "arabic": "pl(حَدِيث (أَحَادِيث",
+        "english": "discourse, speech",
+        "examples": []
+    },
+    {
+        "level_num": 46,
+        "serial_num": 12,
+        "arabic": "طَيِّبَة",
+        "english": "good",
+        "examples": []
+    },
+    {
+        "level_num": 47,
+        "serial_num": 1,
+        "arabic": "آلَاء",
+        "english": "favors",
+        "examples": []
+    },
+    {
+        "level_num": 47,
+        "serial_num": 2,
+        "arabic": "سُلْطَان",
+        "english": "authority, warrant",
+        "examples": []
+    },
+    {
+        "level_num": 47,
+        "serial_num": 3,
+        "arabic": "فَضْل",
+        "english": "grace",
+        "examples": []
+    },
+    {
+        "level_num": 47,
+        "serial_num": 4,
+        "arabic": "مَاء",
+        "english": "water",
+        "examples": []
+    },
+    {
+        "level_num": 47,
+        "serial_num": 5,
+        "arabic": "مُلْك",
+        "english": "dominion, reign",
+        "examples": []
+    },
+    {
+        "level_num": 47,
+        "serial_num": 6,
+        "arabic": "نِعْمَة",
+        "english": "favor",
+        "examples": []
+    },
+    {
+        "level_num": 47,
+        "serial_num": 7,
+        "arabic": "أَجْمَعِين أَجْمَعُون",
+        "english": "all",
+        "examples": []
+    },
+    {
+        "level_num": 47,
+        "serial_num": 8,
+        "arabic": "إِذْن",
+        "english": "permission",
+        "examples": []
+    },
+    {
+        "level_num": 47,
+        "serial_num": 9,
+        "arabic": "بَأْس",
+        "english": "punishment, power",
+        "examples": []
+    },
+    {
+        "level_num": 47,
+        "serial_num": 10,
+        "arabic": "جَمِيع",
+        "english": "all, everybody",
+        "examples": []
+    },
+    {
+        "level_num": 47,
+        "serial_num": 11,
+        "arabic": "سَوَاء",
+        "english": "same, equal, level, fair",
+        "examples": []
+    },
+    {
+        "level_num": 47,
+        "serial_num": 12,
+        "arabic": "فَرِيق",
+        "english": "party, group",
+        "examples": []
+    },
+    {
+        "level_num": 48,
+        "serial_num": 1,
+        "arabic": "آلَاء",
+        "english": "favors",
+        "examples": []
+    },
+    {
+        "level_num": 48,
+        "serial_num": 2,
+        "arabic": "سُلْطَان",
+        "english": "authority, warrant",
+        "examples": []
+    },
+    {
+        "level_num": 48,
+        "serial_num": 3,
+        "arabic": "فَضْل",
+        "english": "grace",
+        "examples": []
+    },
+    {
+        "level_num": 48,
+        "serial_num": 4,
+        "arabic": "مَاء",
+        "english": "water",
+        "examples": []
+    },
+    {
+        "level_num": 48,
+        "serial_num": 5,
+        "arabic": "مُلْك",
+        "english": "dominion, reign",
+        "examples": []
+    },
+    {
+        "level_num": 48,
+        "serial_num": 6,
+        "arabic": "نِعْمَة",
+        "english": "favor",
+        "examples": []
+    },
+    {
+        "level_num": 48,
+        "serial_num": 7,
+        "arabic": "أَجْمَعِين أَجْمَعُون",
+        "english": "all",
+        "examples": []
+    },
+    {
+        "level_num": 48,
+        "serial_num": 8,
+        "arabic": "إِذْن",
+        "english": "permission",
+        "examples": []
+    },
+    {
+        "level_num": 48,
+        "serial_num": 9,
+        "arabic": "بَأْس",
+        "english": "punishment, power",
+        "examples": []
+    },
+    {
+        "level_num": 48,
+        "serial_num": 10,
+        "arabic": "جَمِيع",
+        "english": "all, everybody",
+        "examples": []
+    },
+    {
+        "level_num": 48,
+        "serial_num": 11,
+        "arabic": "سَوَاء",
+        "english": "same, equal, level, fair",
+        "examples": []
+    },
+    {
+        "level_num": 48,
+        "serial_num": 12,
+        "arabic": "فَرِيق",
+        "english": "party, group",
+        "examples": []
+    },
+    {
+        "level_num": 49,
+        "serial_num": 1,
+        "arabic": "pl( أُمّ (أُمَّهَات",
+        "english": "mother",
+        "examples": []
+    },
+    {
+        "level_num": 49,
+        "serial_num": 2,
+        "arabic": "pl(أَب (آبَاء",
+        "english": "father",
+        "examples": []
+    },
+    {
+        "level_num": 49,
+        "serial_num": 3,
+        "arabic": "pl(زَوْج (أَزْوَاج",
+        "english": "wife, husband",
+        "examples": []
+    },
+    {
+        "level_num": 49,
+        "serial_num": 4,
+        "arabic": "pl(رَجُل (رِجَال",
+        "english": "man",
+        "examples": []
+    },
+    {
+        "level_num": 49,
+        "serial_num": 5,
+        "arabic": "pl(اِمْرَأَة (نِسَاء",
+        "english": "woman",
+        "examples": []
+    },
+    {
+        "level_num": 49,
+        "serial_num": 6,
+        "arabic": "pl(وَلَد (أَوْلَاد",
+        "english": "child",
+        "examples": []
+    },
+    {
+        "level_num": 49,
+        "serial_num": 7,
+        "arabic": "pl(وَالِد (وَالِدَيْن",
+        "english": "parent",
+        "examples": []
+    },
+    {
+        "level_num": 49,
+        "serial_num": 8,
+        "arabic": "ذُرِّيَّة",
+        "english": "descendants, children",
+        "examples": []
+    },
+    {
+        "level_num": 49,
+        "serial_num": 9,
+        "arabic": "اِبْن",
+        "english": "son",
+        "examples": []
+    },
+    {
+        "level_num": 49,
+        "serial_num": 10,
+        "arabic": "بَنُون، بَنِين، أَبْنَاء",
+        "english": "sons",
+        "examples": []
+    },
+    {
+        "level_num": 49,
+        "serial_num": 11,
+        "arabic": "(أخ (أَخُو، أَخَا، أَخِي",
+        "english": "brother",
+        "examples": []
+    },
+    {
+        "level_num": 49,
+        "serial_num": 12,
+        "arabic": "إِخْوَان",
+        "english": "brothers",
+        "examples": []
+    },
+    {
+        "level_num": 50,
+        "serial_num": 1,
+        "arabic": "pl( أُمّ (أُمَّهَات",
+        "english": "mother",
+        "examples": []
+    },
+    {
+        "level_num": 50,
+        "serial_num": 2,
+        "arabic": "pl(أَب (آبَاء",
+        "english": "father",
+        "examples": []
+    },
+    {
+        "level_num": 50,
+        "serial_num": 3,
+        "arabic": "pl(زَوْج (أَزْوَاج",
+        "english": "wife, husband",
+        "examples": []
+    },
+    {
+        "level_num": 50,
+        "serial_num": 4,
+        "arabic": "pl(رَجُل (رِجَال",
+        "english": "man",
+        "examples": []
+    },
+    {
+        "level_num": 50,
+        "serial_num": 5,
+        "arabic": "pl(اِمْرَأَة (نِسَاء",
+        "english": "woman",
+        "examples": []
+    },
+    {
+        "level_num": 50,
+        "serial_num": 6,
+        "arabic": "pl(وَلَد (أَوْلَاد",
+        "english": "child",
+        "examples": []
+    },
+    {
+        "level_num": 50,
+        "serial_num": 7,
+        "arabic": "pl(وَالِد (وَالِدَيْن",
+        "english": "parent",
+        "examples": []
+    },
+    {
+        "level_num": 50,
+        "serial_num": 8,
+        "arabic": "ذُرِّيَّة",
+        "english": "descendants, children",
+        "examples": []
+    },
+    {
+        "level_num": 50,
+        "serial_num": 9,
+        "arabic": "اِبْن",
+        "english": "son",
+        "examples": []
+    },
+    {
+        "level_num": 50,
+        "serial_num": 10,
+        "arabic": "بَنُون، بَنِين، أَبْنَاء",
+        "english": "sons",
+        "examples": []
+    },
+    {
+        "level_num": 50,
+        "serial_num": 11,
+        "arabic": "(أخ (أَخُو، أَخَا، أَخِي",
+        "english": "brother",
+        "examples": []
+    },
+    {
+        "level_num": 50,
+        "serial_num": 12,
+        "arabic": "إِخْوَان",
+        "english": "brothers",
+        "examples": []
+    },
+    {
+        "level_num": 51,
+        "serial_num": 1,
+        "arabic": "pl(وجْه (وُجُوه",
+        "english": "face",
+        "examples": []
+    },
+    {
+        "level_num": 51,
+        "serial_num": 2,
+        "arabic": "pl(عَيْن (عُيُون",
+        "english": "eye, spring",
+        "examples": []
+    },
+    {
+        "level_num": 51,
+        "serial_num": 3,
+        "arabic": "pl (بَصَر(أَبْصَار",
+        "english": "sight",
+        "examples": []
+    },
+    {
+        "level_num": 51,
+        "serial_num": 4,
+        "arabic": "أفْوَاه pl",
+        "english": "mouths",
+        "examples": []
+    },
+    {
+        "level_num": 51,
+        "serial_num": 5,
+        "arabic": "pl(لِسَان (أَلْسِنَة",
+        "english": "tongue, language",
+        "examples": []
+    },
+    {
+        "level_num": 51,
+        "serial_num": 6,
+        "arabic": "pl(قَلْب (قُلُوب",
+        "english": "heart",
+        "examples": []
+    },
+    {
+        "level_num": 51,
+        "serial_num": 7,
+        "arabic": "pl(صَدْر (صُدُور",
+        "english": "breast",
+        "examples": []
+    },
+    {
+        "level_num": 51,
+        "serial_num": 8,
+        "arabic": "pl(يَد (أَيْدِي",
+        "english": "hand",
+        "examples": []
+    },
+    {
+        "level_num": 51,
+        "serial_num": 9,
+        "arabic": "pl(رَجُل (أَرْجُل",
+        "english": "foot",
+        "examples": []
+    },
+    {
+        "level_num": 51,
+        "serial_num": 10,
+        "arabic": "pl(نَفْس (أَنْفُس",
+        "english": "soul",
+        "examples": []
+    },
+    {
+        "level_num": 51,
+        "serial_num": 11,
+        "arabic": "رُوح",
+        "english": "soul, spirit",
+        "examples": []
+    },
+    {
+        "level_num": 51,
+        "serial_num": 12,
+        "arabic": "قُوَّة",
+        "english": "power, strength",
+        "examples": []
+    },
+    {
+        "level_num": 52,
+        "serial_num": 1,
+        "arabic": "pl(وجْه (وُجُوه",
+        "english": "face",
+        "examples": []
+    },
+    {
+        "level_num": 52,
+        "serial_num": 2,
+        "arabic": "pl(عَيْن (عُيُون",
+        "english": "eye, spring",
+        "examples": []
+    },
+    {
+        "level_num": 52,
+        "serial_num": 3,
+        "arabic": "pl (بَصَر(أَبْصَار",
+        "english": "sight",
+        "examples": []
+    },
+    {
+        "level_num": 52,
+        "serial_num": 4,
+        "arabic": "أفْوَاه pl",
+        "english": "mouths",
+        "examples": []
+    },
+    {
+        "level_num": 52,
+        "serial_num": 5,
+        "arabic": "pl(لِسَان (أَلْسِنَة",
+        "english": "tongue, language",
+        "examples": []
+    },
+    {
+        "level_num": 52,
+        "serial_num": 6,
+        "arabic": "pl(قَلْب (قُلُوب",
+        "english": "heart",
+        "examples": []
+    },
+    {
+        "level_num": 52,
+        "serial_num": 7,
+        "arabic": "pl(صَدْر (صُدُور",
+        "english": "breast",
+        "examples": []
+    },
+    {
+        "level_num": 52,
+        "serial_num": 8,
+        "arabic": "pl(يَد (أَيْدِي",
+        "english": "hand",
+        "examples": []
+    },
+    {
+        "level_num": 52,
+        "serial_num": 9,
+        "arabic": "pl(رَجُل (أَرْجُل",
+        "english": "foot",
+        "examples": []
+    },
+    {
+        "level_num": 52,
+        "serial_num": 10,
+        "arabic": "pl(نَفْس (أَنْفُس",
+        "english": "soul",
+        "examples": []
+    },
+    {
+        "level_num": 52,
+        "serial_num": 11,
+        "arabic": "رُوح",
+        "english": "soul, spirit",
+        "examples": []
+    },
+    {
+        "level_num": 52,
+        "serial_num": 12,
+        "arabic": "قُوَّة",
+        "english": "power, strength",
+        "examples": []
+    },
+    {
+        "level_num": 53,
+        "serial_num": 1,
+        "arabic": "pl(بَيْت (بُيُوت",
+        "english": "house",
+        "examples": []
+    },
+    {
+        "level_num": 53,
+        "serial_num": 2,
+        "arabic": "pl(دَار (دِيَار",
+        "english": "home, abode",
+        "examples": []
+    },
+    {
+        "level_num": 53,
+        "serial_num": 3,
+        "arabic": "دُنْيَا",
+        "english": "world",
+        "examples": []
+    },
+    {
+        "level_num": 53,
+        "serial_num": 4,
+        "arabic": "pl(سَبِيل (سُبُل",
+        "english": "way",
+        "examples": []
+    },
+    {
+        "level_num": 53,
+        "serial_num": 5,
+        "arabic": "صِرَاط",
+        "english": "path",
+        "examples": []
+    },
+    {
+        "level_num": 53,
+        "serial_num": 6,
+        "arabic": "pl(عَالَم (عَالَمِين",
+        "english": "world",
+        "examples": []
+    },
+    {
+        "level_num": 53,
+        "serial_num": 7,
+        "arabic": "فِتْنَة",
+        "english": "trial, persecution",
+        "examples": []
+    },
+    {
+        "level_num": 53,
+        "serial_num": 8,
+        "arabic": "pl(قَرْيَة (قُرَى",
+        "english": "town",
+        "examples": []
+    },
+    {
+        "level_num": 53,
+        "serial_num": 9,
+        "arabic": "pl(مَال (أَمْوَال",
+        "english": "wealth",
+        "examples": []
+    },
+    {
+        "level_num": 53,
+        "serial_num": 10,
+        "arabic": "مَتَاع",
+        "english": "provision, enjoyment",
+        "examples": []
+    },
+    {
+        "level_num": 53,
+        "serial_num": 11,
+        "arabic": "pl(مَسْجِد (مَسَاجِد",
+        "english": "mosque",
+        "examples": []
+    },
+    {
+        "level_num": 53,
+        "serial_num": 12,
+        "arabic": "pl(مَكَان (مَكَانَة",
+        "english": "place, abode",
+        "examples": []
+    },
+    {
+        "level_num": 54,
+        "serial_num": 1,
+        "arabic": "pl(بَيْت (بُيُوت",
+        "english": "house",
+        "examples": []
+    },
+    {
+        "level_num": 54,
+        "serial_num": 2,
+        "arabic": "pl(دَار (دِيَار",
+        "english": "home, abode",
+        "examples": []
+    },
+    {
+        "level_num": 54,
+        "serial_num": 3,
+        "arabic": "دُنْيَا",
+        "english": "world",
+        "examples": []
+    },
+    {
+        "level_num": 54,
+        "serial_num": 4,
+        "arabic": "pl(سَبِيل (سُبُل",
+        "english": "way",
+        "examples": []
+    },
+    {
+        "level_num": 54,
+        "serial_num": 5,
+        "arabic": "صِرَاط",
+        "english": "path",
+        "examples": []
+    },
+    {
+        "level_num": 54,
+        "serial_num": 6,
+        "arabic": "pl(عَالَم (عَالَمِين",
+        "english": "world",
+        "examples": []
+    },
+    {
+        "level_num": 54,
+        "serial_num": 7,
+        "arabic": "فِتْنَة",
+        "english": "trial, persecution",
+        "examples": []
+    },
+    {
+        "level_num": 54,
+        "serial_num": 8,
+        "arabic": "pl(قَرْيَة (قُرَى",
+        "english": "town",
+        "examples": []
+    },
+    {
+        "level_num": 54,
+        "serial_num": 9,
+        "arabic": "pl(مَال (أَمْوَال",
+        "english": "wealth",
+        "examples": []
+    },
+    {
+        "level_num": 54,
+        "serial_num": 10,
+        "arabic": "مَتَاع",
+        "english": "provision, enjoyment",
+        "examples": []
+    },
+    {
+        "level_num": 54,
+        "serial_num": 11,
+        "arabic": "pl(مَسْجِد (مَسَاجِد",
+        "english": "mosque",
+        "examples": []
+    },
+    {
+        "level_num": 54,
+        "serial_num": 12,
+        "arabic": "pl(مَكَان (مَكَانَة",
+        "english": "place, abode",
+        "examples": []
+    },
+    {
+        "level_num": 55,
+        "serial_num": 1,
+        "arabic": "pl(أُمَّة (أُمَم",
+        "english": "community",
+        "examples": []
+    },
+    {
+        "level_num": 55,
+        "serial_num": 2,
+        "arabic": "قَوْم",
+        "english": "people, nation",
+        "examples": []
+    },
+    {
+        "level_num": 55,
+        "serial_num": 3,
+        "arabic": "إِنسَان",
+        "english": "man",
+        "examples": []
+    },
+    {
+        "level_num": 55,
+        "serial_num": 4,
+        "arabic": "نَاس",
+        "english": "men, people",
+        "examples": []
+    },
+    {
+        "level_num": 55,
+        "serial_num": 5,
+        "arabic": "pl(ذَكَر (ذُكُور",
+        "english": "male",
+        "examples": []
+    },
+    {
+        "level_num": 55,
+        "serial_num": 6,
+        "arabic": "pl(أُنْثَى (إِنَاث",
+        "english": "female",
+        "examples": []
+    },
+    {
+        "level_num": 55,
+        "serial_num": 7,
+        "arabic": "pl(عَبْد (عِبَاد",
+        "english": "slave",
+        "examples": []
+    },
+    {
+        "level_num": 55,
+        "serial_num": 8,
+        "arabic": "pl(عَدُوّ(أَعْدَاء",
+        "english": "enemy",
+        "examples": []
+    },
+    {
+        "level_num": 55,
+        "serial_num": 9,
+        "arabic": "pl(كَافِر(كُفَّار",
+        "english": "disbeliever",
+        "examples": []
+    },
+    {
+        "level_num": 55,
+        "serial_num": 10,
+        "arabic": "مُجْرِم",
+        "english": "criminal",
+        "examples": []
+    },
+    {
+        "level_num": 55,
+        "serial_num": 11,
+        "arabic": "مَلَأ",
+        "english": "chiefs, leaders",
+        "examples": []
+    },
+    {
+        "level_num": 55,
+        "serial_num": 12,
+        "arabic": "pl(وَلِيّ (أَوْلِيَاء",
+        "english": "protecting friend, guardian",
+        "examples": []
+    },
+    {
+        "level_num": 56,
+        "serial_num": 1,
+        "arabic": "pl(أُمَّة (أُمَم",
+        "english": "community",
+        "examples": []
+    },
+    {
+        "level_num": 56,
+        "serial_num": 2,
+        "arabic": "قَوْم",
+        "english": "people, nation",
+        "examples": []
+    },
+    {
+        "level_num": 56,
+        "serial_num": 3,
+        "arabic": "إِنسَان",
+        "english": "man",
+        "examples": []
+    },
+    {
+        "level_num": 56,
+        "serial_num": 4,
+        "arabic": "نَاس",
+        "english": "men, people",
+        "examples": []
+    },
+    {
+        "level_num": 56,
+        "serial_num": 5,
+        "arabic": "pl(ذَكَر (ذُكُور",
+        "english": "male",
+        "examples": []
+    },
+    {
+        "level_num": 56,
+        "serial_num": 6,
+        "arabic": "pl(أُنْثَى (إِنَاث",
+        "english": "female",
+        "examples": []
+    },
+    {
+        "level_num": 56,
+        "serial_num": 7,
+        "arabic": "pl(عَبْد (عِبَاد",
+        "english": "slave",
+        "examples": []
+    },
+    {
+        "level_num": 56,
+        "serial_num": 8,
+        "arabic": "pl(عَدُوّ(أَعْدَاء",
+        "english": "enemy",
+        "examples": []
+    },
+    {
+        "level_num": 56,
+        "serial_num": 9,
+        "arabic": "pl(كَافِر(كُفَّار",
+        "english": "disbeliever",
+        "examples": []
+    },
+    {
+        "level_num": 56,
+        "serial_num": 10,
+        "arabic": "مُجْرِم",
+        "english": "criminal",
+        "examples": []
+    },
+    {
+        "level_num": 56,
+        "serial_num": 11,
+        "arabic": "مَلَأ",
+        "english": "chiefs, leaders",
+        "examples": []
+    },
+    {
+        "level_num": 56,
+        "serial_num": 12,
+        "arabic": "pl(وَلِيّ (أَوْلِيَاء",
+        "english": "protecting friend, guardian",
+        "examples": []
+    },
+    {
+        "level_num": 57,
+        "serial_num": 1,
+        "arabic": "فَعَلَ",
+        "english": "to do",
+        "examples": []
+    },
+    {
+        "level_num": 57,
+        "serial_num": 2,
+        "arabic": "فَتَحَ",
+        "english": "to open",
+        "examples": []
+    },
+    {
+        "level_num": 57,
+        "serial_num": 3,
+        "arabic": "بَعَثَ",
+        "english": "to raise, to resurrect, to send",
+        "examples": []
+    },
+    {
+        "level_num": 57,
+        "serial_num": 4,
+        "arabic": "جَعَلَ",
+        "english": "to make, to place, to set up",
+        "examples": []
+    },
+    {
+        "level_num": 57,
+        "serial_num": 5,
+        "arabic": "جَمَعَ",
+        "english": "to gather, to collect",
+        "examples": []
+    },
+    {
+        "level_num": 57,
+        "serial_num": 6,
+        "arabic": "ذَهَبَ",
+        "english": "to go, to take away",
+        "examples": []
+    },
+    {
+        "level_num": 57,
+        "serial_num": 7,
+        "arabic": "رَفَعَ",
+        "english": "to raise",
+        "examples": []
+    },
+    {
+        "level_num": 57,
+        "serial_num": 8,
+        "arabic": "سَحَرَ",
+        "english": "to enchant, to bewitch",
+        "examples": []
+    },
+    {
+        "level_num": 57,
+        "serial_num": 9,
+        "arabic": "صَلَحَ",
+        "english": "to be righteous",
+        "examples": []
+    },
+    {
+        "level_num": 57,
+        "serial_num": 10,
+        "arabic": "لَعَنَ",
+        "english": "to curse",
+        "examples": []
+    },
+    {
+        "level_num": 57,
+        "serial_num": 11,
+        "arabic": "نَفَعَ",
+        "english": "to profit",
+        "examples": []
+    },
+    {
+        "level_num": 58,
+        "serial_num": 1,
+        "arabic": "فَعَلَ",
+        "english": "to do",
+        "examples": []
+    },
+    {
+        "level_num": 58,
+        "serial_num": 2,
+        "arabic": "فَتَحَ",
+        "english": "to open",
+        "examples": []
+    },
+    {
+        "level_num": 58,
+        "serial_num": 3,
+        "arabic": "بَعَثَ",
+        "english": "to raise, to resurrect, to send",
+        "examples": []
+    },
+    {
+        "level_num": 58,
+        "serial_num": 4,
+        "arabic": "جَعَلَ",
+        "english": "to make, to place, to set up",
+        "examples": []
+    },
+    {
+        "level_num": 58,
+        "serial_num": 5,
+        "arabic": "جَمَعَ",
+        "english": "to gather, to collect",
+        "examples": []
+    },
+    {
+        "level_num": 58,
+        "serial_num": 6,
+        "arabic": "ذَهَبَ",
+        "english": "to go, to take away",
+        "examples": []
+    },
+    {
+        "level_num": 58,
+        "serial_num": 7,
+        "arabic": "رَفَعَ",
+        "english": "to raise",
+        "examples": []
+    },
+    {
+        "level_num": 58,
+        "serial_num": 8,
+        "arabic": "سَحَرَ",
+        "english": "to enchant, to bewitch",
+        "examples": []
+    },
+    {
+        "level_num": 58,
+        "serial_num": 9,
+        "arabic": "صَلَحَ",
+        "english": "to be righteous",
+        "examples": []
+    },
+    {
+        "level_num": 58,
+        "serial_num": 10,
+        "arabic": "لَعَنَ",
+        "english": "to curse",
+        "examples": []
+    },
+    {
+        "level_num": 58,
+        "serial_num": 11,
+        "arabic": "نَفَعَ",
+        "english": "to profit",
+        "examples": []
+    },
+    {
+        "level_num": 59,
+        "serial_num": 1,
+        "arabic": "نَصَرَ",
+        "english": "to help",
+        "examples": []
+    },
+    {
+        "level_num": 59,
+        "serial_num": 2,
+        "arabic": "بَلَغَ",
+        "english": "to reach",
+        "examples": []
+    },
+    {
+        "level_num": 59,
+        "serial_num": 3,
+        "arabic": "تَرَكَ",
+        "english": "to leave",
+        "examples": []
+    },
+    {
+        "level_num": 59,
+        "serial_num": 4,
+        "arabic": "حَشَرَ",
+        "english": "to gather, to bring together",
+        "examples": []
+    },
+    {
+        "level_num": 59,
+        "serial_num": 5,
+        "arabic": "حَكَمَ",
+        "english": "to judge, to rule",
+        "examples": []
+    },
+    {
+        "level_num": 59,
+        "serial_num": 6,
+        "arabic": "خَرَجَ",
+        "english": "to come out",
+        "examples": []
+    },
+    {
+        "level_num": 59,
+        "serial_num": 7,
+        "arabic": "خَلَدَ",
+        "english": "to live forever",
+        "examples": []
+    },
+    {
+        "level_num": 59,
+        "serial_num": 8,
+        "arabic": "خَلَقَ",
+        "english": "to create",
+        "examples": []
+    },
+    {
+        "level_num": 59,
+        "serial_num": 9,
+        "arabic": "دَخَلَ",
+        "english": "to enter",
+        "examples": []
+    },
+    {
+        "level_num": 59,
+        "serial_num": 10,
+        "arabic": "ذَكَرَ",
+        "english": "to remember, to mention",
+        "examples": []
+    },
+    {
+        "level_num": 59,
+        "serial_num": 11,
+        "arabic": "رَزَقَ",
+        "english": "to provide",
+        "examples": []
+    },
+    {
+        "level_num": 60,
+        "serial_num": 1,
+        "arabic": "نَصَرَ",
+        "english": "to help",
+        "examples": []
+    },
+    {
+        "level_num": 60,
+        "serial_num": 2,
+        "arabic": "بَلَغَ",
+        "english": "to reach",
+        "examples": []
+    },
+    {
+        "level_num": 60,
+        "serial_num": 3,
+        "arabic": "تَرَكَ",
+        "english": "to leave",
+        "examples": []
+    },
+    {
+        "level_num": 60,
+        "serial_num": 4,
+        "arabic": "حَشَرَ",
+        "english": "to gather, to bring together",
+        "examples": []
+    },
+    {
+        "level_num": 60,
+        "serial_num": 5,
+        "arabic": "حَكَمَ",
+        "english": "to judge, to rule",
+        "examples": []
+    },
+    {
+        "level_num": 60,
+        "serial_num": 6,
+        "arabic": "خَرَجَ",
+        "english": "to come out",
+        "examples": []
+    },
+    {
+        "level_num": 60,
+        "serial_num": 7,
+        "arabic": "خَلَدَ",
+        "english": "to live forever",
+        "examples": []
+    },
+    {
+        "level_num": 60,
+        "serial_num": 8,
+        "arabic": "خَلَقَ",
+        "english": "to create",
+        "examples": []
+    },
+    {
+        "level_num": 60,
+        "serial_num": 9,
+        "arabic": "دَخَلَ",
+        "english": "to enter",
+        "examples": []
+    },
+    {
+        "level_num": 60,
+        "serial_num": 10,
+        "arabic": "ذَكَرَ",
+        "english": "to remember, to mention",
+        "examples": []
+    },
+    {
+        "level_num": 60,
+        "serial_num": 11,
+        "arabic": "رَزَقَ",
+        "english": "to provide",
+        "examples": []
+    },
+    {
+        "level_num": 61,
+        "serial_num": 1,
+        "arabic": "سَجَدَ",
+        "english": "to prostrate",
+        "examples": []
+    },
+    {
+        "level_num": 61,
+        "serial_num": 2,
+        "arabic": "شَعَرَ",
+        "english": "to perceive ",
+        "examples": []
+    },
+    {
+        "level_num": 61,
+        "serial_num": 3,
+        "arabic": "شَكَرَ",
+        "english": "to be grateful, to give thanks",
+        "examples": []
+    },
+    {
+        "level_num": 61,
+        "serial_num": 4,
+        "arabic": "صَدَقَ",
+        "english": "to be true, to say the truth",
+        "examples": []
+    },
+    {
+        "level_num": 61,
+        "serial_num": 5,
+        "arabic": "عَبَدَ",
+        "english": "to worship, to serve",
+        "examples": []
+    },
+    {
+        "level_num": 61,
+        "serial_num": 6,
+        "arabic": "فَسَقَ",
+        "english": "to transgress",
+        "examples": []
+    },
+    {
+        "level_num": 61,
+        "serial_num": 7,
+        "arabic": "قَتَلَ",
+        "english": "to kill",
+        "examples": []
+    },
+    {
+        "level_num": 61,
+        "serial_num": 8,
+        "arabic": "قَعَدَ",
+        "english": "to sit",
+        "examples": []
+    },
+    {
+        "level_num": 61,
+        "serial_num": 9,
+        "arabic": "كَتَبَ",
+        "english": "to write, to prescribe",
+        "examples": []
+    },
+    {
+        "level_num": 61,
+        "serial_num": 10,
+        "arabic": "كَفَرَ",
+        "english": "to disbelieve, to be ungrateful",
+        "examples": []
+    },
+    {
+        "level_num": 61,
+        "serial_num": 11,
+        "arabic": "مَكَرَ",
+        "english": "to plot",
+        "examples": []
+    },
+    {
+        "level_num": 61,
+        "serial_num": 12,
+        "arabic": "نَظَرَ",
+        "english": "to look, to wait",
+        "examples": []
+    },
+    {
+        "level_num": 62,
+        "serial_num": 1,
+        "arabic": "سَجَدَ",
+        "english": "to prostrate",
+        "examples": []
+    },
+    {
+        "level_num": 62,
+        "serial_num": 2,
+        "arabic": "شَعَرَ",
+        "english": "to perceive ",
+        "examples": []
+    },
+    {
+        "level_num": 62,
+        "serial_num": 3,
+        "arabic": "شَكَرَ",
+        "english": "to be grateful, to give thanks",
+        "examples": []
+    },
+    {
+        "level_num": 62,
+        "serial_num": 4,
+        "arabic": "صَدَقَ",
+        "english": "to be true, to say the truth",
+        "examples": []
+    },
+    {
+        "level_num": 62,
+        "serial_num": 5,
+        "arabic": "عَبَدَ",
+        "english": "to worship, to serve",
+        "examples": []
+    },
+    {
+        "level_num": 62,
+        "serial_num": 6,
+        "arabic": "فَسَقَ",
+        "english": "to transgress",
+        "examples": []
+    },
+    {
+        "level_num": 62,
+        "serial_num": 7,
+        "arabic": "قَتَلَ",
+        "english": "to kill",
+        "examples": []
+    },
+    {
+        "level_num": 62,
+        "serial_num": 8,
+        "arabic": "قَعَدَ",
+        "english": "to sit",
+        "examples": []
+    },
+    {
+        "level_num": 62,
+        "serial_num": 9,
+        "arabic": "كَتَبَ",
+        "english": "to write, to prescribe",
+        "examples": []
+    },
+    {
+        "level_num": 62,
+        "serial_num": 10,
+        "arabic": "كَفَرَ",
+        "english": "to disbelieve, to be ungrateful",
+        "examples": []
+    },
+    {
+        "level_num": 62,
+        "serial_num": 11,
+        "arabic": "مَكَرَ",
+        "english": "to plot",
+        "examples": []
+    },
+    {
+        "level_num": 62,
+        "serial_num": 12,
+        "arabic": "نَظَرَ",
+        "english": "to look, to wait",
+        "examples": []
+    },
+    {
+        "level_num": 63,
+        "serial_num": 1,
+        "arabic": "ضَرَبَ",
+        "english": "to strike, to set forth",
+        "examples": []
+    },
+    {
+        "level_num": 63,
+        "serial_num": 2,
+        "arabic": "حَمَلَ",
+        "english": "to carry, to bear",
+        "examples": []
+    },
+    {
+        "level_num": 63,
+        "serial_num": 3,
+        "arabic": "صَبَرَ",
+        "english": "to be patient",
+        "examples": []
+    },
+    {
+        "level_num": 63,
+        "serial_num": 4,
+        "arabic": "ظَلَمَ",
+        "english": "to wrong",
+        "examples": []
+    },
+    {
+        "level_num": 63,
+        "serial_num": 5,
+        "arabic": "عَرَفَ",
+        "english": "to recognize, to know",
+        "examples": []
+    },
+    {
+        "level_num": 63,
+        "serial_num": 6,
+        "arabic": "عَقَلَ",
+        "english": "to understand, to comprehend",
+        "examples": []
+    },
+    {
+        "level_num": 63,
+        "serial_num": 7,
+        "arabic": "غَفَرَ",
+        "english": "to forgive",
+        "examples": []
+    },
+    {
+        "level_num": 63,
+        "serial_num": 8,
+        "arabic": "قَدَرَ",
+        "english": "to decree, to have power",
+        "examples": []
+    },
+    {
+        "level_num": 63,
+        "serial_num": 9,
+        "arabic": "كَذَبَ",
+        "english": "to lie, to deny",
+        "examples": []
+    },
+    {
+        "level_num": 63,
+        "serial_num": 10,
+        "arabic": "كَسَبَ",
+        "english": "to earn",
+        "examples": []
+    },
+    {
+        "level_num": 63,
+        "serial_num": 11,
+        "arabic": "مَلَكَ",
+        "english": "to possess, to have power",
+        "examples": []
+    },
+    {
+        "level_num": 64,
+        "serial_num": 1,
+        "arabic": "ضَرَبَ",
+        "english": "to strike, to set forth",
+        "examples": []
+    },
+    {
+        "level_num": 64,
+        "serial_num": 2,
+        "arabic": "حَمَلَ",
+        "english": "to carry, to bear",
+        "examples": []
+    },
+    {
+        "level_num": 64,
+        "serial_num": 3,
+        "arabic": "صَبَرَ",
+        "english": "to be patient",
+        "examples": []
+    },
+    {
+        "level_num": 64,
+        "serial_num": 4,
+        "arabic": "ظَلَمَ",
+        "english": "to wrong",
+        "examples": []
+    },
+    {
+        "level_num": 64,
+        "serial_num": 5,
+        "arabic": "عَرَفَ",
+        "english": "to recognize, to know",
+        "examples": []
+    },
+    {
+        "level_num": 64,
+        "serial_num": 6,
+        "arabic": "عَقَلَ",
+        "english": "to understand, to comprehend",
+        "examples": []
+    },
+    {
+        "level_num": 64,
+        "serial_num": 7,
+        "arabic": "غَفَرَ",
+        "english": "to forgive",
+        "examples": []
+    },
+    {
+        "level_num": 64,
+        "serial_num": 8,
+        "arabic": "قَدَرَ",
+        "english": "to decree, to have power",
+        "examples": []
+    },
+    {
+        "level_num": 64,
+        "serial_num": 9,
+        "arabic": "كَذَبَ",
+        "english": "to lie, to deny",
+        "examples": []
+    },
+    {
+        "level_num": 64,
+        "serial_num": 10,
+        "arabic": "كَسَبَ",
+        "english": "to earn",
+        "examples": []
+    },
+    {
+        "level_num": 64,
+        "serial_num": 11,
+        "arabic": "مَلَكَ",
+        "english": "to possess, to have power",
+        "examples": []
+    },
+    {
+        "level_num": 65,
+        "serial_num": 1,
+        "arabic": "سَمِعَ",
+        "english": "to hear",
+        "examples": []
+    },
+    {
+        "level_num": 65,
+        "serial_num": 2,
+        "arabic": "حَزِنَ",
+        "english": "to be grieved",
+        "examples": []
+    },
+    {
+        "level_num": 65,
+        "serial_num": 3,
+        "arabic": "حَسِبَ",
+        "english": "to think, to consider",
+        "examples": []
+    },
+    {
+        "level_num": 65,
+        "serial_num": 4,
+        "arabic": "حَفِظَ",
+        "english": "to guard, to protect",
+        "examples": []
+    },
+    {
+        "level_num": 65,
+        "serial_num": 5,
+        "arabic": "خَسِرَ",
+        "english": "to lose",
+        "examples": []
+    },
+    {
+        "level_num": 65,
+        "serial_num": 6,
+        "arabic": "رَحِمَ",
+        "english": "to have mercy (on)",
+        "examples": []
+    },
+    {
+        "level_num": 65,
+        "serial_num": 7,
+        "arabic": "شَهِدَ",
+        "english": "to bear witness, to be present, to testify",
+        "examples": []
+    },
+    {
+        "level_num": 65,
+        "serial_num": 8,
+        "arabic": "عَلِمَ",
+        "english": "to know",
+        "examples": []
+    },
+    {
+        "level_num": 65,
+        "serial_num": 9,
+        "arabic": "عَمِلَ",
+        "english": "to do, to work",
+        "examples": []
+    },
+    {
+        "level_num": 65,
+        "serial_num": 10,
+        "arabic": "كَرِهَ",
+        "english": "to dislike, to hate",
+        "examples": []
+    },
+    {
+        "level_num": 65,
+        "serial_num": 11,
+        "arabic": "بَصُرَ",
+        "english": "to watch, to see",
+        "examples": []
+    },
+    {
+        "level_num": 66,
+        "serial_num": 1,
+        "arabic": "سَمِعَ",
+        "english": "to hear",
+        "examples": []
+    },
+    {
+        "level_num": 66,
+        "serial_num": 2,
+        "arabic": "حَزِنَ",
+        "english": "to be grieved",
+        "examples": []
+    },
+    {
+        "level_num": 66,
+        "serial_num": 3,
+        "arabic": "حَسِبَ",
+        "english": "to think, to consider",
+        "examples": []
+    },
+    {
+        "level_num": 66,
+        "serial_num": 4,
+        "arabic": "حَفِظَ",
+        "english": "to guard, to protect",
+        "examples": []
+    },
+    {
+        "level_num": 66,
+        "serial_num": 5,
+        "arabic": "خَسِرَ",
+        "english": "to lose",
+        "examples": []
+    },
+    {
+        "level_num": 66,
+        "serial_num": 6,
+        "arabic": "رَحِمَ",
+        "english": "to have mercy (on)",
+        "examples": []
+    },
+    {
+        "level_num": 66,
+        "serial_num": 7,
+        "arabic": "شَهِدَ",
+        "english": "to bear witness, to be present, to testify",
+        "examples": []
+    },
+    {
+        "level_num": 66,
+        "serial_num": 8,
+        "arabic": "عَلِمَ",
+        "english": "to know",
+        "examples": []
+    },
+    {
+        "level_num": 66,
+        "serial_num": 9,
+        "arabic": "عَمِلَ",
+        "english": "to do, to work",
+        "examples": []
+    },
+    {
+        "level_num": 66,
+        "serial_num": 10,
+        "arabic": "كَرِهَ",
+        "english": "to dislike, to hate",
+        "examples": []
+    },
+    {
+        "level_num": 66,
+        "serial_num": 11,
+        "arabic": "بَصُرَ",
+        "english": "to watch, to see",
+        "examples": []
+    },
+    {
+        "level_num": 67,
+        "serial_num": 1,
+        "arabic": "حَيَّ",
+        "english": "to live",
+        "examples": []
+    },
+    {
+        "level_num": 67,
+        "serial_num": 2,
+        "arabic": "رَدَّ",
+        "english": "to return",
+        "examples": []
+    },
+    {
+        "level_num": 67,
+        "serial_num": 3,
+        "arabic": "صَدَّ",
+        "english": "to turn away, to hinder",
+        "examples": []
+    },
+    {
+        "level_num": 67,
+        "serial_num": 4,
+        "arabic": "ضَرَّ",
+        "english": "to hurt, to harm",
+        "examples": []
+    },
+    {
+        "level_num": 67,
+        "serial_num": 5,
+        "arabic": "ضَلَّ",
+        "english": "to go astray, to err, to lose",
+        "examples": []
+    },
+    {
+        "level_num": 67,
+        "serial_num": 6,
+        "arabic": "ظَنَّ",
+        "english": "to think, to believe",
+        "examples": []
+    },
+    {
+        "level_num": 67,
+        "serial_num": 7,
+        "arabic": "عَدَّ",
+        "english": "to count",
+        "examples": []
+    },
+    {
+        "level_num": 67,
+        "serial_num": 8,
+        "arabic": "غَرَّ",
+        "english": "to beguile, to deceive",
+        "examples": []
+    },
+    {
+        "level_num": 67,
+        "serial_num": 9,
+        "arabic": "مَدَّ",
+        "english": "to spread out, to stretch",
+        "examples": []
+    },
+    {
+        "level_num": 67,
+        "serial_num": 10,
+        "arabic": "مَسَّ",
+        "english": "to touch",
+        "examples": []
+    },
+    {
+        "level_num": 67,
+        "serial_num": 11,
+        "arabic": "وَدَّ",
+        "english": "to love, to wish",
+        "examples": []
+    },
+    {
+        "level_num": 68,
+        "serial_num": 1,
+        "arabic": "حَيَّ",
+        "english": "to live",
+        "examples": []
+    },
+    {
+        "level_num": 68,
+        "serial_num": 2,
+        "arabic": "رَدَّ",
+        "english": "to return",
+        "examples": []
+    },
+    {
+        "level_num": 68,
+        "serial_num": 3,
+        "arabic": "صَدَّ",
+        "english": "to turn away, to hinder",
+        "examples": []
+    },
+    {
+        "level_num": 68,
+        "serial_num": 4,
+        "arabic": "ضَرَّ",
+        "english": "to hurt, to harm",
+        "examples": []
+    },
+    {
+        "level_num": 68,
+        "serial_num": 5,
+        "arabic": "ضَلَّ",
+        "english": "to go astray, to err, to lose",
+        "examples": []
+    },
+    {
+        "level_num": 68,
+        "serial_num": 6,
+        "arabic": "ظَنَّ",
+        "english": "to think, to believe",
+        "examples": []
+    },
+    {
+        "level_num": 68,
+        "serial_num": 7,
+        "arabic": "عَدَّ",
+        "english": "to count",
+        "examples": []
+    },
+    {
+        "level_num": 68,
+        "serial_num": 8,
+        "arabic": "غَرَّ",
+        "english": "to beguile, to deceive",
+        "examples": []
+    },
+    {
+        "level_num": 68,
+        "serial_num": 9,
+        "arabic": "مَدَّ",
+        "english": "to spread out, to stretch",
+        "examples": []
+    },
+    {
+        "level_num": 68,
+        "serial_num": 10,
+        "arabic": "مَسَّ",
+        "english": "to touch",
+        "examples": []
+    },
+    {
+        "level_num": 68,
+        "serial_num": 11,
+        "arabic": "وَدَّ",
+        "english": "to love, to wish",
+        "examples": []
+    },
+    {
+        "level_num": 69,
+        "serial_num": 1,
+        "arabic": "وَذَرَ",
+        "english": "to leave behind",
+        "examples": []
+    },
+    {
+        "level_num": 69,
+        "serial_num": 2,
+        "arabic": "وَضَعَ",
+        "english": "to put, to set, to give birth",
+        "examples": []
+    },
+    {
+        "level_num": 69,
+        "serial_num": 3,
+        "arabic": "وَقَعَ",
+        "english": "to befall, to fall, to fulfil",
+        "examples": []
+    },
+    {
+        "level_num": 69,
+        "serial_num": 4,
+        "arabic": "وَهَبَ",
+        "english": "to grant, to bestow",
+        "examples": []
+    },
+    {
+        "level_num": 69,
+        "serial_num": 5,
+        "arabic": "وَجَدَ",
+        "english": "to find",
+        "examples": []
+    },
+    {
+        "level_num": 69,
+        "serial_num": 6,
+        "arabic": "وَرِثَ",
+        "english": "to inherit",
+        "examples": []
+    },
+    {
+        "level_num": 69,
+        "serial_num": 7,
+        "arabic": "وَزَرَ",
+        "english": "to bear a load",
+        "examples": []
+    },
+    {
+        "level_num": 69,
+        "serial_num": 8,
+        "arabic": "وَصَفَ",
+        "english": "to describe, to ascribe, to attribute",
+        "examples": []
+    },
+    {
+        "level_num": 69,
+        "serial_num": 9,
+        "arabic": "وَعَدَ",
+        "english": "to promise",
+        "examples": []
+    },
+    {
+        "level_num": 69,
+        "serial_num": 10,
+        "arabic": "وَقَى",
+        "english": "to save, to protect",
+        "examples": []
+    },
+    {
+        "level_num": 69,
+        "serial_num": 11,
+        "arabic": "وَسِعَ",
+        "english": "to encompass, to comprehend",
+        "examples": []
+    },
+    {
+        "level_num": 70,
+        "serial_num": 1,
+        "arabic": "وَذَرَ",
+        "english": "to leave behind",
+        "examples": []
+    },
+    {
+        "level_num": 70,
+        "serial_num": 2,
+        "arabic": "وَضَعَ",
+        "english": "to put, to set, to give birth",
+        "examples": []
+    },
+    {
+        "level_num": 70,
+        "serial_num": 3,
+        "arabic": "وَقَعَ",
+        "english": "to befall, to fall, to fulfil",
+        "examples": []
+    },
+    {
+        "level_num": 70,
+        "serial_num": 4,
+        "arabic": "وَهَبَ",
+        "english": "to grant, to bestow",
+        "examples": []
+    },
+    {
+        "level_num": 70,
+        "serial_num": 5,
+        "arabic": "وَجَدَ",
+        "english": "to find",
+        "examples": []
+    },
+    {
+        "level_num": 70,
+        "serial_num": 6,
+        "arabic": "وَرِثَ",
+        "english": "to inherit",
+        "examples": []
+    },
+    {
+        "level_num": 70,
+        "serial_num": 7,
+        "arabic": "وَزَرَ",
+        "english": "to bear a load",
+        "examples": []
+    },
+    {
+        "level_num": 70,
+        "serial_num": 8,
+        "arabic": "وَصَفَ",
+        "english": "to describe, to ascribe, to attribute",
+        "examples": []
+    },
+    {
+        "level_num": 70,
+        "serial_num": 9,
+        "arabic": "وَعَدَ",
+        "english": "to promise",
+        "examples": []
+    },
+    {
+        "level_num": 70,
+        "serial_num": 10,
+        "arabic": "وَقَى",
+        "english": "to save, to protect",
+        "examples": []
+    },
+    {
+        "level_num": 70,
+        "serial_num": 11,
+        "arabic": "وَسِعَ",
+        "english": "to encompass, to comprehend",
+        "examples": []
+    },
+    {
+        "level_num": 71,
+        "serial_num": 1,
+        "arabic": "تَابَ",
+        "english": "to repent",
+        "examples": []
+    },
+    {
+        "level_num": 71,
+        "serial_num": 2,
+        "arabic": "ذَاقَ",
+        "english": "to taste",
+        "examples": []
+    },
+    {
+        "level_num": 71,
+        "serial_num": 3,
+        "arabic": "فَازَ",
+        "english": "to succeed, to gain victory",
+        "examples": []
+    },
+    {
+        "level_num": 71,
+        "serial_num": 4,
+        "arabic": "قَالَ",
+        "english": "to say",
+        "examples": []
+    },
+    {
+        "level_num": 71,
+        "serial_num": 5,
+        "arabic": "قَامَ",
+        "english": "to stand up, to rise",
+        "examples": []
+    },
+    {
+        "level_num": 71,
+        "serial_num": 6,
+        "arabic": "كَانَ",
+        "english": "to be",
+        "examples": []
+    },
+    {
+        "level_num": 71,
+        "serial_num": 7,
+        "arabic": "مَاتَ",
+        "english": "to die",
+        "examples": []
+    },
+    {
+        "level_num": 71,
+        "serial_num": 8,
+        "arabic": "خَافَ",
+        "english": "to fear, to be afraid",
+        "examples": []
+    },
+    {
+        "level_num": 71,
+        "serial_num": 9,
+        "arabic": "كَادَ",
+        "english": "to be close to, to almost do",
+        "examples": []
+    },
+    {
+        "level_num": 71,
+        "serial_num": 10,
+        "arabic": "كَادَ",
+        "english": "to plot against",
+        "examples": []
+    },
+    {
+        "level_num": 71,
+        "serial_num": 11,
+        "arabic": "زَادَ",
+        "english": "to increase",
+        "examples": []
+    },
+    {
+        "level_num": 72,
+        "serial_num": 1,
+        "arabic": "تَابَ",
+        "english": "to repent",
+        "examples": []
+    },
+    {
+        "level_num": 72,
+        "serial_num": 2,
+        "arabic": "ذَاقَ",
+        "english": "to taste",
+        "examples": []
+    },
+    {
+        "level_num": 72,
+        "serial_num": 3,
+        "arabic": "فَازَ",
+        "english": "to succeed, to gain victory",
+        "examples": []
+    },
+    {
+        "level_num": 72,
+        "serial_num": 4,
+        "arabic": "قَالَ",
+        "english": "to say",
+        "examples": []
+    },
+    {
+        "level_num": 72,
+        "serial_num": 5,
+        "arabic": "قَامَ",
+        "english": "to stand up, to rise",
+        "examples": []
+    },
+    {
+        "level_num": 72,
+        "serial_num": 6,
+        "arabic": "كَانَ",
+        "english": "to be",
+        "examples": []
+    },
+    {
+        "level_num": 72,
+        "serial_num": 7,
+        "arabic": "مَاتَ",
+        "english": "to die",
+        "examples": []
+    },
+    {
+        "level_num": 72,
+        "serial_num": 8,
+        "arabic": "خَافَ",
+        "english": "to fear, to be afraid",
+        "examples": []
+    },
+    {
+        "level_num": 72,
+        "serial_num": 9,
+        "arabic": "كَادَ",
+        "english": "to be close to, to almost do",
+        "examples": []
+    },
+    {
+        "level_num": 72,
+        "serial_num": 10,
+        "arabic": "كَادَ",
+        "english": "to plot against",
+        "examples": []
+    },
+    {
+        "level_num": 72,
+        "serial_num": 11,
+        "arabic": "زَادَ",
+        "english": "to increase",
+        "examples": []
+    },
+    {
+        "level_num": 73,
+        "serial_num": 1,
+        "arabic": "تَلَا",
+        "english": "to recite",
+        "examples": []
+    },
+    {
+        "level_num": 73,
+        "serial_num": 2,
+        "arabic": "دَعَا",
+        "english": "to call, to pray",
+        "examples": []
+    },
+    {
+        "level_num": 73,
+        "serial_num": 3,
+        "arabic": "عَفَا",
+        "english": "to forgive, to excuse, to forgo",
+        "examples": []
+    },
+    {
+        "level_num": 73,
+        "serial_num": 4,
+        "arabic": "بَغَى",
+        "english": "to seek, to oppress",
+        "examples": []
+    },
+    {
+        "level_num": 73,
+        "serial_num": 5,
+        "arabic": "جَرَى",
+        "english": "to flow",
+        "examples": []
+    },
+    {
+        "level_num": 73,
+        "serial_num": 6,
+        "arabic": "جَزَى",
+        "english": "to reward",
+        "examples": []
+    },
+    {
+        "level_num": 73,
+        "serial_num": 7,
+        "arabic": "قَضَى",
+        "english": "to decree, to fulfil, to judge",
+        "examples": []
+    },
+    {
+        "level_num": 73,
+        "serial_num": 8,
+        "arabic": "كَفَى",
+        "english": "to suffice",
+        "examples": []
+    },
+    {
+        "level_num": 73,
+        "serial_num": 9,
+        "arabic": "هَدَى",
+        "english": "to guide, to direct",
+        "examples": []
+    },
+    {
+        "level_num": 73,
+        "serial_num": 10,
+        "arabic": "خَشِىَ",
+        "english": "to fear",
+        "examples": []
+    },
+    {
+        "level_num": 73,
+        "serial_num": 11,
+        "arabic": "رَضِيَ",
+        "english": "to be satisfied, to be content, to be pleased",
+        "examples": []
+    },
+    {
+        "level_num": 73,
+        "serial_num": 12,
+        "arabic": "نَسِىَ",
+        "english": "to forget",
+        "examples": []
+    },
+    {
+        "level_num": 74,
+        "serial_num": 1,
+        "arabic": "تَلَا",
+        "english": "to recite",
+        "examples": []
+    },
+    {
+        "level_num": 74,
+        "serial_num": 2,
+        "arabic": "دَعَا",
+        "english": "to call, to pray",
+        "examples": []
+    },
+    {
+        "level_num": 74,
+        "serial_num": 3,
+        "arabic": "عَفَا",
+        "english": "to forgive, to excuse, to forgo",
+        "examples": []
+    },
+    {
+        "level_num": 74,
+        "serial_num": 4,
+        "arabic": "بَغَى",
+        "english": "to seek, to oppress",
+        "examples": []
+    },
+    {
+        "level_num": 74,
+        "serial_num": 5,
+        "arabic": "جَرَى",
+        "english": "to flow",
+        "examples": []
+    },
+    {
+        "level_num": 74,
+        "serial_num": 6,
+        "arabic": "جَزَى",
+        "english": "to reward",
+        "examples": []
+    },
+    {
+        "level_num": 74,
+        "serial_num": 7,
+        "arabic": "قَضَى",
+        "english": "to decree, to fulfil, to judge",
+        "examples": []
+    },
+    {
+        "level_num": 74,
+        "serial_num": 8,
+        "arabic": "كَفَى",
+        "english": "to suffice",
+        "examples": []
+    },
+    {
+        "level_num": 74,
+        "serial_num": 9,
+        "arabic": "هَدَى",
+        "english": "to guide, to direct",
+        "examples": []
+    },
+    {
+        "level_num": 74,
+        "serial_num": 10,
+        "arabic": "خَشِىَ",
+        "english": "to fear",
+        "examples": []
+    },
+    {
+        "level_num": 74,
+        "serial_num": 11,
+        "arabic": "رَضِيَ",
+        "english": "to be satisfied, to be content, to be pleased",
+        "examples": []
+    },
+    {
+        "level_num": 74,
+        "serial_num": 12,
+        "arabic": "نَسِىَ",
+        "english": "to forget",
+        "examples": []
+    },
+    {
+        "level_num": 75,
+        "serial_num": 1,
+        "arabic": "سَأَلَ",
+        "english": "to ask",
+        "examples": []
+    },
+    {
+        "level_num": 75,
+        "serial_num": 2,
+        "arabic": "قَرَأَ",
+        "english": "to read, to recite",
+        "examples": []
+    },
+    {
+        "level_num": 75,
+        "serial_num": 3,
+        "arabic": "أَخَذَ",
+        "english": "to take, to catch",
+        "examples": []
+    },
+    {
+        "level_num": 75,
+        "serial_num": 4,
+        "arabic": "أَكَلَ",
+        "english": "to eat",
+        "examples": []
+    },
+    {
+        "level_num": 75,
+        "serial_num": 5,
+        "arabic": "أَمَرَ",
+        "english": "to command",
+        "examples": []
+    },
+    {
+        "level_num": 75,
+        "serial_num": 6,
+        "arabic": "أَمِنَ",
+        "english": "to be safe, to feel safe,  to trust",
+        "examples": []
+    },
+    {
+        "level_num": 75,
+        "serial_num": 7,
+        "arabic": "أَبَى",
+        "english": "to refuse",
+        "examples": []
+    },
+    {
+        "level_num": 75,
+        "serial_num": 8,
+        "arabic": "رَءَا",
+        "english": "to see",
+        "examples": []
+    },
+    {
+        "level_num": 75,
+        "serial_num": 9,
+        "arabic": "أَتَى",
+        "english": "to come",
+        "examples": []
+    },
+    {
+        "level_num": 75,
+        "serial_num": 10,
+        "arabic": "شَآءَ",
+        "english": "to will, to wish",
+        "examples": []
+    },
+    {
+        "level_num": 75,
+        "serial_num": 11,
+        "arabic": "سَآءَ",
+        "english": "to be evil",
+        "examples": []
+    },
+    {
+        "level_num": 75,
+        "serial_num": 12,
+        "arabic": "جَآءَ",
+        "english": "to come",
+        "examples": []
+    },
+    {
+        "level_num": 76,
+        "serial_num": 1,
+        "arabic": "سَأَلَ",
+        "english": "to ask",
+        "examples": []
+    },
+    {
+        "level_num": 76,
+        "serial_num": 2,
+        "arabic": "قَرَأَ",
+        "english": "to read, to recite",
+        "examples": []
+    },
+    {
+        "level_num": 76,
+        "serial_num": 3,
+        "arabic": "أَخَذَ",
+        "english": "to take, to catch",
+        "examples": []
+    },
+    {
+        "level_num": 76,
+        "serial_num": 4,
+        "arabic": "أَكَلَ",
+        "english": "to eat",
+        "examples": []
+    },
+    {
+        "level_num": 76,
+        "serial_num": 5,
+        "arabic": "أَمَرَ",
+        "english": "to command",
+        "examples": []
+    },
+    {
+        "level_num": 76,
+        "serial_num": 6,
+        "arabic": "أَمِنَ",
+        "english": "to be safe, to feel safe,  to trust",
+        "examples": []
+    },
+    {
+        "level_num": 76,
+        "serial_num": 7,
+        "arabic": "أَبَى",
+        "english": "to refuse",
+        "examples": []
+    },
+    {
+        "level_num": 76,
+        "serial_num": 8,
+        "arabic": "رَءَا",
+        "english": "to see",
+        "examples": []
+    },
+    {
+        "level_num": 76,
+        "serial_num": 9,
+        "arabic": "أَتَى",
+        "english": "to come",
+        "examples": []
+    },
+    {
+        "level_num": 76,
+        "serial_num": 10,
+        "arabic": "شَآءَ",
+        "english": "to will, to wish",
+        "examples": []
+    },
+    {
+        "level_num": 76,
+        "serial_num": 11,
+        "arabic": "سَآءَ",
+        "english": "to be evil",
+        "examples": []
+    },
+    {
+        "level_num": 76,
+        "serial_num": 12,
+        "arabic": "جَآءَ",
+        "english": "to come",
+        "examples": []
+    },
+    {
+        "level_num": 77,
+        "serial_num": 1,
+        "arabic": "بَدَّلَ",
+        "english": "to change",
+        "examples": []
+    },
+    {
+        "level_num": 77,
+        "serial_num": 2,
+        "arabic": "بَشَّرَ",
+        "english": "to give good news",
+        "examples": []
+    },
+    {
+        "level_num": 77,
+        "serial_num": 3,
+        "arabic": "بَيَّنَ",
+        "english": "to make clear",
+        "examples": []
+    },
+    {
+        "level_num": 77,
+        "serial_num": 4,
+        "arabic": "زَيَّنَ",
+        "english": "to adorn, to make something seem fair",
+        "examples": []
+    },
+    {
+        "level_num": 77,
+        "serial_num": 5,
+        "arabic": "سَبَّحَ",
+        "english": "to glorify, to praise",
+        "examples": []
+    },
+    {
+        "level_num": 77,
+        "serial_num": 6,
+        "arabic": "سَخَّرَ",
+        "english": "to bring under control",
+        "examples": []
+    },
+    {
+        "level_num": 77,
+        "serial_num": 7,
+        "arabic": "صَدَّقَ",
+        "english": "to believe, to confirm, to accept as true",
+        "examples": []
+    },
+    {
+        "level_num": 77,
+        "serial_num": 8,
+        "arabic": "عَذَّبَ",
+        "english": "to punish, to torment",
+        "examples": []
+    },
+    {
+        "level_num": 77,
+        "serial_num": 9,
+        "arabic": "عَلَّمَ",
+        "english": "to teach",
+        "examples": []
+    },
+    {
+        "level_num": 77,
+        "serial_num": 10,
+        "arabic": "قَدَّمَ",
+        "english": "to send forward",
+        "examples": []
+    },
+    {
+        "level_num": 77,
+        "serial_num": 11,
+        "arabic": "كَذَّبَ",
+        "english": "to accuse of falsehood, to deny",
+        "examples": []
+    },
+    {
+        "level_num": 78,
+        "serial_num": 1,
+        "arabic": "بَدَّلَ",
+        "english": "to change",
+        "examples": []
+    },
+    {
+        "level_num": 78,
+        "serial_num": 2,
+        "arabic": "بَشَّرَ",
+        "english": "to give good news",
+        "examples": []
+    },
+    {
+        "level_num": 78,
+        "serial_num": 3,
+        "arabic": "بَيَّنَ",
+        "english": "to make clear",
+        "examples": []
+    },
+    {
+        "level_num": 78,
+        "serial_num": 4,
+        "arabic": "زَيَّنَ",
+        "english": "to adorn, to make something seem fair",
+        "examples": []
+    },
+    {
+        "level_num": 78,
+        "serial_num": 5,
+        "arabic": "سَبَّحَ",
+        "english": "to glorify, to praise",
+        "examples": []
+    },
+    {
+        "level_num": 78,
+        "serial_num": 6,
+        "arabic": "سَخَّرَ",
+        "english": "to bring under control",
+        "examples": []
+    },
+    {
+        "level_num": 78,
+        "serial_num": 7,
+        "arabic": "صَدَّقَ",
+        "english": "to believe, to confirm, to accept as true",
+        "examples": []
+    },
+    {
+        "level_num": 78,
+        "serial_num": 8,
+        "arabic": "عَذَّبَ",
+        "english": "to punish, to torment",
+        "examples": []
+    },
+    {
+        "level_num": 78,
+        "serial_num": 9,
+        "arabic": "عَلَّمَ",
+        "english": "to teach",
+        "examples": []
+    },
+    {
+        "level_num": 78,
+        "serial_num": 10,
+        "arabic": "قَدَّمَ",
+        "english": "to send forward",
+        "examples": []
+    },
+    {
+        "level_num": 78,
+        "serial_num": 11,
+        "arabic": "كَذَّبَ",
+        "english": "to accuse of falsehood, to deny",
+        "examples": []
+    },
+    {
+        "level_num": 79,
+        "serial_num": 1,
+        "arabic": "نَبَّأَ",
+        "english": "to declare, to apprise, to inform",
+        "examples": []
+    },
+    {
+        "level_num": 79,
+        "serial_num": 2,
+        "arabic": "نَزَّلَ",
+        "english": "to send down, to reveal",
+        "examples": []
+    },
+    {
+        "level_num": 79,
+        "serial_num": 3,
+        "arabic": "نَجَّى",
+        "english": "to deliver, to rescue",
+        "examples": []
+    },
+    {
+        "level_num": 79,
+        "serial_num": 4,
+        "arabic": "وَلَّى",
+        "english": "to turn",
+        "examples": []
+    },
+    {
+        "level_num": 79,
+        "serial_num": 5,
+        "arabic": "جَاهَدَ",
+        "english": "to struggle, to strive",
+        "examples": []
+    },
+    {
+        "level_num": 79,
+        "serial_num": 6,
+        "arabic": "قَاتَلَ",
+        "english": "to fight",
+        "examples": []
+    },
+    {
+        "level_num": 79,
+        "serial_num": 7,
+        "arabic": "نَادَى",
+        "english": "to call out, to cry unto",
+        "examples": []
+    },
+    {
+        "level_num": 79,
+        "serial_num": 8,
+        "arabic": "نَافَقَ",
+        "english": "to be hypocritical",
+        "examples": []
+    },
+    {
+        "level_num": 79,
+        "serial_num": 9,
+        "arabic": "هَاجَرَ",
+        "english": "to migrate",
+        "examples": []
+    },
+    {
+        "level_num": 80,
+        "serial_num": 1,
+        "arabic": "نَبَّأَ",
+        "english": "to declare, to apprise, to inform",
+        "examples": []
+    },
+    {
+        "level_num": 80,
+        "serial_num": 2,
+        "arabic": "نَزَّلَ",
+        "english": "to send down, to reveal",
+        "examples": []
+    },
+    {
+        "level_num": 80,
+        "serial_num": 3,
+        "arabic": "نَجَّى",
+        "english": "to deliver, to rescue",
+        "examples": []
+    },
+    {
+        "level_num": 80,
+        "serial_num": 4,
+        "arabic": "وَلَّى",
+        "english": "to turn",
+        "examples": []
+    },
+    {
+        "level_num": 80,
+        "serial_num": 5,
+        "arabic": "جَاهَدَ",
+        "english": "to struggle, to strive",
+        "examples": []
+    },
+    {
+        "level_num": 80,
+        "serial_num": 6,
+        "arabic": "قَاتَلَ",
+        "english": "to fight",
+        "examples": []
+    },
+    {
+        "level_num": 80,
+        "serial_num": 7,
+        "arabic": "نَادَى",
+        "english": "to call out, to cry unto",
+        "examples": []
+    },
+    {
+        "level_num": 80,
+        "serial_num": 8,
+        "arabic": "نَافَقَ",
+        "english": "to be hypocritical",
+        "examples": []
+    },
+    {
+        "level_num": 80,
+        "serial_num": 9,
+        "arabic": "هَاجَرَ",
+        "english": "to migrate",
+        "examples": []
+    },
+    {
+        "level_num": 81,
+        "serial_num": 1,
+        "arabic": "أَبْصَرَ",
+        "english": "to see, to watch",
+        "examples": []
+    },
+    {
+        "level_num": 81,
+        "serial_num": 2,
+        "arabic": "أَحْسَنَ",
+        "english": "to do good, to do excellently",
+        "examples": []
+    },
+    {
+        "level_num": 81,
+        "serial_num": 3,
+        "arabic": "أَخْرَجَ",
+        "english": "to bring forth, to drive out",
+        "examples": []
+    },
+    {
+        "level_num": 81,
+        "serial_num": 4,
+        "arabic": "أَدْخَلَ",
+        "english": "to admit, to make enter",
+        "examples": []
+    },
+    {
+        "level_num": 81,
+        "serial_num": 5,
+        "arabic": "أَرْجَعَ",
+        "english": "to send back, to take back",
+        "examples": []
+    },
+    {
+        "level_num": 81,
+        "serial_num": 6,
+        "arabic": "أَرْسَلَ",
+        "english": "to send",
+        "examples": []
+    },
+    {
+        "level_num": 81,
+        "serial_num": 7,
+        "arabic": "أَسْرَفَ",
+        "english": "to exceed, to be extravagant",
+        "examples": []
+    },
+    {
+        "level_num": 81,
+        "serial_num": 8,
+        "arabic": "أَسْلَمَ",
+        "english": "to submit, to surrender",
+        "examples": []
+    },
+    {
+        "level_num": 81,
+        "serial_num": 9,
+        "arabic": "أَشْرَكَ",
+        "english": "to ascribe a partner",
+        "examples": []
+    },
+    {
+        "level_num": 81,
+        "serial_num": 10,
+        "arabic": "أَصْبَحَ",
+        "english": "to become",
+        "examples": []
+    },
+    {
+        "level_num": 81,
+        "serial_num": 11,
+        "arabic": "أَصْلَحَ",
+        "english": "to reform, to improve, to make peace",
+        "examples": []
+    },
+    {
+        "level_num": 82,
+        "serial_num": 1,
+        "arabic": "أَبْصَرَ",
+        "english": "to see, to watch",
+        "examples": []
+    },
+    {
+        "level_num": 82,
+        "serial_num": 2,
+        "arabic": "أَحْسَنَ",
+        "english": "to do good, to do excellently",
+        "examples": []
+    },
+    {
+        "level_num": 82,
+        "serial_num": 3,
+        "arabic": "أَخْرَجَ",
+        "english": "to bring forth, to drive out",
+        "examples": []
+    },
+    {
+        "level_num": 82,
+        "serial_num": 4,
+        "arabic": "أَدْخَلَ",
+        "english": "to admit, to make enter",
+        "examples": []
+    },
+    {
+        "level_num": 82,
+        "serial_num": 5,
+        "arabic": "أَرْجَعَ",
+        "english": "to send back, to take back",
+        "examples": []
+    },
+    {
+        "level_num": 82,
+        "serial_num": 6,
+        "arabic": "أَرْسَلَ",
+        "english": "to send",
+        "examples": []
+    },
+    {
+        "level_num": 82,
+        "serial_num": 7,
+        "arabic": "أَسْرَفَ",
+        "english": "to exceed, to be extravagant",
+        "examples": []
+    },
+    {
+        "level_num": 82,
+        "serial_num": 8,
+        "arabic": "أَسْلَمَ",
+        "english": "to submit, to surrender",
+        "examples": []
+    },
+    {
+        "level_num": 82,
+        "serial_num": 9,
+        "arabic": "أَشْرَكَ",
+        "english": "to ascribe a partner",
+        "examples": []
+    },
+    {
+        "level_num": 82,
+        "serial_num": 10,
+        "arabic": "أَصْبَحَ",
+        "english": "to become",
+        "examples": []
+    },
+    {
+        "level_num": 82,
+        "serial_num": 11,
+        "arabic": "أَصْلَحَ",
+        "english": "to reform, to improve, to make peace",
+        "examples": []
+    },
+    {
+        "level_num": 83,
+        "serial_num": 1,
+        "arabic": "أَعْرَضَ",
+        "english": "to turn away",
+        "examples": []
+    },
+    {
+        "level_num": 83,
+        "serial_num": 2,
+        "arabic": "أَغْرَقَ",
+        "english": "to drown",
+        "examples": []
+    },
+    {
+        "level_num": 83,
+        "serial_num": 3,
+        "arabic": "أَفْسَدَ",
+        "english": "to spread corruption",
+        "examples": []
+    },
+    {
+        "level_num": 83,
+        "serial_num": 4,
+        "arabic": "أَفْلَحَ",
+        "english": "to be successful",
+        "examples": []
+    },
+    {
+        "level_num": 83,
+        "serial_num": 5,
+        "arabic": "أَنْبَتَ",
+        "english": "to make grow",
+        "examples": []
+    },
+    {
+        "level_num": 83,
+        "serial_num": 6,
+        "arabic": "أَنذَرَ",
+        "english": "to warn",
+        "examples": []
+    },
+    {
+        "level_num": 83,
+        "serial_num": 7,
+        "arabic": "أَنزَلَ",
+        "english": "to send down, to reveal",
+        "examples": []
+    },
+    {
+        "level_num": 83,
+        "serial_num": 8,
+        "arabic": "أَنشَأَ",
+        "english": "to produce, to raise",
+        "examples": []
+    },
+    {
+        "level_num": 83,
+        "serial_num": 9,
+        "arabic": "أَنْعَمَ",
+        "english": "to favor, to bestow grace",
+        "examples": []
+    },
+    {
+        "level_num": 83,
+        "serial_num": 10,
+        "arabic": "أَنفَقَ",
+        "english": "to spend",
+        "examples": []
+    },
+    {
+        "level_num": 83,
+        "serial_num": 11,
+        "arabic": "أَنْكَرَ",
+        "english": "to not recognize, to deny",
+        "examples": []
+    },
+    {
+        "level_num": 83,
+        "serial_num": 12,
+        "arabic": "أَهْلَكَ",
+        "english": "to destroy",
+        "examples": []
+    },
+    {
+        "level_num": 84,
+        "serial_num": 1,
+        "arabic": "أَعْرَضَ",
+        "english": "to turn away",
+        "examples": []
+    },
+    {
+        "level_num": 84,
+        "serial_num": 2,
+        "arabic": "أَغْرَقَ",
+        "english": "to drown",
+        "examples": []
+    },
+    {
+        "level_num": 84,
+        "serial_num": 3,
+        "arabic": "أَفْسَدَ",
+        "english": "to spread corruption",
+        "examples": []
+    },
+    {
+        "level_num": 84,
+        "serial_num": 4,
+        "arabic": "أَفْلَحَ",
+        "english": "to be successful",
+        "examples": []
+    },
+    {
+        "level_num": 84,
+        "serial_num": 5,
+        "arabic": "أَنْبَتَ",
+        "english": "to make grow",
+        "examples": []
+    },
+    {
+        "level_num": 84,
+        "serial_num": 6,
+        "arabic": "أَنذَرَ",
+        "english": "to warn",
+        "examples": []
+    },
+    {
+        "level_num": 84,
+        "serial_num": 7,
+        "arabic": "أَنزَلَ",
+        "english": "to send down, to reveal",
+        "examples": []
+    },
+    {
+        "level_num": 84,
+        "serial_num": 8,
+        "arabic": "أَنشَأَ",
+        "english": "to produce, to raise",
+        "examples": []
+    },
+    {
+        "level_num": 84,
+        "serial_num": 9,
+        "arabic": "أَنْعَمَ",
+        "english": "to favor, to bestow grace",
+        "examples": []
+    },
+    {
+        "level_num": 84,
+        "serial_num": 10,
+        "arabic": "أَنفَقَ",
+        "english": "to spend",
+        "examples": []
+    },
+    {
+        "level_num": 84,
+        "serial_num": 11,
+        "arabic": "أَنْكَرَ",
+        "english": "to not recognize, to deny",
+        "examples": []
+    },
+    {
+        "level_num": 84,
+        "serial_num": 12,
+        "arabic": "أَهْلَكَ",
+        "english": "to destroy",
+        "examples": []
+    },
+    {
+        "level_num": 85,
+        "serial_num": 1,
+        "arabic": "أَتَمَّ",
+        "english": "to complete",
+        "examples": []
+    },
+    {
+        "level_num": 85,
+        "serial_num": 2,
+        "arabic": "أَحْبَّ",
+        "english": "to love",
+        "examples": []
+    },
+    {
+        "level_num": 85,
+        "serial_num": 3,
+        "arabic": "أَحَلَّ",
+        "english": "to make lawful, to cause to dwell",
+        "examples": []
+    },
+    {
+        "level_num": 85,
+        "serial_num": 4,
+        "arabic": "أَسَرَّ",
+        "english": "to conceal, to speak secretly",
+        "examples": []
+    },
+    {
+        "level_num": 85,
+        "serial_num": 5,
+        "arabic": "أَضَلَّ",
+        "english": "to leave in error, to send astray",
+        "examples": []
+    },
+    {
+        "level_num": 85,
+        "serial_num": 6,
+        "arabic": "أَعَدَّ",
+        "english": "to prepare",
+        "examples": []
+    },
+    {
+        "level_num": 85,
+        "serial_num": 7,
+        "arabic": "أَذَاقَ",
+        "english": "to make taste",
+        "examples": []
+    },
+    {
+        "level_num": 85,
+        "serial_num": 8,
+        "arabic": "أَرَادَ",
+        "english": "to intend, to wish",
+        "examples": []
+    },
+    {
+        "level_num": 85,
+        "serial_num": 9,
+        "arabic": "أَصَابَ",
+        "english": "to befall, to inflict",
+        "examples": []
+    },
+    {
+        "level_num": 85,
+        "serial_num": 10,
+        "arabic": "أَطَاعَ",
+        "english": "to obey",
+        "examples": []
+    },
+    {
+        "level_num": 85,
+        "serial_num": 11,
+        "arabic": "أَقَامَ",
+        "english": "to establish",
+        "examples": []
+    },
+    {
+        "level_num": 85,
+        "serial_num": 12,
+        "arabic": "أَمَاتَ",
+        "english": "to cause death",
+        "examples": []
+    },
+    {
+        "level_num": 86,
+        "serial_num": 1,
+        "arabic": "أَتَمَّ",
+        "english": "to complete",
+        "examples": []
+    },
+    {
+        "level_num": 86,
+        "serial_num": 2,
+        "arabic": "أَحْبَّ",
+        "english": "to love",
+        "examples": []
+    },
+    {
+        "level_num": 86,
+        "serial_num": 3,
+        "arabic": "أَحَلَّ",
+        "english": "to make lawful, to cause to dwell",
+        "examples": []
+    },
+    {
+        "level_num": 86,
+        "serial_num": 4,
+        "arabic": "أَسَرَّ",
+        "english": "to conceal, to speak secretly",
+        "examples": []
+    },
+    {
+        "level_num": 86,
+        "serial_num": 5,
+        "arabic": "أَضَلَّ",
+        "english": "to leave in error, to send astray",
+        "examples": []
+    },
+    {
+        "level_num": 86,
+        "serial_num": 6,
+        "arabic": "أَعَدَّ",
+        "english": "to prepare",
+        "examples": []
+    },
+    {
+        "level_num": 86,
+        "serial_num": 7,
+        "arabic": "أَذَاقَ",
+        "english": "to make taste",
+        "examples": []
+    },
+    {
+        "level_num": 86,
+        "serial_num": 8,
+        "arabic": "أَرَادَ",
+        "english": "to intend, to wish",
+        "examples": []
+    },
+    {
+        "level_num": 86,
+        "serial_num": 9,
+        "arabic": "أَصَابَ",
+        "english": "to befall, to inflict",
+        "examples": []
+    },
+    {
+        "level_num": 86,
+        "serial_num": 10,
+        "arabic": "أَطَاعَ",
+        "english": "to obey",
+        "examples": []
+    },
+    {
+        "level_num": 86,
+        "serial_num": 11,
+        "arabic": "أَقَامَ",
+        "english": "to establish",
+        "examples": []
+    },
+    {
+        "level_num": 86,
+        "serial_num": 12,
+        "arabic": "أَمَاتَ",
+        "english": "to cause death",
+        "examples": []
+    },
+    {
+        "level_num": 87,
+        "serial_num": 1,
+        "arabic": "أَحْيَا",
+        "english": "to give life",
+        "examples": []
+    },
+    {
+        "level_num": 87,
+        "serial_num": 2,
+        "arabic": "أَخْفِىَ",
+        "english": "to conceal",
+        "examples": []
+    },
+    {
+        "level_num": 87,
+        "serial_num": 3,
+        "arabic": "أَرَى",
+        "english": "to show",
+        "examples": []
+    },
+    {
+        "level_num": 87,
+        "serial_num": 4,
+        "arabic": "أَغْنَى",
+        "english": "to enrich, to avail",
+        "examples": []
+    },
+    {
+        "level_num": 87,
+        "serial_num": 5,
+        "arabic": "أَلْقَى",
+        "english": "to cast, to throw, to place",
+        "examples": []
+    },
+    {
+        "level_num": 87,
+        "serial_num": 6,
+        "arabic": "أَنجَى",
+        "english": "to rescue, to save, to deliver",
+        "examples": []
+    },
+    {
+        "level_num": 87,
+        "serial_num": 7,
+        "arabic": "أَوْحَى",
+        "english": "to reveal, to inspire",
+        "examples": []
+    },
+    {
+        "level_num": 87,
+        "serial_num": 8,
+        "arabic": "أَوْفَى",
+        "english": "to fulfill",
+        "examples": []
+    },
+    {
+        "level_num": 87,
+        "serial_num": 9,
+        "arabic": "آمَنَ",
+        "english": "to believe",
+        "examples": []
+    },
+    {
+        "level_num": 87,
+        "serial_num": 10,
+        "arabic": "آتَى",
+        "english": "to give",
+        "examples": []
+    },
+    {
+        "level_num": 87,
+        "serial_num": 11,
+        "arabic": "آذَى",
+        "english": "to give trouble, to harm, to annoy",
+        "examples": []
+    },
+    {
+        "level_num": 88,
+        "serial_num": 1,
+        "arabic": "أَحْيَا",
+        "english": "to give life",
+        "examples": []
+    },
+    {
+        "level_num": 88,
+        "serial_num": 2,
+        "arabic": "أَخْفِىَ",
+        "english": "to conceal",
+        "examples": []
+    },
+    {
+        "level_num": 88,
+        "serial_num": 3,
+        "arabic": "أَرَى",
+        "english": "to show",
+        "examples": []
+    },
+    {
+        "level_num": 88,
+        "serial_num": 4,
+        "arabic": "أَغْنَى",
+        "english": "to enrich, to avail",
+        "examples": []
+    },
+    {
+        "level_num": 88,
+        "serial_num": 5,
+        "arabic": "أَلْقَى",
+        "english": "to cast, to throw, to place",
+        "examples": []
+    },
+    {
+        "level_num": 88,
+        "serial_num": 6,
+        "arabic": "أَنجَى",
+        "english": "to rescue, to save, to deliver",
+        "examples": []
+    },
+    {
+        "level_num": 88,
+        "serial_num": 7,
+        "arabic": "أَوْحَى",
+        "english": "to reveal, to inspire",
+        "examples": []
+    },
+    {
+        "level_num": 88,
+        "serial_num": 8,
+        "arabic": "أَوْفَى",
+        "english": "to fulfill",
+        "examples": []
+    },
+    {
+        "level_num": 88,
+        "serial_num": 9,
+        "arabic": "آمَنَ",
+        "english": "to believe",
+        "examples": []
+    },
+    {
+        "level_num": 88,
+        "serial_num": 10,
+        "arabic": "آتَى",
+        "english": "to give",
+        "examples": []
+    },
+    {
+        "level_num": 88,
+        "serial_num": 11,
+        "arabic": "آذَى",
+        "english": "to give trouble, to harm, to annoy",
+        "examples": []
+    },
+    {
+        "level_num": 89,
+        "serial_num": 1,
+        "arabic": "تَفَكَّرَ",
+        "english": "to think over, to reflect",
+        "examples": []
+    },
+    {
+        "level_num": 89,
+        "serial_num": 2,
+        "arabic": "تَذَكَّرَ",
+        "english": "to receive admonition, to remember",
+        "examples": []
+    },
+    {
+        "level_num": 89,
+        "serial_num": 3,
+        "arabic": "تَوَكَّلَ",
+        "english": "to put trust",
+        "examples": []
+    },
+    {
+        "level_num": 89,
+        "serial_num": 4,
+        "arabic": "تَبَيَّنَ",
+        "english": "to become clear",
+        "examples": []
+    },
+    {
+        "level_num": 89,
+        "serial_num": 5,
+        "arabic": "تَرَبَّصَ",
+        "english": "to wait, to await",
+        "examples": []
+    },
+    {
+        "level_num": 89,
+        "serial_num": 6,
+        "arabic": "تَوَلَّى",
+        "english": "to turn away, to take for friend",
+        "examples": []
+    },
+    {
+        "level_num": 89,
+        "serial_num": 7,
+        "arabic": "تَوَفَّى",
+        "english": "to make somebody die, to receive in full",
+        "examples": []
+    },
+    {
+        "level_num": 89,
+        "serial_num": 8,
+        "arabic": "تَبَارَكَ",
+        "english": "to be blessed, to be exalted",
+        "examples": []
+    },
+    {
+        "level_num": 89,
+        "serial_num": 9,
+        "arabic": "تَسَاءَلَ",
+        "english": "to ask each other",
+        "examples": []
+    },
+    {
+        "level_num": 90,
+        "serial_num": 1,
+        "arabic": "تَفَكَّرَ",
+        "english": "to think over, to reflect",
+        "examples": []
+    },
+    {
+        "level_num": 90,
+        "serial_num": 2,
+        "arabic": "تَذَكَّرَ",
+        "english": "to receive admonition, to remember",
+        "examples": []
+    },
+    {
+        "level_num": 90,
+        "serial_num": 3,
+        "arabic": "تَوَكَّلَ",
+        "english": "to put trust",
+        "examples": []
+    },
+    {
+        "level_num": 90,
+        "serial_num": 4,
+        "arabic": "تَبَيَّنَ",
+        "english": "to become clear",
+        "examples": []
+    },
+    {
+        "level_num": 90,
+        "serial_num": 5,
+        "arabic": "تَرَبَّصَ",
+        "english": "to wait, to await",
+        "examples": []
+    },
+    {
+        "level_num": 90,
+        "serial_num": 6,
+        "arabic": "تَوَلَّى",
+        "english": "to turn away, to take for friend",
+        "examples": []
+    },
+    {
+        "level_num": 90,
+        "serial_num": 7,
+        "arabic": "تَوَفَّى",
+        "english": "to make somebody die, to receive in full",
+        "examples": []
+    },
+    {
+        "level_num": 90,
+        "serial_num": 8,
+        "arabic": "تَبَارَكَ",
+        "english": "to be blessed, to be exalted",
+        "examples": []
+    },
+    {
+        "level_num": 90,
+        "serial_num": 9,
+        "arabic": "تَسَاءَلَ",
+        "english": "to ask each other",
+        "examples": []
+    },
+    {
+        "level_num": 91,
+        "serial_num": 1,
+        "arabic": "اِنْقَلَبَ",
+        "english": "to turn around, to return",
+        "examples": []
+    },
+    {
+        "level_num": 91,
+        "serial_num": 2,
+        "arabic": "اِخْتَلَفَ",
+        "english": "to differ",
+        "examples": []
+    },
+    {
+        "level_num": 91,
+        "serial_num": 3,
+        "arabic": "اِتَّبَعَ",
+        "english": "to follow",
+        "examples": []
+    },
+    {
+        "level_num": 91,
+        "serial_num": 4,
+        "arabic": "اِتَّخَذَ",
+        "english": "to take, to adopt",
+        "examples": []
+    },
+    {
+        "level_num": 91,
+        "serial_num": 5,
+        "arabic": "اِتَّقَى",
+        "english": "to fear (God), to be on guard",
+        "examples": []
+    },
+    {
+        "level_num": 91,
+        "serial_num": 6,
+        "arabic": "اِفْتَرَى",
+        "english": "to fabricate (a lie)",
+        "examples": []
+    },
+    {
+        "level_num": 91,
+        "serial_num": 7,
+        "arabic": "اِهْتَدَى",
+        "english": "to be rightly guided, to find the right path, to follow the right path",
+        "examples": []
+    },
+    {
+        "level_num": 91,
+        "serial_num": 8,
+        "arabic": "اِبْتَغَى",
+        "english": "to seek",
+        "examples": []
+    },
+    {
+        "level_num": 91,
+        "serial_num": 9,
+        "arabic": "اِنتَهَى",
+        "english": "to refrain, to end",
+        "examples": []
+    },
+    {
+        "level_num": 92,
+        "serial_num": 1,
+        "arabic": "اِخْتَلَفَ",
+        "english": "to differ",
+        "examples": []
+    },
+    {
+        "level_num": 92,
+        "serial_num": 2,
+        "arabic": "اِتَّبَعَ",
+        "english": "to follow",
+        "examples": []
+    },
+    {
+        "level_num": 92,
+        "serial_num": 3,
+        "arabic": "اِتَّخَذَ",
+        "english": "to take, to adopt",
+        "examples": []
+    },
+    {
+        "level_num": 92,
+        "serial_num": 4,
+        "arabic": "اِتَّقَى",
+        "english": "to fear (God), to be on guard",
+        "examples": []
+    },
+    {
+        "level_num": 92,
+        "serial_num": 5,
+        "arabic": "اِفْتَرَى",
+        "english": "to fabricate (a lie)",
+        "examples": []
+    },
+    {
+        "level_num": 92,
+        "serial_num": 6,
+        "arabic": "اِهْتَدَى",
+        "english": "to be rightly guided, to find the right path, to follow the right path",
+        "examples": []
+    },
+    {
+        "level_num": 92,
+        "serial_num": 7,
+        "arabic": "اِبْتَغَى",
+        "english": "to seek",
+        "examples": []
+    },
+    {
+        "level_num": 92,
+        "serial_num": 8,
+        "arabic": "اِنْقَلَبَ",
+        "english": "to turn around, to return",
+        "examples": []
+    },
+    {
+        "level_num": 92,
+        "serial_num": 9,
+        "arabic": "اِنتَهَى",
+        "english": "to refrain, to end",
+        "examples": []
+    },
+    {
+        "level_num": 93,
+        "serial_num": 1,
+        "arabic": "اِسْوَدَّ",
+        "english": "to become black",
+        "examples": []
+    },
+    {
+        "level_num": 93,
+        "serial_num": 2,
+        "arabic": "اِبْيَضَّ",
+        "english": "to become white",
+        "examples": []
+    },
+    {
+        "level_num": 93,
+        "serial_num": 3,
+        "arabic": "اسْتَعْجَلَ",
+        "english": "to seek (somebody) to hasten",
+        "examples": []
+    },
+    {
+        "level_num": 93,
+        "serial_num": 4,
+        "arabic": "اسْتِغْفَر",
+        "english": "to ask forgiveness",
+        "examples": []
+    },
+    {
+        "level_num": 93,
+        "serial_num": 5,
+        "arabic": "اِسْتَكْبَرَ",
+        "english": "to act arrogantly",
+        "examples": []
+    },
+    {
+        "level_num": 93,
+        "serial_num": 6,
+        "arabic": "اِسْتَهْزَأَ",
+        "english": "to mock",
+        "examples": []
+    },
+    {
+        "level_num": 93,
+        "serial_num": 7,
+        "arabic": "اِسْتَجَابَ",
+        "english": "to respond",
+        "examples": []
+    },
+    {
+        "level_num": 93,
+        "serial_num": 8,
+        "arabic": "ٱسْتَطَاعَ",
+        "english": "to be able to",
+        "examples": []
+    },
+    {
+        "level_num": 93,
+        "serial_num": 9,
+        "arabic": "اِسْتَقَامَ",
+        "english": "to be straight, to act straight",
+        "examples": []
+    },
+    {
+        "level_num": 94,
+        "serial_num": 1,
+        "arabic": "اِسْوَدَّ",
+        "english": "to become black",
+        "examples": []
+    },
+    {
+        "level_num": 94,
+        "serial_num": 2,
+        "arabic": "اِبْيَضَّ",
+        "english": "to become white",
+        "examples": []
+    },
+    {
+        "level_num": 94,
+        "serial_num": 3,
+        "arabic": "اسْتَعْجَلَ",
+        "english": "to seek (somebody) to hasten",
+        "examples": []
+    },
+    {
+        "level_num": 94,
+        "serial_num": 4,
+        "arabic": "اسْتِغْفَر",
+        "english": "to ask forgiveness",
+        "examples": []
+    },
+    {
+        "level_num": 94,
+        "serial_num": 5,
+        "arabic": "اِسْتَكْبَرَ",
+        "english": "to act arrogantly",
+        "examples": []
+    },
+    {
+        "level_num": 94,
+        "serial_num": 6,
+        "arabic": "اِسْتَهْزَأَ",
+        "english": "to mock",
+        "examples": []
+    },
+    {
+        "level_num": 94,
+        "serial_num": 7,
+        "arabic": "اِسْتَجَابَ",
+        "english": "to respond",
+        "examples": []
+    },
+    {
+        "level_num": 94,
+        "serial_num": 8,
+        "arabic": "ٱسْتَطَاعَ",
+        "english": "to be able to",
+        "examples": []
+    },
+    {
+        "level_num": 94,
+        "serial_num": 9,
+        "arabic": "اِسْتَقَامَ",
+        "english": "to be straight, to act straight",
+        "examples": []
+    }
+]
