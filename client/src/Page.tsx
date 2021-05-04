@@ -255,24 +255,24 @@ function Page() {
                 }
               />
             }
+            <div className="Page-footer">
+              <button
+                className="Page-goToTop"
+                title="Go to top of the page"
+                onClick={onGoToTopClickHandler}>
+                {String.fromCharCode(8648)}
+              </button>
+              <a
+                className="Page-gitHubLink"
+                href="https://github.com/frrahat/quran-words"
+                target="_blank"
+                rel="noreferrer">
+                <img src={githubIcon} alt="github" />
+                GitHub
+              </a>
+            </div>
           </div>
       }
-      <div className="Page-footer">
-        <button
-          className="Page-goToTop"
-          title="Go to top of the page"
-          onClick={onGoToTopClickHandler}>
-          {String.fromCharCode(8648)}
-        </button>
-        <a
-          className="Page-gitHubLink"
-          href="https://github.com/frrahat/quran-words"
-          target="_blank"
-          rel="noreferrer">
-          <img src={githubIcon} alt="github" />
-          GitHub
-        </a>
-      </div>
     </div>
   );
 }
