@@ -70,7 +70,8 @@ function WordParts({ wordData, isWordRootPressed, onWordRootClickHandler }: {
               >
                 <div
                   className={
-                    `WordParts-root WordParts-root${isWordRootPressed ? ' WordParts-root-pressed' : ''
+                    `WordParts-arabic WordParts-root${
+                      isWordRootPressed ? ' WordParts-root-pressed' : ''
                     }`
                   }
                   onClick={onWordRootClickHandler}
