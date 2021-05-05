@@ -1,5 +1,5 @@
 import { MouseEventHandler, useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import axios from "axios";
 
@@ -58,6 +58,7 @@ function OccurrencesItem({
   verseEnglish,
   verseWords,
   occurredWordIndices,
+  navigateToSelectedWord,
 }: {
   suraNum: number,
   ayahNum: number,
@@ -68,6 +69,7 @@ function OccurrencesItem({
     english: string,
   }[],
   occurredWordIndices: number[],
+  navigateToSelectedWord: (suraNum: number, ayahNum: number, wordIndex: number) => void,
 }) {
   return (
     <div className="Occurrences-Item">
@@ -75,7 +77,7 @@ function OccurrencesItem({
         <Verse
           verseArabic={verseArabic}
           verseWords={verseWords}
-          onSelectWordHandler={() => { /* TODO */ }}
+          onSelectWordHandler={(wordIndex) => navigateToSelectedWord(suraNum, ayahNum, wordIndex)}
           highlightedWordIndices={occurredWordIndices}
         />
         <VerseLabel
@@ -98,6 +100,12 @@ function Occurrences({ wordRoot, occurrencePage, paginatorLinkGenerator }: {
   const [data, setData] = useState<OccurrenceResponseData>(initialData);
 
   const occurrencesTopRef = useRef<HTMLDivElement>(null);
+
+  const history = useHistory();
+
+  const navigateToSelectedWord = (suraNum: number, ayahNum: number, wordIndex: number) => {
+    history.push(gerneratePageLink(suraNum, ayahNum, wordIndex, 1));
+  };
 
   const onGoToTopClickHandler: MouseEventHandler<HTMLButtonElement> = (event) => {
     occurrencesTopRef.current?.scrollIntoView();
@@ -180,6 +188,7 @@ function Occurrences({ wordRoot, occurrencePage, paginatorLinkGenerator }: {
                     verseEnglish={english}
                     verseWords={words}
                     occurredWordIndices={word_nums.map(word_num => word_num - 1)}
+                    navigateToSelectedWord={navigateToSelectedWord}
                   />
                 ))
                 : null
