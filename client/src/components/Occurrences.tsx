@@ -1,4 +1,4 @@
-import { MouseEventHandler, useEffect, useRef, useState } from "react";
+import { MouseEventHandler, RefObject, useEffect, useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 import axios from "axios";
@@ -91,11 +91,16 @@ function OccurrencesItem({
   )
 }
 
-function Occurrences({ wordRoot, occurrencePage, paginatorLinkGenerator }: {
-  wordRoot: string,
-  occurrencePage: number,
-  paginatorLinkGenerator: (pageNum: number) => string,
-}) {
+function Occurrences({
+  wordRoot,
+  occurrencePage,
+  pageTopRef,
+  paginatorLinkGenerator, }: {
+    wordRoot: string,
+    occurrencePage: number,
+    pageTopRef: RefObject<HTMLElement>,
+    paginatorLinkGenerator: (pageNum: number) => string,
+  }) {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<OccurrenceResponseData>(initialData);
 
@@ -105,6 +110,7 @@ function Occurrences({ wordRoot, occurrencePage, paginatorLinkGenerator }: {
 
   const navigateToSelectedWord = (suraNum: number, ayahNum: number, wordIndex: number) => {
     history.push(gerneratePageLink(suraNum, ayahNum, wordIndex, 1));
+    pageTopRef.current?.scrollIntoView();
   };
 
   const onGoToTopClickHandler: MouseEventHandler<HTMLButtonElement> = (event) => {

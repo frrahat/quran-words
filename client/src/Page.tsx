@@ -248,6 +248,7 @@ function Page() {
               <Occurrences
                 wordRoot={data.words[selectedWordIndex]!.root!}
                 occurrencePage={occurrencePage}
+                pageTopRef={pageTopRef}
                 paginatorLinkGenerator={
                   (currentPage: number) => gerneratePageLink(
                     suraNum, ayahNum, selectedWordIndex, currentPage
