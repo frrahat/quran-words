@@ -2,10 +2,11 @@ import { useHistory } from "react-router-dom";
 
 import './Paginator.scss';
 
-function PaginatorButton({ link, text, isDisabled }: {
+function PaginatorButton({ link, text, isDisabled, onPostPageNavigation }: {
   link: string,
   text: string,
   isDisabled: boolean,
+  onPostPageNavigation?: Function,
 }) {
   const history = useHistory();
 
@@ -19,6 +20,10 @@ function PaginatorButton({ link, text, isDisabled }: {
 
         event.preventDefault();
         event.stopPropagation();
+
+        if (onPostPageNavigation) {
+          onPostPageNavigation();
+        }
       }}
     >
       {text}
@@ -26,10 +31,11 @@ function PaginatorButton({ link, text, isDisabled }: {
   )
 }
 
-function Paginator({ currentPage, max, getPageLink }: {
+function Paginator({ currentPage, max, getPageLink, onPostPageNavigation }: {
   currentPage: number,
   max: number,
   getPageLink: (pageNum: number) => string,
+  onPostPageNavigation?: Function,
 }) {
   return (
     <div className="Paginator">
@@ -37,11 +43,13 @@ function Paginator({ currentPage, max, getPageLink }: {
         link={getPageLink(currentPage - 1)}
         text='Prev'
         isDisabled={currentPage <= 1}
+        onPostPageNavigation={onPostPageNavigation}
       />
       <PaginatorButton
         link={getPageLink(currentPage + 1)}
         text='Next'
         isDisabled={currentPage >= max}
+        onPostPageNavigation={onPostPageNavigation}
       />
     </div>
   )

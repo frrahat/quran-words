@@ -122,8 +122,12 @@ function Occurrences({
     pageTopRef.current?.scrollIntoView();
   };
 
-  const onGoToTopClickHandler: MouseEventHandler<HTMLButtonElement> = (event) => {
+  const scrollToTop = () => {
     occurrencesTopRef.current?.scrollIntoView();
+  };
+
+  const onGoToTopClickHandler: MouseEventHandler<HTMLButtonElement> = (event) => {
+    scrollToTop();
 
     event.preventDefault();
     event.stopPropagation();
@@ -214,7 +218,8 @@ function Occurrences({
         <Paginator
           currentPage={occurrencePage}
           max={maxPage}
-          getPageLink={paginatorLinkGenerator} />
+          getPageLink={paginatorLinkGenerator}
+          onPostPageNavigation={scrollToTop} />
         <button
           className="Occurrences-goToTop"
           title="Go to top of the list"
