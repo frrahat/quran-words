@@ -118,5 +118,6 @@ class WordRootOccurrence(BaseModel):
 class WordRootOccurrencesResponseModel(BaseModel):
     root: str
     data: List[WordRootOccurrence]
+    total_occurrences: int
     total: int
     pagination: PaginationResponseModel

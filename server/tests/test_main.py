@@ -125,7 +125,7 @@ def test_list_occurrences():
     response_json = response.json()
 
     assert len(response_json['data']) == 10
-    assert response_json['total'] == 854
+    assert response_json['total'] == 728
     assert response_json['data'][0] == {
         'sura': 1,
         'ayah': 2,
@@ -169,8 +169,7 @@ def test_list_occurrences_with_pagesize_param():
     response_json = response.json()
 
     assert len(response_json['data']) == 8
-    assert response_json['total'] == 854
-    print('+++++', response_json['data'][0]['verse']['words'])
+    assert response_json['total'] == 728
     assert response_json['data'][0] == {
         'sura': 2,
         'ayah': 32,

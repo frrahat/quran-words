@@ -311,8 +311,8 @@ async def _get_occrrences_in_verse(sura_num: int,
     return [row[0] for row in word_nums_result]
 
 
-@ app.get('/api/occurrences',
-          response_model=WordRootOccurrencesResponseModel)
+@app.get('/api/occurrences',
+         response_model=WordRootOccurrencesResponseModel)
 async def list_occurrences(request: Request,
                            root: str,
                            pagination_params: dict = Depends(
@@ -324,14 +324,17 @@ async def list_occurrences(request: Request,
     base_query = (db_corpus.session.query(Corpus.sura_num, Corpus.ayah_num)
                   .filter(Corpus.root == root))
 
+    occurrences_verse_query = base_query.distinct()
+
     occurrence_verse_args: List[Tuple[int, int]] = (
-        base_query.order_by(Corpus.sura_num, Corpus.ayah_num)
-        .distinct()
+        occurrences_verse_query
+        .order_by(Corpus.sura_num, Corpus.ayah_num)
         .offset(offset)
         .limit(pagesize)
         .all())
 
-    total = base_query.count()
+    total_occurrences = base_query.count()
+    total_verses = occurrences_verse_query.count()
 
     word_nums_future = asyncio.gather(
         *(_get_occrrences_in_verse(*arg, root)
@@ -354,7 +357,8 @@ async def list_occurrences(request: Request,
     return {
         'root': root,
         'data': data,
-        'total': total,
+        'total_occurrences': total_occurrences,
+        'total': total_verses,
         'pagination': get_pagination_response(
-            request, total, additional_query_string=f'root={root}')
+            request, total_verses, additional_query_string=f'root={root}')
     }
