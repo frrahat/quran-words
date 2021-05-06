@@ -38,20 +38,19 @@
     border: 1px dashed gold;
 
     &-verse {
-      display: flex;
-      flex-flow: row;
       justify-content: flex-end;
     }
   }
 
   &-VerseLabel {
-    align-self: center;
-    margin-left: 5px;
+    width: max-content;
+    align-self: flex-end;
     padding: 5px;
-    border-radius: 3px;
-    background-color: burlywood;
+    border-radius: 5px;
+    background-color: #caecf9;
 
     &:hover {
+      cursor: pointer;
       background-color: white;
     }
   }

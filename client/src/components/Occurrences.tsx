@@ -1,5 +1,5 @@
 import { MouseEventHandler, RefObject, useEffect, useRef, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import axios from "axios";
 
@@ -36,18 +36,22 @@ const initialData = {
   total: 0,
 }
 
-function VerseLabel({ suraNum, ayahNum, wordIndexToNavigate }: {
+function VerseLabel({
+  suraNum,
+  ayahNum,
+  onClickHandler,
+}: {
   suraNum: number,
   ayahNum: number,
-  wordIndexToNavigate: number,
+  onClickHandler: MouseEventHandler,
 }) {
   return (
-    <Link
+    <button
       className="Occurrences-VerseLabel"
-      to={gerneratePageLink(suraNum, ayahNum, wordIndexToNavigate, 1)}
+      onClick={onClickHandler}
     >
       {suraNum}:{ayahNum}
-    </Link>
+    </button>
   )
 }
 
@@ -73,17 +77,22 @@ function OccurrencesItem({
 }) {
   return (
     <div className="Occurrences-Item">
+      <VerseLabel
+        suraNum={suraNum}
+        ayahNum={ayahNum}
+        onClickHandler={(event) => {
+          navigateToSelectedWord(suraNum, ayahNum, occurredWordIndices[0]);
+
+          event.preventDefault();
+          event.stopPropagation();
+        }}
+      />
       <div className="Occurrences-Item-verse">
         <Verse
           verseArabic={verseArabic}
           verseWords={verseWords}
           onSelectWordHandler={(wordIndex) => navigateToSelectedWord(suraNum, ayahNum, wordIndex)}
           highlightedWordIndices={occurredWordIndices}
-        />
-        <VerseLabel
-          suraNum={suraNum}
-          ayahNum={ayahNum}
-          wordIndexToNavigate={occurredWordIndices[0]}
         />
       </div>
       <VerseTranslation translation={verseEnglish} />
