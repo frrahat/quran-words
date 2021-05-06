@@ -1,8 +1,23 @@
 .Word {
-  padding: 0 4px;
-  font-size: 30px;
-  font-family: 'me_quran';
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 4px;
   border-radius: 5px;
+
+  &-arabic {
+    font-size: 30px;
+    font-family: 'me_quran';
+    direction: rtl;
+    line-height: 3em;
+  }
+
+  &-translation {
+    font-size: 15px;
+    direction: ltr;
+    text-decoration: underline;
+    text-underline-position: under;
+  }
 
   &-selected {
     background-color: #4665d8 !important;

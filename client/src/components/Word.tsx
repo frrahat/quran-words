@@ -1,5 +1,4 @@
-import { useRef, MouseEventHandler } from "react";
-import Tooltip from "./Tooltip";
+import { MouseEventHandler } from "react";
 
 import './Word.scss';
 
@@ -15,17 +14,18 @@ function Word({
     isSelected: boolean,
     isHighlighted: boolean,
   }) {
-  const wordRef = useRef(null);
-
   return (
-    <Tooltip text={translation} childRef={wordRef}>
-      <div
-        className={`Word${isSelected ? ' Word-selected' : ''}${isHighlighted ? ' Word-highlighted' : ''}`}
-        ref={wordRef} onClick={onClickHandler}
-      >
+    <div
+      className={`Word${isSelected ? ' Word-selected' : ''}${isHighlighted ? ' Word-highlighted' : ''}`}
+      onClick={onClickHandler}
+    >
+      <div className="Word-arabic">
         {arabic}
       </div>
-    </Tooltip>
+      <div className="Word-translation">
+        {translation}
+      </div>
+    </div>
   )
 }
 
