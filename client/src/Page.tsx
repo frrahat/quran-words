@@ -165,7 +165,7 @@ function Page() {
   return (
     <div className="Page" ref={pageTopRef}>
       <div className="Page-Paginators">
-        <div>
+        <div className="Page-Paginator-item">
           Sura:
           <SuraSelect
             valueClassName="Page-VerseNum"
@@ -179,7 +179,7 @@ function Page() {
               (currentPage: number) => gerneratePageLink(currentPage, 1, 0, getResetOccurrencePage(occurrencePage))
             } />
         </div>
-        <div>
+        <div className="Page-Paginator-item">
           Ayah:
           <AyahSelect
             valueClassName="Page-VerseNum"

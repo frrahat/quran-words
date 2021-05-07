@@ -9,6 +9,11 @@
     justify-content: center;
   }
 
+  &-Paginator-item {
+    display: flex;
+    align-items: center;
+  }
+
   &-VerseNum {
     display: inline-block;
     width: 30px;
