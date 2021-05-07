@@ -29,11 +29,13 @@ type OccurrenceResponseDataItem = {
 type OccurrenceResponseData = {
   data: OccurrenceResponseDataItem[],
   total: number,
+  total_occurrences: number,
 }
 
 const initialData = {
   data: [],
   total: 0,
+  total_occurrences: 0,
 }
 
 function VerseLabel({
@@ -169,19 +171,25 @@ function Occurrences({
   }, [wordRoot, occurrencePage]);
 
   const maxPage = Math.ceil(data.total / 10);
+  const visibleVerses = Math.min(data.total - (occurrencePage - 1) * 10, 10);
 
   return (
     <div className="Occurrences">
       <div className="Occurrences-header" ref={occurrencesTopRef}>
         <div className="Occurrences-header-title">
           Occurrences of <span className="Occurrences-header-root">{wordRoot}</span> {
-            isLoading ? '' : `(${data.total} verses)`
+            isLoading ? '' :
+              <span className="Occurrences-stat">
+                [ {data.total} verse(s), {data.total_occurrences} word(s) ]
+              </span>
           }
         </div>
         {
           !isLoading &&
           <div className="Occurrences-header-subtitle">
-            Showing page {occurrencePage} of {maxPage}
+            Showing page {occurrencePage} of {maxPage} <span className="Occurrences-stat">
+              [ {visibleVerses} verse(s) ]
+            </span>
           </div>
         }
       </div>
