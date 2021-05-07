@@ -23,7 +23,7 @@
     justify-content: center;
     height: 100%;
 
-    > img {
+    >img {
       padding: 20px;
       margin: auto;
     }
@@ -33,15 +33,6 @@
     display: flex;
     justify-content: flex-end;
     flex-wrap: wrap-reverse;
-    font-size: 12px;
-
-    > a {
-      padding: 3px;
-      border-radius: 5px;
-      background-color: greenyellow;
-      color: blue;
-      margin: 5px;
-    }
   }
 
   &-footer {
