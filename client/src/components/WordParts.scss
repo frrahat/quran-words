@@ -1,48 +1,58 @@
 .WordParts {
   width: 100%;
-  border-collapse: collapse;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 
-  td {
-    padding: 5px;
-    border: 1px solid #fff;
-  }
-
-  &-arabic {
-    font-family: 'me_quran';
-    font-size: 20px;
-    direction: rtl;
+  &-segments {
+    height: 100%;
+    margin: 25px 0;
   }
 
   &-root {
-    cursor: pointer;
-    display: inline-block;
-    padding: 5px;
-    background-color: lightgoldenrodyellow;
-    color: black;
-    border-radius: 5px;
-    border: 1px solid black;
-    box-shadow: 3px 3px 5px yellow;
+    display: flex;
+    flex-flow: column;
+    margin: 25px 0;
 
-    &-pressed {
-      background-color: yellowgreen;
+    &-header {
+      align-self: center;
+      font-size: larger;
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
-    &:hover {
-      background-color: yellow;
-      box-shadow: 3px 3px 5px cyan;
+    &-container {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-content {
+      font-family: 'me_quran';
+      cursor: pointer;
+      padding: 5px;
+      background-color: lightgoldenrodyellow;
+      color: black;
+      border-radius: 5px;
+      border: 1px solid black;
+      box-shadow: 3px 3px 5px yellow;
+
+      &-pressed {
+        background-color: yellowgreen;
+      }
+
+      &:hover {
+        background-color: yellow;
+        box-shadow: 3px 3px 5px cyan;
+      }
     }
   }
 
-  &-word-arabic {
-    font-family: 'me_quran';
-    font-size: 20px;
-    direction: rtl;
-    padding: 5px;
-    align-self: center;
-  }
-
-  &-word-english {
-    padding: 5px;
-    align-self: center;
+  &-VerbForms {
+    height: 100%;
+    margin: 25px 0;
   }
 }
