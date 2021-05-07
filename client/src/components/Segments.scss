@@ -26,8 +26,9 @@
   }
 
   &-pos {
+    display: flex;
+    flex-direction: row-reverse;
     padding: 5px;
-    direction: rtl;
 
     &-single {
       padding: 5px;
