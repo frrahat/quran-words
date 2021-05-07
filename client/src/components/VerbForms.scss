@@ -1,0 +1,29 @@
+.VerbForm {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  padding: 5px;
+
+  &-name {
+    width: 140px;
+  }
+
+  &-value {
+    font-family: 'me_quran';
+  }
+}
+
+.VerbForms {
+  display: flex;
+  flex-flow: column;
+
+  &-header {
+    align-self: center;
+    font-size: larger;
+    font-weight: 800;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  &-items {}
+}
