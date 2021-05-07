@@ -17,12 +17,12 @@ function WordParts({ wordData, isWordRootPressed, onWordRootClickHandler }: {
 
   return (
     <div className="WordParts">
-      <div className="WordParts-segments">
+      <div className="WordParts-item WordParts-segments">
         <Segments segments={segments} translation={english} />
       </div>
       {
         root &&
-        <div className="WordParts-root">
+        <div className="WordParts-item WordParts-root">
           <div className="WordParts-root-header">
             Word Root
           </div>
@@ -47,7 +47,7 @@ function WordParts({ wordData, isWordRootPressed, onWordRootClickHandler }: {
       }
       {
         verb_forms &&
-        <div className="WordParts-VerbForms">
+        <div className="WordParts-item WordParts-VerbForms">
           <VerbForms verbForms={verb_forms} />
         </div>
       }
