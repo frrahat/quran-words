@@ -1,0 +1,43 @@
+.Segments {
+  display: flex;
+  flex-flow: column;
+
+  &-header {
+    align-self: center;
+    font-size: larger;
+    font-weight: 800;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  &-container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-arabic {
+    font-family: 'me_quran';
+    font-size: 40px;
+    direction: rtl;
+    padding: 5px;
+    align-self: center;
+  }
+
+  &-pos {
+    padding: 5px;
+    direction: rtl;
+
+    &-single {
+      padding: 5px;
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+  }
+
+  &-translation {
+    margin-top: 5px;
+    padding: 5px;
+  }
+}

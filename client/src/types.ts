@@ -8,16 +8,18 @@ export type VerbForms = {
   verbal_noun?: string,
 }
 
+export type SegmentData = {
+  arabic?: string,
+  pos: string,
+  pos_full: string,
+  pos_color: string,
+}
+
 export type CorpusWordData = {
   word_num: number,
   arabic: string,
   english: string,
-  segments: {
-    arabic?: string,
-    pos: string,
-    pos_full: string,
-    pos_color: string,
-  }[],
+  segments: SegmentData[],
   root?: string,
   verb_type?: string,
   lemma?: string,
