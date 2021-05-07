@@ -10,6 +10,7 @@ import Paginator from "./components/Paginator";
 import SuraSelect from "./components/SuraSelect";
 import AyahSelect from "./components/AyahSelect";
 import Occurrences from "./components/Occurrences";
+import ExternalLink from "./components/ExternalLink";
 import { generateVersePagePath, generateQueryString, gerneratePageLink } from "./utils";
 import { suraList } from "./config";
 import { CorpusWordData } from "./types";
@@ -39,16 +40,6 @@ const initialData = {
   english: 'Not Found',
   words: [],
 };
-
-const getExternalLink = (link: string, text: string): JSX.Element => (
-  <a
-    key={text}
-    href={link}
-    target="_blank"
-    rel="noreferrer">
-    {text}
-  </a>
-);
 
 const getResetOccurrencePage = (prevOccurrencePage: number) =>
   prevOccurrencePage > 0 ? 1 : 0
@@ -231,7 +222,7 @@ function Page() {
                     link: `https://corpus.quran.com/treebank.jsp?chapter=${suraNum}&verse=${ayahNum}`,
                     text: "corpus.quran.com treebank",
                   }
-                ].map(({ link, text }) => getExternalLink(link, text))
+                ].map(({ link, text }) => <ExternalLink link={link} text={text} />)
               }
             </div>
             <VerseTranslation translation={data.english} />
