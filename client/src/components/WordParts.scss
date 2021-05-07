@@ -9,9 +9,7 @@
     margin: 25px;
   }
 
-  &-segments {
-    height: 100%;
-  }
+  &-segments {}
 
   &-root {
     display: flex;
@@ -26,14 +24,15 @@
     }
 
     &-container {
-      height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
+      margin-top: 10px;
     }
 
     &-content {
       font-family: 'me_quran';
+      font-size: 25px;
       cursor: pointer;
       padding: 5px;
       background-color: lightgoldenrodyellow;
@@ -53,7 +52,5 @@
     }
   }
 
-  &-VerbForms {
-    height: 100%;
-  }
+  &-VerbForms {}
 }

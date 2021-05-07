@@ -2,7 +2,6 @@
   display: flex;
   flex-flow: row;
   align-items: center;
-  padding: 5px;
 
   &-name {
     width: 140px;
@@ -10,6 +9,7 @@
 
   &-value {
     font-family: 'me_quran';
+    font-size: 25px;
   }
 }
 
