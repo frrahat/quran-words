@@ -20,7 +20,7 @@ click==7.1.2
     # via
     #   flask
     #   uvicorn
-fastapi==0.63.0
+fastapi==0.65.2
     # via -r server/requirements-explicit.txt
 flake8==3.9.1
     # via -r server/requirements-explicit.txt
