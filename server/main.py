@@ -6,6 +6,7 @@ from fastapi import Depends, FastAPI, Path, Query, Request, Response, status
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from starlette.responses import RedirectResponse
+from sqlalchemy import or_, and_
 
 from server.db_words_80_percent import (
     db_words_80_percent,
@@ -27,6 +28,7 @@ from server.response_models import (
 from server.dependencies import pagination_parameters
 from server.utils import get_pagination_response
 from server.config import CONFIG
+from server.taraweeh_ayat import get_start_end_ayah_by_day
 
 app = FastAPI()
 
@@ -349,10 +351,29 @@ async def _get_occrrences_in_verse(
     return [row[0] for row in word_nums_result]
 
 
+def _get_filter_arg_for_taraweeh_day(taraweeh_day):
+    start_ayah_info, end_ayah_info = get_start_end_ayah_by_day(taraweeh_day)
+    conditions = [
+        and_(
+            Corpus.sura_num == start_ayah_info.sura,
+            Corpus.ayah_num >= start_ayah_info.ayah,
+        ),
+        and_(
+            Corpus.sura_num == end_ayah_info.sura, Corpus.ayah_num <= end_ayah_info.ayah
+        ),
+    ]
+
+    for sura in range(start_ayah_info.sura + 1, end_ayah_info.sura):
+        conditions.append(Corpus.sura_num == sura)
+
+    return or_(*conditions)
+
+
 @app.get("/api/occurrences", response_model=WordRootOccurrencesResponseModel)
 async def list_occurrences(
     request: Request,
     root: str,
+    taraweeh_day: Optional[int] = Query(None, ge=1, le=27),
     pagination_params: dict = Depends(pagination_parameters),
 ):
     offset = pagination_params["offset"]
@@ -361,6 +382,10 @@ async def list_occurrences(
     base_query = db_corpus.session.query(Corpus.sura_num, Corpus.ayah_num).filter(
         Corpus.root == root
     )
+
+    if taraweeh_day:
+        filter_arg = _get_filter_arg_for_taraweeh_day(taraweeh_day)
+        base_query = base_query.filter(filter_arg)
 
     occurrences_verse_query = base_query.distinct()
 
