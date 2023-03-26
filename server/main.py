@@ -8,7 +8,10 @@ from fastapi.responses import FileResponse
 from starlette.responses import RedirectResponse
 
 from server.db_words_80_percent import (
-    db_words_80_percent, Level, Word as Words80Percent)
+    db_words_80_percent,
+    Level,
+    Word as Words80Percent,
+)
 from server.db_corpus import db_corpus, Corpus
 from server.db_quran_arabic import db_quran_arabic, QuranArabic
 from server.db_quran_english import db_quran_english, QuranEnglish
@@ -27,25 +30,25 @@ from server.config import CONFIG
 
 app = FastAPI()
 
-app.mount('/public', StaticFiles(directory='client/build'), name='public')
+app.mount("/public", StaticFiles(directory="client/build"), name="public")
 
 
-@app.get('/')
+@app.get("/")
 def read_root():
-    return RedirectResponse('/app')
+    return RedirectResponse("/app")
 
 
-@app.get('/app/{rest_of_path:path}')
+@app.get("/app/{rest_of_path:path}")
 def read_app():
-    return FileResponse('client/build/index.html')
+    return FileResponse("client/build/index.html")
 
 
-@app.get('/api/words-80-percent/levels', response_model=LevelListResponseModel)
+@app.get("/api/words-80-percent/levels", response_model=LevelListResponseModel)
 def list_word_80_percent_levels(
-        request: Request,
-        pagination_params: dict = Depends(pagination_parameters)):
-    offset = pagination_params['offset']
-    pagesize = pagination_params['pagesize']
+    request: Request, pagination_params: dict = Depends(pagination_parameters)
+):
+    offset = pagination_params["offset"]
+    pagesize = pagination_params["pagesize"]
 
     base_query = db_words_80_percent.session.query(Level)
     total = base_query.count()
@@ -53,24 +56,26 @@ def list_word_80_percent_levels(
     levels = base_query.offset(offset).limit(pagesize).all()
 
     return {
-        'data': [
+        "data": [
             {
-                'num': level.num,
-                'title': level.title,
-            } for level in levels
+                "num": level.num,
+                "title": level.title,
+            }
+            for level in levels
         ],
-        'total': total,
-        'pagination': get_pagination_response(request, total)
+        "total": total,
+        "pagination": get_pagination_response(request, total),
     }
 
 
-@app.get('/api/words-80-percent/words', response_model=WordListResponseModel)
+@app.get("/api/words-80-percent/words", response_model=WordListResponseModel)
 def list_word_80_percent_words(
-        request: Request,
-        level: Optional[int] = Query(None, gt=0),
-        pagination_params: dict = Depends(pagination_parameters)):
-    offset = pagination_params['offset']
-    pagesize = pagination_params['pagesize']
+    request: Request,
+    level: Optional[int] = Query(None, gt=0),
+    pagination_params: dict = Depends(pagination_parameters),
+):
+    offset = pagination_params["offset"]
+    pagesize = pagination_params["pagesize"]
 
     base_query = db_words_80_percent.session.query(Words80Percent)
 
@@ -79,157 +84,180 @@ def list_word_80_percent_words(
 
     total = base_query.count()
 
-    words = base_query\
-        .order_by(Words80Percent.level_num, Words80Percent.serial_num)\
-        .offset(offset)\
-        .limit(pagesize).all()
+    words = (
+        base_query.order_by(Words80Percent.level_num, Words80Percent.serial_num)
+        .offset(offset)
+        .limit(pagesize)
+        .all()
+    )
 
-    additional_query_string = f'level={level}' if level else ''
+    additional_query_string = f"level={level}" if level else ""
 
     return {
-        'data': [
+        "data": [
             {
-                'level': word.level_num,
-                'serial': word.serial_num,
-                'arabic': word.arabic,
-                'english': word.english,
-            } for word in words
+                "level": word.level_num,
+                "serial": word.serial_num,
+                "arabic": word.arabic,
+                "english": word.english,
+            }
+            for word in words
         ],
-        'total': total,
-        'pagination': get_pagination_response(
-            request, total, additional_query_string)
+        "total": total,
+        "pagination": get_pagination_response(request, total, additional_query_string),
     }
 
 
-@app.get('/api/verses/sura/{sura_num}', response_model=VerseListResponseModel)
-def list_sura_verses(request: Request,
-                     sura_num: int = Path(..., gt=0, le=114),
-                     pagination_params: dict = Depends(
-                         pagination_parameters)):
-    offset = pagination_params['offset']
-    pagesize = pagination_params['pagesize']
+@app.get("/api/verses/sura/{sura_num}", response_model=VerseListResponseModel)
+def list_sura_verses(
+    request: Request,
+    sura_num: int = Path(..., gt=0, le=114),
+    pagination_params: dict = Depends(pagination_parameters),
+):
+    offset = pagination_params["offset"]
+    pagesize = pagination_params["pagesize"]
 
-    base_query = db_quran_arabic.session.query(
-        QuranArabic).filter(QuranArabic.sura_num == sura_num)
+    base_query = db_quran_arabic.session.query(QuranArabic).filter(
+        QuranArabic.sura_num == sura_num
+    )
     total = base_query.count()
 
-    verses = base_query.order_by(QuranArabic.ayah_num).offset(
-        offset).limit(pagesize).all()
+    verses = (
+        base_query.order_by(QuranArabic.ayah_num).offset(offset).limit(pagesize).all()
+    )
 
-    verses_english = db_quran_english.session.query(
-        QuranEnglish).filter(QuranEnglish.sura_num == sura_num).offset(
-        offset).limit(pagesize).all()
+    verses_english = (
+        db_quran_english.session.query(QuranEnglish)
+        .filter(QuranEnglish.sura_num == sura_num)
+        .offset(offset)
+        .limit(pagesize)
+        .all()
+    )
 
-    mapped_english_verse_text = {
-        verse.ayah_num: verse.text for verse in verses_english
-    }
+    mapped_english_verse_text = {verse.ayah_num: verse.text for verse in verses_english}
 
     return {
-        'data': [
+        "data": [
             {
-                'sura': verse.sura_num,
-                'ayah': verse.ayah_num,
-                'arabic': verse.text,
-                'english': mapped_english_verse_text[verse.ayah_num],
-                'links': {
-                    'self': f'{CONFIG.BASE_URL}'
-                    f'/verses/sura/{sura_num}/ayah/{verse.ayah_num}',
-                }
-            } for verse in verses
+                "sura": verse.sura_num,
+                "ayah": verse.ayah_num,
+                "arabic": verse.text,
+                "english": mapped_english_verse_text[verse.ayah_num],
+                "links": {
+                    "self": f"{CONFIG.BASE_URL}"
+                    f"/verses/sura/{sura_num}/ayah/{verse.ayah_num}",
+                },
+            }
+            for verse in verses
         ],
-        'total': total,
-        'pagination': get_pagination_response(request, total)
+        "total": total,
+        "pagination": get_pagination_response(request, total),
     }
 
 
-@app.get('/api/verses/sura/{sura_num}/ayah/{ayah_num}',
-         response_model=VerseResponseModelForSingleAyah)
-def get_verse(response: Response,
-              sura_num: int = Path(..., gt=0, le=114),
-              ayah_num: int = Path(..., gt=0, le=286)):
-
-    base_query = db_quran_arabic.session.query(
-        QuranArabic).filter(QuranArabic.sura_num == sura_num)
+@app.get(
+    "/api/verses/sura/{sura_num}/ayah/{ayah_num}",
+    response_model=VerseResponseModelForSingleAyah,
+)
+def get_verse(
+    response: Response,
+    sura_num: int = Path(..., gt=0, le=114),
+    ayah_num: int = Path(..., gt=0, le=286),
+):
+    base_query = db_quran_arabic.session.query(QuranArabic).filter(
+        QuranArabic.sura_num == sura_num
+    )
 
     total_ayat = base_query.count()
 
     verse = base_query.filter(QuranArabic.ayah_num == ayah_num).first()
-    verse_english = db_quran_english.session.query(
-        QuranEnglish).filter(
-            QuranEnglish.sura_num == sura_num,
-            QuranEnglish.ayah_num == ayah_num).first()
+    verse_english = (
+        db_quran_english.session.query(QuranEnglish)
+        .filter(QuranEnglish.sura_num == sura_num, QuranEnglish.ayah_num == ayah_num)
+        .first()
+    )
 
     if not verse:
         response.status_code = status.HTTP_404_NOT_FOUND
         return None
 
-    sura_url = f'{CONFIG.BASE_URL}/verses/sura/{sura_num}'
+    sura_url = f"{CONFIG.BASE_URL}/verses/sura/{sura_num}"
 
     return {
-        'sura': verse.sura_num,
-        'ayah': verse.ayah_num,
-        'arabic': verse.text,
-        'english': verse_english.text,
-        'links': {
-            'self': f'{sura_url}/ayah/{verse.ayah_num}',
-            'corpus': f'{CONFIG.BASE_URL}/corpus'
-            f'/sura/{sura_num}/ayah/{verse.ayah_num}',
-            'prev': f'{sura_url}/ayah/{verse.ayah_num - 1}'
-            if verse.ayah_num > 1 else None,
-            'next': f'{sura_url}/ayah/{verse.ayah_num + 1}'
-            if verse.ayah_num < total_ayat else None,
-        }
+        "sura": verse.sura_num,
+        "ayah": verse.ayah_num,
+        "arabic": verse.text,
+        "english": verse_english.text,
+        "links": {
+            "self": f"{sura_url}/ayah/{verse.ayah_num}",
+            "corpus": f"{CONFIG.BASE_URL}/corpus"
+            f"/sura/{sura_num}/ayah/{verse.ayah_num}",
+            "prev": f"{sura_url}/ayah/{verse.ayah_num - 1}"
+            if verse.ayah_num > 1
+            else None,
+            "next": f"{sura_url}/ayah/{verse.ayah_num + 1}"
+            if verse.ayah_num < total_ayat
+            else None,
+        },
     }
 
 
 class VERSE_LANG(Enum):
-    ARABIC = 'arabic'
-    ENGLISH = 'english'
+    ARABIC = "arabic"
+    ENGLISH = "english"
 
 
-async def _get_verse(sura_num: int,
-                     ayah_num: int,
-                     type_: VERSE_LANG = VERSE_LANG.ARABIC
-                     ) -> Union[QuranArabic, QuranEnglish]:
+async def _get_verse(
+    sura_num: int, ayah_num: int, type_: VERSE_LANG = VERSE_LANG.ARABIC
+) -> Union[QuranArabic, QuranEnglish]:
     db = db_quran_arabic if type_ == VERSE_LANG.ARABIC else db_quran_english
-    model_cls: Union[Type[QuranArabic], Type[QuranEnglish]] = \
+    model_cls: Union[Type[QuranArabic], Type[QuranEnglish]] = (
         QuranArabic if type_ == VERSE_LANG.ARABIC else QuranEnglish
-    return db.session.query(model_cls).filter(
-        model_cls.sura_num == sura_num,
-        model_cls.ayah_num == ayah_num).first()
+    )
+    return (
+        db.session.query(model_cls)
+        .filter(model_cls.sura_num == sura_num, model_cls.ayah_num == ayah_num)
+        .first()
+    )
 
 
 async def _get_words(sura_num: int, ayah_num: int) -> List[Word]:
-    return db_words.session.query(Word).filter(
-        Word.sura_num == sura_num,
-        Word.ayah_num == ayah_num
-    ).order_by(Word.word_num).all()
+    return (
+        db_words.session.query(Word)
+        .filter(Word.sura_num == sura_num, Word.ayah_num == ayah_num)
+        .order_by(Word.word_num)
+        .all()
+    )
 
 
-@app.get('/api/corpus/sura/{sura_num}/ayah/{ayah_num}',
-         response_model=CorpusResponseModel)
-async def get_corpus(response: Response,
-                     sura_num: int = Path(..., gt=0, le=114),
-                     ayah_num: int = Path(..., gt=0, le=286)):
-
+@app.get(
+    "/api/corpus/sura/{sura_num}/ayah/{ayah_num}", response_model=CorpusResponseModel
+)
+async def get_corpus(
+    response: Response,
+    sura_num: int = Path(..., gt=0, le=114),
+    ayah_num: int = Path(..., gt=0, le=286),
+):
     verse_arabic, verse_english, words_english = await asyncio.gather(
         _get_verse(sura_num, ayah_num, type_=VERSE_LANG.ARABIC),
         _get_verse(sura_num, ayah_num, type_=VERSE_LANG.ENGLISH),
-        _get_words(sura_num, ayah_num))
+        _get_words(sura_num, ayah_num),
+    )
 
     if not verse_arabic:
         response.status_code = status.HTTP_404_NOT_FOUND
         return None
 
-    words_arabic = verse_arabic.text.split(' ')
-    mapped_arabic_words = {word_num: word for word_num,
-                           word in enumerate(words_arabic, 1)}
+    words_arabic = verse_arabic.text.split(" ")
+    mapped_arabic_words = {
+        word_num: word for word_num, word in enumerate(words_arabic, 1)
+    }
 
-    mapped_english_words = {
-        word.word_num: word.english for word in words_english}
+    mapped_english_words = {word.word_num: word.english for word in words_english}
 
     base_query = db_corpus.session.query(Corpus).filter(
-        Corpus.sura_num == sura_num, Corpus.ayah_num == ayah_num)
+        Corpus.sura_num == sura_num, Corpus.ayah_num == ayah_num
+    )
     ordered_corpus_list = base_query.order_by(Corpus.word_num).all()
 
     words = []
@@ -237,47 +265,48 @@ async def get_corpus(response: Response,
     for corpus in ordered_corpus_list:
         verb_forms = corpus.verb_forms
         word = {
-            'word_num': corpus.word_num,
-            'segments': corpus.get_segments(),
-            'root': corpus.root,
-            'lemma': corpus.lemma,
-            'arabic': mapped_arabic_words.get(corpus.word_num),
-            'english': mapped_english_words.get(corpus.word_num),
-            'verb_type': corpus.verb_type,
-            'verb_form': corpus.verb_form,
-            'verb_forms': {
-                'root': verb_forms.root,
-                'verb_type': verb_forms.verb_type,
-                'perfect': verb_forms.perfect,
-                'imperative': verb_forms.imperative,
-                'active_participle': verb_forms.active_participle,
-                'passive_participle': verb_forms.passive_participle,
-                'verbal_noun': verb_forms.verbal_noun,
-            } if verb_forms else None,
+            "word_num": corpus.word_num,
+            "segments": corpus.get_segments(),
+            "root": corpus.root,
+            "lemma": corpus.lemma,
+            "arabic": mapped_arabic_words.get(corpus.word_num),
+            "english": mapped_english_words.get(corpus.word_num),
+            "verb_type": corpus.verb_type,
+            "verb_form": corpus.verb_form,
+            "verb_forms": {
+                "root": verb_forms.root,
+                "verb_type": verb_forms.verb_type,
+                "perfect": verb_forms.perfect,
+                "imperative": verb_forms.imperative,
+                "active_participle": verb_forms.active_participle,
+                "passive_participle": verb_forms.passive_participle,
+                "verbal_noun": verb_forms.verbal_noun,
+            }
+            if verb_forms
+            else None,
         }
 
         words.append(word)
 
     return {
-        'sura': sura_num,
-        'ayah': ayah_num,
-        'arabic': verse_arabic.text,
-        'english': verse_english.text,
-        'words': words,
+        "sura": sura_num,
+        "ayah": ayah_num,
+        "arabic": verse_arabic.text,
+        "english": verse_english.text,
+        "words": words,
     }
 
 
-async def _get_occurrence_verses(
-        verse_args: List[Tuple[int, int]]) -> List[Dict]:
-
+async def _get_occurrence_verses(verse_args: List[Tuple[int, int]]) -> List[Dict]:
     verses_arabic_future = asyncio.gather(
-        *(_get_verse(*arg, type_=VERSE_LANG.ARABIC) for arg in verse_args))
+        *(_get_verse(*arg, type_=VERSE_LANG.ARABIC) for arg in verse_args)
+    )
 
     verses_english_future = asyncio.gather(
-        *(_get_verse(*arg, type_=VERSE_LANG.ENGLISH) for arg in verse_args))
+        *(_get_verse(*arg, type_=VERSE_LANG.ENGLISH) for arg in verse_args)
+    )
 
-    words_english_future = asyncio.gather(
-        *(_get_words(*arg) for arg in verse_args))
+    words_english_future = asyncio.gather(*(_get_words(*arg) for arg in verse_args))
 
     verses_arabic, verses_english, words_english = await asyncio.gather(
         verses_arabic_future,
@@ -287,58 +316,67 @@ async def _get_occurrence_verses(
 
     occurrence_verses = [
         {
-            'arabic': verses_arabic[i].text,
-            'english': verses_english[i].text,
-            'words': [{
-                'word_num': word.word_num,
-                'english': word.english,
-            } for word in words_english[i]]
-        } for i in range(len(verse_args))
+            "arabic": verses_arabic[i].text,
+            "english": verses_english[i].text,
+            "words": [
+                {
+                    "word_num": word.word_num,
+                    "english": word.english,
+                }
+                for word in words_english[i]
+            ],
+        }
+        for i in range(len(verse_args))
     ]
 
     return occurrence_verses
 
 
-async def _get_occrrences_in_verse(sura_num: int,
-                                   ayah_num: int,
-                                   root: str) -> List[int]:
-    word_nums_result = db_corpus.session.query(Corpus.word_num).filter(
-        Corpus.sura_num == sura_num,
-        Corpus.ayah_num == ayah_num,
-        Corpus.root == root
-    ).order_by(Corpus.word_num).all()
+async def _get_occrrences_in_verse(
+    sura_num: int, ayah_num: int, root: str
+) -> List[int]:
+    word_nums_result = (
+        db_corpus.session.query(Corpus.word_num)
+        .filter(
+            Corpus.sura_num == sura_num,
+            Corpus.ayah_num == ayah_num,
+            Corpus.root == root,
+        )
+        .order_by(Corpus.word_num)
+        .all()
+    )
 
     return [row[0] for row in word_nums_result]
 
 
-@app.get('/api/occurrences',
-         response_model=WordRootOccurrencesResponseModel)
-async def list_occurrences(request: Request,
-                           root: str,
-                           pagination_params: dict = Depends(
-                               pagination_parameters
-                           )):
-    offset = pagination_params['offset']
-    pagesize = pagination_params['pagesize']
+@app.get("/api/occurrences", response_model=WordRootOccurrencesResponseModel)
+async def list_occurrences(
+    request: Request,
+    root: str,
+    pagination_params: dict = Depends(pagination_parameters),
+):
+    offset = pagination_params["offset"]
+    pagesize = pagination_params["pagesize"]
 
-    base_query = (db_corpus.session.query(Corpus.sura_num, Corpus.ayah_num)
-                  .filter(Corpus.root == root))
+    base_query = db_corpus.session.query(Corpus.sura_num, Corpus.ayah_num).filter(
+        Corpus.root == root
+    )
 
     occurrences_verse_query = base_query.distinct()
 
     occurrence_verse_args: List[Tuple[int, int]] = (
-        occurrences_verse_query
-        .order_by(Corpus.sura_num, Corpus.ayah_num)
+        occurrences_verse_query.order_by(Corpus.sura_num, Corpus.ayah_num)
         .offset(offset)
         .limit(pagesize)
-        .all())
+        .all()
+    )
 
     total_occurrences = base_query.count()
     total_verses = occurrences_verse_query.count()
 
     word_nums_future = asyncio.gather(
-        *(_get_occrrences_in_verse(*arg, root)
-          for arg in occurrence_verse_args))
+        *(_get_occrrences_in_verse(*arg, root) for arg in occurrence_verse_args)
+    )
 
     occurrence_verses, occurrence_word_nums = await asyncio.gather(
         _get_occurrence_verses(occurrence_verse_args),
@@ -347,18 +385,20 @@ async def list_occurrences(request: Request,
 
     data = [
         {
-            'sura': occurrence_verse_args[i][0],
-            'ayah': occurrence_verse_args[i][1],
-            'verse': occurrence_verses[i],
-            'word_nums': occurrence_word_nums[i],
-        } for i in range(len(occurrence_verse_args))
+            "sura": occurrence_verse_args[i][0],
+            "ayah": occurrence_verse_args[i][1],
+            "verse": occurrence_verses[i],
+            "word_nums": occurrence_word_nums[i],
+        }
+        for i in range(len(occurrence_verse_args))
     ]
 
     return {
-        'root': root,
-        'data': data,
-        'total_occurrences': total_occurrences,
-        'total': total_verses,
-        'pagination': get_pagination_response(
-            request, total_verses, additional_query_string=f'root={root}')
+        "root": root,
+        "data": data,
+        "total_occurrences": total_occurrences,
+        "total": total_verses,
+        "pagination": get_pagination_response(
+            request, total_verses, additional_query_string=f"root={root}"
+        ),
     }
