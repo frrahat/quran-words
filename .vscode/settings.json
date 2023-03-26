@@ -8,4 +8,5 @@
     "[javascript]": {
         "editor.formatOnSave": false,
     },
+    "python.formatting.provider": "black",
 }
