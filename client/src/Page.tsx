@@ -11,7 +11,7 @@ import SuraSelect from "./components/SuraSelect";
 import AyahSelect from "./components/AyahSelect";
 import Occurrences from "./components/Occurrences";
 import ExternalLink from "./components/ExternalLink";
-import { generateVersePagePath, generateQueryString, gerneratePageLink } from "./utils";
+import { generateVersePagePath, generatePageSearchString, gerneratePageLink } from "./utils";
 import { suraList } from "./config";
 import { CorpusWordData } from "./types";
 
@@ -41,8 +41,8 @@ const initialData = {
   words: [],
 };
 
-const getResetOccurrencePage = (prevOccurrencePage: number) =>
-  prevOccurrencePage > 0 ? 1 : 0
+const getResetOccurrencePage = (prevOccurrencePage?: number) =>
+  prevOccurrencePage ? 1 : undefined;
 
 function Page() {
   const { suraNum, ayahNum } = useParams<{ suraNum: string, ayahNum: string }>();
@@ -50,7 +50,10 @@ function Page() {
   const query = useQuery();
 
   const selectedWordIndex = parseInt(query.get('word_index') || '0');
-  const occurrencePage = parseInt(query.get('occurrence_page') || '0');
+  const occurrencePageQuery = query.get('occurrence_page');
+  const occurrencePage = occurrencePageQuery ? parseInt(occurrencePageQuery) : undefined;
+  const taraweehDayQuery = query.get('taraweeh_day')
+  const taraweehDay = taraweehDayQuery ? parseInt(taraweehDayQuery) : undefined;
 
   const [data, setData] = useState<CorpusResponseData>(initialData);
   const [isLoading, setIsLoading] = useState(true);
@@ -67,7 +70,11 @@ function Page() {
   const updateSelectedWordIndex = (index: number) => {
     if (data.words[index]) {
       history.replace({
-        search: generateQueryString(index, getResetOccurrencePage(occurrencePage)),
+        search: generatePageSearchString({
+          word_index: index,
+          occurrence_page: getResetOccurrencePage(occurrencePage),
+          taraweeh_day: taraweehDay,
+        }),
       });
     }
   };
@@ -76,7 +83,11 @@ function Page() {
     if (ayahNumToMove > 0 && ayahNumToMove <= (suraList[parseInt(suraNum) - 1]?.ayah_count || 0)) {
       history.replace({
         pathname: generateVersePagePath(suraNum, ayahNumToMove),
-        search: generateQueryString(0, getResetOccurrencePage(occurrencePage)),
+        search: generatePageSearchString({
+          word_index: 0,
+          occurrence_page: getResetOccurrencePage(occurrencePage),
+          taraweeh_day: taraweehDay,
+        }),
       });
     }
   };
@@ -85,7 +96,11 @@ function Page() {
     if (selectedSuraNum !== parseInt(suraNum)) {
       history.replace({
         pathname: generateVersePagePath(selectedSuraNum, 1),
-        search: generateQueryString(0, getResetOccurrencePage(occurrencePage)),
+        search: generatePageSearchString({
+          word_index: 0,
+          occurrence_page: getResetOccurrencePage(occurrencePage),
+          taraweeh_day: taraweehDay,
+        }),
       });
     }
   };
@@ -94,7 +109,11 @@ function Page() {
     if (selectedAyahNum !== parseInt(ayahNum)) {
       history.replace({
         pathname: generateVersePagePath(suraNum, selectedAyahNum),
-        search: generateQueryString(0, getResetOccurrencePage(occurrencePage)),
+        search: generatePageSearchString({
+          word_index: 0,
+          occurrence_page: getResetOccurrencePage(occurrencePage),
+          taraweeh_day: taraweehDay,
+        }),
       });
     }
   };
@@ -102,7 +121,11 @@ function Page() {
   const onWordRootClickHandler: MouseEventHandler<HTMLElement> = (event) => {
     history.replace({
       pathname: generateVersePagePath(suraNum, ayahNum),
-      search: generateQueryString(selectedWordIndex, occurrencePage > 0 ? 0 : 1),
+      search: generatePageSearchString({
+        word_index: selectedWordIndex,
+        occurrence_page: occurrencePage ? undefined : 1,
+        taraweeh_day: taraweehDay,
+      }),
     });
 
     event.preventDefault();
@@ -176,7 +199,11 @@ function Page() {
             currentPage={parseInt(suraNum)}
             max={114}
             getPageLink={
-              (currentPage: number) => gerneratePageLink(currentPage, 1, 0, getResetOccurrencePage(occurrencePage))
+              (currentPage: number) => gerneratePageLink(currentPage, 1, {
+                word_index: 0,
+                occurrence_page: getResetOccurrencePage(occurrencePage),
+                taraweeh_day: taraweehDay,
+              })
             } />
         </div>
         <div className="Page-Paginator-item">
@@ -191,7 +218,11 @@ function Page() {
             currentPage={parseInt(ayahNum)}
             max={suraList[parseInt(suraNum) - 1]?.ayah_count || 0}
             getPageLink={
-              (currentPage: number) => gerneratePageLink(suraNum, currentPage, 0, getResetOccurrencePage(occurrencePage))
+              (currentPage: number) => gerneratePageLink(suraNum, currentPage, {
+                word_index: 0,
+                occurrence_page: getResetOccurrencePage(occurrencePage),
+                taraweeh_day: taraweehDay,
+              })
             } />
         </div>
       </div>
@@ -229,21 +260,25 @@ function Page() {
             {data.words[selectedWordIndex] &&
               <WordParts
                 wordData={data.words[selectedWordIndex]}
-                isWordRootPressed={occurrencePage > 0}
+                isWordRootPressed={occurrencePage !== undefined}
                 onWordRootClickHandler={onWordRootClickHandler}
               />
             }
             {
-              occurrencePage > 0 &&
+              occurrencePage &&
               Boolean(data.words[selectedWordIndex]?.root) &&
               <Occurrences
                 wordRoot={data.words[selectedWordIndex]!.root!}
+                taraweehDay={taraweehDay}
                 occurrencePage={occurrencePage}
                 pageTopRef={pageTopRef}
                 paginatorLinkGenerator={
                   (currentPage: number) => gerneratePageLink(
-                    suraNum, ayahNum, selectedWordIndex, currentPage
-                  )
+                    suraNum, ayahNum, {
+                    word_index: selectedWordIndex,
+                    occurrence_page: currentPage,
+                    taraweeh_day: taraweehDay,
+                  })
                 }
               />
             }
