@@ -7,7 +7,7 @@ typecheck:
 	mypy --config-file=server/mypy.ini server/
 
 lint:
-	flake8 server/
+	flake8 server/ --config server/flake8.cfg
 	yarn --cwd client/ eslint
 
 generate-requirements:
