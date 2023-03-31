@@ -1,12 +1,16 @@
-const generateQueryString = (wordIndex: number, occurrencePage: number) => {
-  let queryString = `word_index=${wordIndex}`;
-
-  if (occurrencePage > 0) {
-    queryString += `&occurrence_page=${occurrencePage}`;
-  }
-
-  return queryString;
+const generateQueryString = <QueryObject>(queries: Record<keyof QueryObject, string | number | undefined>) => {
+  const queryStrings = Object.entries(queries).map(([key, value]) => value ? `${key}=${value}` : null);
+  return queryStrings.filter(str => str).join('&');
 };
+
+type PageQueryObject = {
+  word_index: number,
+  occurrence_page: number | undefined,
+  taraweeh_day: number | undefined,
+}
+
+const generatePageSearchString = (queryObject: PageQueryObject) =>
+  generateQueryString<PageQueryObject>(queryObject);
 
 const generateVersePagePath = (suraNum: string | number, ayahNum: string | number) =>
   `/app/verses/${suraNum}/${ayahNum}`;
@@ -14,12 +18,18 @@ const generateVersePagePath = (suraNum: string | number, ayahNum: string | numbe
 const gerneratePageLink = (
   suraNum: string | number,
   ayahNum: string | number,
-  wordIndex: number,
-  occurrencePage: number) =>
-  `${generateVersePagePath(suraNum, ayahNum)}?${generateQueryString(wordIndex, occurrencePage)}`;
+  queryObject: PageQueryObject) =>
+  `${generateVersePagePath(suraNum, ayahNum)}?${generatePageSearchString(queryObject)
+  }`;
+
+
+const formUrlWithQuery = (url: string, queries: object) => {
+  return `${url}?${generateQueryString(queries)}`
+}
 
 export {
+  formUrlWithQuery,
   generateVersePagePath,
-  generateQueryString,
   gerneratePageLink,
+  generatePageSearchString,
 }

@@ -8,6 +8,7 @@ import VerseTranslation from "./VerseTranslation";
 import Paginator from "./Paginator";
 import { gerneratePageLink } from "../utils";
 import loaderGif from "../images/loader.gif";
+import { formUrlWithQuery } from "../utils";
 
 import './Occurrences.scss';
 
@@ -104,10 +105,12 @@ function OccurrencesItem({
 
 function Occurrences({
   wordRoot,
+  taraweehDay,
   occurrencePage,
   pageTopRef,
   paginatorLinkGenerator, }: {
     wordRoot: string,
+    taraweehDay: number | undefined,
     occurrencePage: number,
     pageTopRef: RefObject<HTMLElement>,
     paginatorLinkGenerator: (pageNum: number) => string,
@@ -120,7 +123,11 @@ function Occurrences({
   const history = useHistory();
 
   const navigateToSelectedWord = (suraNum: number, ayahNum: number, wordIndex: number) => {
-    history.push(gerneratePageLink(suraNum, ayahNum, wordIndex, 1));
+    history.push(gerneratePageLink(suraNum, ayahNum, {
+      word_index: wordIndex,
+      occurrence_page: 1,
+      taraweeh_day: taraweehDay,
+    }));
     pageTopRef.current?.scrollIntoView();
   };
 
@@ -145,7 +152,13 @@ function Occurrences({
 
       try {
         response = await axios.get(
-          `/api/occurrences?root=${wordRoot}&offset=${offset}&pagesize=10`, {
+          formUrlWithQuery('/api/occurrences',
+            {
+              root: wordRoot,
+              offset,
+              pageSize: 10,
+              taraweeh_day: taraweehDay,
+            }), {
           cancelToken: cancelTokenSource.token,
         }
         );
