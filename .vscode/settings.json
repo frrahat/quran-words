@@ -1,9 +1,4 @@
 {
-    "python.linting.pylintArgs": [
-        "--load-plugins",
-        "pylint_flask_sqlalchemy",
-        "pylint_flask",
-    ],
     "editor.formatOnSave": true,
     "[javascript]": {
         "editor.formatOnSave": false,
