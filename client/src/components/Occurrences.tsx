@@ -181,7 +181,7 @@ function Occurrences({
     return () => {
       cancelTokenSource.cancel();
     }
-  }, [wordRoot, occurrencePage]);
+  }, [wordRoot, occurrencePage, taraweehDay]);
 
   const maxPage = Math.ceil(data.total / 10);
   const visibleVerses = Math.min(data.total - (occurrencePage - 1) * 10, 10);
