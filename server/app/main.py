@@ -8,16 +8,16 @@ from fastapi.responses import FileResponse
 from starlette.responses import RedirectResponse
 from sqlalchemy import or_, and_
 
-from server.db_words_80_percent import (
+from app.db_words_80_percent import (
     db_words_80_percent,
     Level,
     Word as Words80Percent,
 )
-from server.db_corpus import db_corpus, Corpus
-from server.db_quran_arabic import db_quran_arabic, QuranArabic
-from server.db_quran_english import db_quran_english, QuranEnglish
-from server.db_words import db_words, Word
-from server.response_models import (
+from app.db_corpus import db_corpus, Corpus
+from app.db_quran_arabic import db_quran_arabic, QuranArabic
+from app.db_quran_english import db_quran_english, QuranEnglish
+from app.db_words import db_words, Word
+from app.response_models import (
     LevelListResponseModel,
     WordListResponseModel,
     VerseListResponseModel,
@@ -25,10 +25,10 @@ from server.response_models import (
     CorpusResponseModel,
     WordRootOccurrencesResponseModel,
 )
-from server.dependencies import pagination_parameters
-from server.utils import get_pagination_response
-from server.config import CONFIG
-from server.taraweeh_ayat import get_start_end_ayah_by_day
+from app.dependencies import pagination_parameters
+from app.utils import get_pagination_response
+from app.config import CONFIG
+from app.taraweeh_ayat import get_start_end_ayah_by_day
 
 app = FastAPI()
 
@@ -194,12 +194,14 @@ def get_verse(
             "self": f"{sura_url}/ayah/{verse.ayah_num}",
             "corpus": f"{CONFIG.BASE_URL}/corpus"
             f"/sura/{sura_num}/ayah/{verse.ayah_num}",
-            "prev": f"{sura_url}/ayah/{verse.ayah_num - 1}"
-            if verse.ayah_num > 1
-            else None,
-            "next": f"{sura_url}/ayah/{verse.ayah_num + 1}"
-            if verse.ayah_num < total_ayat
-            else None,
+            "prev": (
+                f"{sura_url}/ayah/{verse.ayah_num - 1}" if verse.ayah_num > 1 else None
+            ),
+            "next": (
+                f"{sura_url}/ayah/{verse.ayah_num + 1}"
+                if verse.ayah_num < total_ayat
+                else None
+            ),
         },
     }
 
@@ -275,17 +277,19 @@ async def get_corpus(
             "english": mapped_english_words.get(corpus.word_num),
             "verb_type": corpus.verb_type,
             "verb_form": corpus.verb_form,
-            "verb_forms": {
-                "root": verb_forms.root,
-                "verb_type": verb_forms.verb_type,
-                "perfect": verb_forms.perfect,
-                "imperative": verb_forms.imperative,
-                "active_participle": verb_forms.active_participle,
-                "passive_participle": verb_forms.passive_participle,
-                "verbal_noun": verb_forms.verbal_noun,
-            }
-            if verb_forms
-            else None,
+            "verb_forms": (
+                {
+                    "root": verb_forms.root,
+                    "verb_type": verb_forms.verb_type,
+                    "perfect": verb_forms.perfect,
+                    "imperative": verb_forms.imperative,
+                    "active_participle": verb_forms.active_participle,
+                    "passive_participle": verb_forms.passive_participle,
+                    "verbal_noun": verb_forms.verbal_noun,
+                }
+                if verb_forms
+                else None
+            ),
         }
 
         words.append(word)

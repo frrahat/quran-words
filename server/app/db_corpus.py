@@ -4,7 +4,7 @@ from .config import CONFIG
 
 
 db_corpus = SQLAlchemy(
-    uri="sqlite:///server/databases/corpus.db?check_same_thread=False",
+    uri="sqlite:///app/databases/corpus.db?check_same_thread=False",
     echo=CONFIG.ECHO_SQL,
 )
 
