@@ -6,7 +6,7 @@ const generateQueryString = <QueryObject>(queries: Record<keyof QueryObject, str
 type PageQueryObject = {
   word_index: number,
   occurrence_page: number | undefined,
-  taraweeh_day: number | undefined,
+  taraweeh_night: number | undefined,
 }
 
 const generatePageSearchString = (queryObject: PageQueryObject) =>

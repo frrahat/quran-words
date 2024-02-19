@@ -105,12 +105,12 @@ function OccurrencesItem({
 
 function Occurrences({
   wordRoot,
-  taraweehDay,
+  taraweehNight,
   occurrencePage,
   pageTopRef,
   paginatorLinkGenerator, }: {
     wordRoot: string,
-    taraweehDay: number | undefined,
+    taraweehNight: number | undefined,
     occurrencePage: number,
     pageTopRef: RefObject<HTMLElement>,
     paginatorLinkGenerator: (pageNum: number) => string,
@@ -126,7 +126,7 @@ function Occurrences({
     history.push(gerneratePageLink(suraNum, ayahNum, {
       word_index: wordIndex,
       occurrence_page: 1,
-      taraweeh_day: taraweehDay,
+      taraweeh_night: taraweehNight,
     }));
     pageTopRef.current?.scrollIntoView();
   };
@@ -157,7 +157,7 @@ function Occurrences({
               root: wordRoot,
               offset,
               pageSize: 10,
-              taraweeh_day: taraweehDay,
+              taraweeh_night: taraweehNight,
             }), {
           cancelToken: cancelTokenSource.token,
         }
@@ -181,7 +181,7 @@ function Occurrences({
     return () => {
       cancelTokenSource.cancel();
     }
-  }, [wordRoot, occurrencePage, taraweehDay]);
+  }, [wordRoot, occurrencePage, taraweehNight]);
 
   const maxPage = Math.ceil(data.total / 10);
   const visibleVerses = Math.min(data.total - (occurrencePage - 1) * 10, 10);

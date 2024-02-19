@@ -5,7 +5,7 @@ from app.main import app
 from app.config import CONFIG
 from app.db_quran_arabic import db_quran_arabic, QuranArabic
 from app.db_quran_english import db_quran_english, QuranEnglish
-from app.taraweeh_ayat import get_start_end_ayah_by_day
+from app.taraweeh_ayat import get_start_end_ayah_by_night
 
 client = TestClient(app)
 
@@ -211,11 +211,11 @@ def test_list_occurrences_with_pagesize_param():
     }
 
 
-@pytest.mark.parametrize("taraweeh_day", range(1, 28))
-def test_list_occurrences_with_taraweeh_day_param(taraweeh_day):
+@pytest.mark.parametrize("taraweeh_night", range(1, 28))
+def test_list_occurrences_with_taraweeh_night_param(taraweeh_night):
     root = "علم"
     response = client.get(
-        f"/api/occurrences?root={root}&taraweeh_day={taraweeh_day}&page_size=1000"
+        f"/api/occurrences?root={root}&taraweeh_night={taraweeh_night}&page_size=1000"
     )
 
     assert response.status_code == 200
@@ -228,6 +228,6 @@ def test_list_occurrences_with_taraweeh_day_param(taraweeh_day):
     ]
     sorted_sura_ayah_list = sorted(sura_ayah_list)
 
-    upper_limit_ayah, lower_limit_ayah = get_start_end_ayah_by_day(taraweeh_day)
+    upper_limit_ayah, lower_limit_ayah = get_start_end_ayah_by_night(taraweeh_night)
     assert sorted_sura_ayah_list[0] >= (upper_limit_ayah.sura, upper_limit_ayah.ayah)
     assert sorted_sura_ayah_list[-1] <= (lower_limit_ayah.sura, lower_limit_ayah.ayah)
