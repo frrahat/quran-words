@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  server:
+    build: ./server
+    command: uvicorn app.main:app --host=0.0.0.0 --port 8000 --reload --reload-dir=app/
+    volumes:
+      - "./server:/code"
+      - "./client/build:/code/client/build"
+    ports:
+      - 8000:8000
