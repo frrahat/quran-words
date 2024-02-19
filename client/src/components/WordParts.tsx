@@ -1,15 +1,19 @@
-import { MouseEventHandler, useRef } from 'react';
-import Tooltip from './Tooltip';
-import Segments from './Segments';
-import VerbForms from './VerbForms';
-import { CorpusWordData } from '../types';
+import { MouseEventHandler, useRef } from "react";
+import Tooltip from "./Tooltip";
+import Segments from "./Segments";
+import VerbForms from "./VerbForms";
+import { CorpusWordData } from "../types";
 
-import './WordParts.scss';
+import "./WordParts.scss";
 
-function WordParts({ wordData, isWordRootPressed, onWordRootClickHandler }: {
-  wordData: CorpusWordData,
-  isWordRootPressed: boolean,
-  onWordRootClickHandler: MouseEventHandler<HTMLDivElement>,
+function WordParts({
+  wordData,
+  isWordRootPressed,
+  onWordRootClickHandler,
+}: {
+  wordData: CorpusWordData;
+  isWordRootPressed: boolean;
+  onWordRootClickHandler: MouseEventHandler<HTMLDivElement>;
 }) {
   const wordRootRef = useRef(null);
 
@@ -20,22 +24,18 @@ function WordParts({ wordData, isWordRootPressed, onWordRootClickHandler }: {
       <div className="WordParts-item WordParts-segments">
         <Segments segments={segments} translation={english} />
       </div>
-      {
-        root &&
+      {root && (
         <div className="WordParts-item WordParts-root">
-          <div className="WordParts-root-header">
-            Word Root
-          </div>
+          <div className="WordParts-root-header">Word Root</div>
           <div className="WordParts-root-container">
             <Tooltip
-              text={`${isWordRootPressed ? 'Hide' : 'Show'} occurrences of this word root`}
+              text={`${isWordRootPressed ? "Hide" : "Show"} occurrences of this word root`}
               childRef={wordRootRef}
             >
               <div
-                className={
-                  `WordParts-root-content${isWordRootPressed ? ' WordParts-root-content-pressed' : ''
-                  }`
-                }
+                className={`WordParts-root-content${
+                  isWordRootPressed ? " WordParts-root-content-pressed" : ""
+                }`}
                 onClick={onWordRootClickHandler}
                 ref={wordRootRef}
               >
@@ -44,15 +44,14 @@ function WordParts({ wordData, isWordRootPressed, onWordRootClickHandler }: {
             </Tooltip>
           </div>
         </div>
-      }
-      {
-        verb_forms &&
+      )}
+      {verb_forms && (
         <div className="WordParts-item WordParts-VerbForms">
           <VerbForms verbForms={verb_forms} />
         </div>
-      }
-    </div >
-  )
+      )}
+    </div>
+  );
 }
 
 export default WordParts;

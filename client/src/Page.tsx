@@ -1,7 +1,7 @@
 import { MouseEventHandler, useEffect, useRef, useState } from "react";
 import { useHistory, useLocation, useParams } from "react-router";
 
-import axios from 'axios';
+import axios from "axios";
 
 import Verse from "./components/Verse";
 import VerseTranslation from "./components/VerseTranslation";
@@ -11,23 +11,27 @@ import SuraSelect from "./components/SuraSelect";
 import AyahSelect from "./components/AyahSelect";
 import Occurrences from "./components/Occurrences";
 import ExternalLink from "./components/ExternalLink";
-import { generateVersePagePath, generatePageSearchString, gerneratePageLink, parseIntFromQuery } from "./utils";
+import {
+  generateVersePagePath,
+  generatePageSearchString,
+  gerneratePageLink,
+  parseIntFromQuery,
+} from "./utils";
 import { suraList } from "./config";
 import { CorpusWordData } from "./types";
 
 import loaderGif from "./images/loader.gif";
 import githubIcon from "./images/github_mark.png";
 
-import './Page.scss';
-
+import "./Page.scss";
 
 type CorpusResponseData = {
-  sura: number,
-  ayah: number,
-  arabic: string,
-  english: string,
-  words: CorpusWordData[],
-}
+  sura: number;
+  ayah: number;
+  arabic: string;
+  english: string;
+  words: CorpusWordData[];
+};
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -36,8 +40,8 @@ function useQuery() {
 const initialData = {
   sura: 0,
   ayah: 0,
-  arabic: '',
-  english: 'Not Found',
+  arabic: "",
+  english: "Not Found",
   words: [],
 };
 
@@ -45,14 +49,17 @@ const getResetOccurrencePage = (prevOccurrencePage?: number) =>
   prevOccurrencePage ? 1 : undefined;
 
 function Page() {
-  const { suraNum, ayahNum } = useParams<{ suraNum: string, ayahNum: string }>();
+  const { suraNum, ayahNum } = useParams<{
+    suraNum: string;
+    ayahNum: string;
+  }>();
   const history = useHistory();
   const query = useQuery();
 
-  const selectedWordIndex = parseIntFromQuery('word_index', 0) as number;
-  const occurrencePage = parseIntFromQuery('occurrence_page');
-  const taraweehNight = parseIntFromQuery('taraweeh_night');
-  const frequencyPage = parseIntFromQuery('frequency_page');
+  const selectedWordIndex = parseIntFromQuery("word_index", 0) as number;
+  const occurrencePage = parseIntFromQuery("occurrence_page");
+  const taraweehNight = parseIntFromQuery("taraweeh_night");
+  const frequencyPage = parseIntFromQuery("frequency_page");
 
   const [data, setData] = useState<CorpusResponseData>(initialData);
   const [isLoading, setIsLoading] = useState(true);
@@ -64,7 +71,7 @@ function Page() {
 
     event.preventDefault();
     event.stopPropagation();
-  }
+  };
 
   const updateSelectedWordIndex = (index: number) => {
     if (data.words[index]) {
@@ -81,7 +88,10 @@ function Page() {
   };
 
   const moveToAyah = (ayahNumToMove: number) => {
-    if (ayahNumToMove > 0 && ayahNumToMove <= (suraList[parseInt(suraNum) - 1]?.ayah_count || 0)) {
+    if (
+      ayahNumToMove > 0 &&
+      ayahNumToMove <= (suraList[parseInt(suraNum) - 1]?.ayah_count || 0)
+    ) {
       history.replace({
         pathname: generateVersePagePath(suraNum, ayahNumToMove),
         search: generatePageSearchString({
@@ -139,7 +149,7 @@ function Page() {
 
     event.preventDefault();
     event.stopPropagation();
-  }
+  };
 
   useEffect(() => {
     async function _loadData() {
@@ -148,12 +158,15 @@ function Page() {
       };
 
       try {
-        response = await axios.get(`/api/corpus/sura/${suraNum}/ayah/${ayahNum}`, {
-          cancelToken: cancelTokenSource.token,
-        });
+        response = await axios.get(
+          `/api/corpus/sura/${suraNum}/ayah/${ayahNum}`,
+          {
+            cancelToken: cancelTokenSource.token,
+          },
+        );
       } catch (err) {
         console.error(err);
-      };
+      }
 
       setData(response.data);
       setIsLoading(false);
@@ -166,17 +179,16 @@ function Page() {
 
     return () => {
       cancelTokenSource.cancel();
-    }
-
+    };
   }, [suraNum, ayahNum]);
 
   useEffect(() => {
     const actionMap: { [action: string]: Function } = {
-      'ArrowRight': () => updateSelectedWordIndex(selectedWordIndex - 1),
-      'ArrowLeft': () => updateSelectedWordIndex(selectedWordIndex + 1),
-      'ArrowUp': () => moveToAyah(parseInt(ayahNum) - 1),
-      'ArrowDown': () => moveToAyah(parseInt(ayahNum) + 1),
-    }
+      ArrowRight: () => updateSelectedWordIndex(selectedWordIndex - 1),
+      ArrowLeft: () => updateSelectedWordIndex(selectedWordIndex + 1),
+      ArrowUp: () => moveToAyah(parseInt(ayahNum) - 1),
+      ArrowDown: () => moveToAyah(parseInt(ayahNum) + 1),
+    };
 
     const keyDownEventListener = (event: KeyboardEvent) => {
       if (actionMap[event.code]) {
@@ -187,11 +199,11 @@ function Page() {
       }
     };
 
-    document.addEventListener('keydown', keyDownEventListener);
+    document.addEventListener("keydown", keyDownEventListener);
 
     return () => {
-      document.removeEventListener('keydown', keyDownEventListener);
-    }
+      document.removeEventListener("keydown", keyDownEventListener);
+    };
   });
 
   return (
@@ -207,15 +219,16 @@ function Page() {
           <Paginator
             currentPage={parseInt(suraNum)}
             max={114}
-            getPageLink={
-              (currentPage: number) => gerneratePageLink(currentPage, 1, {
+            getPageLink={(currentPage: number) =>
+              gerneratePageLink(currentPage, 1, {
                 word_index: 0,
                 occurrence_page: getResetOccurrencePage(occurrencePage),
                 taraweeh_night: taraweehNight,
                 frequency_item_index: undefined,
                 frequency_page: frequencyPage,
               })
-            } />
+            }
+          />
         </div>
         <div className="Page-Paginator-item">
           Ayah:
@@ -228,93 +241,94 @@ function Page() {
           <Paginator
             currentPage={parseInt(ayahNum)}
             max={suraList[parseInt(suraNum) - 1]?.ayah_count || 0}
-            getPageLink={
-              (currentPage: number) => gerneratePageLink(suraNum, currentPage, {
+            getPageLink={(currentPage: number) =>
+              gerneratePageLink(suraNum, currentPage, {
                 word_index: 0,
                 occurrence_page: getResetOccurrencePage(occurrencePage),
                 taraweeh_night: taraweehNight,
                 frequency_item_index: undefined,
                 frequency_page: frequencyPage,
               })
-            } />
+            }
+          />
         </div>
       </div>
-      {
-        isLoading ?
-          <div className="Page-Loader">
-            <img src={loaderGif} alt="loader" />
+      {isLoading ? (
+        <div className="Page-Loader">
+          <img src={loaderGif} alt="loader" />
+        </div>
+      ) : (
+        <div>
+          <Verse
+            verseArabic={data.arabic}
+            verseWords={data.words}
+            onSelectWordHandler={updateSelectedWordIndex}
+            selectedWordIndex={selectedWordIndex}
+          />
+          <div className="Page-VerseExternalLinks">
+            {data.arabic.length > 0 &&
+              [
+                {
+                  link: `https://quran.com/${suraNum}/${ayahNum}`,
+                  text: "quran.com",
+                },
+                {
+                  link: `https://corpus.quran.com/wordbyword.jsp?chapter=${suraNum}&verse=${ayahNum}`,
+                  text: "corpus.quran.com wordbyword",
+                },
+                {
+                  link: `https://corpus.quran.com/treebank.jsp?chapter=${suraNum}&verse=${ayahNum}`,
+                  text: "corpus.quran.com treebank",
+                },
+              ].map(({ link, text }) => (
+                <ExternalLink link={link} text={text} />
+              ))}
           </div>
-          : <div>
-            <Verse
-              verseArabic={data.arabic}
-              verseWords={data.words}
-              onSelectWordHandler={updateSelectedWordIndex}
-              selectedWordIndex={selectedWordIndex} />
-            <div className="Page-VerseExternalLinks">
-              {
-                data.arabic.length > 0 &&
-                [
-                  {
-                    link: `https://quran.com/${suraNum}/${ayahNum}`,
-                    text: "quran.com",
-                  },
-                  {
-                    link: `https://corpus.quran.com/wordbyword.jsp?chapter=${suraNum}&verse=${ayahNum}`,
-                    text: "corpus.quran.com wordbyword",
-                  },
-                  {
-                    link: `https://corpus.quran.com/treebank.jsp?chapter=${suraNum}&verse=${ayahNum}`,
-                    text: "corpus.quran.com treebank",
-                  }
-                ].map(({ link, text }) => <ExternalLink link={link} text={text} />)
+          <VerseTranslation translation={data.english} />
+          {data.words[selectedWordIndex] && (
+            <WordParts
+              wordData={data.words[selectedWordIndex]}
+              isWordRootPressed={occurrencePage !== undefined}
+              onWordRootClickHandler={onWordRootClickHandler}
+            />
+          )}
+          {occurrencePage && Boolean(data.words[selectedWordIndex]?.root) && (
+            <Occurrences
+              wordRoot={data.words[selectedWordIndex]!.root!}
+              taraweehNight={taraweehNight}
+              occurrencePage={occurrencePage}
+              pageTopRef={pageTopRef}
+              paginatorLinkGenerator={(currentPage: number) =>
+                gerneratePageLink(suraNum, ayahNum, {
+                  word_index: selectedWordIndex,
+                  occurrence_page: currentPage,
+                  taraweeh_night: taraweehNight,
+                  frequency_item_index: undefined,
+                  frequency_page: frequencyPage,
+                })
               }
-            </div>
-            <VerseTranslation translation={data.english} />
-            {data.words[selectedWordIndex] &&
-              <WordParts
-                wordData={data.words[selectedWordIndex]}
-                isWordRootPressed={occurrencePage !== undefined}
-                onWordRootClickHandler={onWordRootClickHandler}
-              />
-            }
-            {
-              occurrencePage &&
-              Boolean(data.words[selectedWordIndex]?.root) &&
-              <Occurrences
-                wordRoot={data.words[selectedWordIndex]!.root!}
-                taraweehNight={taraweehNight}
-                occurrencePage={occurrencePage}
-                pageTopRef={pageTopRef}
-                paginatorLinkGenerator={
-                  (currentPage: number) => gerneratePageLink(
-                    suraNum, ayahNum, {
-                    word_index: selectedWordIndex,
-                    occurrence_page: currentPage,
-                    taraweeh_night: taraweehNight,
-                    frequency_item_index: undefined,
-                    frequency_page: frequencyPage,
-                  })
-                }
-              />
-            }
-            <div className="Page-footer">
-              <button
-                className="Page-goToTop"
-                title="Go to top of the page"
-                onClick={onGoToTopClickHandler}>
-                {String.fromCharCode(8648)}
-              </button>
-              <a
-                className="Page-gitHubLink"
-                href="https://github.com/frrahat/quran-words"
-                target="_blank"
-                rel="noreferrer">
-                <img src={githubIcon} alt="github" />
-                GitHub
-              </a>
-            </div>
+            />
+          )}
+          <div className="Page-footer">
+            <button
+              className="Page-goToTop"
+              title="Go to top of the page"
+              onClick={onGoToTopClickHandler}
+            >
+              {String.fromCharCode(8648)}
+            </button>
+            <a
+              className="Page-gitHubLink"
+              href="https://github.com/frrahat/quran-words"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={githubIcon} alt="github" />
+              GitHub
+            </a>
           </div>
-      }
+        </div>
+      )}
     </div>
   );
 }

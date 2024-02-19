@@ -1,12 +1,13 @@
 import "./ExternalLink.scss";
 
-const ExternalLink = ({ link, text }: { link: string, text: string }) => (
+const ExternalLink = ({ link, text }: { link: string; text: string }) => (
   <a
     key={text}
     className="ExternalLink"
     href={link}
     target="_blank"
-    rel="noreferrer">
+    rel="noreferrer"
+  >
     {text}
   </a>
 );

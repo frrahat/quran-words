@@ -1,15 +1,19 @@
-import { RefObject, useState } from 'react';
+import { RefObject, useState } from "react";
 
-import './Tooltip.scss';
+import "./Tooltip.scss";
 
-function Tooltip({ text, childRef, children }: {
-  text: string,
-  childRef: RefObject<HTMLElement>,
-  children: JSX.Element,
+function Tooltip({
+  text,
+  childRef,
+  children,
+}: {
+  text: string;
+  childRef: RefObject<HTMLElement>;
+  children: JSX.Element;
 }) {
   const [isTooltipTextVisible, setTooltipTextVisible] = useState(false);
   const [tooltipPositionStyle, setTooltipPositionStyle] = useState({
-    bottom: 'unset'
+    bottom: "unset",
   });
 
   const onMouseEnterHandler = () => {
@@ -24,16 +28,19 @@ function Tooltip({ text, childRef, children }: {
   const onMouseLeaveHandler = () => setTooltipTextVisible(false);
 
   return (
-    <div className="Tooltip" onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler}>
-      {
-        isTooltipTextVisible &&
+    <div
+      className="Tooltip"
+      onMouseEnter={onMouseEnterHandler}
+      onMouseLeave={onMouseLeaveHandler}
+    >
+      {isTooltipTextVisible && (
         <div className="Tooltip-text" style={tooltipPositionStyle}>
           {text}
         </div>
-      }
+      )}
       {children}
     </div>
-  )
+  );
 }
 
 export default Tooltip;
