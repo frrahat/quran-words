@@ -363,12 +363,13 @@ def _get_filter_arg_for_taraweeh_night(taraweeh_night):
             Corpus.ayah_num >= start_ayah_info.ayah,
         ),
         and_(
+            Corpus.sura_num > start_ayah_info.sura,
+            Corpus.sura_num < end_ayah_info.sura,
+        ),
+        and_(
             Corpus.sura_num == end_ayah_info.sura, Corpus.ayah_num <= end_ayah_info.ayah
         ),
     ]
-
-    for sura in range(start_ayah_info.sura + 1, end_ayah_info.sura):
-        conditions.append(Corpus.sura_num == sura)
 
     return or_(*conditions)
 
