@@ -21,6 +21,7 @@
   "scripts": {
     "start": "HOST=0.0.0.0 react-scripts --openssl-legacy-provider start",
     "build": "PUBLIC_URL=/public react-scripts build",
+    "prettify": "prettier -w src/",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -44,5 +45,8 @@
   },
   "engines": {
     "node": ">=16.18.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5"
   }
 }
