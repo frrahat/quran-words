@@ -56,10 +56,10 @@ function Page() {
   const history = useHistory();
   const query = useQuery();
 
-  const selectedWordIndex = parseIntFromQuery("word_index", 0) as number;
-  const occurrencePage = parseIntFromQuery("occurrence_page");
-  const taraweehNight = parseIntFromQuery("taraweeh_night");
-  const frequencyPage = parseIntFromQuery("frequency_page");
+  const selectedWordIndex = parseIntFromQuery(query, "word_index", 0) as number;
+  const occurrencePage = parseIntFromQuery(query, "occurrence_page");
+  const taraweehNight = parseIntFromQuery(query, "taraweeh_night");
+  const frequencyPage = parseIntFromQuery(query, "frequency_page");
 
   const [data, setData] = useState<CorpusResponseData>(initialData);
   const [isLoading, setIsLoading] = useState(true);
