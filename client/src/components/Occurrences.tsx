@@ -1,61 +1,63 @@
-import { MouseEventHandler, RefObject, useEffect, useRef, useState } from "react";
+import {
+  MouseEventHandler,
+  RefObject,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { useHistory } from "react-router-dom";
 
 import axios from "axios";
 
-import Verse from './Verse';
+import Verse from "./Verse";
 import VerseTranslation from "./VerseTranslation";
 import Paginator from "./Paginator";
 import { gerneratePageLink } from "../utils";
 import loaderGif from "../images/loader.gif";
 import { formUrlWithQuery } from "../utils";
 
-import './Occurrences.scss';
-
+import "./Occurrences.scss";
 
 type OccurrenceResponseDataItem = {
-  sura: number,
-  ayah: number,
-  word_nums: number[],
+  sura: number;
+  ayah: number;
+  word_nums: number[];
   verse: {
-    arabic: string,
-    english: string,
+    arabic: string;
+    english: string;
     words: {
-      word_num: number,
-      english: string,
-    }[],
-  }
-}
+      word_num: number;
+      english: string;
+    }[];
+  };
+};
 
 type OccurrenceResponseData = {
-  data: OccurrenceResponseDataItem[],
-  total: number,
-  total_occurrences: number,
-}
+  data: OccurrenceResponseDataItem[];
+  total: number;
+  total_occurrences: number;
+};
 
 const initialData = {
   data: [],
   total: 0,
   total_occurrences: 0,
-}
+};
 
 function VerseLabel({
   suraNum,
   ayahNum,
   onClickHandler,
 }: {
-  suraNum: number,
-  ayahNum: number,
-  onClickHandler: MouseEventHandler,
+  suraNum: number;
+  ayahNum: number;
+  onClickHandler: MouseEventHandler;
 }) {
   return (
-    <button
-      className="Occurrences-VerseLabel"
-      onClick={onClickHandler}
-    >
+    <button className="Occurrences-VerseLabel" onClick={onClickHandler}>
       {suraNum}:{ayahNum}
     </button>
-  )
+  );
 }
 
 function OccurrencesItem({
@@ -67,16 +69,20 @@ function OccurrencesItem({
   occurredWordIndices,
   navigateToSelectedWord,
 }: {
-  suraNum: number,
-  ayahNum: number,
-  verseArabic: string,
-  verseEnglish: string,
+  suraNum: number;
+  ayahNum: number;
+  verseArabic: string;
+  verseEnglish: string;
   verseWords: {
-    word_num: number,
-    english: string,
-  }[],
-  occurredWordIndices: number[],
-  navigateToSelectedWord: (suraNum: number, ayahNum: number, wordIndex: number) => void,
+    word_num: number;
+    english: string;
+  }[];
+  occurredWordIndices: number[];
+  navigateToSelectedWord: (
+    suraNum: number,
+    ayahNum: number,
+    wordIndex: number,
+  ) => void;
 }) {
   return (
     <div className="Occurrences-Item">
@@ -94,13 +100,15 @@ function OccurrencesItem({
         <Verse
           verseArabic={verseArabic}
           verseWords={verseWords}
-          onSelectWordHandler={(wordIndex) => navigateToSelectedWord(suraNum, ayahNum, wordIndex)}
+          onSelectWordHandler={(wordIndex) =>
+            navigateToSelectedWord(suraNum, ayahNum, wordIndex)
+          }
           highlightedWordIndices={occurredWordIndices}
         />
       </div>
       <VerseTranslation translation={verseEnglish} />
     </div>
-  )
+  );
 }
 
 function Occurrences({
@@ -108,13 +116,14 @@ function Occurrences({
   taraweehNight,
   occurrencePage,
   pageTopRef,
-  paginatorLinkGenerator, }: {
-    wordRoot: string,
-    taraweehNight: number | undefined,
-    occurrencePage: number,
-    pageTopRef: RefObject<HTMLElement>,
-    paginatorLinkGenerator: (pageNum: number) => string,
-  }) {
+  paginatorLinkGenerator,
+}: {
+  wordRoot: string;
+  taraweehNight: number | undefined;
+  occurrencePage: number;
+  pageTopRef: RefObject<HTMLElement>;
+  paginatorLinkGenerator: (pageNum: number) => string;
+}) {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<OccurrenceResponseData>(initialData);
 
@@ -122,14 +131,20 @@ function Occurrences({
 
   const history = useHistory();
 
-  const navigateToSelectedWord = (suraNum: number, ayahNum: number, wordIndex: number) => {
-    history.push(gerneratePageLink(suraNum, ayahNum, {
-      word_index: wordIndex,
-      occurrence_page: 1,
-      taraweeh_night: taraweehNight,
-      frequency_item_index: undefined,
-      frequency_page: undefined,
-    }));
+  const navigateToSelectedWord = (
+    suraNum: number,
+    ayahNum: number,
+    wordIndex: number,
+  ) => {
+    history.push(
+      gerneratePageLink(suraNum, ayahNum, {
+        word_index: wordIndex,
+        occurrence_page: 1,
+        taraweeh_night: taraweehNight,
+        frequency_item_index: undefined,
+        frequency_page: undefined,
+      }),
+    );
     pageTopRef.current?.scrollIntoView();
   };
 
@@ -137,7 +152,9 @@ function Occurrences({
     occurrencesTopRef.current?.scrollIntoView();
   };
 
-  const onGoToTopClickHandler: MouseEventHandler<HTMLButtonElement> = (event) => {
+  const onGoToTopClickHandler: MouseEventHandler<HTMLButtonElement> = (
+    event,
+  ) => {
     scrollToTop();
 
     event.preventDefault();
@@ -146,23 +163,25 @@ function Occurrences({
 
   useEffect(() => {
     async function _loadOccurrences() {
-      let response: {
-        data?: OccurrenceResponseData,
-      } | undefined;
+      let response:
+        | {
+            data?: OccurrenceResponseData;
+          }
+        | undefined;
 
       const offset = (occurrencePage - 1) * 10;
 
       try {
         response = await axios.get(
-          formUrlWithQuery('/api/occurrences',
-            {
-              root: wordRoot,
-              offset,
-              pageSize: 10,
-              taraweeh_night: taraweehNight,
-            }), {
-          cancelToken: cancelTokenSource.token,
-        }
+          formUrlWithQuery("/api/occurrences", {
+            root: wordRoot,
+            offset,
+            pageSize: 10,
+            taraweeh_night: taraweehNight,
+          }),
+          {
+            cancelToken: cancelTokenSource.token,
+          },
         );
       } catch (err) {
         console.error(err);
@@ -182,7 +201,7 @@ function Occurrences({
 
     return () => {
       cancelTokenSource.cancel();
-    }
+    };
   }, [wordRoot, occurrencePage, taraweehNight]);
 
   const maxPage = Math.ceil(data.total / 10);
@@ -192,66 +211,67 @@ function Occurrences({
     <div className="Occurrences">
       <div className="Occurrences-header" ref={occurrencesTopRef}>
         <div className="Occurrences-header-title">
-          Occurrences of <span className="Occurrences-header-root">{wordRoot}</span> {
-            isLoading ? '' :
-              <span className="Occurrences-stat">
-                [ {data.total} verse(s), {data.total_occurrences} word(s) ]
-              </span>
-          }
+          Occurrences of{" "}
+          <span className="Occurrences-header-root">{wordRoot}</span>{" "}
+          {isLoading ? (
+            ""
+          ) : (
+            <span className="Occurrences-stat">
+              [ {data.total} verse(s), {data.total_occurrences} word(s) ]
+            </span>
+          )}
         </div>
-        {
-          !isLoading &&
+        {!isLoading && (
           <div className="Occurrences-header-subtitle">
-            Showing page {occurrencePage} of {maxPage} <span className="Occurrences-stat">
+            Showing page {occurrencePage} of {maxPage}{" "}
+            <span className="Occurrences-stat">
               [ {visibleVerses} verse(s) ]
             </span>
           </div>
-        }
+        )}
       </div>
       <div className="Occurrences-body">
-        {
-          isLoading ?
-            <div className="Occurrences-loader">
-              <img src={loaderGif} alt="loader" />
-            </div>
-            : (
-              data.data.length > 0 ?
-                data.data.map(({
-                  sura,
-                  ayah,
-                  word_nums,
-                  verse: { arabic, english, words }
-                }, index) => (
-                  <OccurrencesItem
-                    key={`Occurrences-${index}`}
-                    suraNum={sura}
-                    ayahNum={ayah}
-                    verseArabic={arabic}
-                    verseEnglish={english}
-                    verseWords={words}
-                    occurredWordIndices={word_nums.map(word_num => word_num - 1)}
-                    navigateToSelectedWord={navigateToSelectedWord}
-                  />
-                ))
-                : null
-            )
-        }
+        {isLoading ? (
+          <div className="Occurrences-loader">
+            <img src={loaderGif} alt="loader" />
+          </div>
+        ) : data.data.length > 0 ? (
+          data.data.map(
+            (
+              { sura, ayah, word_nums, verse: { arabic, english, words } },
+              index,
+            ) => (
+              <OccurrencesItem
+                key={`Occurrences-${index}`}
+                suraNum={sura}
+                ayahNum={ayah}
+                verseArabic={arabic}
+                verseEnglish={english}
+                verseWords={words}
+                occurredWordIndices={word_nums.map((word_num) => word_num - 1)}
+                navigateToSelectedWord={navigateToSelectedWord}
+              />
+            ),
+          )
+        ) : null}
       </div>
       <div className="Occurrences-footer">
         <Paginator
           currentPage={occurrencePage}
           max={maxPage}
           getPageLink={paginatorLinkGenerator}
-          onPostPageNavigation={scrollToTop} />
+          onPostPageNavigation={scrollToTop}
+        />
         <button
           className="Occurrences-goToTop"
           title="Go to top of the list"
-          onClick={onGoToTopClickHandler}>
+          onClick={onGoToTopClickHandler}
+        >
           {String.fromCharCode(8593)}
         </button>
       </div>
     </div>
-  )
+  );
 }
 
 export default Occurrences;
