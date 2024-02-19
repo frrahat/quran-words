@@ -36,8 +36,8 @@ const formUrlWithQuery = (url: string, queries: object) => {
   return `${url}?${generateQueryString(queries)}`;
 };
 
-const parseIntFromQuery = (query: string, defaultValue?: number) => {
-  return parseInt(query) || defaultValue;
+const parseIntFromQuery = (query: URLSearchParams, query_param: string, defaultValue?: number) => {
+  return parseInt(query.get(query_param) || '') || defaultValue;
 };
 
 export {
