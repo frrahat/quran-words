@@ -6,7 +6,7 @@ from fastapi import Depends, FastAPI, Path, Query, Request, Response, status
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from starlette.responses import RedirectResponse
-from sqlalchemy import or_, and_
+from sqlalchemy import or_, and_, func as sqlalchemy_func, desc as sqlalchemy_desc
 
 from app.db_words_80_percent import (
     db_words_80_percent,
@@ -24,6 +24,7 @@ from app.response_models import (
     VerseResponseModelForSingleAyah,
     CorpusResponseModel,
     WordRootOccurrencesResponseModel,
+    FrequenciesResponseModel,
 )
 from app.dependencies import pagination_parameters
 from app.utils import get_pagination_response
@@ -430,5 +431,49 @@ async def list_occurrences(
         "total": total_verses,
         "pagination": get_pagination_response(
             request, total_verses, additional_query_string=f"root={root}"
+        ),
+    }
+
+
+@app.get("/api/frequencies", response_model=FrequenciesResponseModel)
+async def list_frequencies(
+    request: Request,
+    taraweeh_night: Optional[int] = Query(None, ge=1, le=27),
+    pagination_params: dict = Depends(pagination_parameters),
+):
+    offset = pagination_params["offset"]
+    pagesize = pagination_params["pagesize"]
+
+    base_query = (
+        db_corpus.session.query(
+            Corpus.root, Corpus.lemma, sqlalchemy_func.count(Corpus.lemma)
+        )
+        .group_by(Corpus.root, Corpus.lemma)
+        .order_by(sqlalchemy_desc(sqlalchemy_func.count(Corpus.lemma)))
+    )
+
+    if taraweeh_night:
+        filter_arg = _get_filter_arg_for_taraweeh_night(taraweeh_night)
+        base_query = base_query.filter(filter_arg)
+
+    frequencies = base_query.offset(offset).limit(pagesize).all()
+    total = base_query.count()
+
+    return {
+        "data": [
+            {
+                "root": row[0],
+                "lemma": row[1],
+                "frequency": row[2],
+            }
+            for row in frequencies
+        ],
+        "total": total,
+        "pagination": get_pagination_response(
+            request,
+            total,
+            additional_query_string=(
+                f"taraweeh_night={taraweeh_night}" if taraweeh_night else None
+            ),
         ),
     }
