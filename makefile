@@ -35,7 +35,7 @@ setup:
 start-all: server-start client-start
 
 server-start:
-	uvicorn server.main:app --reload --reload-dir=server/
+	uvicorn app.main:app --reload --reload-dir=app/
 
 client-start:
 	yarn --cwd client/ start
@@ -55,7 +55,7 @@ heroku-deploy:
 	@echo "---> preparing heroku specific files"
 	echo "-r server/requirements.txt" > heroku-build/requirements.txt
 	echo "python-3.9.4" > heroku-build/runtime.txt
-	echo "web: gunicorn -w 2 -k uvicorn.workers.UvicornWorker server.main:app" > heroku-build/Procfile
+	echo "web: gunicorn -w 2 -k uvicorn.workers.UvicornWorker app.main:app" > heroku-build/Procfile
 
 	@echo "---> running test"
 	pytest -vvv heroku-build/server/tests/

@@ -1,4 +1,4 @@
-from server.taraweeh_ayat import get_start_end_ayah_by_day, AyahInfo
+from app.taraweeh_ayat import get_start_end_ayah_by_day, AyahInfo
 
 
 def test_get_start_end_ayah_by_day_returns_properly():
