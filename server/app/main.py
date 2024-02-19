@@ -28,7 +28,7 @@ from app.response_models import (
 from app.dependencies import pagination_parameters
 from app.utils import get_pagination_response
 from app.config import CONFIG
-from app.taraweeh_ayat import get_start_end_ayah_by_day
+from app.taraweeh_ayat import get_start_end_ayah_by_night
 
 app = FastAPI()
 
@@ -355,8 +355,8 @@ async def _get_occrrences_in_verse(
     return [row[0] for row in word_nums_result]
 
 
-def _get_filter_arg_for_taraweeh_day(taraweeh_day):
-    start_ayah_info, end_ayah_info = get_start_end_ayah_by_day(taraweeh_day)
+def _get_filter_arg_for_taraweeh_night(taraweeh_night):
+    start_ayah_info, end_ayah_info = get_start_end_ayah_by_night(taraweeh_night)
     conditions = [
         and_(
             Corpus.sura_num == start_ayah_info.sura,
@@ -377,7 +377,7 @@ def _get_filter_arg_for_taraweeh_day(taraweeh_day):
 async def list_occurrences(
     request: Request,
     root: str,
-    taraweeh_day: Optional[int] = Query(None, ge=1, le=27),
+    taraweeh_night: Optional[int] = Query(None, ge=1, le=27),
     pagination_params: dict = Depends(pagination_parameters),
 ):
     offset = pagination_params["offset"]
@@ -387,8 +387,8 @@ async def list_occurrences(
         Corpus.root == root
     )
 
-    if taraweeh_day:
-        filter_arg = _get_filter_arg_for_taraweeh_day(taraweeh_day)
+    if taraweeh_night:
+        filter_arg = _get_filter_arg_for_taraweeh_night(taraweeh_night)
         base_query = base_query.filter(filter_arg)
 
     occurrences_verse_query = base_query.distinct()

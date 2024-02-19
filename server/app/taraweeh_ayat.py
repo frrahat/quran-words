@@ -39,5 +39,5 @@ VERSES_BY_RAMADAN_NIGHT = [
 ]
 
 
-def get_start_end_ayah_by_day(night: int) -> Tuple[AyahInfo]:
+def get_start_end_ayah_by_night(night: int) -> Tuple[AyahInfo]:
     return VERSES_BY_RAMADAN_NIGHT[(night - 1) % 27]

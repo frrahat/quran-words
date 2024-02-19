@@ -52,8 +52,8 @@ function Page() {
   const selectedWordIndex = parseInt(query.get('word_index') || '0');
   const occurrencePageQuery = query.get('occurrence_page');
   const occurrencePage = occurrencePageQuery ? parseInt(occurrencePageQuery) : undefined;
-  const taraweehDayQuery = query.get('taraweeh_day')
-  const taraweehDay = taraweehDayQuery ? parseInt(taraweehDayQuery) : undefined;
+  const taraweehNightQuery = query.get('taraweeh_night')
+  const taraweehNight = taraweehNightQuery ? parseInt(taraweehNightQuery) : undefined;
 
   const [data, setData] = useState<CorpusResponseData>(initialData);
   const [isLoading, setIsLoading] = useState(true);
@@ -73,7 +73,7 @@ function Page() {
         search: generatePageSearchString({
           word_index: index,
           occurrence_page: getResetOccurrencePage(occurrencePage),
-          taraweeh_day: taraweehDay,
+          taraweeh_night: taraweehNight,
         }),
       });
     }
@@ -86,7 +86,7 @@ function Page() {
         search: generatePageSearchString({
           word_index: 0,
           occurrence_page: getResetOccurrencePage(occurrencePage),
-          taraweeh_day: taraweehDay,
+          taraweeh_night: taraweehNight,
         }),
       });
     }
@@ -99,7 +99,7 @@ function Page() {
         search: generatePageSearchString({
           word_index: 0,
           occurrence_page: getResetOccurrencePage(occurrencePage),
-          taraweeh_day: taraweehDay,
+          taraweeh_night: taraweehNight,
         }),
       });
     }
@@ -112,7 +112,7 @@ function Page() {
         search: generatePageSearchString({
           word_index: 0,
           occurrence_page: getResetOccurrencePage(occurrencePage),
-          taraweeh_day: taraweehDay,
+          taraweeh_night: taraweehNight,
         }),
       });
     }
@@ -124,7 +124,7 @@ function Page() {
       search: generatePageSearchString({
         word_index: selectedWordIndex,
         occurrence_page: occurrencePage ? undefined : 1,
-        taraweeh_day: taraweehDay,
+        taraweeh_night: taraweehNight,
       }),
     });
 
@@ -202,7 +202,7 @@ function Page() {
               (currentPage: number) => gerneratePageLink(currentPage, 1, {
                 word_index: 0,
                 occurrence_page: getResetOccurrencePage(occurrencePage),
-                taraweeh_day: taraweehDay,
+                taraweeh_night: taraweehNight,
               })
             } />
         </div>
@@ -221,7 +221,7 @@ function Page() {
               (currentPage: number) => gerneratePageLink(suraNum, currentPage, {
                 word_index: 0,
                 occurrence_page: getResetOccurrencePage(occurrencePage),
-                taraweeh_day: taraweehDay,
+                taraweeh_night: taraweehNight,
               })
             } />
         </div>
@@ -269,7 +269,7 @@ function Page() {
               Boolean(data.words[selectedWordIndex]?.root) &&
               <Occurrences
                 wordRoot={data.words[selectedWordIndex]!.root!}
-                taraweehDay={taraweehDay}
+                taraweehNight={taraweehNight}
                 occurrencePage={occurrencePage}
                 pageTopRef={pageTopRef}
                 paginatorLinkGenerator={
@@ -277,7 +277,7 @@ function Page() {
                     suraNum, ayahNum, {
                     word_index: selectedWordIndex,
                     occurrence_page: currentPage,
-                    taraweeh_day: taraweehDay,
+                    taraweeh_night: taraweehNight,
                   })
                 }
               />
