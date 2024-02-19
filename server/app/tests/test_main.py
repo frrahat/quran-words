@@ -231,3 +231,12 @@ def test_list_occurrences_with_taraweeh_night_param(taraweeh_night):
     upper_limit_ayah, lower_limit_ayah = get_start_end_ayah_by_night(taraweeh_night)
     assert sorted_sura_ayah_list[0] >= (upper_limit_ayah.sura, upper_limit_ayah.ayah)
     assert sorted_sura_ayah_list[-1] <= (lower_limit_ayah.sura, lower_limit_ayah.ayah)
+
+
+def test_list_frequencies():
+    response = client.get("/api/frequencies")
+
+    assert response.status_code == 200
+    response_json = response.json()
+
+    assert len(response_json["data"]) == 10

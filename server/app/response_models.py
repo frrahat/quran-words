@@ -121,3 +121,15 @@ class WordRootOccurrencesResponseModel(BaseModel):
     total_occurrences: int
     total: int
     pagination: PaginationResponseModel
+
+
+class LemmaFrequency(BaseModel):
+    lemma: str
+    root: str
+    frequency: int
+
+
+class FrequenciesResponseModel(BaseModel):
+    data: List[LemmaFrequency]
+    total: int
+    pagination: PaginationResponseModel
