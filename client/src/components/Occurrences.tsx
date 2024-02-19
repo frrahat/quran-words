@@ -127,6 +127,8 @@ function Occurrences({
       word_index: wordIndex,
       occurrence_page: 1,
       taraweeh_night: taraweehNight,
+      frequency_item_index: undefined,
+      frequency_page: undefined,
     }));
     pageTopRef.current?.scrollIntoView();
   };

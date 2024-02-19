@@ -52,6 +52,7 @@ function Page() {
   const selectedWordIndex = parseIntFromQuery('word_index', 0) as number;
   const occurrencePage = parseIntFromQuery('occurrence_page');
   const taraweehNight = parseIntFromQuery('taraweeh_night');
+  const frequencyPage = parseIntFromQuery('frequency_page');
 
   const [data, setData] = useState<CorpusResponseData>(initialData);
   const [isLoading, setIsLoading] = useState(true);
@@ -72,6 +73,8 @@ function Page() {
           word_index: index,
           occurrence_page: getResetOccurrencePage(occurrencePage),
           taraweeh_night: taraweehNight,
+          frequency_item_index: undefined,
+          frequency_page: frequencyPage,
         }),
       });
     }
@@ -85,6 +88,8 @@ function Page() {
           word_index: 0,
           occurrence_page: getResetOccurrencePage(occurrencePage),
           taraweeh_night: taraweehNight,
+          frequency_item_index: undefined,
+          frequency_page: frequencyPage,
         }),
       });
     }
@@ -98,6 +103,8 @@ function Page() {
           word_index: 0,
           occurrence_page: getResetOccurrencePage(occurrencePage),
           taraweeh_night: taraweehNight,
+          frequency_item_index: undefined,
+          frequency_page: frequencyPage,
         }),
       });
     }
@@ -111,6 +118,8 @@ function Page() {
           word_index: 0,
           occurrence_page: getResetOccurrencePage(occurrencePage),
           taraweeh_night: taraweehNight,
+          frequency_item_index: undefined,
+          frequency_page: frequencyPage,
         }),
       });
     }
@@ -123,6 +132,8 @@ function Page() {
         word_index: selectedWordIndex,
         occurrence_page: occurrencePage ? undefined : 1,
         taraweeh_night: taraweehNight,
+        frequency_item_index: undefined,
+        frequency_page: frequencyPage,
       }),
     });
 
@@ -201,6 +212,8 @@ function Page() {
                 word_index: 0,
                 occurrence_page: getResetOccurrencePage(occurrencePage),
                 taraweeh_night: taraweehNight,
+                frequency_item_index: undefined,
+                frequency_page: frequencyPage,
               })
             } />
         </div>
@@ -220,6 +233,8 @@ function Page() {
                 word_index: 0,
                 occurrence_page: getResetOccurrencePage(occurrencePage),
                 taraweeh_night: taraweehNight,
+                frequency_item_index: undefined,
+                frequency_page: frequencyPage,
               })
             } />
         </div>
@@ -276,6 +291,8 @@ function Page() {
                     word_index: selectedWordIndex,
                     occurrence_page: currentPage,
                     taraweeh_night: taraweehNight,
+                    frequency_item_index: undefined,
+                    frequency_page: frequencyPage,
                   })
                 }
               />

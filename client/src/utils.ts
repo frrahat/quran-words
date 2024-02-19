@@ -7,6 +7,8 @@ type PageQueryObject = {
   word_index: number,
   occurrence_page: number | undefined,
   taraweeh_night: number | undefined,
+  frequency_item_index: number | undefined,
+  frequency_page: number | undefined,
 }
 
 const generatePageSearchString = (queryObject: PageQueryObject) =>
