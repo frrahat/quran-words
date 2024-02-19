@@ -11,7 +11,7 @@ import SuraSelect from "./components/SuraSelect";
 import AyahSelect from "./components/AyahSelect";
 import Occurrences from "./components/Occurrences";
 import ExternalLink from "./components/ExternalLink";
-import { generateVersePagePath, generatePageSearchString, gerneratePageLink } from "./utils";
+import { generateVersePagePath, generatePageSearchString, gerneratePageLink, parseIntFromQuery } from "./utils";
 import { suraList } from "./config";
 import { CorpusWordData } from "./types";
 
@@ -49,11 +49,9 @@ function Page() {
   const history = useHistory();
   const query = useQuery();
 
-  const selectedWordIndex = parseInt(query.get('word_index') || '0');
-  const occurrencePageQuery = query.get('occurrence_page');
-  const occurrencePage = occurrencePageQuery ? parseInt(occurrencePageQuery) : undefined;
-  const taraweehNightQuery = query.get('taraweeh_night')
-  const taraweehNight = taraweehNightQuery ? parseInt(taraweehNightQuery) : undefined;
+  const selectedWordIndex = parseIntFromQuery('word_index', 0) as number;
+  const occurrencePage = parseIntFromQuery('occurrence_page');
+  const taraweehNight = parseIntFromQuery('taraweeh_night');
 
   const [data, setData] = useState<CorpusResponseData>(initialData);
   const [isLoading, setIsLoading] = useState(true);

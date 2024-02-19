@@ -27,9 +27,14 @@ const formUrlWithQuery = (url: string, queries: object) => {
   return `${url}?${generateQueryString(queries)}`
 }
 
+const parseIntFromQuery = (query: string, defaultValue?: number) => {
+  return parseInt(query) || defaultValue;
+};
+
 export {
   formUrlWithQuery,
   generateVersePagePath,
   gerneratePageLink,
   generatePageSearchString,
+  parseIntFromQuery,
 }
