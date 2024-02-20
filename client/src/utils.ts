@@ -40,6 +40,9 @@ const gerneratePageLink = (
     queryObject,
   )}`;
 
+const generateWordsPageLink = (queryObject: WordsPageQueryObject) =>
+  `/words?${generateWordsPageSearchString(queryObject)}`;
+
 const formUrlWithQuery = (url: string, queries: object) => {
   return `${url}?${generateQueryString(queries)}`;
 };
@@ -56,6 +59,7 @@ export {
   formUrlWithQuery,
   generateVersePagePath,
   gerneratePageLink,
+  generateWordsPageLink,
   generatePageSearchString,
   generateWordsPageSearchString,
   parseIntFromQuery,
