@@ -94,7 +94,7 @@ def list_word_80_percent_words(
         .all()
     )
 
-    additional_query_string = f"level={level}" if level else ""
+    additional_query_string = f"level={level}"
 
     return {
         "data": [
