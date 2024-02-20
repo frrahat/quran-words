@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import "./Frequencies.scss";
 import { useHistory } from "react-router-dom";
 import { formUrlWithQuery, gerneratePageLink } from "../utils";
@@ -33,16 +33,23 @@ const FrequencyItem = ({
   item: FrequenceyResponseDataItem;
   isSelected: boolean;
   onClickItem: (item: FrequenceyResponseDataItem) => void;
-}) => (
-  <div
-    className={`FrequencyItem${isSelected ? "--selected" : ""}`}
-    onClick={() => onClickItem(item)}
-  >
-    <span className="FrequencyItem-col">{item.lemma}</span>
-    <span className="FrequencyItem-col">{item.root}</span>
-    <span className="FrequencyItem-col">{item.frequency}</span>
-  </div>
-);
+}) => {
+  const onClickHandler: MouseEventHandler<HTMLDivElement> = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    onClickItem(item);
+  };
+  return (
+    <div
+      className={`FrequencyItem${isSelected ? "--selected" : ""}`}
+      onClick={onClickHandler}
+    >
+      <span className="FrequencyItem-col">{item.lemma}</span>
+      <span className="FrequencyItem-col">{item.root}</span>
+      <span className="FrequencyItem-col">{item.frequency}</span>
+    </div>
+  );
+};
 
 function Frequencies({
   taraweehNight,
