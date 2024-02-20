@@ -1,0 +1,10 @@
+.WordsPage {
+  &-LeftPanel {
+    &-emptyState {
+      color: darkgray;
+      font-size: x-large;
+      font-style: italic;
+      font-weight: 500;
+    }
+  }
+}
