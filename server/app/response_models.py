@@ -116,7 +116,8 @@ class WordRootOccurrence(BaseModel):
 
 
 class WordRootOccurrencesResponseModel(BaseModel):
-    root: str
+    root: Optional[str]
+    lemma: Optional[str]
     data: List[WordRootOccurrence]
     total_occurrences: int
     total: int

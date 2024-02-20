@@ -2,7 +2,16 @@ import asyncio
 from enum import Enum
 from typing import Optional, List, Tuple, Dict, Union, Type
 
-from fastapi import Depends, FastAPI, Path, Query, Request, Response, status
+from fastapi import (
+    Depends,
+    FastAPI,
+    Path,
+    Query,
+    Request,
+    Response,
+    status,
+    HTTPException,
+)
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from starlette.responses import RedirectResponse
@@ -340,18 +349,26 @@ async def _get_occurrence_verses(verse_args: List[Tuple[int, int]]) -> List[Dict
 
 
 async def _get_occrrences_in_verse(
-    sura_num: int, ayah_num: int, root: str
+    sura_num: int,
+    ayah_num: int,
+    root: str,
+    lemma: str,
 ) -> List[int]:
-    word_nums_result = (
-        db_corpus.session.query(Corpus.word_num)
-        .filter(
-            Corpus.sura_num == sura_num,
-            Corpus.ayah_num == ayah_num,
-            Corpus.root == root,
-        )
-        .order_by(Corpus.word_num)
-        .all()
+    if not (root or lemma):
+        raise ValueError("Both root and lemma are missing")
+
+    base_query = db_corpus.session.query(Corpus.word_num).filter(
+        Corpus.sura_num == sura_num,
+        Corpus.ayah_num == ayah_num,
     )
+
+    if root:
+        base_query = base_query.filter(Corpus.root == root)
+
+    if lemma:
+        base_query = base_query.filter(Corpus.lemma == lemma)
+
+    word_nums_result = base_query.order_by(Corpus.word_num).all()
 
     return [row[0] for row in word_nums_result]
 
@@ -378,7 +395,7 @@ def _get_filter_arg_for_taraweeh_night(taraweeh_night):
 @app.get("/api/occurrences", response_model=WordRootOccurrencesResponseModel)
 async def list_occurrences(
     request: Request,
-    root: str,
+    root: Optional[str] = Query(None),
     lemma: Optional[str] = Query(None),
     taraweeh_night: Optional[int] = Query(None, ge=1, le=27),
     pagination_params: dict = Depends(pagination_parameters),
@@ -386,12 +403,18 @@ async def list_occurrences(
     offset = pagination_params["offset"]
     pagesize = pagination_params["pagesize"]
 
-    base_query = db_corpus.session.query(Corpus.sura_num, Corpus.ayah_num).filter(
-        Corpus.root == root
-    )
+    base_query = db_corpus.session.query(Corpus.sura_num, Corpus.ayah_num)
+
+    if root:
+        base_query = base_query.filter(Corpus.root == root)
 
     if lemma:
         base_query = base_query.filter(Corpus.lemma == lemma)
+
+    if not (root or lemma):
+        raise HTTPException(
+            status_code=422, detail="missing both root and lemma in query param"
+        )
 
     if taraweeh_night:
         filter_arg = _get_filter_arg_for_taraweeh_night(taraweeh_night)
@@ -410,7 +433,7 @@ async def list_occurrences(
     total_verses = occurrences_verse_query.count()
 
     word_nums_future = asyncio.gather(
-        *(_get_occrrences_in_verse(*arg, root) for arg in occurrence_verse_args)
+        *(_get_occrrences_in_verse(*arg, root, lemma) for arg in occurrence_verse_args)
     )
 
     occurrence_verses, occurrence_word_nums = await asyncio.gather(
@@ -430,13 +453,14 @@ async def list_occurrences(
 
     return {
         "root": root,
+        "lemma": lemma,
         "data": data,
         "total_occurrences": total_occurrences,
         "total": total_verses,
         "pagination": get_pagination_response(
             request,
             total_verses,
-            additional_query_string=f"root={root}{f'&lemma={lemma}' if lemma else ''}",
+            additional_query_string=f"root={root}&lemma={lemma}",
         ),
     }
 
@@ -478,8 +502,6 @@ async def list_frequencies(
         "pagination": get_pagination_response(
             request,
             total,
-            additional_query_string=(
-                f"taraweeh_night={taraweeh_night}" if taraweeh_night else None
-            ),
+            additional_query_string=f"taraweeh_night={taraweeh_night}",
         ),
     }
