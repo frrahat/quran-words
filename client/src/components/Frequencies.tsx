@@ -150,7 +150,7 @@ function Frequencies({
           </div>
         ) : null}
       </div>
-      <div className="Occurrences-footer">
+      <div className="Frequencies-footer">
         <Paginator
           currentPage={frequencyPage}
           max={maxPage}

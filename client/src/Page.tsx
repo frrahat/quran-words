@@ -231,13 +231,15 @@ function Page() {
       <div className="Page-navigators">
         <button
           onClick={(event) => {
-            history.push(generateWordsPageLink({
-              frequency_page: 1,
-              taraweeh_night: undefined,
-              occurrence_page: undefined,
-              root: undefined,
-              lemma: undefined,
-            }));
+            history.push(
+              generateWordsPageLink({
+                frequency_page: 1,
+                taraweeh_night: undefined,
+                occurrence_page: undefined,
+                root: undefined,
+                lemma: undefined,
+              }),
+            );
 
             event.preventDefault();
             event.stopPropagation();
