@@ -14,6 +14,24 @@
     align-items: center;
   }
 
+  &-navigators {
+    position: absolute;
+    right: 2px;
+    top: 2px;
+
+    & > button {
+      cursor: pointer;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 5px;
+      outline: none;
+
+      &:hover {
+        background-color: yellow;
+      }
+    }
+  }
+
   &-VerseNum {
     display: inline-block;
     width: 30px;
