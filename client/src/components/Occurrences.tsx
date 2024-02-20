@@ -113,11 +113,13 @@ function OccurrencesItem({
 
 function Occurrences({
   wordRoot,
+  wordLemma,
   occurrencePage,
   pageTopRef,
   paginatorLinkGenerator,
 }: {
   wordRoot: string;
+  wordLemma?: string;
   occurrencePage: number;
   pageTopRef: RefObject<HTMLElement>;
   paginatorLinkGenerator: (pageNum: number) => string;
@@ -170,6 +172,7 @@ function Occurrences({
         response = await axios.get(
           formUrlWithQuery("/api/occurrences", {
             root: wordRoot,
+            lemma: wordLemma,
             offset,
             pageSize: 10,
           }),
@@ -196,7 +199,7 @@ function Occurrences({
     return () => {
       cancelTokenSource.cancel();
     };
-  }, [wordRoot, occurrencePage]);
+  }, [wordRoot, wordLemma, occurrencePage]);
 
   const maxPage = Math.ceil(data.total / 10);
   const visibleVerses = Math.min(data.total - (occurrencePage - 1) * 10, 10);
@@ -206,7 +209,11 @@ function Occurrences({
       <div className="Occurrences-header" ref={occurrencesTopRef}>
         <div className="Occurrences-header-title">
           Occurrences of{" "}
-          <span className="Occurrences-header-root">{wordRoot}</span>{" "}
+          <span className="Occurrences-header-target">
+            {
+              `${wordRoot}${wordLemma ? ` >> ${wordLemma}` : ''}`
+            }
+          </span>
           {isLoading ? (
             ""
           ) : (
