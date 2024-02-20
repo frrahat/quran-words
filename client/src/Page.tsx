@@ -17,6 +17,7 @@ import {
   gerneratePageLink,
   parseIntFromQuery,
   useQuery,
+  generateWordsPageLink,
 } from "./utils";
 import { suraList } from "./config";
 import { CorpusWordData } from "./types";
@@ -226,6 +227,24 @@ function Page() {
             }
           />
         </div>
+      </div>
+      <div className="Page-navigators">
+        <button
+          onClick={(event) => {
+            history.push(generateWordsPageLink({
+              frequency_page: 1,
+              taraweeh_night: undefined,
+              occurrence_page: undefined,
+              root: undefined,
+              lemma: undefined,
+            }));
+
+            event.preventDefault();
+            event.stopPropagation();
+          }}
+        >
+          See words with frequency
+        </button>
       </div>
       {isLoading ? (
         <div className="Page-Loader">
