@@ -379,6 +379,7 @@ def _get_filter_arg_for_taraweeh_night(taraweeh_night):
 async def list_occurrences(
     request: Request,
     root: str,
+    lemma: Optional[str] = Query(None),
     taraweeh_night: Optional[int] = Query(None, ge=1, le=27),
     pagination_params: dict = Depends(pagination_parameters),
 ):
@@ -388,6 +389,9 @@ async def list_occurrences(
     base_query = db_corpus.session.query(Corpus.sura_num, Corpus.ayah_num).filter(
         Corpus.root == root
     )
+
+    if lemma:
+        base_query = base_query.filter(Corpus.lemma == lemma)
 
     if taraweeh_night:
         filter_arg = _get_filter_arg_for_taraweeh_night(taraweeh_night)
@@ -430,7 +434,9 @@ async def list_occurrences(
         "total_occurrences": total_occurrences,
         "total": total_verses,
         "pagination": get_pagination_response(
-            request, total_verses, additional_query_string=f"root={root}"
+            request,
+            total_verses,
+            additional_query_string=f"root={root}{f'&lemma={lemma}' if lemma else ''}",
         ),
     }
 

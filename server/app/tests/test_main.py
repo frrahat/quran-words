@@ -159,6 +159,50 @@ def test_list_occurrences():
     }
 
 
+def test_list_occurrences_with_lemma_param():
+    root = "عبد"
+    lemma = "عَبَدَ"
+    response = client.get(f"/api/occurrences?root={root}&lemma={lemma}")
+
+    assert response.status_code == 200
+
+    response_json = response.json()
+
+    assert len(response_json["data"]) == 10
+    assert response_json["total"] == 111
+    assert response_json["data"][0] == {
+        "sura": 1,
+        "ayah": 5,
+        "verse": {
+            "arabic": (
+                db_quran_arabic.session.query(QuranArabic)
+                .filter(QuranArabic.sura_num == 1, QuranArabic.ayah_num == 5)
+                .first()
+                .text
+            ),
+            "english": (
+                db_quran_english.session.query(QuranEnglish)
+                .filter(QuranEnglish.sura_num == 1, QuranEnglish.ayah_num == 5)
+                .first()
+                .text
+            ),
+            "words": [
+                {"word_num": 1, "english": "You Alone"},
+                {"word_num": 2, "english": "we worship,"},
+                {"word_num": 3, "english": "and You Alone"},
+                {"word_num": 4, "english": "we ask for help."},
+            ],
+        },
+        "word_nums": [2],
+    }
+
+    assert response_json["pagination"] == {
+        "previous": None,
+        "next": f"{CONFIG.BASE_URL}/api/occurrences"
+        f"?offset=10&pagesize=10&root={root}&lemma={lemma}",
+    }
+
+
 def test_list_occurrences_with_pagesize_param():
     root = "علم"
     response = client.get(f"/api/occurrences?root={root}&offset=7&pagesize=8")
