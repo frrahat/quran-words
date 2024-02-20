@@ -4,6 +4,8 @@ import Occurrences from "./components/Occurrences";
 import { generateWordsPageLink, parseIntFromQuery, useQuery } from "./utils";
 import { useHistory } from "react-router";
 
+import "./WordsPage.scss";
+
 function WordsPage() {
   const history = useHistory();
   const query = useQuery();
@@ -27,7 +29,7 @@ function WordsPage() {
 
   return (
     <div className="WordsPage" ref={pageTopRef}>
-      {(wordRoot || wordLemma) && (
+      {Boolean(wordRoot || wordLemma) ? (
         <div className="WordsPage-LeftPanel">
           <Occurrences
             wordRoot={wordRoot}
@@ -37,6 +39,10 @@ function WordsPage() {
             paginatorLinkGenerator={paginatorLinkGenerator}
             taraweehNight={taraweehNight}
           />
+        </div>
+      ) : (
+        <div className="WordsPage-LeftPanel-emptyState">
+          Select an item from the list to see all occurrences
         </div>
       )}
       <div className="WordsPage-RightPanel">
