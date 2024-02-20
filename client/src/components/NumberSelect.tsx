@@ -12,18 +12,20 @@ function NumberSelect({
   valueClassName: string;
   startNumber: number;
   endNumber: number;
-  selectedNumber: number;
+  selectedNumber: number | null | undefined;
   onSelectNumber: (num: number) => void;
 }) {
   const [isOptionsExpanded, setIsOptionsExpanded] = useState(false);
 
   const totalNumbers = endNumber - startNumber + 1;
+  const isUnset = selectedNumber === null || selectedNumber === undefined;
+
   return (
     <div
       className="NumberSelect"
       onClick={() => setIsOptionsExpanded(!isOptionsExpanded)}
     >
-      <div className={valueClassName}>{selectedNumber}</div>
+      <div className={valueClassName}>{isUnset ? "-" : selectedNumber}</div>
       <div
         className={`NumberSelect-Options${isOptionsExpanded ? "" : "-hidden"}`}
       >
