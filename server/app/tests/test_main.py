@@ -167,7 +167,7 @@ def test_list_occurrences():
     }
 
 
-def test_list_occurrences_with_lemma_param():
+def test_list_occurrences_with_root_and_lemma_param():
     root = "عبد"
     lemma = "عَبَدَ"
     response = client.get(f"/api/occurrences?root={root}&lemma={lemma}")
@@ -198,6 +198,47 @@ def test_list_occurrences_with_lemma_param():
         "previous": None,
         "next": f"{CONFIG.BASE_URL}/api/occurrences"
         f"?offset=10&pagesize=10&root={root}&lemma={lemma}",
+    }
+
+
+def test_list_occurrences_with_lemma_param():
+    lemma = "مِن"
+    response = client.get(f"/api/occurrences?lemma={lemma}")
+
+    assert response.status_code == 200
+
+    response_json = response.json()
+
+    assert len(response_json["data"]) == 10
+    assert response_json["total"] == 2149
+    assert response_json["data"][0] == {
+        "sura": 2,
+        "ayah": 4,
+        "verse": {
+            "arabic": _get_arabic_verse(2, 4),
+            "english": _get_english_translated_verse(2, 4),
+            "words": [
+                {"word_num": 1, "english": "And those who"},
+                {"word_num": 2, "english": "believe"},
+                {"word_num": 3, "english": "in what"},
+                {"word_num": 4, "english": "(is) sent down"},
+                {"word_num": 5, "english": "to you"},
+                {"word_num": 6, "english": "and what"},
+                {"word_num": 7, "english": "was sent down"},
+                {"word_num": 8, "english": "from"},
+                {"word_num": 9, "english": "before you"},
+                {"word_num": 10, "english": "and in the Hereafter"},
+                {"word_num": 11, "english": "they"},
+                {"word_num": 12, "english": "firmly believe."},
+            ],
+        },
+        "word_nums": [8],
+    }
+
+    assert response_json["pagination"] == {
+        "previous": None,
+        "next": f"{CONFIG.BASE_URL}/api/occurrences"
+        f"?offset=10&pagesize=10&lemma={lemma}",
     }
 
 
