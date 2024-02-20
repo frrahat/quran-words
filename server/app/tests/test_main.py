@@ -10,6 +10,24 @@ from app.taraweeh_ayat import get_start_end_ayah_by_night
 client = TestClient(app)
 
 
+def _get_arabic_verse(sura, ayah):
+    return (
+        db_quran_arabic.session.query(QuranArabic)
+        .filter(QuranArabic.sura_num == sura, QuranArabic.ayah_num == ayah)
+        .first()
+        .text
+    )
+
+
+def _get_english_translated_verse(sura, ayah):
+    return (
+        db_quran_english.session.query(QuranEnglish)
+        .filter(QuranEnglish.sura_num == sura, QuranEnglish.ayah_num == ayah)
+        .first()
+        .text
+    )
+
+
 def test_root():
     response = client.get("/")
     assert response.status_code == 200
@@ -130,18 +148,8 @@ def test_list_occurrences():
         "sura": 1,
         "ayah": 2,
         "verse": {
-            "arabic": (
-                db_quran_arabic.session.query(QuranArabic)
-                .filter(QuranArabic.sura_num == 1, QuranArabic.ayah_num == 2)
-                .first()
-                .text
-            ),
-            "english": (
-                db_quran_english.session.query(QuranEnglish)
-                .filter(QuranEnglish.sura_num == 1, QuranEnglish.ayah_num == 2)
-                .first()
-                .text
-            ),
+            "arabic": _get_arabic_verse(1, 2),
+            "english": _get_english_translated_verse(1, 2),
             "words": [
                 {"word_num": 1, "english": "All praises and thanks"},
                 {"word_num": 2, "english": "(be) to Allah,"},
@@ -174,18 +182,8 @@ def test_list_occurrences_with_lemma_param():
         "sura": 1,
         "ayah": 5,
         "verse": {
-            "arabic": (
-                db_quran_arabic.session.query(QuranArabic)
-                .filter(QuranArabic.sura_num == 1, QuranArabic.ayah_num == 5)
-                .first()
-                .text
-            ),
-            "english": (
-                db_quran_english.session.query(QuranEnglish)
-                .filter(QuranEnglish.sura_num == 1, QuranEnglish.ayah_num == 5)
-                .first()
-                .text
-            ),
+            "arabic": _get_arabic_verse(1, 5),
+            "english": _get_english_translated_verse(1, 5),
             "words": [
                 {"word_num": 1, "english": "You Alone"},
                 {"word_num": 2, "english": "we worship,"},
@@ -217,18 +215,8 @@ def test_list_occurrences_with_pagesize_param():
         "sura": 2,
         "ayah": 32,
         "verse": {
-            "arabic": (
-                db_quran_arabic.session.query(QuranArabic)
-                .filter(QuranArabic.sura_num == 2, QuranArabic.ayah_num == 32)
-                .first()
-                .text
-            ),
-            "english": (
-                db_quran_english.session.query(QuranEnglish)
-                .filter(QuranEnglish.sura_num == 2, QuranEnglish.ayah_num == 32)
-                .first()
-                .text
-            ),
+            "arabic": _get_arabic_verse(2, 32),
+            "english": _get_english_translated_verse(2, 32),
             "words": [
                 {"word_num": 1, "english": "They said,"},
                 {"word_num": 2, "english": '"Glory be to You!'},
