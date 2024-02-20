@@ -204,7 +204,10 @@ function Occurrences({
   }, [wordRoot, wordLemma, occurrencePage]);
 
   const maxPage = Math.ceil(data.total / PAGE_SIZE);
-  const visibleVerses = Math.min(data.total - (occurrencePage - 1) * PAGE_SIZE, PAGE_SIZE);
+  const visibleVerses = Math.min(
+    data.total - (occurrencePage - 1) * PAGE_SIZE,
+    PAGE_SIZE,
+  );
 
   return (
     <div className="Occurrences">
@@ -212,9 +215,7 @@ function Occurrences({
         <div className="Occurrences-header-title">
           Occurrences of{" "}
           <span className="Occurrences-header-target">
-            {
-              `${wordRoot}${wordLemma ? ` >> ${wordLemma}` : ''}`
-            }
+            {`${wordRoot}${wordLemma ? ` >> ${wordLemma}` : ""}`}
           </span>
           {isLoading ? (
             ""
