@@ -1,0 +1,42 @@
+.NumberSelect {
+  display: inline-block;
+}
+
+.NumberSelect-Options-hidden {
+  display: none;
+}
+
+.NumberSelect-Options {
+  display: flex;
+  flex-flow: wrap;
+  position: absolute;
+  background-color: #31333d;
+  z-index: 900;
+  max-width: 300px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.NumberSelect-Option {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border: 1px solid white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: black;
+    color: black;
+  }
+}
+
+.NumberSelect-Option-Num {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 3px;
+  background-color: #7f78a8;
+  border-radius: 50%;
+}
