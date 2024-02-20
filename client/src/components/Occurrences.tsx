@@ -44,6 +44,8 @@ const initialData = {
   total_occurrences: 0,
 };
 
+const PAGE_SIZE = 10;
+
 function VerseLabel({
   suraNum,
   ayahNum,
@@ -166,7 +168,7 @@ function Occurrences({
           }
         | undefined;
 
-      const offset = (occurrencePage - 1) * 10;
+      const offset = (occurrencePage - 1) * PAGE_SIZE;
 
       try {
         response = await axios.get(
@@ -174,7 +176,7 @@ function Occurrences({
             root: wordRoot,
             lemma: wordLemma,
             offset,
-            pageSize: 10,
+            pagesize: PAGE_SIZE,
           }),
           {
             cancelToken: cancelTokenSource.token,
@@ -201,8 +203,8 @@ function Occurrences({
     };
   }, [wordRoot, wordLemma, occurrencePage]);
 
-  const maxPage = Math.ceil(data.total / 10);
-  const visibleVerses = Math.min(data.total - (occurrencePage - 1) * 10, 10);
+  const maxPage = Math.ceil(data.total / PAGE_SIZE);
+  const visibleVerses = Math.min(data.total - (occurrencePage - 1) * PAGE_SIZE, PAGE_SIZE);
 
   return (
     <div className="Occurrences">
