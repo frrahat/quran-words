@@ -5,6 +5,8 @@ import { generateWordsPageLink, parseIntFromQuery, useQuery } from "./utils";
 import { useHistory } from "react-router";
 
 import "./WordsPage.scss";
+import NumberSelect from "./components/NumberSelect";
+import Filter from "./components/Filter";
 
 function WordsPage() {
   const history = useHistory();
@@ -29,6 +31,44 @@ function WordsPage() {
 
   return (
     <div className="WordsPage" ref={pageTopRef}>
+      <div className="WordsPage-FilterPanel">
+        <div className="WordsPage-FilterPanelItem">
+          <Filter
+            filterLabel="Taraweeh night"
+            filterValue={taraweehNight}
+            selectorComponent={
+              <NumberSelect
+                valueClassName=""
+                startNumber={1}
+                endNumber={27}
+                selectedNumber={taraweehNight}
+                onSelectNumber={(num) => {
+                  const pageLink = generateWordsPageLink({
+                    occurrence_page: occurrencePage,
+                    taraweeh_night: num,
+                    frequency_page: frequencyPage,
+                    root: wordRoot,
+                    lemma: wordLemma,
+                  });
+
+                  history.push(pageLink);
+                }}
+              />
+            }
+            onClearAction={() => {
+              const pageLink = generateWordsPageLink({
+                occurrence_page: occurrencePage,
+                taraweeh_night: undefined,
+                frequency_page: frequencyPage,
+                root: wordRoot,
+                lemma: wordLemma,
+              });
+
+              history.push(pageLink);
+            }}
+          />
+        </div>
+      </div>
       {Boolean(wordRoot || wordLemma) ? (
         <div className="WordsPage-LeftPanel">
           <Occurrences
