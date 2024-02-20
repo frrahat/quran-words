@@ -26,9 +26,9 @@ function WordsPage() {
     });
 
   return (
-    <div className="WordsPage">
+    <div className="WordsPage" ref={pageTopRef}>
       {(wordRoot || wordLemma) && (
-        <div className="WordsPage-LeftPanel" ref={pageTopRef}>
+        <div className="WordsPage-LeftPanel">
           <Occurrences
             wordRoot={wordRoot}
             wordLemma={wordLemma}
