@@ -1,5 +1,5 @@
 import { MouseEventHandler, useEffect, useRef, useState } from "react";
-import { useHistory, useLocation, useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 
 import axios from "axios";
 
@@ -16,6 +16,7 @@ import {
   generatePageSearchString,
   gerneratePageLink,
   parseIntFromQuery,
+  useQuery,
 } from "./utils";
 import { suraList } from "./config";
 import { CorpusWordData } from "./types";
@@ -32,10 +33,6 @@ type CorpusResponseData = {
   english: string;
   words: CorpusWordData[];
 };
-
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
 
 const initialData = {
   sura: 0,
@@ -58,8 +55,6 @@ function Page() {
 
   const selectedWordIndex = parseIntFromQuery(query, "word_index", 0) as number;
   const occurrencePage = parseIntFromQuery(query, "occurrence_page");
-  const taraweehNight = parseIntFromQuery(query, "taraweeh_night");
-  const frequencyPage = parseIntFromQuery(query, "frequency_page");
 
   const [data, setData] = useState<CorpusResponseData>(initialData);
   const [isLoading, setIsLoading] = useState(true);
@@ -79,9 +74,6 @@ function Page() {
         search: generatePageSearchString({
           word_index: index,
           occurrence_page: getResetOccurrencePage(occurrencePage),
-          taraweeh_night: taraweehNight,
-          frequency_item_index: undefined,
-          frequency_page: frequencyPage,
         }),
       });
     }
@@ -97,9 +89,6 @@ function Page() {
         search: generatePageSearchString({
           word_index: 0,
           occurrence_page: getResetOccurrencePage(occurrencePage),
-          taraweeh_night: taraweehNight,
-          frequency_item_index: undefined,
-          frequency_page: frequencyPage,
         }),
       });
     }
@@ -112,9 +101,6 @@ function Page() {
         search: generatePageSearchString({
           word_index: 0,
           occurrence_page: getResetOccurrencePage(occurrencePage),
-          taraweeh_night: taraweehNight,
-          frequency_item_index: undefined,
-          frequency_page: frequencyPage,
         }),
       });
     }
@@ -127,9 +113,6 @@ function Page() {
         search: generatePageSearchString({
           word_index: 0,
           occurrence_page: getResetOccurrencePage(occurrencePage),
-          taraweeh_night: taraweehNight,
-          frequency_item_index: undefined,
-          frequency_page: frequencyPage,
         }),
       });
     }
@@ -141,9 +124,6 @@ function Page() {
       search: generatePageSearchString({
         word_index: selectedWordIndex,
         occurrence_page: occurrencePage ? undefined : 1,
-        taraweeh_night: taraweehNight,
-        frequency_item_index: undefined,
-        frequency_page: frequencyPage,
       }),
     });
 
@@ -223,9 +203,6 @@ function Page() {
               gerneratePageLink(currentPage, 1, {
                 word_index: 0,
                 occurrence_page: getResetOccurrencePage(occurrencePage),
-                taraweeh_night: taraweehNight,
-                frequency_item_index: undefined,
-                frequency_page: frequencyPage,
               })
             }
           />
@@ -245,9 +222,6 @@ function Page() {
               gerneratePageLink(suraNum, currentPage, {
                 word_index: 0,
                 occurrence_page: getResetOccurrencePage(occurrencePage),
-                taraweeh_night: taraweehNight,
-                frequency_item_index: undefined,
-                frequency_page: frequencyPage,
               })
             }
           />
@@ -295,16 +269,12 @@ function Page() {
           {occurrencePage && Boolean(data.words[selectedWordIndex]?.root) && (
             <Occurrences
               wordRoot={data.words[selectedWordIndex]!.root!}
-              taraweehNight={taraweehNight}
               occurrencePage={occurrencePage}
               pageTopRef={pageTopRef}
               paginatorLinkGenerator={(currentPage: number) =>
                 gerneratePageLink(suraNum, ayahNum, {
                   word_index: selectedWordIndex,
                   occurrence_page: currentPage,
-                  taraweeh_night: taraweehNight,
-                  frequency_item_index: undefined,
-                  frequency_page: frequencyPage,
                 })
               }
             />
