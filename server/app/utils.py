@@ -29,7 +29,7 @@ def get_next_prev_paginations(
 def get_pagination_response(
         request: Request,
         count: int,
-        additional_query_string: Optional[str] = None,
+        additional_query_string: Optional[str] = '',
         limit: int = 10) -> Dict[str, Optional[str]]:
 
     current_offset = int(request.query_params.get('offset', 0))
@@ -38,8 +38,16 @@ def get_pagination_response(
     prev_pagination, next_pagination = get_next_prev_paginations(
         current_offset, current_pagesize, count)
 
-    additional_query_string = f'&{additional_query_string}' \
-        if additional_query_string else ''
+    additional_query_params = additional_query_string.split('&')
+    non_none_query_params = list(
+        filter(
+            lambda param: len(param) > 0 and not param.endswith("=None"),
+            additional_query_params,
+        )
+    )
+    additional_query_string = (
+        f"&{'&'.join(non_none_query_params)}" if non_none_query_params else ""
+    )
 
     url = urllib.parse.urljoin(str(request.base_url), request.url.path)
 
