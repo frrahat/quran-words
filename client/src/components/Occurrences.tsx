@@ -218,7 +218,9 @@ function Occurrences({
         <div className="Occurrences-header-title">
           Occurrences of{" "}
           <span className="Occurrences-header-target">
-            {[wordRoot, wordLemma].filter((param) => Boolean(param)).join(' >> ')}
+            {[wordRoot, wordLemma]
+              .filter((param) => Boolean(param))
+              .join(" >> ")}
           </span>
           {isLoading ? (
             ""
