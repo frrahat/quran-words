@@ -67,6 +67,10 @@
     height: 30px;
     border-radius: 5px;
     outline: none;
+
+    &:hover {
+      background-color: yellow;
+    }
   }
 
   &-stat {
