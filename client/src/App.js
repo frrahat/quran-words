@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import Page from "./Page";
+import WordsPage from "./WordsPage";
 import { generateVersePagePath } from "./utils";
 
 import "./App.css";
@@ -24,6 +25,7 @@ function App() {
           path={generateVersePagePath(":suraNum", ":ayahNum")}
           children={<Page />}
         />
+        <Route path="/words" children={<WordsPage />} />
       </Switch>
     </Router>
   );
