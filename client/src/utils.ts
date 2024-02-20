@@ -1,3 +1,7 @@
+import { useLocation } from "react-router";
+
+const useQuery = () => new URLSearchParams(useLocation().search);
+
 const generateQueryString = <QueryObject>(
   queries: Record<keyof QueryObject, string | number | undefined>,
 ) => {
@@ -10,13 +14,17 @@ const generateQueryString = <QueryObject>(
 type PageQueryObject = {
   word_index: number;
   occurrence_page: number | undefined;
+};
+
+type WordsPageQueryObject = {
+  occurrence_page: number | undefined;
   taraweeh_night: number | undefined;
   frequency_item_index: number | undefined;
   frequency_page: number | undefined;
 };
 
-const generatePageSearchString = (queryObject: PageQueryObject) =>
-  generateQueryString<PageQueryObject>(queryObject);
+const generatePageSearchString = generateQueryString<PageQueryObject>;
+const generateWordsPageSearchString = generateQueryString<WordsPageQueryObject>;
 
 const generateVersePagePath = (
   suraNum: string | number,
@@ -36,8 +44,12 @@ const formUrlWithQuery = (url: string, queries: object) => {
   return `${url}?${generateQueryString(queries)}`;
 };
 
-const parseIntFromQuery = (query: URLSearchParams, query_param: string, defaultValue?: number) => {
-  return parseInt(query.get(query_param) || '') || defaultValue;
+const parseIntFromQuery = (
+  query: URLSearchParams,
+  query_param: string,
+  defaultValue?: number,
+) => {
+  return parseInt(query.get(query_param) || "") || defaultValue;
 };
 
 export {
@@ -45,5 +57,7 @@ export {
   generateVersePagePath,
   gerneratePageLink,
   generatePageSearchString,
+  generateWordsPageSearchString,
   parseIntFromQuery,
+  useQuery,
 };
