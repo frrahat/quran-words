@@ -119,12 +119,14 @@ function Occurrences({
   occurrencePage,
   pageTopRef,
   paginatorLinkGenerator,
+  taraweehNight,
 }: {
-  wordRoot: string;
-  wordLemma?: string;
+  wordRoot?: string | null;
+  wordLemma?: string | null;
   occurrencePage: number;
   pageTopRef: RefObject<HTMLElement>;
   paginatorLinkGenerator: (pageNum: number) => string;
+  taraweehNight?: number;
 }) {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<OccurrenceResponseData>(initialData);
@@ -175,6 +177,7 @@ function Occurrences({
           formUrlWithQuery("/api/occurrences", {
             root: wordRoot,
             lemma: wordLemma,
+            taraweeh_night: taraweehNight,
             offset,
             pagesize: PAGE_SIZE,
           }),

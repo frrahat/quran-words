@@ -25,27 +25,41 @@ const initialData = {
 
 const PAGE_SIZE = 100;
 
+const FrequencyItem = ({
+  item,
+  isSelected,
+  onClickItem,
+}: {
+  item: FrequenceyResponseDataItem;
+  isSelected: boolean;
+  onClickItem: (item: FrequenceyResponseDataItem) => void;
+}) => (
+  <div
+    className={`FrequencyItem${isSelected ? "--selected" : ""}`}
+    onClick={() => onClickItem(item)}
+  >
+    <span className="FrequencyItem-col">{item.lemma}</span>
+    <span className="FrequencyItem-col">{item.root}</span>
+    <span className="FrequencyItem-col">{item.frequency}</span>
+  </div>
+);
+
 function Frequencies({
   taraweehNight,
   frequencyPage,
-  frequencyItemIndex,
+  onSelectFrequencyItem,
   paginatorLinkGenerator,
 }: {
   taraweehNight: number | undefined;
   frequencyPage: number;
-  frequencyItemIndex: number;
+  onSelectFrequencyItem: (
+    root: string | undefined,
+    lemma: string | undefined,
+  ) => void;
   paginatorLinkGenerator: (pageNum: number) => string;
 }) {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<FrequenceyResponseData>(initialData);
-
-  // const history = useHistory();
-  // const queryParams = new URLSearchParams(history.location.search);
-  // console.log("++++++++", history.location.pathname, queryParams);
-
-  const listOccurencesOnFrequencyItemSelection = () => {
-    // history.push(gerneratePageLink(1,1,))
-  };
 
   useEffect(() => {
     async function _loadFrequencies() {
@@ -87,13 +101,23 @@ function Frequencies({
     return () => {
       cancelTokenSource.cancel();
     };
-  }, [taraweehNight, frequencyPage, frequencyItemIndex]);
+  }, [taraweehNight, frequencyPage]);
 
   const maxPage = Math.ceil(data.total / PAGE_SIZE);
   const visibleItems = Math.min(
     data.total - (frequencyPage - 1) * PAGE_SIZE,
     PAGE_SIZE,
   );
+
+  const [selectedItemIndex, setSelectedItemIndex] = useState(-1);
+
+  const handleClickOnItem = (
+    item: FrequenceyResponseDataItem,
+    index: number,
+  ) => {
+    setSelectedItemIndex(index);
+    onSelectFrequencyItem(item.root, item.lemma);
+  };
 
   return (
     <div className="Frequencies">
@@ -114,24 +138,16 @@ function Frequencies({
             <img src={loaderGif} alt="loader" />
           </div>
         ) : data.data.length > 0 ? (
-          <table>
-            <thead>
-              <tr>
-                <th>Lemma</th>
-                <th>Root</th>
-                <th>Frequency</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.data.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.lemma}</td>
-                  <td>{item.root}</td>
-                  <td>{item.frequency}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div>
+            {data.data.map((item, index) => (
+              <FrequencyItem
+                key={index}
+                item={item}
+                isSelected={index === selectedItemIndex}
+                onClickItem={(item) => handleClickOnItem(item, index)}
+              />
+            ))}
+          </div>
         ) : null}
       </div>
       <div className="Occurrences-footer">

@@ -19,8 +19,9 @@ type PageQueryObject = {
 type WordsPageQueryObject = {
   occurrence_page: number | undefined;
   taraweeh_night: number | undefined;
-  frequency_item_index: number | undefined;
   frequency_page: number | undefined;
+  root: string | null | undefined;
+  lemma: string | null | undefined;
 };
 
 const generatePageSearchString = generateQueryString<PageQueryObject>;
