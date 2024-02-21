@@ -9,19 +9,5 @@
 .Filter-Selector {
 }
 
-.Filter-Selector-unsetView {
-  padding: 2px;
-  cursor: pointer;
-  border-radius: 2px;
-  border: 1px dashed white;
-  font-size: small;
-  font-weight: 500;
-
-  &:hover {
-    background-color: yellow;
-    color: black;
-  }
-}
-
 .Filter-ClearButton {
 }
