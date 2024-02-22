@@ -70,23 +70,7 @@ function WordsPage() {
         </div>
       </div>
       <div className="WordsPage-Content">
-        {Boolean(wordRoot || wordLemma) ? (
-          <div className="WordsPage-LeftPanel">
-            <Occurrences
-              wordRoot={wordRoot}
-              wordLemma={wordLemma}
-              occurrencePage={occurrencePage || 1}
-              pageTopRef={pageTopRef}
-              paginatorLinkGenerator={paginatorLinkGenerator}
-              taraweehNight={taraweehNight}
-            />
-          </div>
-        ) : (
-          <div className="WordsPage-LeftPanel-emptyState">
-            Select an item from the list to see all occurrences
-          </div>
-        )}
-        <div className="WordsPage-RightPanel">
+        <div className="WordsPage-LeftPanel">
           <Frequencies
             taraweehNight={taraweehNight}
             frequencyPage={frequencyPage || 1}
@@ -107,6 +91,22 @@ function WordsPage() {
             paginatorLinkGenerator={paginatorLinkGenerator}
           />
         </div>
+        {Boolean(wordRoot || wordLemma) ? (
+          <div className="WordsPage-RightPanel">
+            <Occurrences
+              wordRoot={wordRoot}
+              wordLemma={wordLemma}
+              occurrencePage={occurrencePage || 1}
+              pageTopRef={pageTopRef}
+              paginatorLinkGenerator={paginatorLinkGenerator}
+              taraweehNight={taraweehNight}
+            />
+          </div>
+        ) : (
+          <div className="WordsPage-LeftPanel-emptyState">
+            Select an item from the list to see all occurrences
+          </div>
+        )}
       </div>
     </div>
   );
