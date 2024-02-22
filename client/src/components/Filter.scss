@@ -4,10 +4,16 @@
 }
 
 .Filter-Label {
-}
-
-.Filter-Selector {
+  padding: 5px;
 }
 
 .Filter-ClearButton {
+  padding: 5px;
+  color: red;
+  font-weight: 800;
+  cursor: pointer;
+
+  &:hover {
+    color: yellow;
+  }
 }
