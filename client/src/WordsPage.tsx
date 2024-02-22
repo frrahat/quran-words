@@ -69,42 +69,44 @@ function WordsPage() {
           />
         </div>
       </div>
-      {Boolean(wordRoot || wordLemma) ? (
-        <div className="WordsPage-LeftPanel">
-          <Occurrences
-            wordRoot={wordRoot}
-            wordLemma={wordLemma}
-            occurrencePage={occurrencePage || 1}
-            pageTopRef={pageTopRef}
-            paginatorLinkGenerator={paginatorLinkGenerator}
+      <div className="WordsPage-Content">
+        {Boolean(wordRoot || wordLemma) ? (
+          <div className="WordsPage-LeftPanel">
+            <Occurrences
+              wordRoot={wordRoot}
+              wordLemma={wordLemma}
+              occurrencePage={occurrencePage || 1}
+              pageTopRef={pageTopRef}
+              paginatorLinkGenerator={paginatorLinkGenerator}
+              taraweehNight={taraweehNight}
+            />
+          </div>
+        ) : (
+          <div className="WordsPage-LeftPanel-emptyState">
+            Select an item from the list to see all occurrences
+          </div>
+        )}
+        <div className="WordsPage-RightPanel">
+          <Frequencies
             taraweehNight={taraweehNight}
+            frequencyPage={frequencyPage || 1}
+            onSelectFrequencyItem={(
+              root: string | undefined,
+              lemma: string | undefined,
+            ) => {
+              const pageLink = generateWordsPageLink({
+                occurrence_page: occurrencePage,
+                taraweeh_night: taraweehNight,
+                frequency_page: frequencyPage,
+                root: root,
+                lemma: lemma,
+              });
+
+              history.push(pageLink);
+            }}
+            paginatorLinkGenerator={paginatorLinkGenerator}
           />
         </div>
-      ) : (
-        <div className="WordsPage-LeftPanel-emptyState">
-          Select an item from the list to see all occurrences
-        </div>
-      )}
-      <div className="WordsPage-RightPanel">
-        <Frequencies
-          taraweehNight={taraweehNight}
-          frequencyPage={frequencyPage || 1}
-          onSelectFrequencyItem={(
-            root: string | undefined,
-            lemma: string | undefined,
-          ) => {
-            const pageLink = generateWordsPageLink({
-              occurrence_page: occurrencePage,
-              taraweeh_night: taraweehNight,
-              frequency_page: frequencyPage,
-              root: root,
-              lemma: lemma,
-            });
-
-            history.push(pageLink);
-          }}
-          paginatorLinkGenerator={paginatorLinkGenerator}
-        />
       </div>
     </div>
   );

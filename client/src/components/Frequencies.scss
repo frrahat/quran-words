@@ -1,0 +1,33 @@
+.Frequencies {
+  padding: 5px;
+}
+
+.FrequencyItem,
+.Frequencies-FrequencyItemHeader {
+  display: table-row;
+
+  &-col {
+    padding: 5px;
+    display: table-cell;
+    border: 1px solid gray;
+  }
+}
+
+.FrequencyItem {
+  &-col-arabic {
+    font-family: "me_quran";
+    margin: 0 5px;
+    display: rtl;
+  }
+
+  &--selected {
+    background-color: yellowgreen;
+    color: black;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: yellow;
+    color: black;
+  }
+}

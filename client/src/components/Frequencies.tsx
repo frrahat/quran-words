@@ -1,11 +1,11 @@
 import { MouseEventHandler, useEffect, useState } from "react";
-import "./Frequencies.scss";
-import { useHistory } from "react-router-dom";
-import { formUrlWithQuery, gerneratePageLink } from "../utils";
+import { formUrlWithQuery } from "../utils";
 import loaderGif from "../images/loader.gif";
 
 import axios from "axios";
 import Paginator from "./Paginator";
+
+import "./Frequencies.scss";
 
 type FrequenceyResponseDataItem = {
   lemma?: string;
@@ -41,11 +41,15 @@ const FrequencyItem = ({
   };
   return (
     <div
-      className={`FrequencyItem${isSelected ? "--selected" : ""}`}
+      className={`FrequencyItem${isSelected ? " FrequencyItem--selected" : ""}`}
       onClick={onClickHandler}
     >
-      <span className="FrequencyItem-col">{item.lemma}</span>
-      <span className="FrequencyItem-col">{item.root}</span>
+      <span className="FrequencyItem-col FrequencyItem-col-arabic">
+        {item.lemma}
+      </span>
+      <span className="FrequencyItem-col FrequencyItem-col-arabic">
+        {item.root}
+      </span>
       <span className="FrequencyItem-col">{item.frequency}</span>
     </div>
   );
@@ -146,6 +150,11 @@ function Frequencies({
           </div>
         ) : data.data.length > 0 ? (
           <div>
+            <div className="Frequencies-FrequencyItemHeader">
+              <span className="FrequencyItem-col">Lemma</span>
+              <span className="FrequencyItem-col">Root</span>
+              <span className="FrequencyItem-col">Frequency</span>
+            </div>
             {data.data.map((item, index) => (
               <FrequencyItem
                 key={index}
