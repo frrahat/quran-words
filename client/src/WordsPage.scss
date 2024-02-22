@@ -7,4 +7,14 @@
       font-weight: 500;
     }
   }
+
+  &-FilterPanelItem {
+    &-numSelect {
+      display: inline-block;
+      padding: 5px;
+      border: 1px greenyellow dashed;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
 }

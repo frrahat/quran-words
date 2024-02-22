@@ -38,7 +38,7 @@ function WordsPage() {
             filterValue={taraweehNight}
             selectorComponent={
               <NumberSelect
-                valueClassName=""
+                valueClassName="WordsPage-FilterPanelItem-numSelect"
                 startNumber={1}
                 endNumber={27}
                 selectedNumber={taraweehNight}

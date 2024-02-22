@@ -27,7 +27,7 @@ function Filter({
       <div className="Filter-Selector">{selectorComponent}</div>
       {!isUnset && (
         <div className="Filter-ClearButton" onClick={handleClickOnClear}>
-          Clear
+          x
         </div>
       )}
     </div>
