@@ -1,5 +1,10 @@
 .Frequencies {
   padding: 5px;
+
+  &-footer {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .Frequencies-header-title {
