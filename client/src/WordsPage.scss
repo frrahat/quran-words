@@ -1,4 +1,8 @@
 .WordsPage {
+  &-Content {
+    display: flex;
+  }
+
   &-LeftPanel {
     &-emptyState {
       color: darkgray;
@@ -6,6 +10,10 @@
       font-style: italic;
       font-weight: 500;
     }
+  }
+
+  &-RightPanel {
+    flex-grow: 1;
   }
 
   &-FilterPanelItem {
