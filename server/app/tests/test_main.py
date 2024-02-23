@@ -2,7 +2,6 @@ from fastapi.testclient import TestClient
 import pytest
 
 from app.main import app
-from app.config import CONFIG
 from app.db_quran_arabic import db_quran_arabic, QuranArabic
 from app.db_quran_english import db_quran_english, QuranEnglish
 from app.taraweeh_ayat import get_start_end_ayah_by_night
@@ -50,8 +49,7 @@ def test_list_word_80_percent_levels():
     response_json = response.json()
     assert response_json["pagination"] == {
         "previous": None,
-        "next": f"{CONFIG.BASE_URL}/api/words-80-percent/levels"
-        f"?offset=10&pagesize=10",
+        "next": "/api/words-80-percent/levels?offset=10&pagesize=10",
     }
 
 
@@ -64,10 +62,8 @@ def test_list_word_80_percent_levels_with_pagesize_param():
     assert response_json["data"][0]["num"] == 5
 
     assert response_json["pagination"] == {
-        "previous": f"{CONFIG.BASE_URL}/api/words-80-percent/levels"
-        f"?offset=0&pagesize=4",
-        "next": f"{CONFIG.BASE_URL}/api/words-80-percent/levels"
-        f"?offset=10&pagesize=6",
+        "previous": "/api/words-80-percent/levels?offset=0&pagesize=4",
+        "next": "/api/words-80-percent/levels?offset=10&pagesize=6",
     }
 
 
@@ -78,8 +74,7 @@ def test_list_word_80_percent_words():
     response_json = response.json()
     assert response_json["pagination"] == {
         "previous": None,
-        "next": f"{CONFIG.BASE_URL}/api/words-80-percent/words"
-        f"?offset=10&pagesize=10",
+        "next": "/api/words-80-percent/words?offset=10&pagesize=10",
     }
 
 
@@ -92,10 +87,8 @@ def test_list_word_80_percent_words_with_pagesize_param():
     assert response_json["data"][0]["serial"] == 8
 
     assert response_json["pagination"] == {
-        "previous": f"{CONFIG.BASE_URL}/api/words-80-percent/words"
-        f"?offset=0&pagesize=7",
-        "next": f"{CONFIG.BASE_URL}/api/words-80-percent/words"
-        f"?offset=19&pagesize=12",
+        "previous": "/api/words-80-percent/words?offset=0&pagesize=7",
+        "next": "/api/words-80-percent/words?offset=19&pagesize=12",
     }
 
 
@@ -106,7 +99,7 @@ def test_list_verses_by_surah():
     response_json = response.json()
     assert response_json["pagination"] == {
         "previous": None,
-        "next": f"{CONFIG.BASE_URL}/api/verses/sura/2?offset=10&pagesize=10",
+        "next": "/api/verses/sura/2?offset=10&pagesize=10",
     }
 
 
@@ -119,8 +112,8 @@ def test_list_verses_by_surah_with_pagesize_param():
     assert response_json["data"][0]["ayah"] == 15
 
     assert response_json["pagination"] == {
-        "previous": f"{CONFIG.BASE_URL}/api/verses/sura/2" f"?offset=0&pagesize=14",
-        "next": f"{CONFIG.BASE_URL}/api/verses/sura/2" f"?offset=33&pagesize=19",
+        "previous": "/api/verses/sura/2?offset=0&pagesize=14",
+        "next": "/api/verses/sura/2?offset=33&pagesize=19",
     }
 
 
@@ -162,8 +155,7 @@ def test_list_occurrences():
 
     assert response_json["pagination"] == {
         "previous": None,
-        "next": f"{CONFIG.BASE_URL}/api/occurrences"
-        f"?offset=10&pagesize=10&root={root}",
+        "next": f"/api/occurrences?offset=10&pagesize=10&root={root}",
     }
 
 
@@ -196,8 +188,7 @@ def test_list_occurrences_with_root_and_lemma_param():
 
     assert response_json["pagination"] == {
         "previous": None,
-        "next": f"{CONFIG.BASE_URL}/api/occurrences"
-        f"?offset=10&pagesize=10&root={root}&lemma={lemma}",
+        "next": f"/api/occurrences?offset=10&pagesize=10&root={root}&lemma={lemma}",
     }
 
 
@@ -237,8 +228,7 @@ def test_list_occurrences_with_lemma_param():
 
     assert response_json["pagination"] == {
         "previous": None,
-        "next": f"{CONFIG.BASE_URL}/api/occurrences"
-        f"?offset=10&pagesize=10&lemma={lemma}",
+        "next": f"/api/occurrences?offset=10&pagesize=10&lemma={lemma}",
     }
 
 
@@ -277,10 +267,8 @@ def test_list_occurrences_with_pagesize_param():
     }
 
     assert response_json["pagination"] == {
-        "previous": f"{CONFIG.BASE_URL}/api/occurrences"
-        f"?offset=0&pagesize=7&root={root}",
-        "next": f"{CONFIG.BASE_URL}/api/occurrences"
-        f"?offset=15&pagesize=8&root={root}",
+        "previous": f"/api/occurrences?offset=0&pagesize=7&root={root}",
+        "next": f"/api/occurrences?offset=15&pagesize=8&root={root}",
     }
 
 
@@ -322,7 +310,7 @@ def test_list_frequencies():
 
     assert response_json["pagination"] == {
         "previous": None,
-        "next": f"{CONFIG.BASE_URL}/api/frequencies?offset=10&pagesize=10",
+        "next": "/api/frequencies?offset=10&pagesize=10",
     }
 
 
@@ -342,7 +330,7 @@ def test_list_frequencies_with_taraweeh_night_param():
 
     assert response_json["pagination"] == {
         "previous": None,
-        "next": f"{CONFIG.BASE_URL}/api/frequencies?offset=10&pagesize=10&taraweeh_night=8",
+        "next": "/api/frequencies?offset=10&pagesize=10&taraweeh_night=8",
     }
 
 
@@ -361,6 +349,6 @@ def test_list_frequencies_with_taraweeh_night_and_pagination_params():
     }
 
     assert response_json["pagination"] == {
-        "previous": f"{CONFIG.BASE_URL}/api/frequencies?offset=500&pagesize=100&taraweeh_night=8",
+        "previous": "/api/frequencies?offset=500&pagesize=100&taraweeh_night=8",
         "next": None,
     }
