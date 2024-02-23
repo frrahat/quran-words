@@ -46,7 +46,7 @@ function WordsPage() {
                   const pageLink = generateWordsPageLink({
                     occurrence_page: occurrencePage,
                     taraweeh_night: num,
-                    frequency_page: frequencyPage,
+                    frequency_page: 1,
                     root: wordRoot,
                     lemma: wordLemma,
                   });
