@@ -478,6 +478,7 @@ async def list_frequencies(
         db_corpus.session.query(
             Corpus.root, Corpus.lemma, sqlalchemy_func.count(Corpus.lemma)
         )
+        .filter(Corpus.lemma.isnot(None))
         .group_by(Corpus.root, Corpus.lemma)
         .order_by(sqlalchemy_desc(sqlalchemy_func.count(Corpus.lemma)))
     )
