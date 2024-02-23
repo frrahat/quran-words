@@ -48,10 +48,13 @@ jobs:
         run: yarn --cwd client/ build
 
       - name: Run lint
-        run: mypy --config-file=server/mypy.ini server/app/
+        working-directory: ./server
+        run: mypy --config-file=mypy.ini app/
 
       - name: Run typecheck
-        run: flake8 server/app/ --config server/flake8.cfg
+        working-directory: ./server
+        run: flake8 app/ --config flake8.cfg
 
       - name: Run tests
-        run: pytest -vvv server/app/tests
+        working-directory: ./server
+        run: pytest -vvv app/tests
