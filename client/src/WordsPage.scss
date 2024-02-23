@@ -1,9 +1,28 @@
 .WordsPage {
+  height: 100%;
+  overflow: hidden;
+
+  &-FilterPanel {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: black;
+    z-index: 1;
+  }
+
   &-Content {
+    position: absolute;
+    top: 30px;
     display: flex;
+    width: 100%;
+    height: calc(100% - 30px);
+    overflow: hidden;
   }
 
   &-LeftPanel {
+    min-width: 225px;
+    overflow-y: scroll;
+
     &-emptyState {
       color: darkgray;
       font-size: x-large;
@@ -14,6 +33,7 @@
 
   &-RightPanel {
     flex-grow: 1;
+    overflow-y: scroll;
   }
 
   &-FilterPanelItem {
