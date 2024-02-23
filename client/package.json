@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "HOST=0.0.0.0 react-scripts --openssl-legacy-provider start",
-    "build": "PUBLIC_URL=/public react-scripts build",
+    "build": "PUBLIC_URL=/public react-scripts --openssl-legacy-provider build",
     "prettify": "prettier -w src/",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
