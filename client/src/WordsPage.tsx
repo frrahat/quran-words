@@ -14,7 +14,7 @@ function WordsPage() {
 
   const occurrencePage = parseIntFromQuery(query, "occurrence_page");
   const taraweehNight = parseIntFromQuery(query, "taraweeh_night");
-  const frequencyPage = parseIntFromQuery(query, "frequency_page", 1) as number;
+  const frequencyPage = parseIntFromQuery(query, "frequency_page", 0) as number;
   const wordRoot = query.get("root");
   const wordLemma = query.get("lemma");
 
@@ -70,27 +70,29 @@ function WordsPage() {
         </div>
       </div>
       <div className="WordsPage-Content">
-        <div className="WordsPage-LeftPanel">
-          <Frequencies
-            taraweehNight={taraweehNight}
-            frequencyPage={frequencyPage || 1}
-            onSelectFrequencyItem={(
-              root: string | undefined,
-              lemma: string | undefined,
-            ) => {
-              const pageLink = generateWordsPageLink({
-                occurrence_page: occurrencePage,
-                taraweeh_night: taraweehNight,
-                frequency_page: frequencyPage,
-                root: root,
-                lemma: lemma,
-              });
+        {Boolean(frequencyPage) ? (
+          <div className="WordsPage-LeftPanel">
+            <Frequencies
+              taraweehNight={taraweehNight}
+              frequencyPage={frequencyPage}
+              onSelectFrequencyItem={(
+                root: string | undefined,
+                lemma: string | undefined,
+              ) => {
+                const pageLink = generateWordsPageLink({
+                  occurrence_page: occurrencePage,
+                  taraweeh_night: taraweehNight,
+                  frequency_page: frequencyPage,
+                  root: root,
+                  lemma: lemma,
+                });
 
-              history.push(pageLink);
-            }}
-            paginatorLinkGenerator={paginatorLinkGenerator}
-          />
-        </div>
+                history.push(pageLink);
+              }}
+              paginatorLinkGenerator={paginatorLinkGenerator}
+            />
+          </div>
+        ) : null}
         {Boolean(wordRoot || wordLemma) ? (
           <div className="WordsPage-RightPanel">
             <Occurrences
@@ -104,7 +106,7 @@ function WordsPage() {
           </div>
         ) : (
           <div className="WordsPage-LeftPanel-emptyState">
-            Select an item from the list to see all occurrences
+            Select an item from the frequency list to see occurrences
           </div>
         )}
       </div>
