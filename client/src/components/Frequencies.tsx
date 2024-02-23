@@ -116,7 +116,7 @@ function Frequencies({
 
   const maxPage = Math.ceil(data.total / PAGE_SIZE);
   const visibleItems = Math.min(
-    data.total - (frequencyPage - 1) * PAGE_SIZE,
+    Math.max(data.total - (frequencyPage - 1) * PAGE_SIZE, 0),
     PAGE_SIZE,
   );
 
