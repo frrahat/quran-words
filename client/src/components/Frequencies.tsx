@@ -159,8 +159,8 @@ function Frequencies({
                 key={index}
                 item={item}
                 isSelected={
-                  item.root == selectedFrequencyItem.root &&
-                  item.lemma == selectedFrequencyItem.lemma
+                  item.root === selectedFrequencyItem.root &&
+                  item.lemma === selectedFrequencyItem.lemma
                 }
                 onClickItem={(item) => handleClickOnItem(item)}
               />
