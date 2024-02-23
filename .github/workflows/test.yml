@@ -27,8 +27,8 @@ jobs:
       - name: Set up Python 3.x
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'
-          architecture: 'x64'
+          python-version: "3.9"
+          architecture: "x64"
 
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
@@ -36,7 +36,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v2
         with:
-          node-version: '16.18.1'
+          node-version: "20.11.1"
 
       - name: Install dependencies
         run: |
@@ -44,8 +44,14 @@ jobs:
           pip install -r server/requirements.txt
           yarn --cwd client/
 
-      - name: Generate client bulid directory
+      - name: Try building client code
         run: yarn --cwd client/ build
 
-      - name: Run lint, typecheck and test
-        run: make lint typecheck test
+      - name: Run lint
+        run: mypy --config-file=server/mypy.ini server/app/
+
+      - name: Run typecheck
+        run: flake8 server/app/ --config server/flake8.cfg
+
+      - name: Run tests
+        run: pytest -vvv server/app/tests
