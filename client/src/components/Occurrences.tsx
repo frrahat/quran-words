@@ -204,7 +204,7 @@ function Occurrences({
     return () => {
       cancelTokenSource.cancel();
     };
-  }, [wordRoot, wordLemma, occurrencePage]);
+  }, [wordRoot, wordLemma, occurrencePage, taraweehNight]);
 
   const maxPage = Math.ceil(data.total / PAGE_SIZE);
   const visibleVerses = Math.min(
