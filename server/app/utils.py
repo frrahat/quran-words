@@ -1,5 +1,4 @@
 from typing import Dict, Optional
-import urllib.parse
 
 from fastapi import Request
 
@@ -49,7 +48,7 @@ def get_pagination_response(
         f"&{'&'.join(non_none_query_params)}" if non_none_query_params else ""
     )
 
-    url = urllib.parse.urljoin(str(request.base_url), request.url.path)
+    url = request.url.path
 
     return {
         'previous': f"{url}?offset={prev_pagination['offset']}"
