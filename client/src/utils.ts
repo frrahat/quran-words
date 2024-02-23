@@ -6,7 +6,7 @@ const generateQueryString = <QueryObject>(
   queries: Record<keyof QueryObject, string | number | undefined>,
 ) => {
   const queryStrings = Object.entries(queries).map(([key, value]) =>
-    value ? `${key}=${value}` : null,
+    value !== undefined && value !== null ? `${key}=${value}` : null,
   );
   return queryStrings.filter((str) => str).join("&");
 };
