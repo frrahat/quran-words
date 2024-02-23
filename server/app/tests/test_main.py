@@ -313,3 +313,54 @@ def test_list_frequencies():
     response_json = response.json()
 
     assert len(response_json["data"]) == 10
+    assert response_json["total"] == 4751
+    assert response_json["data"][0] == {
+        "lemma": "مِن",
+        "root": "",
+        "frequency": 3067,
+    }
+
+    assert response_json["pagination"] == {
+        "previous": None,
+        "next": f"{CONFIG.BASE_URL}/api/frequencies?offset=10&pagesize=10",
+    }
+
+
+def test_list_frequencies_with_taraweeh_night_param():
+    response = client.get("/api/frequencies?taraweeh_night=8")
+
+    assert response.status_code == 200
+    response_json = response.json()
+
+    assert len(response_json["data"]) == 10
+    assert response_json["total"] == 656
+    assert response_json["data"][0] == {
+        "lemma": "اللَّه",
+        "root": "اله",
+        "frequency": 109,
+    }
+
+    assert response_json["pagination"] == {
+        "previous": None,
+        "next": f"{CONFIG.BASE_URL}/api/frequencies?offset=10&pagesize=10&taraweeh_night=8",
+    }
+
+
+def test_list_frequencies_with_taraweeh_night_and_pagination_params():
+    response = client.get("/api/frequencies?taraweeh_night=8&offset=600&pagesize=100")
+
+    assert response.status_code == 200
+    response_json = response.json()
+
+    assert len(response_json["data"]) == 56
+    assert response_json["total"] == 656
+    assert response_json["data"][0] == {
+        "lemma": "كَفَى",
+        "root": "كفي",
+        "frequency": 1,
+    }
+
+    assert response_json["pagination"] == {
+        "previous": f"{CONFIG.BASE_URL}/api/frequencies?offset=500&pagesize=100&taraweeh_night=8",
+        "next": None,
+    }
