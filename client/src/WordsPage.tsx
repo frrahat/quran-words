@@ -75,6 +75,10 @@ function WordsPage() {
             <Frequencies
               taraweehNight={taraweehNight}
               frequencyPage={frequencyPage}
+              selectedFrequencyItem={{
+                root: wordRoot,
+                lemma: wordLemma,
+              }}
               onSelectFrequencyItem={(
                 root: string | undefined,
                 lemma: string | undefined,

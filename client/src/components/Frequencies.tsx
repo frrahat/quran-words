@@ -58,11 +58,16 @@ const FrequencyItem = ({
 function Frequencies({
   taraweehNight,
   frequencyPage,
+  selectedFrequencyItem,
   onSelectFrequencyItem,
   paginatorLinkGenerator,
 }: {
   taraweehNight: number | undefined;
   frequencyPage: number;
+  selectedFrequencyItem: {
+    root?: string | null;
+    lemma?: string | null;
+  };
   onSelectFrequencyItem: (
     root: string | undefined,
     lemma: string | undefined,
@@ -120,13 +125,7 @@ function Frequencies({
     PAGE_SIZE,
   );
 
-  const [selectedItemIndex, setSelectedItemIndex] = useState(-1);
-
-  const handleClickOnItem = (
-    item: FrequenceyResponseDataItem,
-    index: number,
-  ) => {
-    setSelectedItemIndex(index);
+  const handleClickOnItem = (item: FrequenceyResponseDataItem) => {
     onSelectFrequencyItem(item.root, item.lemma);
   };
 
@@ -159,8 +158,11 @@ function Frequencies({
               <FrequencyItem
                 key={index}
                 item={item}
-                isSelected={index === selectedItemIndex}
-                onClickItem={(item) => handleClickOnItem(item, index)}
+                isSelected={
+                  item.root == selectedFrequencyItem.root &&
+                  item.lemma == selectedFrequencyItem.lemma
+                }
+                onClickItem={(item) => handleClickOnItem(item)}
               />
             ))}
           </div>
