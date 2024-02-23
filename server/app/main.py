@@ -351,8 +351,8 @@ async def _get_occurrence_verses(verse_args: List[Tuple[int, int]]) -> List[Dict
 async def _get_occrrences_in_verse(
     sura_num: int,
     ayah_num: int,
-    root: str,
-    lemma: str,
+    root: Optional[str],
+    lemma: Optional[str],
 ) -> List[int]:
     if not (root or lemma):
         raise ValueError("Both root and lemma are missing")

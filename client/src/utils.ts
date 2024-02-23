@@ -3,7 +3,7 @@ import { useLocation } from "react-router";
 const useQuery = () => new URLSearchParams(useLocation().search);
 
 const generateQueryString = <QueryObject>(
-  queries: Record<keyof QueryObject, string | number | undefined>,
+  queries: Record<keyof QueryObject, string | number | null | undefined>,
 ) => {
   const queryStrings = Object.entries(queries).map(([key, value]) =>
     value !== undefined && value !== null ? `${key}=${value}` : null,
