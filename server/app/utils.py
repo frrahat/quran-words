@@ -28,7 +28,7 @@ def get_next_prev_paginations(
 def get_pagination_response(
         request: Request,
         count: int,
-        additional_query_string: Optional[str] = '',
+        additional_query_string: str = '',
         limit: int = 10) -> Dict[str, Optional[str]]:
 
     current_offset = int(request.query_params.get('offset', 0))
