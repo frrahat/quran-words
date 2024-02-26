@@ -13,4 +13,6 @@ format:
 	isort app/
 
 test:
+	mkdir -p client
+    cp -r ../client/build client/
 	pytest -vvv app/tests
