@@ -7,3 +7,5 @@ env
 
 factory/**/_*
 server/client/build/
+
+.ipynb_checkpoints
