@@ -1,0 +1,23 @@
+# build stage
+FROM node:20.11.1-alpine3.19 as deps
+
+WORKDIR /code
+COPY client/package.json client/yarn.lock ./
+RUN yarn install --frozen-lockfile
+
+COPY client/ .
+RUN yarn build
+
+# run stage
+FROM python:3.9-alpine
+RUN apk add build-base
+
+WORKDIR /code
+COPY server/requirements.txt .
+RUN pip install -r requirements.txt
+COPY server/ .
+
+COPY --from=deps /code/build/ client/build/
+EXPOSE 8000
+
+CMD [ "gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker","-b", ":8000", "app.main:app" ]
