@@ -1,9 +1,9 @@
-from fastapi.testclient import TestClient
 import pytest
+from fastapi.testclient import TestClient
 
-from app.main import app
 from app.db.db_quran_arabic import QuranArabic
 from app.db.db_quran_english import QuranEnglish
+from app.main import app
 from app.taraweeh_ayat import get_start_end_ayah_by_night
 
 client = TestClient(app)

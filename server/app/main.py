@@ -1,43 +1,33 @@
 import asyncio
 from enum import Enum
-from typing import Optional, List, Tuple, Dict, Union, Type
+from typing import Dict, List, Optional, Tuple, Type, Union
 
-from fastapi import (
-    Depends,
-    FastAPI,
-    Path,
-    Query,
-    Request,
-    Response,
-    status,
-    HTTPException,
-)
-from fastapi.staticfiles import StaticFiles
+from fastapi import (Depends, FastAPI, HTTPException, Path, Query, Request,
+                     Response, status)
 from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+from sqlalchemy import and_
+from sqlalchemy import desc as sqlalchemy_desc
+from sqlalchemy import func as sqlalchemy_func
+from sqlalchemy import or_
 from starlette.responses import RedirectResponse
-from sqlalchemy import or_, and_, func as sqlalchemy_func, desc as sqlalchemy_desc
 
-from app.db.db_words_80_percent import (
-    Level,
-    Word as Words80Percent,
-)
+from app.config import CONFIG
 from app.db.db_corpus import Corpus
 from app.db.db_quran_arabic import QuranArabic
 from app.db.db_quran_english import QuranEnglish
 from app.db.db_words import Word
-from app.response_models import (
-    LevelListResponseModel,
-    WordListResponseModel,
-    VerseListResponseModel,
-    VerseResponseModelForSingleAyah,
-    CorpusResponseModel,
-    WordRootOccurrencesResponseModel,
-    FrequenciesResponseModel,
-)
+from app.db.db_words_80_percent import Level
+from app.db.db_words_80_percent import Word as Words80Percent
 from app.dependencies import pagination_parameters
-from app.utils import get_pagination_response
-from app.config import CONFIG
+from app.response_models import (CorpusResponseModel, FrequenciesResponseModel,
+                                 LevelListResponseModel,
+                                 VerseListResponseModel,
+                                 VerseResponseModelForSingleAyah,
+                                 WordListResponseModel,
+                                 WordRootOccurrencesResponseModel)
 from app.taraweeh_ayat import get_start_end_ayah_by_night
+from app.utils import get_pagination_response
 
 app = FastAPI()
 

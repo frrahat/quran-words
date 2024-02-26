@@ -1,4 +1,4 @@
-from app.taraweeh_ayat import get_start_end_ayah_by_night, AyahInfo
+from app.taraweeh_ayat import AyahInfo, get_start_end_ayah_by_night
 
 
 def test_get_start_end_ayah_by_night_returns_properly():
