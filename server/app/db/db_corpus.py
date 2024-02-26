@@ -1,12 +1,12 @@
-from sqlalchemy_wrapper import SQLAlchemy
+from sqlalchemy import Column, Integer, String, Unicode
+from sqlalchemy.orm import DeclarativeBase, relationship
+from sqlalchemy.schema import ForeignKeyConstraint
 
-from .config import CONFIG
+from app.db.common import SessionMakerMixin
 
 
-db_corpus = SQLAlchemy(
-    uri="sqlite:///app/databases/corpus.db?check_same_thread=False",
-    echo=CONFIG.ECHO_SQL,
-)
+class Base(SessionMakerMixin, DeclarativeBase):
+    __db_filename__ = "corpus.db"
 
 
 POS_FULL_FORMS_AND_COLORS = {
@@ -209,18 +209,16 @@ POS_FULL_FORMS_AND_COLORS = {
 }
 
 
-class VerbForms(db_corpus.Model):  # type: ignore
+class VerbForms(Base):
     __tablename__ = "verbs_with_six_forms"
-    root = db_corpus.Column("root", db_corpus.Unicode, primary_key=True)
-    verb_type = db_corpus.Column(
-        "verb_type", db_corpus.String(length=3), primary_key=True
-    )
-    perfect = db_corpus.Column("perfect", db_corpus.Unicode)
-    imperfect = db_corpus.Column("imperfect", db_corpus.Unicode)
-    imperative = db_corpus.Column("imperative", db_corpus.Unicode)
-    active_participle = db_corpus.Column("active_participle", db_corpus.Unicode)
-    passive_participle = db_corpus.Column("passive_participle", db_corpus.Unicode)
-    verbal_noun = db_corpus.Column("verbal_noun", db_corpus.Unicode)
+    root = Column("root", Unicode, primary_key=True)
+    verb_type = Column("verb_type", String(length=3), primary_key=True)
+    perfect = Column("perfect", Unicode)
+    imperfect = Column("imperfect", Unicode)
+    imperative = Column("imperative", Unicode)
+    active_participle = Column("active_participle", Unicode)
+    passive_participle = Column("passive_participle", Unicode)
+    verbal_noun = Column("verbal_noun", Unicode)
 
     def to_dict(self):
         return {
@@ -234,31 +232,29 @@ class VerbForms(db_corpus.Model):  # type: ignore
         }
 
 
-class Corpus(db_corpus.Model):  # type: ignore
+class Corpus(Base):
     __tablename__ = "corpus"
-    sura_num = db_corpus.Column("surah", db_corpus.Integer, primary_key=True)
-    ayah_num = db_corpus.Column("ayah", db_corpus.Integer, primary_key=True)
-    word_num = db_corpus.Column("word", db_corpus.Integer, primary_key=True)
-    count = db_corpus.Column("count", db_corpus.Integer)
-    ar1 = db_corpus.Column("ar1", db_corpus.Unicode)
-    ar2 = db_corpus.Column("ar2", db_corpus.Unicode)
-    ar3 = db_corpus.Column("ar3", db_corpus.Unicode)
-    ar4 = db_corpus.Column("ar4", db_corpus.Unicode)
-    ar5 = db_corpus.Column("ar5", db_corpus.Unicode)
-    pos1 = db_corpus.Column("pos1", db_corpus.Unicode)
-    pos2 = db_corpus.Column("pos2", db_corpus.Unicode)
-    pos3 = db_corpus.Column("pos3", db_corpus.Unicode)
-    pos4 = db_corpus.Column("pos4", db_corpus.Unicode)
-    pos5 = db_corpus.Column("pos5", db_corpus.Unicode)
-    root = db_corpus.Column("root_ar", db_corpus.Unicode)
-    lemma = db_corpus.Column("lemma", db_corpus.Unicode)
-    verb_type = db_corpus.Column("verb_type", db_corpus.String(length=3))
-    verb_form = db_corpus.Column("verf_form", db_corpus.Integer)
-    verb_forms = db_corpus.relationship("VerbForms", uselist=False, lazy="joined")
+    sura_num = Column("surah", Integer, primary_key=True)
+    ayah_num = Column("ayah", Integer, primary_key=True)
+    word_num = Column("word", Integer, primary_key=True)
+    count = Column("count", Integer)
+    ar1 = Column("ar1", Unicode)
+    ar2 = Column("ar2", Unicode)
+    ar3 = Column("ar3", Unicode)
+    ar4 = Column("ar4", Unicode)
+    ar5 = Column("ar5", Unicode)
+    pos1 = Column("pos1", Unicode)
+    pos2 = Column("pos2", Unicode)
+    pos3 = Column("pos3", Unicode)
+    pos4 = Column("pos4", Unicode)
+    pos5 = Column("pos5", Unicode)
+    root = Column("root_ar", Unicode)
+    lemma = Column("lemma", Unicode)
+    verb_type = Column("verb_type", String(length=3))
+    verb_form = Column("verf_form", Integer)
+    verb_forms = relationship("VerbForms", uselist=False, lazy="joined")
 
-    db_corpus.ForeignKeyConstraint(
-        [root, verb_type], [VerbForms.root, VerbForms.verb_type]
-    )
+    ForeignKeyConstraint([root, verb_type], [VerbForms.root, VerbForms.verb_type])
 
     def get_segments(self):
         segments = []
@@ -282,27 +278,17 @@ class Corpus(db_corpus.Model):  # type: ignore
 
         return segments
 
-        # return {
-        #     'sura_num': self.sura_num,
-        #     'ayah_num': self.ayah_num,
-        #     'word_num': self.word_num,
-        #     'root': self.root,
-        #     'lemma': self.lemma,
-        #     'verb_type': self.verb_type,
-        #     'verb_form': self.verb_form,
-        #     'segments': segments,
-        # }
-
 
 if __name__ == "__main__":
-    print(db_corpus.session.query(Corpus).count())
-    print(db_corpus.session.query(VerbForms).count())
+    with Corpus.get_session() as db_corpus:
+        print(db_corpus.query(Corpus).count())
+        print(db_corpus.query(VerbForms).count())
 
-    base_query = (
-        db_corpus.session.query(Corpus)
-        .filter(Corpus.sura_num == 1, Corpus.ayah_num == 1, Corpus.word_num == 3)
-        .first()
-    )
+        base_query = (
+            db_corpus.query(Corpus)
+            .filter(Corpus.sura_num == 1, Corpus.ayah_num == 5, Corpus.word_num == 2)
+            .first()
+        )
 
-    print(base_query.to_dict())
-    print(base_query.verb_forms.to_dict())
+        print(base_query.get_segments())
+        print(base_query.verb_forms.to_dict())
