@@ -17,15 +17,14 @@ from fastapi.responses import FileResponse
 from starlette.responses import RedirectResponse
 from sqlalchemy import or_, and_, func as sqlalchemy_func, desc as sqlalchemy_desc
 
-from app.db_words_80_percent import (
-    db_words_80_percent,
+from app.db.db_words_80_percent import (
     Level,
     Word as Words80Percent,
 )
-from app.db_corpus import db_corpus, Corpus
-from app.db_quran_arabic import db_quran_arabic, QuranArabic
-from app.db_quran_english import db_quran_english, QuranEnglish
-from app.db_words import db_words, Word
+from app.db.db_corpus import Corpus
+from app.db.db_quran_arabic import QuranArabic
+from app.db.db_quran_english import QuranEnglish
+from app.db.db_words import Word
 from app.response_models import (
     LevelListResponseModel,
     WordListResponseModel,
@@ -62,10 +61,11 @@ def list_word_80_percent_levels(
     offset = pagination_params["offset"]
     pagesize = pagination_params["pagesize"]
 
-    base_query = db_words_80_percent.session.query(Level)
-    total = base_query.count()
+    with Words80Percent.get_session() as session:
+        base_query = session.query(Level)
+        total = base_query.count()
 
-    levels = base_query.offset(offset).limit(pagesize).all()
+        levels = base_query.offset(offset).limit(pagesize).all()
 
     return {
         "data": [
@@ -89,19 +89,20 @@ def list_word_80_percent_words(
     offset = pagination_params["offset"]
     pagesize = pagination_params["pagesize"]
 
-    base_query = db_words_80_percent.session.query(Words80Percent)
+    with Words80Percent.get_session() as session:
+        base_query = session.query(Words80Percent)
 
-    if level:
-        base_query = base_query.filter(Words80Percent.level_num == level)
+        if level:
+            base_query = base_query.filter(Words80Percent.level_num == level)
 
-    total = base_query.count()
+        total = base_query.count()
 
-    words = (
-        base_query.order_by(Words80Percent.level_num, Words80Percent.serial_num)
-        .offset(offset)
-        .limit(pagesize)
-        .all()
-    )
+        words = (
+            base_query.order_by(Words80Percent.level_num, Words80Percent.serial_num)
+            .offset(offset)
+            .limit(pagesize)
+            .all()
+        )
 
     additional_query_string = f"level={level}"
 
@@ -129,22 +130,27 @@ def list_sura_verses(
     offset = pagination_params["offset"]
     pagesize = pagination_params["pagesize"]
 
-    base_query = db_quran_arabic.session.query(QuranArabic).filter(
-        QuranArabic.sura_num == sura_num
-    )
-    total = base_query.count()
+    with QuranArabic.get_session() as session_quran_arabic:
+        base_query = session_quran_arabic.query(QuranArabic).filter(
+            QuranArabic.sura_num == sura_num
+        )
+        total = base_query.count()
 
-    verses = (
-        base_query.order_by(QuranArabic.ayah_num).offset(offset).limit(pagesize).all()
-    )
+        verses = (
+            base_query.order_by(QuranArabic.ayah_num)
+            .offset(offset)
+            .limit(pagesize)
+            .all()
+        )
 
-    verses_english = (
-        db_quran_english.session.query(QuranEnglish)
-        .filter(QuranEnglish.sura_num == sura_num)
-        .offset(offset)
-        .limit(pagesize)
-        .all()
-    )
+    with QuranEnglish.get_session() as session_quran_english:
+        verses_english = (
+            session_quran_english.query(QuranEnglish)
+            .filter(QuranEnglish.sura_num == sura_num)
+            .offset(offset)
+            .limit(pagesize)
+            .all()
+        )
 
     mapped_english_verse_text = {verse.ayah_num: verse.text for verse in verses_english}
 
@@ -176,18 +182,23 @@ def get_verse(
     sura_num: int = Path(..., gt=0, le=114),
     ayah_num: int = Path(..., gt=0, le=286),
 ):
-    base_query = db_quran_arabic.session.query(QuranArabic).filter(
-        QuranArabic.sura_num == sura_num
-    )
+    with QuranArabic.get_session() as session_quran_arabic:
+        base_query = session_quran_arabic.query(QuranArabic).filter(
+            QuranArabic.sura_num == sura_num
+        )
 
-    total_ayat = base_query.count()
+        total_ayat = base_query.count()
 
-    verse = base_query.filter(QuranArabic.ayah_num == ayah_num).first()
-    verse_english = (
-        db_quran_english.session.query(QuranEnglish)
-        .filter(QuranEnglish.sura_num == sura_num, QuranEnglish.ayah_num == ayah_num)
-        .first()
-    )
+        verse = base_query.filter(QuranArabic.ayah_num == ayah_num).first()
+
+    with QuranEnglish.get_session() as session_quran_english:
+        verse_english = (
+            session_quran_english.query(QuranEnglish)
+            .filter(
+                QuranEnglish.sura_num == sura_num, QuranEnglish.ayah_num == ayah_num
+            )
+            .first()
+        )
 
     if not verse:
         response.status_code = status.HTTP_404_NOT_FOUND
@@ -224,24 +235,33 @@ class VERSE_LANG(Enum):
 async def _get_verse(
     sura_num: int, ayah_num: int, type_: VERSE_LANG = VERSE_LANG.ARABIC
 ) -> Union[QuranArabic, QuranEnglish]:
-    db = db_quran_arabic if type_ == VERSE_LANG.ARABIC else db_quran_english
-    model_cls: Union[Type[QuranArabic], Type[QuranEnglish]] = (
-        QuranArabic if type_ == VERSE_LANG.ARABIC else QuranEnglish
-    )
-    return (
-        db.session.query(model_cls)
-        .filter(model_cls.sura_num == sura_num, model_cls.ayah_num == ayah_num)
-        .first()
-    )
+    with (
+        QuranArabic.get_session() as session_quran_arabic,
+        QuranEnglish.get_session() as session_quran_english,
+    ):
+        db_session = (
+            session_quran_arabic
+            if type_ == VERSE_LANG.ARABIC
+            else session_quran_english
+        )
+        model_cls: Union[Type[QuranArabic], Type[QuranEnglish]] = (
+            QuranArabic if type_ == VERSE_LANG.ARABIC else QuranEnglish
+        )
+        return (
+            db_session.query(model_cls)
+            .filter(model_cls.sura_num == sura_num, model_cls.ayah_num == ayah_num)
+            .first()
+        )
 
 
 async def _get_words(sura_num: int, ayah_num: int) -> List[Word]:
-    return (
-        db_words.session.query(Word)
-        .filter(Word.sura_num == sura_num, Word.ayah_num == ayah_num)
-        .order_by(Word.word_num)
-        .all()
-    )
+    with Word.get_session() as session:
+        return (
+            session.query(Word)
+            .filter(Word.sura_num == sura_num, Word.ayah_num == ayah_num)
+            .order_by(Word.word_num)
+            .all()
+        )
 
 
 @app.get(
@@ -269,10 +289,11 @@ async def get_corpus(
 
     mapped_english_words = {word.word_num: word.english for word in words_english}
 
-    base_query = db_corpus.session.query(Corpus).filter(
-        Corpus.sura_num == sura_num, Corpus.ayah_num == ayah_num
-    )
-    ordered_corpus_list = base_query.order_by(Corpus.word_num).all()
+    with Corpus.get_session() as session_corpus:
+        base_query = session_corpus.query(Corpus).filter(
+            Corpus.sura_num == sura_num, Corpus.ayah_num == ayah_num
+        )
+        ordered_corpus_list = base_query.order_by(Corpus.word_num).all()
 
     words = []
 
@@ -357,18 +378,19 @@ async def _get_occrrences_in_verse(
     if not (root or lemma):
         raise ValueError("Both root and lemma are missing")
 
-    base_query = db_corpus.session.query(Corpus.word_num).filter(
-        Corpus.sura_num == sura_num,
-        Corpus.ayah_num == ayah_num,
-    )
+    with Corpus.get_session() as session_corpus:
+        base_query = session_corpus.query(Corpus.word_num).filter(
+            Corpus.sura_num == sura_num,
+            Corpus.ayah_num == ayah_num,
+        )
 
-    if root:
-        base_query = base_query.filter(Corpus.root == root)
+        if root:
+            base_query = base_query.filter(Corpus.root == root)
 
-    if lemma:
-        base_query = base_query.filter(Corpus.lemma == lemma)
+        if lemma:
+            base_query = base_query.filter(Corpus.lemma == lemma)
 
-    word_nums_result = base_query.order_by(Corpus.word_num).all()
+        word_nums_result = base_query.order_by(Corpus.word_num).all()
 
     return [row[0] for row in word_nums_result]
 
@@ -403,34 +425,35 @@ async def list_occurrences(
     offset = pagination_params["offset"]
     pagesize = pagination_params["pagesize"]
 
-    base_query = db_corpus.session.query(Corpus.sura_num, Corpus.ayah_num)
+    with Corpus.get_session() as session_corpus:
+        base_query = session_corpus.query(Corpus.sura_num, Corpus.ayah_num)
 
-    if root:
-        base_query = base_query.filter(Corpus.root == root)
+        if root:
+            base_query = base_query.filter(Corpus.root == root)
 
-    if lemma:
-        base_query = base_query.filter(Corpus.lemma == lemma)
+        if lemma:
+            base_query = base_query.filter(Corpus.lemma == lemma)
 
-    if not (root or lemma):
-        raise HTTPException(
-            status_code=422, detail="missing both root and lemma in query param"
+        if not (root or lemma):
+            raise HTTPException(
+                status_code=422, detail="missing both root and lemma in query param"
+            )
+
+        if taraweeh_night:
+            filter_arg = _get_filter_arg_for_taraweeh_night(taraweeh_night)
+            base_query = base_query.filter(filter_arg)
+
+        occurrences_verse_query = base_query.distinct()
+
+        occurrence_verse_args: List[Tuple[int, int]] = (
+            occurrences_verse_query.order_by(Corpus.sura_num, Corpus.ayah_num)
+            .offset(offset)
+            .limit(pagesize)
+            .all()
         )
 
-    if taraweeh_night:
-        filter_arg = _get_filter_arg_for_taraweeh_night(taraweeh_night)
-        base_query = base_query.filter(filter_arg)
-
-    occurrences_verse_query = base_query.distinct()
-
-    occurrence_verse_args: List[Tuple[int, int]] = (
-        occurrences_verse_query.order_by(Corpus.sura_num, Corpus.ayah_num)
-        .offset(offset)
-        .limit(pagesize)
-        .all()
-    )
-
-    total_occurrences = base_query.count()
-    total_verses = occurrences_verse_query.count()
+        total_occurrences = base_query.count()
+        total_verses = occurrences_verse_query.count()
 
     word_nums_future = asyncio.gather(
         *(_get_occrrences_in_verse(*arg, root, lemma) for arg in occurrence_verse_args)
@@ -474,21 +497,22 @@ async def list_frequencies(
     offset = pagination_params["offset"]
     pagesize = pagination_params["pagesize"]
 
-    base_query = (
-        db_corpus.session.query(
-            Corpus.root, Corpus.lemma, sqlalchemy_func.count(Corpus.lemma)
+    with Corpus.get_session() as session_corpus:
+        base_query = (
+            session_corpus.query(
+                Corpus.root, Corpus.lemma, sqlalchemy_func.count(Corpus.lemma)
+            )
+            .filter(Corpus.lemma.isnot(None))
+            .group_by(Corpus.root, Corpus.lemma)
+            .order_by(sqlalchemy_desc(sqlalchemy_func.count(Corpus.lemma)))
         )
-        .filter(Corpus.lemma.isnot(None))
-        .group_by(Corpus.root, Corpus.lemma)
-        .order_by(sqlalchemy_desc(sqlalchemy_func.count(Corpus.lemma)))
-    )
 
-    if taraweeh_night:
-        filter_arg = _get_filter_arg_for_taraweeh_night(taraweeh_night)
-        base_query = base_query.filter(filter_arg)
+        if taraweeh_night:
+            filter_arg = _get_filter_arg_for_taraweeh_night(taraweeh_night)
+            base_query = base_query.filter(filter_arg)
 
-    frequencies = base_query.offset(offset).limit(pagesize).all()
-    total = base_query.count()
+        frequencies = base_query.offset(offset).limit(pagesize).all()
+        total = base_query.count()
 
     return {
         "data": [

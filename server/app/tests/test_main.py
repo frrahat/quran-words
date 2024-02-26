@@ -2,29 +2,31 @@ from fastapi.testclient import TestClient
 import pytest
 
 from app.main import app
-from app.db_quran_arabic import db_quran_arabic, QuranArabic
-from app.db_quran_english import db_quran_english, QuranEnglish
+from app.db.db_quran_arabic import QuranArabic
+from app.db.db_quran_english import QuranEnglish
 from app.taraweeh_ayat import get_start_end_ayah_by_night
 
 client = TestClient(app)
 
 
 def _get_arabic_verse(sura, ayah):
-    return (
-        db_quran_arabic.session.query(QuranArabic)
-        .filter(QuranArabic.sura_num == sura, QuranArabic.ayah_num == ayah)
-        .first()
-        .text
-    )
+    with QuranArabic.get_session() as session:
+        return (
+            session.query(QuranArabic)
+            .filter(QuranArabic.sura_num == sura, QuranArabic.ayah_num == ayah)
+            .first()
+            .text
+        )
 
 
 def _get_english_translated_verse(sura, ayah):
-    return (
-        db_quran_english.session.query(QuranEnglish)
-        .filter(QuranEnglish.sura_num == sura, QuranEnglish.ayah_num == ayah)
-        .first()
-        .text
-    )
+    with QuranEnglish.get_session() as session:
+        return (
+            session.query(QuranEnglish)
+            .filter(QuranEnglish.sura_num == sura, QuranEnglish.ayah_num == ayah)
+            .first()
+            .text
+        )
 
 
 def test_root():
