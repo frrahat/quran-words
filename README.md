@@ -60,9 +60,10 @@ Exec into the client container for typecheck, lint and prettify code
 
 Exec into the shell of the server container for lint, typecheck and test
 
-- Lint: `flake8 app/ --config flake8.cfg`
-- Typecheck: `mypy --config-file=mypy.ini app/`
-- Test: `pytest -vvv app/tests`
+- Lint: `make lint`
+- Typecheck: `make typecheck`
+- Test: `make test`
+- Format: `make format`
 
 ## Credits
 
