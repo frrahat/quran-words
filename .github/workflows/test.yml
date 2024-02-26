@@ -49,15 +49,12 @@ jobs:
 
       - name: Run lint
         working-directory: ./server
-        run: mypy --config-file=mypy.ini app/
+        run: make lint
 
       - name: Run typecheck
         working-directory: ./server
-        run: flake8 app/ --config flake8.cfg
+        run: make typecheck
 
       - name: Run tests
         working-directory: ./server
-        run: |
-          mkdir client
-          cp -r ../client/build client/
-          pytest -vvv app/tests
+        run: make test
