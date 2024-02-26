@@ -1,0 +1,13 @@
+fastapi==0.109.2
+gunicorn==21.2.0
+sqlalchemy==2.0.27
+
+# dev exclusive
+black==24.2.0
+flake8==7.0.0
+httpx==0.27.0  # starlette.testclient module requires the httpx package to be installed
+isort==5.13.2
+mypy==1.8.0
+pytest==8.0.1
+uvicorn[standard]==0.27.1
+pyyaml==5.3.1  # https://github.com/yaml/pyyaml/issues/724
