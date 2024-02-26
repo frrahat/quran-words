@@ -13,6 +13,8 @@ format:
 	isort app/
 
 test:
-	mkdir -p client
-    cp -r ../client/build client/
+	if [ ! -f "client/build/index.html" ]; then \
+        mkdir -p client/build; \
+		touch client/build/index.html; \
+    fi
 	pytest -vvv app/tests
