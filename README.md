@@ -2,7 +2,7 @@
 
 Simple Web app to learn words used in the Quran.
 
-Check it out here: https://quran-words.herokuapp.com
+Check it out here: https://quran-words.up.railway.app
 
 ## Features
 
