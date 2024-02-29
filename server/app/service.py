@@ -1,6 +1,8 @@
-import asyncio
+import itertools
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from enum import Enum
+from functools import cache
 from typing import Dict, List, Optional, Tuple, Type, Union
 
 from sqlalchemy import and_
@@ -20,8 +22,9 @@ class VERSE_LANG(Enum):
     ENGLISH = "english"
 
 
-async def _get_verse(
-    sura_num: int, ayah_num: int, type_: VERSE_LANG = VERSE_LANG.ARABIC
+@cache
+def _get_verse(
+    sura_num: int, ayah_num: int, type_: VERSE_LANG
 ) -> Union[QuranArabic, QuranEnglish]:
     with (
         QuranArabic.get_session() as session_quran_arabic,
@@ -42,7 +45,8 @@ async def _get_verse(
         )
 
 
-async def _get_words(sura_num: int, ayah_num: int) -> List[Word]:
+@cache
+def _get_words(sura_num: int, ayah_num: int) -> List[Word]:
     with Word.get_session() as session:
         return (
             session.query(Word)
@@ -71,22 +75,19 @@ def _get_filter_arg_for_taraweeh_night(taraweeh_night):
     return or_(*conditions)
 
 
-async def _get_occurrence_verses(verse_args: List[Tuple[int, int]]) -> List[Dict]:
-    verses_arabic_future = asyncio.gather(
-        *(_get_verse(*arg, type_=VERSE_LANG.ARABIC) for arg in verse_args)
-    )
-
-    verses_english_future = asyncio.gather(
-        *(_get_verse(*arg, type_=VERSE_LANG.ENGLISH) for arg in verse_args)
-    )
-
-    words_english_future = asyncio.gather(*(_get_words(*arg) for arg in verse_args))
-
-    verses_arabic, verses_english, words_english = await asyncio.gather(
-        verses_arabic_future,
-        verses_english_future,
-        words_english_future,
-    )
+def _get_occurrence_verses(verse_args: List[Tuple[int, int]]) -> List[Dict]:
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        verses_arabic = list(
+            executor.map(
+                _get_verse, *zip(*verse_args), itertools.repeat(VERSE_LANG.ARABIC)
+            )
+        )
+        verses_english = list(
+            executor.map(
+                _get_verse, *zip(*verse_args), itertools.repeat(VERSE_LANG.ENGLISH)
+            )
+        )
+        words_english = list(executor.map(_get_words, *zip(*verse_args)))
 
     occurrence_verses = [
         {
@@ -106,7 +107,7 @@ async def _get_occurrence_verses(verse_args: List[Tuple[int, int]]) -> List[Dict
     return occurrence_verses
 
 
-async def _get_occrrences_in_verse(
+def _get_occrrences_in_verse(
     sura_num: int,
     ayah_num: int,
     root: Optional[str],
@@ -142,11 +143,18 @@ class CorpusData:
 
 
 async def get_corpus(sura_num: int, ayah_num: int) -> Optional[CorpusData]:
-    verse_arabic, verse_english, words_english = await asyncio.gather(
-        _get_verse(sura_num, ayah_num, type_=VERSE_LANG.ARABIC),
-        _get_verse(sura_num, ayah_num, type_=VERSE_LANG.ENGLISH),
-        _get_words(sura_num, ayah_num),
-    )
+    with ThreadPoolExecutor(max_workers=3) as executor:
+        verse_arabic_future = executor.submit(
+            _get_verse, sura_num, ayah_num, VERSE_LANG.ARABIC
+        )
+        verse_english_future = executor.submit(
+            _get_verse, sura_num, ayah_num, VERSE_LANG.ENGLISH
+        )
+        words_future = executor.submit(_get_words, sura_num, ayah_num)
+
+    verse_arabic = verse_arabic_future.result()
+    verse_english = verse_english_future.result()
+    words_english = words_future.result()
 
     if not verse_arabic:
         return None
@@ -246,14 +254,18 @@ async def list_occurrences(
         total_occurrences = base_query.count()
         total_verses = occurrences_verse_query.count()
 
-    word_nums_future = asyncio.gather(
-        *(_get_occrrences_in_verse(*arg, root, lemma) for arg in occurrence_verse_args)
-    )
-
-    occurrence_verses, occurrence_word_nums = await asyncio.gather(
-        _get_occurrence_verses(occurrence_verse_args),
-        word_nums_future,
-    )
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        occurrence_word_nums = list(
+            executor.map(
+                _get_occrrences_in_verse,
+                *zip(*occurrence_verse_args),
+                itertools.repeat(root),
+                itertools.repeat(lemma),
+            )
+        )
+        occurrence_verses = list(
+            executor.map(_get_occurrence_verses, [occurrence_verse_args])
+        )[0]
 
     data = [
         OccurrenceData(
