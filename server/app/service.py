@@ -12,7 +12,6 @@ from app.db.db_corpus import Corpus
 from app.db.db_quran_arabic import QuranArabic
 from app.db.db_quran_english import QuranEnglish
 from app.db.db_words import Word
-from app.response_models import CorpusWord, LemmaFrequency, WordRootOccurrence
 from app.taraweeh_ayat import get_start_end_ayah_by_night
 
 
@@ -204,13 +203,21 @@ async def get_corpus(sura_num: int, ayah_num: int) -> Optional[CorpusData]:
     )
 
 
+@dataclass
+class OccurrenceData:
+    sura: int
+    ayah: int
+    verse: Dict
+    word_nums: List[int]
+
+
 async def list_occurrences(
     offset: int,
     pagesize: int,
     root: Optional[str],
     lemma: Optional[str],
     taraweeh_night: Optional[int],
-) -> Tuple[List[Dict], int, int]:
+) -> Tuple[List[OccurrenceData], int, int]:
     with Corpus.get_session() as session_corpus:
         base_query = session_corpus.query(Corpus.sura_num, Corpus.ayah_num)
 
@@ -249,21 +256,28 @@ async def list_occurrences(
     )
 
     data = [
-        {
-            "sura": occurrence_verse_args[i][0],
-            "ayah": occurrence_verse_args[i][1],
-            "verse": occurrence_verses[i],
-            "word_nums": occurrence_word_nums[i],
-        }
+        OccurrenceData(
+            sura=occurrence_verse_args[i][0],
+            ayah=occurrence_verse_args[i][1],
+            verse=occurrence_verses[i],
+            word_nums=occurrence_word_nums[i],
+        )
         for i in range(len(occurrence_verse_args))
     ]
 
     return data, total_verses, total_occurrences
 
 
+@dataclass
+class FrequencyData:
+    root: Optional[str]
+    lemma: str
+    frequency: int
+
+
 def list_frequencies(
     offset: int, pagesize: int, taraweeh_night: Optional[int]
-) -> Tuple[List[Dict], int]:
+) -> Tuple[List[FrequencyData], int]:
     with Corpus.get_session() as session_corpus:
         base_query = (
             session_corpus.query(
@@ -282,11 +296,11 @@ def list_frequencies(
         total = base_query.count()
 
     data = [
-        {
-            "root": row[0],
-            "lemma": row[1],
-            "frequency": row[2],
-        }
+        FrequencyData(
+            root=row[0],
+            lemma=row[1],
+            frequency=row[2],
+        )
         for row in frequencies
     ]
     return data, total

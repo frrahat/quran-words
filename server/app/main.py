@@ -1,3 +1,4 @@
+from dataclasses import asdict
 from typing import Optional
 
 from fastapi import Depends, FastAPI, Path, Query, Request, Response, status
@@ -249,7 +250,7 @@ async def list_occurrences(
     return {
         "root": root,
         "lemma": lemma,
-        "data": data,
+        "data": [asdict(item) for item in data],
         "total_occurrences": total_occurrences,
         "total": total_verses,
         "pagination": get_pagination_response(
@@ -273,7 +274,7 @@ async def list_frequencies(
         offset, pagesize, taraweeh_night=taraweeh_night
     )
     return {
-        "data": data,
+        "data": [asdict(item) for item in data],
         "total": total,
         "pagination": get_pagination_response(
             request,
