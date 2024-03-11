@@ -26,6 +26,9 @@ app = FastAPI()
 app.mount("/public", StaticFiles(directory="client/build"), name="public")
 
 
+WEB_ROOT_FILE = "client/build/index.html"
+
+
 @app.get("/")
 def read_root():
     return RedirectResponse("/app")
@@ -33,7 +36,12 @@ def read_root():
 
 @app.get("/app/{rest_of_path:path}")
 def read_app():
-    return FileResponse("client/build/index.html")
+    return FileResponse(WEB_ROOT_FILE)
+
+
+@app.get("/words/{rest_of_path:path}")
+def read_words():
+    return FileResponse(WEB_ROOT_FILE)
 
 
 @app.get("/api/words-80-percent/levels", response_model=LevelListResponseModel)

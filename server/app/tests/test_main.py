@@ -44,6 +44,11 @@ def test_read_app_path():
     assert response.status_code == 200
 
 
+def test_read_words_path():
+    response = client.get("/words/something")
+    assert response.status_code == 200
+
+
 def test_list_word_80_percent_levels():
     response = client.get("/api/words-80-percent/levels")
     assert response.status_code == 200
