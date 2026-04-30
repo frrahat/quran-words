@@ -3,6 +3,7 @@ from fastapi.testclient import TestClient
 
 from app.db.db_quran_arabic import QuranArabic
 from app.db.db_quran_english import QuranEnglish
+from app.db.db_words_80_percent import Word as Word80Percent
 from app.main import app
 from app.taraweeh_ayat import get_start_end_ayah_by_night
 
@@ -97,6 +98,23 @@ def test_list_word_80_percent_words_with_pagesize_param():
         "previous": "/api/words-80-percent/words?offset=0&pagesize=7",
         "next": "/api/words-80-percent/words?offset=19&pagesize=12",
     }
+
+
+def test_words_80_percent_foot_uses_correct_arabic_word():
+    with Word80Percent.get_session() as session:
+        rows = (
+            session.query(Word80Percent)
+            .filter(
+                Word80Percent.level_num.in_([51, 52]),
+                Word80Percent.serial_num == 9,
+                Word80Percent.english == "foot",
+            )
+            .order_by(Word80Percent.level_num)
+            .all()
+        )
+
+    assert [row.level_num for row in rows] == [51, 52]
+    assert {row.arabic for row in rows} == {"pl(رِجْل (أَرْجُل"}
 
 
 def test_list_verses_by_surah():
